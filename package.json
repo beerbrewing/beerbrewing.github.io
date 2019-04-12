@@ -2,7 +2,7 @@
   "name": "beerbrewing.github.io",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://beerbrewing.github.io",
+  "homepage": "https://beerbrewing.github.io",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
