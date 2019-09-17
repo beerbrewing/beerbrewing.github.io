@@ -10,7 +10,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Secret Squirrel Brewery
+            Pyrmont Brewery<br>Sydney, Australia
           </p>
 
         </header>
