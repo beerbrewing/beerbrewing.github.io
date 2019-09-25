@@ -1,14 +1,15 @@
 {
-  "main.css": "/build/static/css/main.7606b5bc.chunk.css",
-  "main.js": "/build/static/js/main.cf487665.chunk.js",
-  "main.js.map": "/build/static/js/main.cf487665.chunk.js.map",
+  "main.css": "/build/static/css/main.53f9e6c7.chunk.css",
+  "main.js": "/build/static/js/main.da97b68f.chunk.js",
+  "main.js.map": "/build/static/js/main.da97b68f.chunk.js.map",
   "runtime~main.js": "/build/static/js/runtime~main.9df7376b.js",
   "runtime~main.js.map": "/build/static/js/runtime~main.9df7376b.js.map",
-  "static/js/2.7e6d99fa.chunk.js": "/build/static/js/2.7e6d99fa.chunk.js",
-  "static/js/2.7e6d99fa.chunk.js.map": "/build/static/js/2.7e6d99fa.chunk.js.map",
+  "static/js/2.8f4aac80.chunk.js": "/build/static/js/2.8f4aac80.chunk.js",
+  "static/js/2.8f4aac80.chunk.js.map": "/build/static/js/2.8f4aac80.chunk.js.map",
   "index.html": "/build/index.html",
-  "precache-manifest.67894a568b4a8ff1a7ae2ff6bf469dcd.js": "/build/precache-manifest.67894a568b4a8ff1a7ae2ff6bf469dcd.js",
+  "precache-manifest.1e01b56c9ed65bb81d28385b050ac323.js": "/build/precache-manifest.1e01b56c9ed65bb81d28385b050ac323.js",
   "service-worker.js": "/build/service-worker.js",
-  "static/css/main.7606b5bc.chunk.css.map": "/build/static/css/main.7606b5bc.chunk.css.map",
+  "static/css/main.53f9e6c7.chunk.css.map": "/build/static/css/main.53f9e6c7.chunk.css.map",
+  "static/media/PyrmontBrewery_Kegerator.png": "/build/static/media/PyrmontBrewery_Kegerator.4a3e9f46.png",
   "static/media/logo.svg": "/build/static/media/logo.996bf1f3.svg"
 }

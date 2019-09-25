@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import PyrmontBrewery_Kegerator from './PyrmontBrewery_Kegerator.png';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -32,9 +33,10 @@ class App extends Component {
             <li><a href={"Beer Suz Saison.bsmx"} target={"_blank"} className={classLink}>Beer Suz Saison.bsmx</a> - French Saison</li>
           </ul>
           <p>
-            Pyrmont business needing local beer on tap? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
+            In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
               kegs@pyrmontbrewery.com</a>
           </p>
+          <img src={PyrmontBrewery_Kegerator} width={500}></img>
         </header>
       </div>
     );
