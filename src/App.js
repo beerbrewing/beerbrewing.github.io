@@ -39,8 +39,8 @@ class App extends Component {
           </ul>
           </p>
           <p>
-            and good on yers for following us too...<br/><a href={"https://twitter.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
-            Twitter</a><br/><a href={"https://facebook.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
+            and good on yers for following us...<br/><a href={"https://twitter.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
+            Twitter</a><br/><a href={"https://facebook.com/secretsquirrelbrew"} target={"_blank"} className={classLink}>
             Facebook</a><br/><a href={"https://www.instagram.com/secretsquirrelbrew"} target={"_blank"} className={classLink}>
             Instagram</a>
           </p>
