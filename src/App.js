@@ -19,8 +19,7 @@ class App extends Component {
             We brew exclusively for local businesses to keep the cost of distribution minimal and stay well within our supply capacity
             <br/>
             <br/>
-            Being a huge fan of open source and creative commons, the head brewer <a href={"https://twitter.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
-            @kevleyski</a> is sharing a small selection of our beers:
+            Being a huge fan of open source and creative commons, the head brewer is sharing a small selection of our beers:
           </p>
           <ul>
             <li><a href={"Beer Arrogant Bastard.xml"} target={"_blank"} className={classLink}>Beer Arrogant Bastard.xml</a> - American Strong Ale</li>
