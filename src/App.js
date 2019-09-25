@@ -13,14 +13,20 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            The Pyrmont (Secret Squirrel) Brewery has been churning out the good stuff since 2007 here in the city of Sydney, Australia
+            The Pyrmont (Secret Squirrel) Brewery has been churning out the good stuff here in the city of Sydney, Australia since 2007
             <br/>
             <br/>
             We brew exclusively for local businesses to keep the cost of distribution minimal and stay well within our supply capacity
             <br/>
+            <p>
+              In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
+              kegs@pyrmontbrewery.com</a>
+            </p>
+            <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator} width="50%"></img></a>
             <br/>
-            Being a huge fan of open source and creative commons, the head brewer is sharing a small selection of our beers:
+            Being a huge fan of open source and creative commons, the head brewer is sharing a small selection of our beers for you to have a go:
           </p>
+          <p>
           <ul>
             <li><a href={"Beer Arrogant Bastard.xml"} target={"_blank"} className={classLink}>Beer Arrogant Bastard.xml</a> - American Strong Ale</li>
             <li><a href={"Beer Brexit.bsmx"} target={"_blank"} className={classLink}>Beer Brexit.bsmx</a> - British Bitter</li>
@@ -31,19 +37,15 @@ class App extends Component {
             <li><a href={"Beer Seong Cerveza.bsmx"} target={"_blank"} className={classLink}>Beer Seong Cerveza.bsmx</a> - Cerveza</li>
             <li><a href={"Beer Suz Saison.bsmx"} target={"_blank"} className={classLink}>Beer Suz Saison.bsmx</a> - French Saison</li>
           </ul>
-          <p>
-            In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
-              kegs@pyrmontbrewery.com</a>
           </p>
-          <img src={PyrmontBrewery_Kegerator} width="50%"></img>
-
           <p>
-            Good on yer for following us here:<br/><a href={"https://twitter.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
+            and good on yers for following us too...<br/><a href={"https://twitter.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
             Twitter</a><br/><a href={"https://facebook.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
-            Facebook</a><br/><a href={"https://www.instagram.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
+            Facebook</a><br/><a href={"https://www.instagram.com/secretsquirrelbrew"} target={"_blank"} className={classLink}>
             Instagram</a>
           </p>
 
+          <p>Cheers!</p>
         </header>
       </div>
     );
