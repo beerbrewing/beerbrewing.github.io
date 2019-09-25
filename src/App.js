@@ -30,7 +30,11 @@ class App extends Component {
             <li><a href={"Beer Rudolf Red.bsmx"} target={"_blank"} className={classLink}>Beer Rudolf Red.bsmx</a> - Red Ale</li>
             <li><a href={"Beer Seong Cerveza.bsmx"} target={"_blank"} className={classLink}>Beer Seong Cerveza.bsmx</a> - Cerveza</li>
             <li><a href={"Beer Suz Saison.bsmx"} target={"_blank"} className={classLink}>Beer Suz Saison.bsmx</a> - French Saison</li>
-            </ul>
+          </ul>
+          <p>
+            Pyrmont business needing local beer on tap? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
+              kegs@pyrmontbrewery.com</a>
+          </p>
         </header>
       </div>
     );
