@@ -1,9 +1,8 @@
 .App {
-  text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 10s linear;
   height: 40vmin;
   pointer-events: none;
 }
@@ -20,7 +19,9 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #ffffaa;
+  text-decoration-line: none;
+  text-align: left;
 }
 
 @keyframes App-logo-spin {
