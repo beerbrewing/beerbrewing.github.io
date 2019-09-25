@@ -1,5 +1,5 @@
 {
-  "main.css": "/build/static/css/main.ec161649.chunk.css",
+  "main.css": "/build/static/css/main.cf931464.chunk.css",
   "main.js": "/build/static/js/main.6b90e1d8.chunk.js",
   "main.js.map": "/build/static/js/main.6b90e1d8.chunk.js.map",
   "runtime~main.js": "/build/static/js/runtime~main.9df7376b.js",
@@ -7,9 +7,9 @@
   "static/js/2.8f4aac80.chunk.js": "/build/static/js/2.8f4aac80.chunk.js",
   "static/js/2.8f4aac80.chunk.js.map": "/build/static/js/2.8f4aac80.chunk.js.map",
   "index.html": "/build/index.html",
-  "precache-manifest.28728e669e7898194cf24bf15f961138.js": "/build/precache-manifest.28728e669e7898194cf24bf15f961138.js",
+  "precache-manifest.5e8a8a2b0d0b0bcbd7d50620836226a0.js": "/build/precache-manifest.5e8a8a2b0d0b0bcbd7d50620836226a0.js",
   "service-worker.js": "/build/service-worker.js",
-  "static/css/main.ec161649.chunk.css.map": "/build/static/css/main.ec161649.chunk.css.map",
+  "static/css/main.cf931464.chunk.css.map": "/build/static/css/main.cf931464.chunk.css.map",
   "static/media/PyrmontBrewery_Kegerator.png": "/build/static/media/PyrmontBrewery_Kegerator.4a3e9f46.png",
   "static/media/logo.svg": "/build/static/media/logo.3c43810a.svg"
 }
