@@ -18,10 +18,8 @@ class App extends Component {
             <br/>
             We brew exclusively for local businesses to keep the cost of distribution minimal and stay well within our supply capacity
             <br/>
-            <p>
-              In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
-              kegs@pyrmontbrewery.com</a>
-            </p>
+            In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
+            kegs@pyrmontbrewery.com</a>
             <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator} width="80%"></img></a>
             <br/>
             Being a huge fan of open source and creative commons, the head brewer is sharing a small selection of our beers for you to have a go:
