@@ -12,12 +12,12 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <br/><br/>
           <p>
-            The Pyrmont (Secret Squirrel) Brewery has been churning out the good stuff since 2007 here in sunny Pyrmont, Sydney, Australia
+            The Pyrmont (Secret Squirrel) Brewery has been churning out the good stuff since 2007 here in the city of Sydney, Australia
             <br/>
             <br/>
             We brew exclusively for local businesses to keep distribution cost minimal and stay well within our capacity
+            <br/>
             <br/>
             Being a huge fan of open source and creative commons, the head brewer <a href={"https://twitter.com/kevleyski"} target={"_blank"} className={classLink}>
             @kevleyski</a> is sharing a small selection of our beers:
@@ -36,7 +36,7 @@ class App extends Component {
             In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
               kegs@pyrmontbrewery.com</a>
           </p>
-          <img src={PyrmontBrewery_Kegerator} width={500}></img>
+          <img src={PyrmontBrewery_Kegerator} width="50%"></img>
         </header>
       </div>
     );
