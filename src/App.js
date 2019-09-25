@@ -16,10 +16,10 @@ class App extends Component {
             The Pyrmont (Secret Squirrel) Brewery has been churning out the good stuff since 2007 here in the city of Sydney, Australia
             <br/>
             <br/>
-            We brew exclusively for local businesses to keep distribution cost minimal and stay well within our capacity
+            We brew exclusively for local businesses to keep the cost of distribution minimal and stay well within our supply capacity
             <br/>
             <br/>
-            Being a huge fan of open source and creative commons, the head brewer <a href={"https://twitter.com/kevleyski"} target={"_blank"} className={classLink}>
+            Being a huge fan of open source and creative commons, the head brewer <a href={"https://twitter.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
             @kevleyski</a> is sharing a small selection of our beers:
           </p>
           <ul>
@@ -37,6 +37,14 @@ class App extends Component {
               kegs@pyrmontbrewery.com</a>
           </p>
           <img src={PyrmontBrewery_Kegerator} width="50%"></img>
+
+          <p>
+            Good on yer for following us here:<br/><a href={"https://twitter.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
+            Twitter</a><br/><a href={"https://facebook.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
+            Facebook</a><br/><a href={"https://www.instagram.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
+            Instagram</a>
+          </p>
+
         </header>
       </div>
     );
