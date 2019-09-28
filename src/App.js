@@ -18,8 +18,17 @@ class App extends Component {
             <br/>
             We brew exclusively for local businesses to keep the cost of distribution minimal and stay well within our supply capacity
             <br/>
+            <br/>
+            Small selection of our Pyrmont heritage brews:<br/><br/>
+            Whinging Pom - British British - rich Maris Otter based Real Ale, with UK hops 4%<br/>
+            Hellhole Helle - German dortmunder style Pilsner <br/>
+            Paradise Saison - Easy drinking French style Saison<br/>
+            Purgatory Pale Ale - Australian Westcoast style 2 row pale ale<br/>
+            Quarry Quaffer - Australian sessionable lager 4.9%<br/>
+            <br/>
             In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
-            kegs@pyrmontbrewery.com</a>
+            kegs@pyrmontbrewery.com</a><br/>
+            Can supply 20L/50L DIN kegs (A-type coupler) or 19L Cornelius with ball lock
             <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator} width="80%"></img></a>
             <br/>
             Being a huge fan of open source and creative commons, the head brewer is sharing a small selection of our beers for you to have a go:
