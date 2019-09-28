@@ -49,7 +49,7 @@ class App extends Component {
             <a href={"Beer Suz Saison.bsmx"} target={"_blank"} className={classLink}>Suz Saison.bsmx</a> - French Saison<br/>
           </p>
           <p>
-            and good on yers for following us...<br/><a href={"https://twitter.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
+            and good on yers for following us @pyrmontbrewery...<br/><a href={"https://twitter.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
             Twitter</a><br/><a href={"https://facebook.com/secretsquirrelbrew"} target={"_blank"} className={classLink}>
             Facebook</a><br/><a href={"https://www.instagram.com/secretsquirrelbrew"} target={"_blank"} className={classLink}>
             Instagram</a>
