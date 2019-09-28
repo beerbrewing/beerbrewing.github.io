@@ -24,7 +24,7 @@ class App extends Component {
             Hellhole Helle - German dortmunder style Pilsner <br/>
             Paradise Saison - Easy drinking French style Saison<br/>
             Purgatory Pale Ale - Australian Westcoast style 2 row pale ale<br/>
-            Quarry Quaffer - Australian sessionable lager 4.9%<br/>
+            Quarry Quaffer - Australian sessionable lager<br/>
             <br/>
             In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
             kegs@pyrmontbrewery.com</a><br/>
