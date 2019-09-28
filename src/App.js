@@ -13,18 +13,19 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            The Pyrmont (Secret Squirrel) Brewery has been churning out the good stuff here in the city of Sydney, Australia since 2007
+            The <b>Pyrmont Brewery</b> has been churning out the good stuff here in the city of Sydney, Australia since 2007
             <br/>
             <br/>
             We brew beer exclusively for local businesses to keep the cost of distribution minimal and stay well within our supply capacity<br/>
-            Because we sell alcoholic beverages, under NSW Liquor and Gaming rules if you are under 18 years then sorry this site is not for you
+            Because we sell alcoholic beverages, under NSW Liquor and Gaming rules if you are <i>under 18 years</i> then sorry this site is not for you
+            <br/>
             <br/>
             Some of our Pyrmont heritage brews to choose from:<br/><br/>
-            <b>Hellhole Helle</b> - German dortmunder style Pilsner (local Tassie grain and hops)<br/>
-            <b>Paradise Saison</b> - Easy drinking French style Saison<br/>
-            <b>Purgatory Pale Ale</b> - Australian Westcoast style 2 row pale ale<br/>
+            <b>Whinging Pom</b> - British Bitter - classic Maris Otter based Real Ale, with Fuggles and East Kent Goldings (can be served via beer gun without refrigeration)<br/>
+            <b>Hellhole Helle</b> - German dortmunder style (Tasmania) Pilsner and Enignma hops)<br/>
+            <b>Paradise Saison</b> - Easy drinking French style Saison, lightly Centenial hopped<br/>
+            <b>Purgatory Pale Ale</b> - Australian Westcoast style 2 row pale ale with Challenger<br/>
             <b>Halfway House Stout</b> - fresh stout (best served with nitro)<br/>
-            <b>Whinging Pom</b> - British Bitter - classic Maris Otter based Real Ale, with UK hops (not cold and natural carbonation)<br/>
             <b>Quarry Quaffer</b> - Australian sessionable Pride of Ringwood lager<br/>
             <b>Surgeon Harris</b> - San Diego strong ale<br/>
             <b>Union Square IIPA</b> - Feisty Adelaide style strong hopped double IPA<br/>
