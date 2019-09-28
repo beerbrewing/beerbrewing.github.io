@@ -16,15 +16,17 @@ class App extends Component {
             The Pyrmont (Secret Squirrel) Brewery has been churning out the good stuff here in the city of Sydney, Australia since 2007
             <br/>
             <br/>
-            We brew exclusively for local businesses to keep the cost of distribution minimal and stay well within our supply capacity
-            <br/>
+            We brew beer exclusively for local businesses to keep the cost of distribution minimal and stay well within our supply capacity<br/>
+            Because we sell alcoholic beverages, under NSW Liquor and Gaming rules if you are under 18 years then sorry this site is not for you
             <br/>
             Small selection of our Pyrmont heritage brews:<br/><br/>
-            Whinging Pom - British British - rich Maris Otter based Real Ale, with UK hops 4%<br/>
-            Hellhole Helle - German dortmunder style Pilsner <br/>
+            Hellhole Helle - German dortmunder style Pilsner (local Tassie grain and hops)<br/>
             Paradise Saison - Easy drinking French style Saison<br/>
             Purgatory Pale Ale - Australian Westcoast style 2 row pale ale<br/>
+            Whinging Pom - British British - rich Maris Otter based Real Ale, with UK hops<br/>
             Quarry Quaffer - Australian sessionable lager<br/>
+            Surgeon Harris - American strong ale<br/>
+            Maybanke - Light pilsner based malt 2.9%<br/>
             <br/>
             In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
             kegs@pyrmontbrewery.com</a><br/>
