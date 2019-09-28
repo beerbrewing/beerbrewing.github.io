@@ -19,18 +19,21 @@ class App extends Component {
             We brew beer exclusively for local businesses to keep the cost of distribution minimal and stay well within our supply capacity<br/>
             Because we sell alcoholic beverages, under NSW Liquor and Gaming rules if you are under 18 years then sorry this site is not for you
             <br/>
-            Small selection of our Pyrmont heritage brews:<br/><br/>
-            Hellhole Helle - German dortmunder style Pilsner (local Tassie grain and hops)<br/>
-            Paradise Saison - Easy drinking French style Saison<br/>
-            Purgatory Pale Ale - Australian Westcoast style 2 row pale ale<br/>
-            Whinging Pom - British British - rich Maris Otter based Real Ale, with UK hops<br/>
-            Quarry Quaffer - Australian sessionable lager<br/>
-            Surgeon Harris - American strong ale<br/>
-            Maybanke - Light pilsner based malt 2.9%<br/>
+            Some of our Pyrmont heritage brews to choose from:<br/><br/>
+            <b>Hellhole Helle</b> - German dortmunder style Pilsner (local Tassie grain and hops)<br/>
+            <b>Paradise Saison</b> - Easy drinking French style Saison<br/>
+            <b>Purgatory Pale Ale</b> - Australian Westcoast style 2 row pale ale<br/>
+            <b>Halfway House Stout</b> - fresh stout (best served with nitro)<br/>
+            <b>Whinging Pom</b> - British Bitter - classic Maris Otter based Real Ale, with UK hops (not cold and natural carbonation)<br/>
+            <b>Quarry Quaffer</b> - Australian sessionable Pride of Ringwood lager<br/>
+            <b>Surgeon Harris</b> - San Diego strong ale<br/>
+            <b>Union Square IIPA</b> - Feisty Adelaide style strong hopped double IPA<br/>
+            <b>Maybanke</b> - A light Hobart Pilsner maltly number (2.9%)<br/>
             <br/>
             In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
             kegs@pyrmontbrewery.com</a><br/>
-            Can supply 20L/50L DIN kegs (A-type coupler) or 19L Cornelius with ball lock
+            We'll supply 50L DIN kegs (A-type coupler) or 19L Cornelius (ball lock) or long neck bottling for small batches<br/>
+            We encourage responsible consumption of our brews<br/>
             <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator} width="80%"></img></a>
             <br/>
             Being a huge fan of open source and creative commons, the head brewer is sharing a small selection of our beers for you to have a go:
