@@ -23,13 +23,13 @@ class App extends Component {
             Some of our Pyrmont heritage brews to choose from:<br/><br/>
             <b>Whinging Pom</b> - British Bitter - classic Maris Otter based Real Ale, with Fuggles and East Kent Goldings (can be served via beer gun without refrigeration)<br/>
             <b>Hellhole Helle</b> - German dortmunder style (Tasmania) Pilsner and Enignma hops)<br/>
-            <b>Paradise Saison</b> - Easy drinking French style Saison, lightly Centenial hopped<br/>
+            <b>Paradise Saison</b> - Easy drinking French style Saison, lightly Centennial hopped<br/>
             <b>Purgatory Pale Ale</b> - Australian Westcoast style 2 row pale ale with Challenger<br/>
-            <b>Halfway House Stout</b> - fresh stout (best served with nitro)<br/>
+            <b>Halfway House Stout</b> - fresh stout (best served 3:1 nitro:co2)<br/>
             <b>Quarry Quaffer</b> - Australian sessionable Pride of Ringwood lager<br/>
-            <b>Surgeon Harris</b> - San Diego strong ale<br/>
+            <b>Surgeon Harris</b> - San Diego strong ale, its a little arrogant<br/>
             <b>Union Square IIPA</b> - Feisty Adelaide style strong hopped double IPA<br/>
-            <b>Maybanke</b> - A light Hobart Pilsner maltly number (2.9%)<br/>
+            <b>Maybanke</b> - A light Hobart inspired Pilsner (2.9%)<br/>
             <br/>
             In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"} className={classLink}>
             kegs@pyrmontbrewery.com</a><br/>
