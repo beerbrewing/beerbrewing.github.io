@@ -70,7 +70,7 @@ class App extends Component {
               <div className="Beer"> <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
                     className={classLink}>Halfway House Stout</a></b>Fresh stout (best served 3:1 nitro:co2) <br/>Halfway house was a hotel on Miller street which didnt survive the Anzac bridge getting built<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
-                 className={classLink}>Whinging Pom</a></b>British Bitter - classic Maris Otter based Real Ale, with Fuggles and East Kent Goldings<br/>In classic English style can be served straight from the keg without refrigeration<br/><br/></div>
+                 className={classLink}>Best Whinging Pom</a></b>British Bitter, a classic Maris Otter based Real Ale, with Fuggles and East Kent Goldings<br/>English style so can be served straight from the keg without refrigeration<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_pom@pyrmontbrewery.com"} target={"_blank"}
                     className={classLink}>Hellhole Helle</a></b>German dortmunder style (Tasmania) Pilsner and Enignma hops<br/>Hellhole was the quarry nearer the Sydney Fish Markets<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
@@ -87,7 +87,7 @@ class App extends Component {
               <p>
               Can supply 50L DIN kegs (A-type coupler), or<br/>
               19L Cornelius (ball lock) for your kegerator, or<br/>
-              long neck (75cl) bottles for smaller batches<br/>
+              Long neck (75cl) bottles for smaller batches<br/>
               <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator}
                                                                                 width="50%"
                                                                                 style={{opacity: 0.7}}></img></a>
@@ -129,7 +129,7 @@ class App extends Component {
               We encourage responsible consumption of our brews<br/>
             </p>
 
-            <p>Cheers!</p>
+            <p>Cheers mate!</p>
             <img src={logo} className="App-logo" alt="logo"/>
 
           </header>
