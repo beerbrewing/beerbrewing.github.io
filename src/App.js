@@ -38,52 +38,53 @@ class App extends Component {
          <header className="App-header">
            <img src={logo} className="App-logo" alt="logo"/>
            <p>
-             Sorry, it's really important that you are 18 or over to discuss the supply of alcohol with you under the
-             rules in New South Wales, Australia (and hey, most other places!)<br/><br/>
+             Sorry, but it's really important that you are 18 or over to discuss the supply of alcohol with you under the
+             liquor and gaming rules here in New South Wales, Australia (and hey, most other places this is true too!)<br/><br/>
              Please though, do come back when you are 18 we are ready for you!<br/>
-             (remember, drinking alcohol is neither big or clever)
+             (but remember, drinking alcohol is neither big or clever)
            </p>
          </header>
       :
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo"/>
+            <img src={logo} className="App-logo" alt="logo" width={"200px"} height={"100px"}/>
             <p>
-              Before we go on - we need to check you are 18 years or older...<br/><br/>
+              Before we go on, we need you to confirm you are 18 years or older<br/><br/>
               Were you born on or before <b>{today.toString().substring(0, 16)}</b>?
             </p>
-            <div className="Button" onClick={handleTooYoung}>Yeah, but no</div>
+            <div className="Button" onClick={handleTooYoung}>Erm yeah, but no</div>
             <br/>
             <div className="Button" onClick={handleOldEnough}>Strewth, yes ok I'm bloody old</div>
           </header>
         :
           <header className="App-header">
             <p>
-              The <b>Pyrmont Brewery</b> has been churning out the good stuff here in the city of Sydney, Australia
-              since 2007
+              Amongst the pretty <a href={"https://pyrmonthistory.net.au/industry/quarries"} target={"_blank"}
+                             className={classLink}>Pyrmont sandstone</a> there lays a secret brewery, it’s been churning out the good stuff here in the city of Sydney, Australia since 2007
               <br/>
-              Want some local brew? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
+              Local and want some brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
                                                       className={classLink}>
               kegs@pyrmontbrewery.com</a><br/>
               <br/>
+            </p>
               Some of our Pyrmont heritage brews to choose from:<br/><br/>
-              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                 className={classLink}>Whinging Pom</a></b> - British Bitter - classic Maris Otter based Real Ale, with Fuggles and East Kent
-              Goldings (can be served via beer gun without refrigeration)<br/><br/>
-              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Hellhole Helle</a></b> - German dortmunder style (Tasmania) Pilsner and Enignma hops)<br/><br/>
-              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Paradise Saison</a></b> - Easy drinking French style Saison, lightly Centennial hopped<br/><br/>
-              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Purgatory Pale Ale</a></b> - Australian Westcoast style 2 row pale ale with Challenger<br/><br/>
-              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Halfway House Stout</a></b> - fresh stout (best served 3:1 nitro:co2)<br/><br/>
-              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Quarry Quaffer</a></b> - Australian sessionable Pride of Ringwood lager<br/><br/>
-              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Surgeon Harris</a></b> - San Diego strong ale, its a little arrogant<br/><br/>
-              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Union Square IIPA</a></b> - Feisty Adelaide style strong hopped double IPA<br/><br/>
+              <beer><b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Halfway House Stout</a></b>Fresh stout (best served 3:1 nitro:co2) <br/>Halfway house was a hotel on Miller street which didnt survive the Anzac bridge getting built<br/><br/></beer>
+              <beer><b><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
+                 className={classLink}>Whinging Pom</a></b>British Bitter - classic Maris Otter based Real Ale, with Fuggles and East Kent Goldings<br/>In classic English style can be served straight from the keg without refrigeration<br/><br/></beer>
+              <beer><b><a href={"mailto:kegs_pom@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Hellhole Helle</a></b>German dortmunder style (Tasmania) Pilsner and Enignma hops<br/>Hellhole was the quarry nearer the Sydney Fish Markets<br/><br/></beer>
+              <beer><b><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Paradise Saison</a></b>Easy drinking French style Saison, lightly Centennial hopped<br/>Paradise quarry nearest the brewery was the easiest and prettiest sandstone, GPO and Art Galleray and Library came from Paradise<br/><br/></beer>
+              <beer><b><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Purgatory Pale Ale</a></b>Australian Westcoast style 2 row pale ale with Challenger<br/>Purgatory was the quarry near the Anzac bridge<br/><br/></beer>
+              <beer><b><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Quarry Quaffer</a></b>Australian sessionable Pride of Ringwood lager<br/>"Angels crashing over me tongue!", like VB/Carlton is sweet and bitter at the same time<br/><br/></beer>
+              <beer><b><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Surgeon Harris</a></b>San Diego strong ale<br/>Defo inspired by the famous arrogant brews you'll find in that area of California<br/><br/></beer>
+              <beer><b><a href={"mailto:kegs_harris@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Union Square IIPA</a></b>Feisty Adelaide style strong hopped double IPA<br/>Aye me harties<br/><br/></beer>
               <br/>
+              <p>
               Can supply 50L DIN kegs (A-type coupler), or<br/>
               19L Cornelius (ball lock) for your kegerator, or<br/>
               long neck (75cl) bottles for smaller batches<br/>

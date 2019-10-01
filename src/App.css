@@ -11,7 +11,7 @@ html {
 
 .App-logo {
   animation: App-logo-spin infinite 2s normal;
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
@@ -32,6 +32,20 @@ html {
   cursor: pointer;
   justify-content: center;
   align-items: center;
+  position:relative;
+  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow:0 10px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  padding: 20px 20px 20px 20px;
+}
+
+beer {
+  background-color: rgba(40,40,40,0.3);
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
   position:relative;
   -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
