@@ -68,24 +68,24 @@ class App extends Component {
             </p>
               Some of our Pyrmont heritage brews to choose from:<br/><br/>
               <div className="Beer"> <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Halfway House Stout</a></b>Fresh stout (best served 3:1 nitro:co2) <br/>Halfway house was a hotel on Miller street which didnt survive the Anzac bridge getting built<br/><br/></div>
+                    className={classLink}>Halfway House Stout</a></b>Halfway house was a pub on Miller street which didn't survive the Anzac bridge getting built<br/>Fresh stout best server 3:1 nitro:co2<br/><br/></div>
+              <div className="Beer"> <b><a href={"mailto:kegs_harris@pyrmontbrewery.com"} target={"_blank"}
+                                           className={classLink}>Maybanke IIPA</a></b>Maybanke Anderson set up and operated the first kindergarten school here in Pyrmont<br/>An amazing achievemnt, we recon she would have needed this strong double IPA<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
                  className={classLink}>Best Whinging Pom</a></b>British Bitter, a classic Maris Otter based Real Ale, with Fuggles and East Kent Goldings<br/>English style so can be served straight from the keg without refrigeration<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_pom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Hellhole Helle</a></b>German dortmunder style (Tasmania) Pilsner and Enignma hops<br/>Hellhole was the quarry nearer the Sydney Fish Markets<br/><br/></div>
+                    className={classLink}>Hellhole Helle</a></b>Hellhole was the quarry nearer the Sydney Fish Markets<br/>German dortmunder style (Tasmania) Pilsner and Enignma hops<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Paradise Saison</a></b>Easy drinking French style Saison, lightly Centennial hopped<br/>Paradise quarry nearest the brewery was the easiest and prettiest sandstone, GPO and Art Galleray and Library came from Paradise<br/><br/></div>
+                    className={classLink}>Paradise Saison</a></b>Paradise quarry nearest the brewery was the easiest and prettiest sandstone, GPO and Art Galleray and Library came from Paradise<br/>Easy drinking French style Saison, lightly Centennial hopped<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Purgatory Pale Ale</a></b>Australian Westcoast style 2 row pale ale with Challenger<br/>Purgatory was the quarry near the Anzac bridge<br/><br/></div>
+                    className={classLink}>Purgatory Pale Ale</a></b>Purgatory was the quarry near the Anzac bridge<br/>Australian Westcoast style 2 row pale ale with Challenger<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Quarry Quaffer</a></b>Australian sessionable Pride of Ringwood lager<br/>"Angels crashing over me tongue!", like VB/Carlton is sweet and bitter at the same time<br/><br/></div>
+                    className={classLink}>Quarry Quaffer</a></b>"Angels crashing over me tongue!", like VB/Carlton is sweet and bitter at the same time<br/>Australian sessionable Pride of Ringwood lager<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Surgeon Harris</a></b>San Diego strong ale<br/>Defo inspired by the famous arrogant brews you'll find in that area of California<br/><br/></div>
-              <div className="Beer"> <b><a href={"mailto:kegs_harris@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Union Square IIPA</a></b>Feisty Adelaide style strong hopped double IPA<br/>Aye me harties<br/><br/></div>
+                    className={classLink}>Surgeon Harris</a></b>A San Diego inspired strong ale<br/>Defo inspired by the famous arrogant brews you'll find in that area of California<br/><br/></div>
               <br/>
               <p>
-              Can supply 50L DIN kegs (A-type coupler), or<br/>
+              Can supply: 50L DIN kegs (A-type coupler), or<br/>
               19L Cornelius (ball lock) for your kegerator, or<br/>
               Long neck (75cl) bottles for smaller batches<br/>
               <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator}
