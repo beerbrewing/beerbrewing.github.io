@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "4c553da5145b7719b7e1ed4127748c1a",
-    "url": "/build/static/media/possums_in_pyrmont.4c553da5.jpg"
+    "revision": "7b82c32e71af5df1fcfbe8746f27f13f",
+    "url": "/build/static/media/pyrmont_quarry.7b82c32e.jpg"
   },
   {
     "revision": "9d44e6e7839b710ce1c16f27cfa9504c",
@@ -16,19 +16,19 @@ self.__precacheManifest = [
     "url": "/build/static/js/runtime~main.9df7376b.js"
   },
   {
-    "revision": "89080261cc5100b56354",
-    "url": "/build/static/js/main.670b6e94.chunk.js"
+    "revision": "5083df671735ed0f8431",
+    "url": "/build/static/js/main.eed129a9.chunk.js"
   },
   {
-    "revision": "95480d8633c1dc73b408",
-    "url": "/build/static/js/2.3790332f.chunk.js"
+    "revision": "f8c7ccc648a124252060",
+    "url": "/build/static/js/2.b1e470f6.chunk.js"
   },
   {
-    "revision": "89080261cc5100b56354",
-    "url": "/build/static/css/main.19dcaddc.chunk.css"
+    "revision": "5083df671735ed0f8431",
+    "url": "/build/static/css/main.a7231455.chunk.css"
   },
   {
-    "revision": "617aeea1570facd3386b7296a1d611cf",
+    "revision": "c16eabc1e839ba33845a7f8d7873df2d",
     "url": "/build/index.html"
   }
 ];
