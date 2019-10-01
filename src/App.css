@@ -1,8 +1,11 @@
 .App {
   text-align: center;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #282c34;
+  text-shadow: 2px 2px rgba(10, 10, 10, 0.4);
   padding: 15px 15px 15px 15px;
   background-color: #282c34;
-  background-image: url("/possums_in_pyrmont.jpg");
 }
 
 .App-logo {
@@ -19,6 +22,20 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.Button {
+  background-color: #99b0b0;
+  left: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  position:relative;
+  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow:0 10px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  padding: 20px 20px 20px 20px;
 }
 
 .App-link {
