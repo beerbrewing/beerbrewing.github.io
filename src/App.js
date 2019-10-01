@@ -68,26 +68,29 @@ class App extends Component {
             </p>
               Some of our Pyrmont heritage brews to choose from:<br/><br/>
               <div className="Beer"> <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Halfway House Stout</a></b>Halfway house was a pub on Miller street which didn't survive the Anzac bridge getting built<br/>Fresh stout best server 3:1 nitro:co2<br/><br/></div>
+                    className={classLink}>Halfway House Stout</a></b>Halfway house was a pub on Miller street which didn't survive the Anzac bridge getting built. Fresh stout best server 3:1 nitro:co2<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_harris@pyrmontbrewery.com"} target={"_blank"}
-                                           className={classLink}>Maybanke IIPA</a></b>Maybanke Anderson set up and operated the first kindergarten school here in Australia<br/>An amazing achievement, we recon she would have needed this strong double IPA<br/><br/></div>
+                                           className={classLink}>Maybanke IIPA</a></b>Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement, we recon she would have needed this strong double IPA<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
-                 className={classLink}>Best Whinging Pom</a></b>British Bitter, a classic Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings<br/>English styles can be served straight from the keg without refrigeration<br/><br/></div>
+                 className={classLink}>Whinging Pom Real Ale</a></b>British Bitter for some of my fellow immigrants, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_pom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Hellhole Helle</a></b>Hellhole was the quarry nearest the Sydney Fish Markets used to flood a lot<br/>German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div>
+                    className={classLink}>Hellhole Helle</a></b>Hellhole was the quarry nearest the Sydney Fish Markets used to flood a lot. German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Paradise Saison</a></b>Paradise quarry is nearest the brewery, so named being the easiest and prettiest sandstone to work with, GPO and Art Galleray and Library came from Paradise<br/>Easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div>
+                    className={classLink}>Paradise Saison</a></b>Paradise quarry is nearest the brewery, so named being the easiest and prettiest sandstone to work with, GPO and Art Gallery and Library came from Paradise. Easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Purgatory Pale Ale</a></b>Purgatory was the quarry near the Anzac bridge<br/>Australian Westcoast style 2 row pale ale with Challenger<br/><br/></div>
+                    className={classLink}>Purgatory Pale Ale</a></b>Purgatory was the quarry near the Anzac bridge. Australian Westcoast style 2 row pale ale with Challenger<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Quarry Quaffer</a></b>"Angels crashing over me tongue!", very much like VB/Carlton it's sweet and bitter at the same time<br/>Australian sessionable Pride of Ringwood lager<br/><br/></div>
+                    className={classLink}>Quarry Quaffer</a></b>"Angels crashing over me tongue!", very much like VB/Carlton it's sweet and bitter at the same time. An Australian sessionable Pride of Ringwood full strength lager<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Surgeon Harris</a></b>A San Diego inspired strong ale<br/>Defo inspired by the famous arrogant brews you'll find in that area of California<br/><br/></div>
+                    className={classLink}>Surgeon Harris</a></b>A San Diego inspired strong ale. Inspired by the famously yummy 'arrogant' brews you'll find in that area of California<br/><br/></div>
               <br/>
               <p>
-              Can supply: 50L DIN kegs (A-type coupler), or<br/>
-              19L Cornelius (ball lock) for your kegerator, or<br/>
-              Long neck (75cl) bottles for smaller batches<br/>
+              We'll supply: <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
+                             className={classLink}>50L DIN keg</a> (A-type coupler), or<br/>
+                <a href={"mailto:corny_kegs@pyrmontbrewery.com"} target={"_blank"}
+                   className={classLink}>19L Cornelius keg</a> (ball lock) for your kegerator, or<br/>
+                <a href={"mailto:longnecks@pyrmontbrewery.com"} target={"_blank"}
+                   className={classLink}>Longneck (75cl) bottles</a> for smaller batches<br/>
               <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator}
                                                                                 width="50%"
                                                                                 style={{opacity: 0.7}}></img></a>
