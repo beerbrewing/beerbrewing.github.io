@@ -72,13 +72,13 @@ class App extends Component {
               <div className="Beer"> <b><a href={"mailto:kegs_harris@pyrmontbrewery.com"} target={"_blank"}
                                            className={classLink}>Maybanke IIPA</a></b>Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement, we recon she would have needed this strong double IPA<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
-                 className={classLink}>Whinging Pom Real Ale</a></b>British Bitter for some of my fellow immigrants, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div>
+                 className={classLink}>Whinging Pom<br/>Real Ale</a></b>British Bitter for some of my fellow Pyrmont expats, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_pom@pyrmontbrewery.com"} target={"_blank"}
                     className={classLink}>Hellhole Helle</a></b>Hellhole was the quarry nearest the Sydney Fish Markets used to flood a lot. German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
                     className={classLink}>Paradise Saison</a></b>Paradise quarry is nearest the brewery, so named being the easiest and prettiest sandstone to work with, GPO and Art Gallery and Library came from Paradise. Easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Purgatory Pale Ale</a></b>Purgatory was the quarry near the Anzac bridge. Australian Westcoast style 2 row pale ale with Challenger<br/><br/></div>
+                    className={classLink}>Purgatory Pale</a></b>Purgatory was the quarry near the Anzac bridge. Australian Westcoast style 2 row pale ale with Challenger<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
                     className={classLink}>Quarry Quaffer</a></b>"Angels crashing over me tongue!", very much like VB/Carlton it's sweet and bitter at the same time. An Australian sessionable Pride of Ringwood full strength lager<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
