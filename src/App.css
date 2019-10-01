@@ -4,10 +4,7 @@ html {
 
 .App {
   text-align: center;
-  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #808080;
-  text-shadow: 2px 2px rgba(10, 10, 10, 0.4);
+  text-shadow: 2px 2px rgba(10, 10, 10, 0.5);
   padding: 15px 15px 15px 15px;
   background-color: #241b0c;
 }
