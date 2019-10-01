@@ -3,13 +3,14 @@ import logo from './logo.svg';
 import PyrmontBrewery_Kegerator from './PyrmontBrewery_Kegerator.png';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import desktopImage from './possums_in_pyrmont.jpg';
 
 class App extends Component {
   render() {
     let classLink = 'App-link';
 
     return (
-      <div className="App">
+      <div className="App" style={{backgroundImage: `url(${desktopImage})` }}>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -35,7 +36,7 @@ class App extends Component {
             kegs@pyrmontbrewery.com</a><br/>
             We'll supply 50L DIN kegs (A-type coupler) or 19L Cornelius (ball lock) or long neck bottling for small batches<br/>
             We encourage responsible consumption of our brews<br/>
-            <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator} width="80%"></img></a>
+            <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator} width="50%" style={{opacity: 0.7}}></img></a>
             <br/>
             Being a huge fan of open source and creative commons, the head brewer is sharing a small selection of our beers for you to have a go:
           </p>
