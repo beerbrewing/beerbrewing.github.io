@@ -70,17 +70,17 @@ class App extends Component {
               <div className="Beer"> <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
                     className={classLink}>Halfway House Stout</a></b>Halfway house was a pub on Miller street which didn't survive the Anzac bridge getting built<br/>Fresh stout best server 3:1 nitro:co2<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_harris@pyrmontbrewery.com"} target={"_blank"}
-                                           className={classLink}>Maybanke IIPA</a></b>Maybanke Anderson set up and operated the first kindergarten school here in Pyrmont<br/>An amazing achievemnt, we recon she would have needed this strong double IPA<br/><br/></div>
+                                           className={classLink}>Maybanke IIPA</a></b>Maybanke Anderson set up and operated the first kindergarten school here in Australia<br/>An amazing achievement, we recon she would have needed this strong double IPA<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
-                 className={classLink}>Best Whinging Pom</a></b>British Bitter, a classic Maris Otter based Real Ale, with Fuggles and East Kent Goldings<br/>English style so can be served straight from the keg without refrigeration<br/><br/></div>
+                 className={classLink}>Best Whinging Pom</a></b>British Bitter, a classic Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings<br/>English styles can be served straight from the keg without refrigeration<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_pom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Hellhole Helle</a></b>Hellhole was the quarry nearer the Sydney Fish Markets<br/>German dortmunder style (Tasmania) Pilsner and Enignma hops<br/><br/></div>
+                    className={classLink}>Hellhole Helle</a></b>Hellhole was the quarry nearest the Sydney Fish Markets<br/>German Dortmunder style pilsner lager with Enignma hops<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
                     className={classLink}>Paradise Saison</a></b>Paradise quarry nearest the brewery was the easiest and prettiest sandstone, GPO and Art Galleray and Library came from Paradise<br/>Easy drinking French style Saison, lightly Centennial hopped<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
                     className={classLink}>Purgatory Pale Ale</a></b>Purgatory was the quarry near the Anzac bridge<br/>Australian Westcoast style 2 row pale ale with Challenger<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Quarry Quaffer</a></b>"Angels crashing over me tongue!", like VB/Carlton is sweet and bitter at the same time<br/>Australian sessionable Pride of Ringwood lager<br/><br/></div>
+                    className={classLink}>Quarry Quaffer</a></b>"Angels crashing over me tongue!", very much like VB/Carlton it's sweet and bitter at the same time<br/>Australian sessionable Pride of Ringwood lager<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
                     className={classLink}>Surgeon Harris</a></b>A San Diego inspired strong ale<br/>Defo inspired by the famous arrogant brews you'll find in that area of California<br/><br/></div>
               <br/>
@@ -129,7 +129,7 @@ class App extends Component {
               We encourage responsible consumption of our brews<br/>
             </p>
 
-            <p>Cheers mate!</p>
+            <p>Cheers mate, thanks for coming!</p>
             <img src={logo} className="App-logo" alt="logo"/>
 
           </header>
