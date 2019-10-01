@@ -3,7 +3,6 @@
   -webkit-text-fill-color: white; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #808080;
-  background-size: cover;
   text-shadow: 2px 2px rgba(10, 10, 10, 0.4);
   padding: 15px 15px 15px 15px;
   background-color: #282c34;
@@ -30,6 +29,7 @@
   opacity: 0.9;
   left: 40%;
   display: flex;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   width: 20%;
