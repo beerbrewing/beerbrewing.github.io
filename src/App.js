@@ -74,9 +74,9 @@ class App extends Component {
               <div className="Beer"> <b><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
                  className={classLink}>Best Whinging Pom</a></b>British Bitter, a classic Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings<br/>English styles can be served straight from the keg without refrigeration<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_pom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Hellhole Helle</a></b>Hellhole was the quarry nearest the Sydney Fish Markets<br/>German Dortmunder style pilsner lager with Enignma hops<br/><br/></div>
+                    className={classLink}>Hellhole Helle</a></b>Hellhole was the quarry nearest the Sydney Fish Markets used to flood a lot<br/>German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Paradise Saison</a></b>Paradise quarry nearest the brewery was the easiest and prettiest sandstone, GPO and Art Galleray and Library came from Paradise<br/>Easy drinking French style Saison, lightly Centennial hopped<br/><br/></div>
+                    className={classLink}>Paradise Saison</a></b>Paradise quarry is nearest the brewery, so named being the easiest and prettiest sandstone to work with, GPO and Art Galleray and Library came from Paradise<br/>Easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
                     className={classLink}>Purgatory Pale Ale</a></b>Purgatory was the quarry near the Anzac bridge<br/>Australian Westcoast style 2 row pale ale with Challenger<br/><br/></div>
               <div className="Beer"> <b><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
