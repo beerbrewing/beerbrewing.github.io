@@ -25,7 +25,8 @@
 }
 
 .Button {
-  background-color: #99b0b0;
+  background-color: #604070;
+  opacity: 0.9;
   left: 40%;
   display: flex;
   justify-content: center;

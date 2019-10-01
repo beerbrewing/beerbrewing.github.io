@@ -38,19 +38,22 @@ class App extends Component {
          <header className="App-header">
            <img src={logo} className="App-logo" alt="logo"/>
            <p>
-             Sorry, it's really important that you are 18 or over to discuss the supply of alcohol to you under the rules in New South Wales, Australia and most other places <br/>Please though, do come back when you are 18 we are ready for you!
+             Sorry, it's really important that you are 18 or over to discuss the supply of alcohol with you under the
+             rules in New South Wales, Australia (and hey, most other places!)<br/><br/>
+             Please though, do come back when you are 18 we are ready for you!<br/>
+             (drinking alcohol is not big or clever)
            </p>
          </header>
       :
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo"/>
             <p>
-              Before we go - we need to check you are 18 or over...<br/><br/>
+              Before we go on - we need to check you are 18 years or older...<br/><br/>
               Were you born before {today.toString()}
               <br/>
-              <div className="Button" onClick={handleTooYoung}>Yeah no, but nearly</div>
+              <div className="Button" onClick={handleTooYoung}>Yeah, but no</div>
               <br/>
-              <div className="Button" onClick={handleOldEnough}>Strewth, yes ok I am that old</div>
+              <div className="Button" onClick={handleOldEnough}>Strewth, yes ok I'm bloody old</div>
             </p>
           </header>
         :
