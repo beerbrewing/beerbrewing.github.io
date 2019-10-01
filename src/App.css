@@ -10,7 +10,7 @@ html {
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 3s normal;
+  animation: App-logo-spin infinite 2s normal;
   height: 40vmin;
   pointer-events: none;
 }
@@ -40,7 +40,7 @@ html {
 }
 
 .App-link {
-  color: #ffffaa;
+  color: #ffff99;
   text-decoration-line: none;
   text-align: left;
 }
