@@ -32,7 +32,7 @@ class App extends Component {
       self.setState({isOldEnough: true, confirmedAge: true} );
     }
 
-    return <div className="App" style={{backgroundImage: `url(${desktopImage})`}}>
+    return <div className="App" style={{backgroundImage: `url(${desktopImage})`, backgroundColour: `#ff0000`}}>
        {mightBeUnder18 ? confirmedAge ?
 
          <header className="App-header">
@@ -62,12 +62,6 @@ class App extends Component {
             <p>
               The <b>Pyrmont Brewery</b> has been churning out the good stuff here in the city of Sydney, Australia
               since 2007
-              <br/>
-              <br/>
-              We brew beer exclusively for local businesses to keep the cost of distribution minimal and stay well
-              within our supply capacity<br/>
-              Because we sell alcoholic beverages, under NSW Liquor and Gaming rules if you are <i>under 18
-              years</i> then sorry this site is not for you
               <br/>
               <br/>
               Some of our Pyrmont heritage brews to choose from:<br/><br/>
@@ -113,13 +107,21 @@ class App extends Component {
               Saison<br/>
             </p>
             <p>
-              and good on yers for following us @pyrmontbrewery...<br/><a href={"https://twitter.com/pyrmontbrewery"}
-                                                                          target={"_blank"} className={classLink}>
-              Twitter</a><br/><a href={"https://facebook.com/secretsquirrelbrew"} target={"_blank"}
-                                 className={classLink}>
-              Facebook</a><br/><a href={"https://www.instagram.com/secretsquirrelbrew"} target={"_blank"}
-                                  className={classLink}>
+              and good on yers for following us @pyrmontbrewery...<br/>
+              <a href={"https://twitter.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
+              Twitter</a><br/>
+              <a href={"https://facebook.com/secretsquirrelbrew"} target={"_blank"}  className={classLink}>
+              Facebook</a><br/>
+              <a href={"https://www.instagram.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
               Instagram</a>
+            </p>
+
+            <p>
+              What's the story?...<br/>
+              We brew beer exclusively for local businesses to keep the cost of distribution minimal and stay well
+              within our supply capacity<br/>
+              Because we sell alcoholic beverages, under NSW Liquor and Gaming rules if you are <i>under 18
+              years</i> then sorry this site is not for you
             </p>
 
             <p>Cheers!</p>
