@@ -27,12 +27,10 @@
 .Button {
   background-color: #604070;
   opacity: 0.9;
-  left: 40%;
   display: flex;
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  width: 20%;
   position:relative;
   -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;

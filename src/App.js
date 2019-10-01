@@ -50,11 +50,10 @@ class App extends Component {
             <p>
               Before we go on - we need to check you are 18 years or older...<br/><br/>
               Were you born before {today.toString()}
-              <br/>
-              <div className="Button" onClick={handleTooYoung}>Yeah, but no</div>
-              <br/>
-              <div className="Button" onClick={handleOldEnough}>Strewth, yes ok I'm bloody old</div>
             </p>
+            <div className="Button" onClick={handleTooYoung}>Yeah, but no</div>
+            <br/>
+            <div className="Button" onClick={handleOldEnough}>Strewth, yes ok I'm bloody old</div>
           </header>
         :
           <header className="App-header">
