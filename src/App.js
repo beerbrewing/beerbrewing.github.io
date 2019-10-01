@@ -49,7 +49,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo"/>
             <p>
               Before we go on - we need to check you are 18 years or older...<br/><br/>
-              Were you born before {today.toString()}
+              Were you born on or before <b>{today.toString().substring(0, 16)}</b>?
             </p>
             <div className="Button" onClick={handleTooYoung}>Yeah, but no</div>
             <br/>
@@ -57,33 +57,40 @@ class App extends Component {
           </header>
         :
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo"/>
             <p>
               The <b>Pyrmont Brewery</b> has been churning out the good stuff here in the city of Sydney, Australia
               since 2007
               <br/>
-              <br/>
-              Some of our Pyrmont heritage brews to choose from:<br/><br/>
-              <b>Whinging Pom</b> - British Bitter - classic Maris Otter based Real Ale, with Fuggles and East Kent
-              Goldings (can be served via beer gun without refrigeration)<br/>
-              <b>Hellhole Helle</b> - German dortmunder style (Tasmania) Pilsner and Enignma hops)<br/>
-              <b>Paradise Saison</b> - Easy drinking French style Saison, lightly Centennial hopped<br/>
-              <b>Purgatory Pale Ale</b> - Australian Westcoast style 2 row pale ale with Challenger<br/>
-              <b>Halfway House Stout</b> - fresh stout (best served 3:1 nitro:co2)<br/>
-              <b>Quarry Quaffer</b> - Australian sessionable Pride of Ringwood lager<br/>
-              <b>Surgeon Harris</b> - San Diego strong ale, its a little arrogant<br/>
-              <b>Union Square IIPA</b> - Feisty Adelaide style strong hopped double IPA<br/>
-              <b>Maybanke</b> - A light Hobart inspired Pilsner (2.9%)<br/>
-              <br/>
-              In Pyrmont needing some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
+              Want some local brew? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
                                                       className={classLink}>
               kegs@pyrmontbrewery.com</a><br/>
-              We'll supply 50L DIN kegs (A-type coupler) or 19L Cornelius (ball lock) or long neck bottling for small
-              batches<br/>
-              We encourage responsible consumption of our brews<br/>
+              <br/>
+              Some of our Pyrmont heritage brews to choose from:<br/><br/>
+              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
+                 className={classLink}>Whinging Pom</a></b> - British Bitter - classic Maris Otter based Real Ale, with Fuggles and East Kent
+              Goldings (can be served via beer gun without refrigeration)<br/><br/>
+              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Hellhole Helle</a></b> - German dortmunder style (Tasmania) Pilsner and Enignma hops)<br/><br/>
+              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Paradise Saison</a></b> - Easy drinking French style Saison, lightly Centennial hopped<br/><br/>
+              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Purgatory Pale Ale</a></b> - Australian Westcoast style 2 row pale ale with Challenger<br/><br/>
+              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Halfway House Stout</a></b> - fresh stout (best served 3:1 nitro:co2)<br/><br/>
+              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Quarry Quaffer</a></b> - Australian sessionable Pride of Ringwood lager<br/><br/>
+              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Surgeon Harris</a></b> - San Diego strong ale, its a little arrogant<br/><br/>
+              <b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>Union Square IIPA</a></b> - Feisty Adelaide style strong hopped double IPA<br/><br/>
+              <br/>
+              Can supply 50L DIN kegs (A-type coupler), or<br/>
+              19L Cornelius (ball lock) for your kegerator, or<br/>
+              long neck (75cl) bottles for smaller batches<br/>
               <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator}
                                                                                 width="50%"
                                                                                 style={{opacity: 0.7}}></img></a>
+              <br/>
               <br/>
               Being a huge fan of open source and creative commons, the head brewer is sharing a small selection of our
               beers for you to have a go:
@@ -116,14 +123,14 @@ class App extends Component {
             </p>
 
             <p>
-              What's the story?...<br/>
               We brew beer exclusively for local businesses to keep the cost of distribution minimal and stay well
               within our supply capacity<br/>
-              Because we sell alcoholic beverages, under NSW Liquor and Gaming rules if you are <i>under 18
-              years</i> then sorry this site is not for you
+              We encourage responsible consumption of our brews<br/>
             </p>
 
             <p>Cheers!</p>
+            <img src={logo} className="App-logo" alt="logo"/>
+
           </header>
       } </div>
     }
