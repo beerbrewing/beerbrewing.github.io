@@ -41,7 +41,7 @@ class App extends Component {
              Sorry, it's really important that you are 18 or over to discuss the supply of alcohol with you under the
              rules in New South Wales, Australia (and hey, most other places!)<br/><br/>
              Please though, do come back when you are 18 we are ready for you!<br/>
-             (drinking alcohol is not big or clever)
+             (remember, drinking alcohol is neither big or clever)
            </p>
          </header>
       :
