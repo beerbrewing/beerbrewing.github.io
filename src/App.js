@@ -40,7 +40,7 @@ class App extends Component {
        {mightBeUnder18 ? confirmedAge ?
 
          <header className="App-header">
-           <img src={logo} className="App-logo" alt="logo"/>
+           <img src={logo} className="App-logo" alt=""/>
            <p>
              Sorry, but it's really important that you are 18 or over for us to discuss the supply of alcohol with you under the
              liquor and gaming rules here in New South Wales, Australia (and most parts of our planet)<br/><br/>
@@ -50,7 +50,7 @@ class App extends Component {
          </header>
       :
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" width={"200px"} height={"100px"}/>
+            <img src={logo} className="App-logo" alt="" width={"200px"} height={"100px"}/>
             <p>
               Before we go on, we need you to confirm you are 18 years or older<br/><br/>
               Were you born on or before <b>{today.toString().substring(0, 16)}</b>?
@@ -140,7 +140,7 @@ class App extends Component {
               We encourage <a href={"kevs_rsa.png"} target={"_blank"} className={classLink}>responsible</a> consumption of our brews<br/>
             </p>
             <p>Cheers mate!</p>
-            <img src={"/cheers.jpg"} alt="cheers" className={cheers}/>
+            <img src={"/cheers.jpg"} alt="" className={cheers}/>
           </header>
       } </div>
   }
