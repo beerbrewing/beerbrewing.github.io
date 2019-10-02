@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import PyrmontBrewery_Kegerator from './PyrmontBrewery_Kegerator.png';
-import CheersThen from './cheers.jpg';
+//import CheersThen from './cheers.jpg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import desktopImage from './pyrmont_quarry.jpg';
@@ -140,7 +140,7 @@ class App extends Component {
               We encourage <a href={"kevs_rsa.png"} target={"_blank"} className={classLink}>responsible</a> consumption of our brews<br/>
             </p>
             <p>Cheers mate!</p>
-            <img src={CheersThen} alt="cheers" className={cheers}/>
+            <img src={"/cheers.jpg"} alt="cheers" className={cheers}/>
           </header>
       } </div>
   }
