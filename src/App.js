@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import PyrmontBrewery_Kegerator from './PyrmontBrewery_Kegerator.png';
+import CheersThen from './cheers.jpg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import desktopImage from './pyrmont_quarry.jpg';
@@ -18,6 +19,7 @@ class App extends Component {
   render() {
     let classLink = 'App-link';
     let beerLink = 'Beer-link';
+    let beerLinkYour = 'YourBeer-link';
     let cheers = 'Cheers';
     let today = new Date(new Date().setFullYear(new Date().getFullYear() - 18))
     let mightBeUnder18 = !this.state.isOldEnough;
@@ -70,22 +72,26 @@ class App extends Component {
             </p>
               Some of our Pyrmont heritage brews to choose from:<br/><br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Halfway House Stout</a></div><div className="BeerDesc">Halfway house was a pub on Miller street which didn't survive the Anzac bridge getting built. Fresh stout best server 3:1 nitro:co2<br/><br/></div></div>
-              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_harris@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Maybanke IIPA</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement, we recon she would have needed this strong double IPA<br/><br/></div></div>
+                    className={beerLink}>Halfway House<br/>Chocolate Stout<br/></a></div><div className="BeerDesc">Halfway house was a pub on Miller street which sadly didn't survive the Anzac bridge getting built. This is an English style double chocolate stout (yes contains some real Lindt cocoa!)<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Purgatory Pale</a></div><div className="BeerDesc">Purgatory was the quarry near the Anzac bridge. This beer is similar to some Western Australian style 2-row pale ale with plenty of Challenger hops<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Arrogant Harris</a></div><div className="BeerDesc">John Harris was surgeon to the NSW corps and lived in Pyrmont. He didn't always get on with everyone and was court marshalled (twice)<br/>This beer is inspired by the famously yummy brews you probably wont like from San Diego, California<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_watkins@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Woko's cider</a></div><div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/>This is an apple cider which we can make slightly drier or sweeter depending on your preference<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
-                 className={beerLink}>Whinging Pom<br/>Real Ale</a></div><div className="BeerDesc">British Bitter for some of my fellow Pyrmont expats, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div></div>
+                    className={beerLink}>Whinging Pom<br/>Real Ale</a></div><div className="BeerDesc">British Bitter for my fellow expats of which there are many in Pyrmont, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_pom@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Hellhole Helle</a></div><div className="BeerDesc">Hellhole was the quarry nearest the Sydney Fish Markets used to flood a lot. German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Paradise Saison</a></div><div className="BeerDesc">Paradise quarry is nearest the brewery, so named being the easiest and prettiest sandstone to work with, GPO and Art Gallery and Library came from Paradise. Easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div></div>
-              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Purgatory Pale</a></div><div className="BeerDesc">Purgatory was the quarry near the Anzac bridge. Australian Westcoast style 2 row pale ale with Challenger<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_harris@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Maybanke IIPA</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement, we recon she would have needed this strong double IPA<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Quarry Quaffer</a></div><div className="BeerDesc">"Angels crashing over me tongue!"<br/>Very much like VB/Carlton it's sweet and bitter at the same time. An Australian sessionable Pride of Ringwood full strength beer<br/><br/></div></div>
-              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Surgeon Harris</a></div><div className="BeerDesc">A San Diego inspired strong ale. Inspired by the famously yummy 'arrogant' brews you'll find in that area of California<br/><br/></div></div>
+                    className={beerLink}>Quarry Quaffer</a></div><div className="BeerDesc">"Angels crashing over me tongue!" [Dave Robbo]<br/>Very much like VB/Carlton it's sweet and bitter at the same time.<br/>An Australian sessionable Pride of Ringwood full strength lager beer<br/><br/></div></div>
               <br/>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_mybrew@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLinkYour}>Your Brew!!</a></div><div className="YourBeerDesc">Want something else? If you can describe it, know an example, maybe have a recipe we'll have a go in the brewery Grainfather at recreating it with your name, chances are we've made something similar before<br/><br/></div></div>
               <p>
               We'll supply: <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
                              className={classLink}>50L DIN keg</a> (A-type coupler), or<br/>
@@ -98,7 +104,7 @@ class App extends Component {
                                                                                 style={{opacity: 0.7}}></img></a>
               <br/>
               <br/>
-              Being a huge fan of open source and creative commons, the head brewer is sharing a small selection of our
+              Being a huge fan of open source and creative commons, the head brewer with 25 years of brewing experience is sharing a small selection of our
               beers for you to have a go:
             </p>
             <p>
@@ -134,7 +140,7 @@ class App extends Component {
               We encourage <a href={"kevs_rsa.png"} target={"_blank"} className={classLink}>responsible</a> consumption of our brews<br/>
             </p>
             <p>Cheers mate!</p>
-            <img src={"/beer.jpg"} alt="cheers" className={cheers}/>
+            <img src={CheersThen} alt="cheers" className={cheers}/>
           </header>
       } </div>
   }

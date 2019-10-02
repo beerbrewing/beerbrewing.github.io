@@ -86,6 +86,25 @@ html {
   text-align: left;
 }
 
+.YourBeer-link {
+  color: #66ff66;
+  text-decoration-line: none;
+  text-align: left;
+  font-weight: bolder;
+}
+
+.YourBeerDesc {
+  display: flex;
+  width: 70%;
+  text-align: left;
+  vertical-align: middle;
+  padding-left: 20px;
+  justify-content: right;
+  align-items: flex-end;
+  position:relative;
+  font-style: italic;
+}
+
 .Cheers {
   width: 140%;
   position:relative;
