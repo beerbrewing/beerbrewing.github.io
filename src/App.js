@@ -17,6 +17,8 @@ class App extends Component {
 
   render() {
     let classLink = 'App-link';
+    let beerLink = 'Beer-link';
+    let cheers = 'Cheers';
     let today = new Date(new Date().setFullYear(new Date().getFullYear() - 18))
     let mightBeUnder18 = !this.state.isOldEnough;
     let confirmedAge = this.state.confirmedAge;
@@ -38,10 +40,10 @@ class App extends Component {
          <header className="App-header">
            <img src={logo} className="App-logo" alt="logo"/>
            <p>
-             Sorry, but it's really important that you are 18 or over to discuss the supply of alcohol with you under the
-             liquor and gaming rules here in New South Wales, Australia (and hey, most other places this is true too!)<br/><br/>
-             Please though, do come back when you are 18 we are ready for you!<br/>
-             (but remember, drinking alcohol is neither big or clever)
+             Sorry, but it's really important that you are 18 or over for us to discuss the supply of alcohol with you under the
+             liquor and gaming rules here in New South Wales, Australia (and most parts of our planet)<br/><br/>
+             Please though, do come back when you are 18 we are ready to help you!<br/>
+             (remember, drinking alcohol is neither big or clever)
            </p>
          </header>
       :
@@ -67,22 +69,22 @@ class App extends Component {
               <br/>
             </p>
               Some of our Pyrmont heritage brews to choose from:<br/><br/>
-              <div className="Beer"><b><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Halfway House Stout</a></b>Halfway house was a pub on Miller street which didn't survive the Anzac bridge getting built. Fresh stout best server 3:1 nitro:co2<br/><br/></div>
-              <div className="Beer"><b><a href={"mailto:kegs_harris@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Maybanke IIPA</a></b>Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement, we recon she would have needed this strong double IPA<br/><br/></div>
-              <div className="Beer"><b><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
-                 className={classLink}>Whinging Pom<br/>Real Ale</a></b>British Bitter for some of my fellow Pyrmont expats, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div>
-              <div className="Beer"><b><a href={"mailto:kegs_pom@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Hellhole Helle</a></b>Hellhole was the quarry nearest the Sydney Fish Markets used to flood a lot. German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div>
-              <div className="Beer"><b><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Paradise Saison</a></b>Paradise quarry is nearest the brewery, so named being the easiest and prettiest sandstone to work with, GPO and Art Gallery and Library came from Paradise. Easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div>
-              <div className="Beer"><b><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Purgatory Pale</a></b>Purgatory was the quarry near the Anzac bridge. Australian Westcoast style 2 row pale ale with Challenger<br/><br/></div>
-              <div className="Beer"><b><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Quarry Quaffer</a></b>"Angels crashing over me tongue!", very much like VB/Carlton it's sweet and bitter at the same time. An Australian sessionable Pride of Ringwood full strength lager<br/><br/></div>
-              <div className="Beer"><b><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
-                    className={classLink}>Surgeon Harris</a></b>A San Diego inspired strong ale. Inspired by the famously yummy 'arrogant' brews you'll find in that area of California<br/><br/></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Halfway House Stout</a></div><div className="BeerDesc">Halfway house was a pub on Miller street which didn't survive the Anzac bridge getting built. Fresh stout best server 3:1 nitro:co2<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_harris@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Maybanke IIPA</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement, we recon she would have needed this strong double IPA<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
+                 className={beerLink}>Whinging Pom<br/>Real Ale</a></div><div className="BeerDesc">British Bitter for some of my fellow Pyrmont expats, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_pom@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Hellhole Helle</a></div><div className="BeerDesc">Hellhole was the quarry nearest the Sydney Fish Markets used to flood a lot. German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Paradise Saison</a></div><div className="BeerDesc">Paradise quarry is nearest the brewery, so named being the easiest and prettiest sandstone to work with, GPO and Art Gallery and Library came from Paradise. Easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Purgatory Pale</a></div><div className="BeerDesc">Purgatory was the quarry near the Anzac bridge. Australian Westcoast style 2 row pale ale with Challenger<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Quarry Quaffer</a></div><div className="BeerDesc">"Angels crashing over me tongue!"<br/>Very much like VB/Carlton it's sweet and bitter at the same time. An Australian sessionable Pride of Ringwood full strength beer<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Surgeon Harris</a></div><div className="BeerDesc">A San Diego inspired strong ale. Inspired by the famously yummy 'arrogant' brews you'll find in that area of California<br/><br/></div></div>
               <br/>
               <p>
               We'll supply: <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
@@ -131,13 +133,11 @@ class App extends Component {
               within our supply capacity<br/>
               We encourage <a href={"kevs_rsa.png"} target={"_blank"} className={classLink}>responsible</a> consumption of our brews<br/>
             </p>
-
-            <p>Cheers mate, thanks for coming!</p>
-            <img src={logo} className="App-logo" alt="logo"/>
-
+            <p>Cheers mate!</p>
+            <img src={"/beer.jpg"} alt="cheers" className={cheers}/>
           </header>
       } </div>
-    }
+  }
 }
 
 function Home() {

@@ -43,15 +43,35 @@ html {
 .Beer {
   background-color: rgba(40,40,40,0.3);
   display: flex;
-  cursor: pointer;
   justify-content: center;
   align-items: center;
   width: 80%;
   position:relative;
   -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow:0 10px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  padding: 20px 20px 20px 20px;
+  box-shadow:0 2px 1px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  padding: 20px 20px 0px 20px;
+}
+
+.BeerSnap {
+  display: flex;
+  width: 30%;
+  cursor: pointer;
+  justify-content: left;
+  vertical-align: middle;
+  align-items: flex-start;
+  position:relative;
+}
+
+.BeerDesc {
+  display: flex;
+  width: 70%;
+  text-align: left;
+  vertical-align: middle;
+  padding-left: 20px;
+  justify-content: right;
+  align-items: flex-end;
+  position:relative;
 }
 
 .App-link {
@@ -59,6 +79,18 @@ html {
   text-decoration-line: none;
   text-align: left;
 }
+
+.Beer-link {
+  color: #99ff99;
+  text-decoration-line: none;
+  text-align: left;
+}
+
+.Cheers {
+  width: 140%;
+  position:relative;
+}
+
 
 @keyframes App-logo-spin {
   0% {
