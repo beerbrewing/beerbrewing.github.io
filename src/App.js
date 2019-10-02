@@ -129,7 +129,7 @@ class App extends Component {
             <p>
               We brew beer exclusively for local businesses to keep the cost of distribution minimal and stay well
               within our supply capacity<br/>
-              We encourage responsible consumption of our brews<br/>
+              We encourage <a href={"kevs_rsa.png"} target={"_blank"} className={classLink}>responsible</a> consumption of our brews<br/>
             </p>
 
             <p>Cheers mate, thanks for coming!</p>
