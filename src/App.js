@@ -65,7 +65,7 @@ class App extends Component {
               Nestled amongst the <a href={"https://pyrmonthistory.net.au/industry/quarries"} target={"_blank"}
                              className={classLink}>Pyrmont sandstone</a> hides a secret brewery!<br/>It’s been churning out the good stuff here in the city of Sydney, Australia since 2007
               <br/>
-              Are you in Pyrmont? Want some brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
+              Are you in Pyrmont? Want some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
                                                       className={classLink}>
               kegs@pyrmontbrewery.com</a><br/>
               <br/>
