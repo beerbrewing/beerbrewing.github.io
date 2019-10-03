@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import PyrmontBrewery_Kegerator from './PyrmontBrewery_Kegerator.png';
-import CheersThen from './cheers.jpg';
+import CheersThen from './cheers.png';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import desktopImage from './pyrmont_quarry.jpg';
