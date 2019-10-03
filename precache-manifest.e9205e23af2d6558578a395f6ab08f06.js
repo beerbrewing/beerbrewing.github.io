@@ -12,27 +12,27 @@ self.__precacheManifest = [
     "url": "/build/static/media/cheers.234e5d42.jpg"
   },
   {
-    "revision": "4a3e9f4648ec8f9ba40ae1fa4f808e78",
-    "url": "/build/static/media/PyrmontBrewery_Kegerator.4a3e9f46.png"
+    "revision": "3a25afd677be44abdcbe9ba9184c3891",
+    "url": "/build/static/media/PyrmontBrewery_Kegerator.3a25afd6.png"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
     "url": "/build/static/js/runtime~main.9df7376b.js"
   },
   {
-    "revision": "ddc4d8053c2c452aa873",
-    "url": "/build/static/js/main.f84a9a90.chunk.js"
+    "revision": "d7cbe41d26a13392e0cb",
+    "url": "/build/static/js/main.c27a7f65.chunk.js"
   },
   {
     "revision": "0d47608a0fbafc5173b4",
     "url": "/build/static/js/2.6ce76188.chunk.js"
   },
   {
-    "revision": "ddc4d8053c2c452aa873",
+    "revision": "d7cbe41d26a13392e0cb",
     "url": "/build/static/css/main.fb912f9f.chunk.css"
   },
   {
-    "revision": "4d27e145ff5ca793375c86515f9e6173",
+    "revision": "4a0b20569ddc63d18cdcbe2905dac991",
     "url": "/build/index.html"
   }
 ];
