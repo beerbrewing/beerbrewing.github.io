@@ -8,6 +8,10 @@ self.__precacheManifest = [
     "url": "/build/static/media/logo.9d44e6e7.svg"
   },
   {
+    "revision": "234e5d42144b0422d33b6efe052baaca",
+    "url": "/build/static/media/cheers.234e5d42.jpg"
+  },
+  {
     "revision": "4a3e9f4648ec8f9ba40ae1fa4f808e78",
     "url": "/build/static/media/PyrmontBrewery_Kegerator.4a3e9f46.png"
   },
@@ -16,19 +20,19 @@ self.__precacheManifest = [
     "url": "/build/static/js/runtime~main.9df7376b.js"
   },
   {
-    "revision": "f57ae79f5be6e4c07960",
-    "url": "/build/static/js/main.0ed17814.chunk.js"
+    "revision": "a007a8adac78a813c5ab",
+    "url": "/build/static/js/main.08da9dc2.chunk.js"
   },
   {
-    "revision": "ee346e97b82dc7f4c071",
-    "url": "/build/static/js/2.4a8610fa.chunk.js"
+    "revision": "0d47608a0fbafc5173b4",
+    "url": "/build/static/js/2.6ce76188.chunk.js"
   },
   {
-    "revision": "f57ae79f5be6e4c07960",
+    "revision": "a007a8adac78a813c5ab",
     "url": "/build/static/css/main.b907dbfb.chunk.css"
   },
   {
-    "revision": "6decc5fff1022b646da8ec161b262256",
+    "revision": "4616eec8c62e3ef8ffcfd0d492646af0",
     "url": "/build/index.html"
   }
 ];
