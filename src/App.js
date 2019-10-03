@@ -135,7 +135,7 @@ class App extends Component {
             <p>
               We brew beer exclusively for local businesses to keep the cost of distribution minimal and stay well<br/>
               within our supply capacity (we need to be able to easily swing by with a keg and bring it back)<br/>
-              Custom beer usually takes a few weeks to ferment and condition<br/>
+              Beer usually takes a few weeks to ferment and condition so a little heads up always necessary<br/>
               We encourage <a href={"kevs_rsa.png"} target={"_blank"} className={classLink}>responsible</a> consumption of our brews<br/>
             </p>
             <p>Cheers mate!</p>
