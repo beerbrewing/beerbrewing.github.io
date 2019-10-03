@@ -91,7 +91,7 @@ class App extends Component {
                     className={beerLink}>Maybanke IIPA</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement, we reckon she would have needed this strong double IPA<br/><br/></div></div>
               <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_mybrew@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLinkYour}>Your Brew!!</a></div><div className="YourBeerDesc">Want something else? If you can describe it, know an example, maybe have a recipe we'll have a go in the brewery Grainfather at recreating it with your name, chances are we've made something similar before<br/><br/></div></div>
+                    className={beerLinkYour}>Your Brew!!</a></div><div className="YourBeerDesc">You Brew!! - Want something else? If you can describe it, know a good example, maybe even have a recipe we'll have a go on the brewery Grainfather at recreating your brew with your name!<br/><br/></div></div>
               <p>
               We'll supply: <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
                              className={classLink}>50L DIN keg</a> (A-type coupler), or<br/>
