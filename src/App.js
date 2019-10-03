@@ -70,7 +70,7 @@ class App extends Component {
               kegs@pyrmontbrewery.com</a><br/>
               <br/>
             </p>
-              Some of our Pyrmont heritage brews to choose from:<br/><br/>
+              Some of our Pyrmont heritage range to choose from:<br/><br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Halfway House<br/>Chocolate Stout<br/></a></div><div className="BeerDesc">Halfway House was a pub on Miller Street which didn't survive the Glebe Island bridge to Anzac bridge upgrade. This is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_arrogant@pyrmontbrewery.com"} target={"_blank"}
