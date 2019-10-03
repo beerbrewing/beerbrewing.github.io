@@ -42,7 +42,7 @@ class App extends Component {
          <header className="App-header">
            <img src={logo} className="App-logo" alt=""/>
            <p>
-             Sorry, but it's really important that you are 18 or over for us to discuss the supply of alcohol with you under the
+             Sorry, but it's mega important that you are 18 or over for us to discuss the supply of alcohol with you under the
              liquor and gaming rules here in New South Wales, Australia (and most parts of our planet)<br/><br/>
              Please though, do come back when you are 18 we are ready to help you!<br/>
              (remember, drinking alcohol is neither big or clever)
@@ -72,9 +72,11 @@ class App extends Component {
             </p>
               Some of our Pyrmont heritage brews to choose from:<br/><br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Halfway House<br/>Chocolate Stout<br/></a></div><div className="BeerDesc">Halfway House was a pub on Miller Street which didn't survive the Anzac bridge getting built. This is an English style double chocolate stout (yes contains some real Lindt couverture!)<br/><br/></div></div>
+                    className={beerLink}>Halfway House<br/>Chocolate Stout<br/></a></div><div className="BeerDesc">Halfway House was a pub on Miller Street which didn't survive the Glebe Island bridge to Anzac bridge upgrade. This is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Arrogant Harris</a></div><div className="BeerDesc">John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and lived in Pyrmont. He didn't always get on with everyone and was court marshalled (twice)<br/>This beer is inspired by the famously yummy brews 'you probably won't like' from San Diego, California<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Quarry Quaffer</a></div><div className="BeerDesc">"Like a wave of Angels crashing over me tongue!" [Dave Robbo]<br/>Very much like VB/Carlton it's sweet and bitter at the same time, Pride of Ringwood hops all the way, full strength lager beer<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_watkins@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Woko's Cider</a></div><div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/>This is an apple cider which we can make slightly drier or sweeter depending on your preference<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
@@ -87,8 +89,6 @@ class App extends Component {
                     className={beerLink}>Whinging Pom<br/>Real Ale</a></div><div className="BeerDesc">British Bitter for my fellow expats of which there are many in Pyrmont, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_harris@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Maybanke IIPA</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement, we reckon she would have needed this strong double IPA<br/><br/></div></div>
-              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Quarry Quaffer</a></div><div className="BeerDesc">"Like Angels crashing over me tongue!" [Dave Robbo]<br/>Very much like VB/Carlton it's sweet and bitter at the same time.<br/>An Australian sessionable Pride of Ringwood full strength lager beer<br/><br/></div></div>
               <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_mybrew@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLinkYour}>Your Brew!!</a></div><div className="YourBeerDesc">Want something else? If you can describe it, know an example, maybe have a recipe we'll have a go in the brewery Grainfather at recreating it with your name, chances are we've made something similar before<br/><br/></div></div>
