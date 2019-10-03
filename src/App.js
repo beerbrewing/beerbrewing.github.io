@@ -78,7 +78,7 @@ class App extends Component {
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Quarry Quaffer</a></div><div className="BeerDesc">"Like a wave of Angels crashing over me tongue!" [Dave Robbo]<br/>Very much like VB/Carlton it's sweet and bitter at the same time, Pride of Ringwood hops all the way, full strength lager beer<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_watkins@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Woko's Cider</a></div><div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/>This is an apple cider which we can make slightly drier or sweeter depending on your preference<br/><br/></div></div>
+                    className={beerLink}>Woko's Cloudy Cider</a></div><div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/>This is an unfiltered apple cider which we can make slightly drier or sweeter depending on your preference<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Paradise Saison</a></div><div className="BeerDesc">Paradise quarry is nearest the brewery, so named being the easiest sandstone to extract and work with, GPO building, Art Gallery and Library all came from Paradise. Easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
@@ -91,7 +91,7 @@ class App extends Component {
                     className={beerLink}>Maybanke IIPA</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement, we reckon she would have needed this strong double IPA<br/><br/></div></div>
               <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_mybrew@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLinkYour}>Your Brew!!</a></div><div className="YourBeerDesc">You Brew!! - Want something else? If you can describe it, know a good example, maybe even have a recipe we'll have a go on the brewery Grainfather at recreating your brew with your name!<br/><br/></div></div>
+                    className={beerLinkYour}>Your Brew!!</a></div><div className="YourBeerDesc">Want something unique? If you can describe it, know a good example, maybe even have a recipe we'll have a go on the brewery Grainfather at recreating your brew with your name!<br/><br/></div></div>
               <p>
               We'll supply: <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
                              className={classLink}>50L DIN keg</a> (A-type coupler), or<br/>
