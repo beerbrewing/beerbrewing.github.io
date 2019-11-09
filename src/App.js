@@ -72,7 +72,11 @@ class App extends Component {
             </p>
               Some of our Pyrmont heritage range to choose from:<br/><br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Halfway House<br/>Chocolate Stout<br/></a></div><div className="BeerDesc">Halfway House was a pub on Miller Street which didn't survive the Glebe Island bridge to Anzac bridge upgrade. This is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div></div>
+                    className={beerLink}>Half Way House<br/>Chocolate Stout<br/></a></div><div className="BeerDesc">Half Way House was the quarry and later a pub on Miller Street where the brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade. This beer is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Whinging Pom<br/>Real Ale</a></div><div className="BeerDesc">British Bitter for my fellow expats of which there are many in Pyrmont, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div></div>
+              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_maybanke@pyrmontbrewery.com"} target={"_blank"}
+                    className={beerLink}>Maybanke Dark Mild</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement! This is an English Midlands dark mild similar inspired by Banks's<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_arrogant@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Arrogant Harris</a></div><div className="BeerDesc">John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and lived in Pyrmont. He didn't always get on with everyone and was court marshalled (twice)<br/>This beer is inspired by the famously yummy brews 'you probably won't like' from San Diego, California<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
@@ -84,11 +88,7 @@ class App extends Component {
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Purgatory Pale</a></div><div className="BeerDesc">Purgatory was the quarry round by the Glebe Island bridge. This beer is similar to some Western Australian style 2-row pale ale with plenty of Challenger hops<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Hellhole Helle</a></div><div className="BeerDesc">Hellhole was the quarry nearest the Sydney Fish Markets used to flood a lot. German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div></div>
-              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Whinging Pom<br/>Real Ale</a></div><div className="BeerDesc">British Bitter for my fellow expats of which there are many in Pyrmont, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div></div>
-              <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_maybanke@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Maybanke IIPA</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement, we reckon she would have needed this strong double IPA<br/><br/></div></div>
+                    className={beerLink}>Hellhole Helles</a></div><div className="BeerDesc">Hellhole was the quarry nearest the Sydney Fish Markets used to flood a lot. German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div></div>
               <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_mybrew@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLinkYour}>Your Brew!!</a></div><div className="YourBeerDesc">Want something unique? If you can describe it, know a good example, maybe even have a recipe we'll have a go on the brewery Grainfather at recreating your brew with your name!<br/><br/></div></div>
@@ -96,9 +96,11 @@ class App extends Component {
               Can deliver (in Pyrmont area only):<br/><a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
                              className={classLink}>50L DIN keg</a> (A-type coupler), or<br/>
                 <a href={"mailto:corny_kegs@pyrmontbrewery.com"} target={"_blank"}
+                   className={classLink}>20L keg (A-type coupler), or</a>
+                <a href={"mailto:corny_kegs@pyrmontbrewery.com"} target={"_blank"}
                    className={classLink}>19L Cornelius keg</a> (ball lock) for your kegerator, or<br/>
                 <a href={"mailto:longnecks@pyrmontbrewery.com"} target={"_blank"}
-                   className={classLink}>Longneck (75cl) bottles</a> for smaller batches<br/>
+                   className={classLink}>Slab of Cans (330ml x 24)</a><br/>
               <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator} width="50%" style={{opacity: 0.9}}></img></a>
               <br/>
               <br/>
