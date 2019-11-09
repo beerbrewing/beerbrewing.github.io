@@ -98,7 +98,7 @@ class App extends Component {
                 <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
                    className={classLink}>20L skinny keg</a> (A-type coupler)<br/>
                 <a href={"mailto:corny_kegs@pyrmontbrewery.com"} target={"_blank"}
-                   className={classLink}>19L Cornelius keg</a> (ball lock) for your sKegerator<br/>
+                   className={classLink}>19L Cornelius keg</a> (ball lock) for your Kegerator<br/>
                 <a href={"mailto:cans@pyrmontbrewery.com"} target={"_blank"}
                    className={classLink}>Cans</a> (330ml slab of 24)<br/>
               <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator} width="50%" style={{opacity: 0.9}}></img></a>
