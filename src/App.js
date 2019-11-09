@@ -63,7 +63,7 @@ class App extends Component {
           <header className="App-header">
             <p>
               Nestled amongst the <a href={"https://pyrmonthistory.net.au/industry/quarries"} target={"_blank"}
-                             className={classLink}>Pyrmont sandstone</a> hides a secret brewery!<br/>It’s been churning out the good stuff here in the city of Sydney, Australia since 2007
+                             className={classLink}>Pyrmont yellowstone sandstone</a> hides a secret brewery!<br/>It’s been churning out the good stuff here in the city of Sydney, Australia since 2007
               <br/>
               Are you in Pyrmont? Want some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
                                                       className={classLink}>
@@ -72,7 +72,7 @@ class App extends Component {
             </p>
               Some of our Pyrmont heritage range to choose from:<br/><br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Half Way House<br/>Chocolate Stout<br/></a></div><div className="BeerDesc">Half Way House was the quarry and later a pub on Miller Street where the brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade. This beer is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div></div>
+                    className={beerLink}>Half Way House<br/>Chocolate Stout<br/></a></div><div className="BeerDesc">Half Way House was the sandstone quarry and later a pub on Miller Street where the brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade. This beer is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Whinging Pom<br/>Real Ale</a></div><div className="BeerDesc">British Bitter for my fellow expats of which there are many in Pyrmont, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_maybanke@pyrmontbrewery.com"} target={"_blank"}
@@ -84,7 +84,7 @@ class App extends Component {
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_cider@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Woko's Cloudy Cider</a></div><div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/>This is an unfiltered apple cider which we can make slightly drier or sweeter depending on your preference<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Paradise Saison</a></div><div className="BeerDesc">Paradise quarry is nearest the brewery, so named being the easiest sandstone to extract and work with, GPO building, Art Gallery and Library all came from Paradise. Easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div></div>
+                    className={beerLink}>Paradise Saison</a></div><div className="BeerDesc">Paradise yellowblock quarry is nearest the brewery, so named being the easiest sandstone to extract and work with, GPO building, Art Gallery and Library all came from Paradise. Easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Purgatory Pale</a></div><div className="BeerDesc">Purgatory was the quarry round by the Glebe Island bridge. This beer is similar to some Western Australian style 2-row pale ale with plenty of Challenger hops<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
