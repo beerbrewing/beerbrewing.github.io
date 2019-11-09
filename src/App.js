@@ -95,16 +95,16 @@ class App extends Component {
               <p>
               Can deliver (in Pyrmont area only):<br/><a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
                              className={classLink}>50L DIN keg</a> (A-type coupler)<br/>
+                <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
+                   className={classLink}>20L skinny keg</a> (A-type coupler)<br/>
                 <a href={"mailto:corny_kegs@pyrmontbrewery.com"} target={"_blank"}
-                   className={classLink}>20L keg (A-type coupler)</a><br/>
-                <a href={"mailto:corny_kegs@pyrmontbrewery.com"} target={"_blank"}
-                   className={classLink}>19L Cornelius keg</a> (ball lock) for your kegerator<br/>
-                <a href={"mailto:longnecks@pyrmontbrewery.com"} target={"_blank"}
-                   className={classLink}>Slab of Cans (330ml x 24)</a><br/>
+                   className={classLink}>19L Cornelius keg</a> (ball lock) for your sKegerator<br/>
+                <a href={"mailto:cans@pyrmontbrewery.com"} target={"_blank"}
+                   className={classLink}>Cans</a> (330ml slab of 24)<br/>
               <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator} width="50%" style={{opacity: 0.9}}></img></a>
               <br/>
               <br/>
-              Being a huge fan of open source and creative commons, our head brewer<br/>
+              Being a massive fan of open source and creative commons, our head brewer<br/>
               is sharing a small selection of test beers for you to have a go at home:
             </p>
             <p>
