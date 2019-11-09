@@ -76,15 +76,15 @@ class App extends Component {
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Whinging Pom<br/>Real Ale</a></div><div className="BeerDesc">British Bitter for my fellow expats of which there are many in Pyrmont, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_maybanke@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Maybanke Dark Mild</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement! This is an English Midlands dark mild similar inspired by Banks's<br/><br/></div></div>
+                    className={beerLink}>Maybanke Dark Mild</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement! This is an English Midlands dark mild similar inspired by Banks'<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_arrogant@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Arrogant Harris</a></div><div className="BeerDesc">John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and lived in Pyrmont. He didn't always get on with everyone and was court marshalled (twice)<br/>This beer is inspired by the famously yummy brews 'you probably won't like' from San Diego, California<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Quarry Quaffer</a></div><div className="BeerDesc">"Like a wave of Angels crashing over me tongue!" [Dave Robbo]<br/>Very much like VB/Carlton it's sweet and bitter at the same time, Pride of Ringwood hops all the way, full strength lager beer<br/><br/></div></div>
+                    className={beerLink}>Quarry Quaffer</a></div><div className="BeerDesc">"Like a wave of Angels crashing over me tongue!" [Dave 'Sensational' Robbo]<br/>Very much like VB/Carlton it's sweet and bitter at the same time, Pride of Ringwood hops all the way, full strength lager beer<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_cider@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Woko's Cloudy Cider</a></div><div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/>This is an unfiltered apple cider which we can make slightly drier or sweeter depending on your preference<br/><br/></div></div>
+                    className={beerLink}>Woko's Cloudy Cider</a></div><div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/>This is an beautiful unfiltered apple cider made with English apples - it's slightly sweet but with a dry finish<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Paradise Saison</a></div><div className="BeerDesc">Paradise yellowblock quarry is nearest the brewery, so named being the easiest sandstone to extract and work with, GPO building, Art Gallery and Library all came from Paradise. Easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div></div>
+                    className={beerLink}>Paradise Saison</a></div><div className="BeerDesc">Paradise yellowblock quarry is nearest the brewery, so named being the easiest sandstone to extract and work with, Sydney GPO building, Art Gallery, QVB, Town Hall and Library all came from Paradise. Stronger in alcohol but easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLink}>Purgatory Pale</a></div><div className="BeerDesc">Purgatory was the quarry round by the Glebe Island bridge. This beer is similar to some Western Australian style 2-row pale ale with plenty of Challenger hops<br/><br/></div></div>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
@@ -94,11 +94,11 @@ class App extends Component {
                     className={beerLinkYour}>Your Brew!!</a></div><div className="YourBeerDesc">Want something unique? If you can describe it, know a good example, maybe even have a recipe we'll have a go on the brewery Grainfather at recreating your brew with your name!<br/><br/></div></div>
               <p>
               Can deliver (in Pyrmont area only):<br/><a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
-                             className={classLink}>50L DIN keg</a> (A-type coupler), or<br/>
+                             className={classLink}>50L DIN keg</a> (A-type coupler)<br/>
                 <a href={"mailto:corny_kegs@pyrmontbrewery.com"} target={"_blank"}
-                   className={classLink}>20L keg (A-type coupler), or</a>
+                   className={classLink}>20L keg (A-type coupler)</a><br/>
                 <a href={"mailto:corny_kegs@pyrmontbrewery.com"} target={"_blank"}
-                   className={classLink}>19L Cornelius keg</a> (ball lock) for your kegerator, or<br/>
+                   className={classLink}>19L Cornelius keg</a> (ball lock) for your kegerator<br/>
                 <a href={"mailto:longnecks@pyrmontbrewery.com"} target={"_blank"}
                    className={classLink}>Slab of Cans (330ml x 24)</a><br/>
               <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator} width="50%" style={{opacity: 0.9}}></img></a>
