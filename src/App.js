@@ -59,7 +59,7 @@ class App extends Component {
             </p>
             <div className="ButtonNo" id="no" onClick={handleTooYoung}>Erm yeah, but no</div>
             <br/>
-            <div className="ButtonYes" id="yes18" onClick={handleOldEnough}>Strewth, yes ok I'm bloody old</div>
+            <div className="ButtonYes" id="yes18" onClick={handleOldEnough}>Strewth, I'm bloody old</div>
               <br/>
               pyrmontbrewery.com.au<br/>
               ABN: 47824483808
@@ -77,31 +77,31 @@ class App extends Component {
             </p>
               Some of our classic beers to choose from:<br/><br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_halfway@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Half Way House<br/>Chocolate Stout<br/></a></div><div className="BeerDesc">Half Way House was the sandstone quarry and later a pub on Miller Street where the brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade. This beer is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div></div>
+                                                                 className={beerLink}><b>Half Way House</b><br/><i>Chocolate Stout</i><br/>4.5%</a></div><div className="BeerDesc">Half Way House was the sandstone quarry and later a pub on Miller Street where the brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade. <br/><br/>This beer is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div></div>
             <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_whingingpom@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Whinging Pom<br/>Real Ale</a></div><div className="BeerDesc">British Bitter for my fellow expats of which there are many in Pyrmont, a classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div></div>
+                                                                 className={beerLink}><b>Whinging Pom</b><br/><i>Real Ale</i><br/>4.4%</a></div><div className="BeerDesc">British Bitter for my fellow expats of which there are many in Pyrmont! <br/><br/>A classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are lower in carbonation and if you want, can be gravity served straight from the keg without refrigeration<br/><br/></div></div>
             <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_maybanke@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Maybanke<br/>Dark Mild</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement! This is an English Midlands dark mild similar to Banks'<br/><br/></div></div>
+                                                                 className={beerLink}><b>Maybanke</b><br/><i>Dark Mild</i><br/>3.8%</a></div><div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in Australia. An amazing achievement! <br/><br/>This is an English Midlands dark mild similar to Banks'<br/><br/></div></div>
             <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_arrogant@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Arrogant Harris<br/>Strong Ale</a></div><div className="BeerDesc">John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and lived in Pyrmont. He didn't always get on with everyone and was court marshalled (twice)<br/>This beer is inspired by the famously yummy brews 'you probably won't like' from San Diego, California<br/><br/></div></div>
+                                                                 className={beerLink}><b>Arrogant Harris</b><br/><i>Strong Ale</i><br/>7%</a></div><div className="BeerDesc">John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and lived in Pyrmont. He didn't always get on with everyone and was court marshalled (twice)<br/><br/>This beer is inspired by the famously yummy brews 'you probably won't like' from San Diego, California<br/><br/></div></div>
             <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_quaffer@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Quarry Quaffer<br/>Aussie Lager</a></div><div className="BeerDesc">"Like a wave of Angels crashing over me tongue!" [Dave 'Sensational' Robbo]<br/>Very much like VB/Carlton it's sweet and bitter at the same time, Pride of Ringwood hops all the way, full strength lager beer<br/><br/></div></div>
+                                                                 className={beerLink}><b>Quarry Quaffer</b><br/><i>Aussie Lager</i><br/>4.9%</a></div><div className="BeerDesc">"Like a wave of Angels crashing over me tongue!" [Dave 'Sensational' Robbo]<br/><br/>Very much like VB/Carlton it's sweet and bitter at the same time, Pride of Ringwood hops all the way, full strength lager beer<br/><br/></div></div>
             <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_cider@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Woko's<br/>Cloudy Cider</a></div><div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/>This is a beautiful unfiltered apple cider made with English apples - it's slightly sweet but with a dry finish<br/><br/></div></div>
+                                                                 className={beerLink}><b>Woko's</b><br/><i>Cloudy Cider</i><br/>5.1%</a></div><div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/><br/>This is a beautiful unfiltered apple cider made with English apples - it's slightly sweet but with a dry finish<br/><br/></div></div>
             <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_paradise@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Paradise<br/>Saison</a></div><div className="BeerDesc">Paradise yellowblock quarry is nearest the brewery, so named being the easiest sandstone to extract and work with, Sydney GPO building, Central, Art Gallery, RPA, Town Hall and many others (see below) all came from Paradise. Stronger in alcohol but easy drinking French style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div></div>
+                                                                 className={beerLink}><b>Paradise</b><br/><i>Saison</i><br/>6.8%</a></div><div className="BeerDesc">Paradise yellowblock quarry is nearest the brewery, so named being the easiest sandstone to extract and work with, Sydney GPO building, Central, Art Gallery, RPA, Town Hall and many others (see below) all came from Paradise. <br/><br/>Stronger in alcohol but easy drinking traditional farmhouse style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div></div>
             <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_purgatory@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Purgatory<br/>Pale Ale</a></div><div className="BeerDesc">Purgatory was the quarry round by the Glebe Island bridge. This beer is similar to some Western Australian style 2-row pale ale with plenty of Challenger hops<br/><br/></div></div>
+                                                                 className={beerLink}><b>Purgatory</b><br/><i>Pale Ale</i><br/>4.9%</a></div><div className="BeerDesc">Purgatory was the quarry round by the Glebe Island bridge. <br/><br/>This beer is similar to some Western Australian style 2-row pale ale with plenty of Challenger hops<br/><br/></div></div>
               <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_hellhole@pyrmontbrewery.com"} target={"_blank"}
-                    className={beerLink}>Hell Hole<br/>Helles</a></div><div className="BeerDesc">Hell Hole was the quarry where the Sydney Fish Markets stands today, it used to flood a lot making it not much fun. German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div></div>
+                                                                 className={beerLink}><b>Hell Hole</b><br/><i>Helles</i><br/>4.7%</a></div><div className="BeerDesc">Hell Hole was the quarry where the Sydney Fish Markets stands today, it used to flood a lot making it not much fun to deal with. <br/><br/>German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div></div>
               <br/>
               <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_mybrew@pyrmontbrewery.com"} target={"_blank"}
                     className={beerLinkYour}>Your Own<br/>Brew!</a></div><div className="YourBeerDesc">Want something unique? If you can describe it, know a good example, maybe even have a recipe we'll have a go on the brewery Grainfather at recreating your brew with your name! (min 19L or 60 cans)<br/><br/></div></div>
@@ -113,12 +113,12 @@ class App extends Component {
                 <a href={"mailto:corny_kegs@pyrmontbrewery.com"} target={"_blank"}
                    className={classLink}>19L Cornelius keg</a> (ball lock) for your Kegerator<br/>
                 <a href={"mailto:cans@pyrmontbrewery.com"} target={"_blank"}
-                   className={classLink}>Cans</a> (330ml slab of 12 or more)<br/>
+                   className={classLink}>Recyclable Cans 330ml</a> (12 min)<br/>
               <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}><img src={PyrmontBrewery_Kegerator} width="70%" style={{opacity: 0.9}}></img></a>
               <br/>
-                You can also borrow a  <a href={"mailto:wheelie@pyrmontbrewery.com"} target={"_blank"}
-                                          className={classLink}>mobile kegerator wheelie bin</a><br/>
-                (you'll need ice, keg + gas + gun)<br/>
+                Borrow a <a href={"mailto:wheelie@pyrmontbrewery.com"} target={"_blank"}
+                    className={classLink}>mobile kegerator wheelie bin</a><br/>
+                (you'll need ice)<br/>
                 <img src={Wheelie} alt="" width="50%" style={{opacity: 0.9}}/>
 
                 <br/>
@@ -127,7 +127,8 @@ class App extends Component {
                 <br/>
                 <img src={Buildings} alt="" className={cheers}/>
                 (buidlings from Pyrmont sandstone)
-                <br/>
+                <a href={"https://pyrmonthistory.net.au/"} target={"_blank"} className={classLink}>pyrmonthistory.net.au</a>
+            <br/>
           <p>
 
                 Being a massive fan of open source and creative commons, our head brewer<br/>
@@ -169,7 +170,7 @@ class App extends Component {
               Beer usually takes a few weeks to ferment and condition so sometimes a little heads up is necessary<br/>
             </p>
             <p>
-                We encourage <a href={"kevs_rsa.png"} target={"_blank"} className={classLink}>responsible</a> consumption of our brews<br/>
+                We encourage <a href={"kevs_rsa.png"} target={"_blank"} className={classLink}>responsible</a> consumption of our brews, take care of yourselves<br/>
             </p>
             <br/>
             pyrmontbrewery.com.au<br/>
