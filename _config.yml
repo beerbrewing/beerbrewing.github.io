@@ -1,3 +1,5 @@
+title: Pyrmont Brewery
+description: The Secret Squirrel brewery website
 lsi: false
 safe: true
 source: build
@@ -8,3 +10,16 @@ gist:
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
+
+link-tags: true
+
+social-network-links:
+  rss: true
+  email: "pyrmontbrewery@gmail.com"
+  facebook: pyrmontbrewery
+  github: beerbrewingv
+  twitter: pyrmontbrewery
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
