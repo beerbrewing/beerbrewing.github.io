@@ -2,6 +2,11 @@ html {
   background-color: #241b0c;
 }
 
+p {
+  width: 75%;
+  font-weight: bold;
+}
+
 .App {
   text-align: center;
   text-shadow: 2px 2px rgba(10, 10, 10, 0.5);
@@ -31,6 +36,37 @@ html {
   opacity: 0.9;
   display: flex;
   cursor: pointer;
+  font-weight: bolder;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow:0 10px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  padding: 20px 20px 20px 20px;
+}
+
+.ButtonNo {
+  background-color: #906060;
+  opacity: 0.9;
+  display: flex;
+  cursor: pointer;
+  font-weight: bolder;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow:0 10px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  padding: 20px 20px 20px 20px;
+}
+
+.ButtonYes {
+  background-color: #609060;
+  opacity: 0.9;
+  display: flex;
+  cursor: pointer;
+  font-weight: bolder;
   justify-content: center;
   align-items: center;
   position:relative;
@@ -41,15 +77,15 @@ html {
 }
 
 .Beer {
-  background-color: rgba(40,40,40,0.3);
+  background-color: rgba(20,20,20,0.8);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 70%;
   position:relative;
   -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow:0 2px 1px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow:0 5px 3px rgba(0, 0, 0, 0.6), 0 0 40px rgba(50, 50, 30, 0.8) inset;
   padding: 20px 20px 0px 20px;
 }
 
@@ -61,6 +97,7 @@ html {
   vertical-align: middle;
   align-items: flex-start;
   position:relative;
+  left: 2%;
 }
 
 .BeerDesc {
@@ -81,13 +118,14 @@ html {
 }
 
 .Beer-link {
-  color: #99ff99;
+  color: #ffff99;
   text-decoration-line: none;
   text-align: left;
+  font-weight: bolder;
 }
 
 .YourBeer-link {
-  color: #66ff99;
+  color: #ffff99;
   text-decoration-line: none;
   text-align: left;
   font-weight: bolder;
@@ -103,7 +141,11 @@ html {
   justify-content: right;
   align-items: flex-end;
   position:relative;
-  font-style: italic;
+}
+
+.Cheers {
+  width: 100%;
+  position:relative;
 }
 
 .Cheers {
