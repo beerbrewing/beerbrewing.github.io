@@ -23,3 +23,4 @@ social-network-links:
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-seo-tag
