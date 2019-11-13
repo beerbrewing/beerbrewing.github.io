@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/PyrmontBrewery_Kegerator.a32d4d07.png"
   },
   {
-    "revision": "2e1a51307cecb49a360f",
-    "url": "/build/static/css/main.e2e567d7.chunk.css"
+    "revision": "a3ff0c23167ff842a03c",
+    "url": "/build/static/css/main.553a8414.chunk.css"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/logo.9d44e6e7.svg"
   },
   {
-    "revision": "2e1a51307cecb49a360f",
-    "url": "/build/static/js/main.be4cbdc2.chunk.js"
+    "revision": "a3ff0c23167ff842a03c",
+    "url": "/build/static/js/main.a114da4f.chunk.js"
   },
   {
     "revision": "6126e1439814c1c817da7e37c54eed59",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/pyrmont_quarry.ae6f8b77.jpg"
   },
   {
-    "revision": "56a4f36abd703b29ab7afe5915e6b902",
+    "revision": "3238efe2950f654df40da06bdd4edfc4",
     "url": "/build/index.html"
   }
 ];
