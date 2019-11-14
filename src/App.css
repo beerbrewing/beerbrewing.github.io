@@ -3,12 +3,11 @@ html {
 }
 
 span {
-  width: 100%;
+  width: 95%;
   justify-content: center;
   align-items: center;
   position:relative;
   padding: 20px 20px 20px 20px;
-  box-shadow: 0 0 20px 10px rgba(188, 101, 41, 0.4);
 }
 
 p {
@@ -153,7 +152,12 @@ p {
 }
 
 .Cheers {
-  width: 40%;
+  width: 60%;
+  position:relative;
+}
+
+.BuyThisBeer {
+  width: 60%;
   position:relative;
 }
 
