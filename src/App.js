@@ -45,7 +45,7 @@ class App extends Component {
        {mightBeUnder18 ? confirmedAge ?
 
          <header className="App-header">
-           <img src={logo} className="App-logo" alt=""/>
+           <a href={"https://tinyurl.com/s63efe6"}><img src={logo} className="App-logo" alt=""/></a>
            <p>
              Sorry, but it's mega important that you are 18 or over for us to discuss the supply of alcohol with you under the
              liquor and gaming rules here in New South Wales, Australia (and most parts of our planet)<br/><br/>
@@ -72,10 +72,11 @@ class App extends Component {
             <p>
               Nestled amongst the <a href={"https://pyrmonthistory.net.au/industry/quarries"} target={"_blank"}
                              className={classLink}>Pyrmont yellowstone sandstone</a> hides a secret brewery!<br/>It’s been churning out the good stuff here in the city of Sydney, Australia since 2007
+              <br/>You can read about the <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink}>history of brewing around Pyrmont and this little brewery here</a>
+
+            <br/>
               <br/>
-              Are you in Pyrmont? Want some local brews? <a href={"mailto:kegs@pyrmontbrewery.com"} target={"_blank"}
-                                                      className={classLink}>
-              kegs@pyrmontbrewery.com</a><br/>
+              Are you living or working in Pyrmont? Want some local brews? You're in the right place!<br/>
               <br/>
             </p>
             <span>
@@ -120,7 +121,8 @@ class App extends Component {
                <div className="Beer" style={{backgroundImage: `url(${quarryImage})`, opacity: 0.85}}><div className="BeerSnap"><a href={"mailto:kegs_mybrew@pyrmontbrewery.com?subject=Beer: My Own Beer&body=I'd like 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 60"} target={"_blank"}
                     className={beerLinkYour}>Your Own<br/>Brew!<br/><img src={BuyThisBeer} alt="Buy This Beer" className={buybeer}/></a></div><div className="YourBeerDesc">Want something unique? If you can describe it, know a good example, maybe even have a recipe we'll have a go on the brewery Grainfather at recreating your brew with your name! (min 19L or 60 cans)<br/><br/></div></div>
             <br/>
-              <span>
+
+            <span>
                 Will <i>only</i> deliver and pick-up our kegs within Pyrmont area
                             <a href={"mailto:kegs@pyrmontbrewery.com?subject=Beer: Fill my Kegerator please&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) of ... please"} target={"_blank"}>
 
