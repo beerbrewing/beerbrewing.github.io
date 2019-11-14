@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/logo.9d44e6e7.svg"
   },
   {
-    "revision": "a3eb8e276d876d8e2805",
+    "revision": "227f97134f1ac06d4859",
     "url": "/build/static/css/main.561e7ebb.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/buy_beer.170b19fa.png"
   },
   {
-    "revision": "a3eb8e276d876d8e2805",
-    "url": "/build/static/js/main.8176d65a.chunk.js"
+    "revision": "227f97134f1ac06d4859",
+    "url": "/build/static/js/main.42deb080.chunk.js"
   },
   {
     "revision": "a32d4d07fcf94c914522145e9fd118e0",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/pyrmont_sandstone_buildings.a0af8abc.jpeg"
   },
   {
-    "revision": "152c1720973c4218d8c7600f761c4a17",
+    "revision": "4b054598e6036821fe245f6377211ee6",
     "url": "/build/index.html"
   }
 ];
