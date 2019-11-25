@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/PyrmontBrewery_Kegerator.a32d4d07.png"
   },
   {
-    "revision": "f49a6218c3875bc58925",
+    "revision": "209dc8f1155d16056708",
     "url": "/build/static/css/main.561e7ebb.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/logo.9d44e6e7.svg"
   },
   {
-    "revision": "f49a6218c3875bc58925",
-    "url": "/build/static/js/main.b3462695.chunk.js"
+    "revision": "209dc8f1155d16056708",
+    "url": "/build/static/js/main.fcf8de69.chunk.js"
   },
   {
     "revision": "6126e1439814c1c817da7e37c54eed59",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/buy_beer.170b19fa.png"
   },
   {
-    "revision": "0681e974597bd591cf370aaa205e99a6",
+    "revision": "950224296a5b211440942b3307638f39",
     "url": "/build/index.html"
   }
 ];
