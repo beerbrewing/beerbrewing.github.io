@@ -58,7 +58,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="" width={"200px"} height={"100px"}/>
             <p>
               Before we go on, we need you to confirm you are 18 years or older<br/><br/>
-              Were you born on or before <b>{today.toString().substring(0, 16)}</b>?
+              Were you born on or before <div className="speccy_flash">{today.toString().substring(0, 16)}</div>?
             </p>
             <div className="ButtonNo" id="no" onClick={handleTooYoung}>Erm yeah, but no</div>
             <br/>
