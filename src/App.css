@@ -114,6 +114,11 @@ p {
 
 }
 
+.ButtonNo:hover {
+  animation: SPECCY_FLASH_RED 0.7s infinite;
+  transition-duration: 0s;
+}
+
 .ButtonYes {
     background-color: #00bf00;
     color: #ffffff;
@@ -126,6 +131,11 @@ p {
     position: relative;
   padding: 20px 20px 20px 20px;
 
+}
+
+.ButtonYes:hover {
+  animation: SPECCY_FLASH_GREEN 0.7s infinite;
+  transition-duration: 0s;
 }
 
 .Beer {
@@ -167,14 +177,38 @@ p {
 
 .App-link {
   background-color: #00ff00;
+  color: #000000;
     text-decoration-line: none;
     text-align: left;
-  padding: 2px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.App-link:hover {
+  background-color: #ffff00;
+  color: #000000;
+  text-decoration-line: none;
+  text-align: left;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  animation: SPECCY_FLASH_GREEN 0.7s infinite;
+  transition-duration: 0s;
+}
+
+.Beer-link:hover {
+  background-color: #ffff00;
+  color: #000000;
+  text-decoration-line: none;
+  text-align: left;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  animation: SPECCY_FLASH_GREEN 0.7s infinite;
+  transition-duration: 0s;
 }
 
 .Beer-link {
-    color: #00ff00;
-    text-decoration-line: none;
+  color: #00ff00;
+  text-decoration-line: none;
 }
 
 .YourBeer-link {
@@ -198,6 +232,7 @@ p {
 
 .Cheers {
     width: 60%;
+    alignment: center;
     position: relative;
 }
 
@@ -248,6 +283,32 @@ p {
     }
 }
 
+@-webkit-keyframes SPECCY_FLASH_GREEN {
+  0%, 49% {
+    background-color: rgb(0, 255, 0);
+    color: rgb(0, 00, 0);
+    animation-timing-function: steps(1, end);
+  }
+  50%, 100% {
+    background-color: rgb(0, 0, 0);
+    color: rgb(0, 255, 0);
+    animation-timing-function: steps(1, end);
+  }
+}
+
+@-webkit-keyframes SPECCY_FLASH_RED {
+  0%, 49% {
+    background-color: rgb(255, 0, 0);
+    color: rgb(0, 00, 0);
+    animation-timing-function: steps(1, end);
+  }
+  50%, 100% {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 0, 0);
+    animation-timing-function: steps(1, end);
+  }
+}
+
 @-webkit-keyframes SPECCY_FLASH_TAPE_LOAD {
   0%, 60% {
     border-color: #bf0000;
@@ -263,28 +324,18 @@ p {
   }
 }
 
-.marquee {
+.LeftStringSpin {
   width: 100%;
   margin: 0 auto;
-  white-space: nowrap;
-  overflow: hidden;
+  white-space: wrap;
   box-sizing: border-box;
+  overflow: visible;
   display: inline-flex;
-}
-
-.marquee span {
-  display: flex;
-  flex-basis: 100%;
-  animation: marquee-reset;
-  animation-play-state: paused;
-}
-
-.marquee:hover> span {
-  animation: marquee 2s linear infinite;
+  animation: LeftStringSpin 4s linear infinite;
   animation-play-state: running;
 }
 
-@keyframes marquee {
+@keyframes LeftStringSpin {
   0% {
     transform: translate(0%, 0);
   }
@@ -295,11 +346,6 @@ p {
     transform: translate(100%, 0);
   }
   100% {
-    transform: translate(0%, 0);
-  }
-}
-@keyframes marquee-reset {
-  0% {
     transform: translate(0%, 0);
   }
 }

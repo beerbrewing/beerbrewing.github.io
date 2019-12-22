@@ -76,8 +76,9 @@ class App extends Component {
               Nestled amongst the <a href={"https://pyrmonthistory.net.au/industry/quarries"} target={"_blank"}
                                      className={classLink}>Pyrmont yellowstone sandstone</a> hides a <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink}>secret brewery</a>!<br/>It’s been churning out the good stuff here in the city of Sydney, Australia since 2007
             </p>
-            <div className="marquee">
-            All grain beers brewed on Miller Street ...</div>
+            <div className="LeftStringSpin">
+            All grain beers brewed in Pyrmont</div>
+            <br/>
 
 
             <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}><div className="BeerSnap"><a href={"mailto:kegs_halfway@pyrmontbrewery.com?subject=Beer: Half Way House&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"} target={"_blank"}
