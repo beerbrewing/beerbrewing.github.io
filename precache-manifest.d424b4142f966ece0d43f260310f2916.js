@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "a32d4d07fcf94c914522145e9fd118e0",
-    "url": "/build/static/media/PyrmontBrewery_Kegerator.a32d4d07.png"
+    "revision": "6126e1439814c1c817da7e37c54eed59",
+    "url": "/build/static/media/cheers.6126e143.png"
   },
   {
-    "revision": "eba6dba2acc2f280f92f",
-    "url": "/build/static/css/main.2a676720.chunk.css"
+    "revision": "f488db083daa142fb56d",
+    "url": "/build/static/css/main.7fa3f846.chunk.css"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
@@ -24,12 +24,12 @@ self.__precacheManifest = [
     "url": "/build/static/media/logo.9d44e6e7.svg"
   },
   {
-    "revision": "eba6dba2acc2f280f92f",
-    "url": "/build/static/js/main.05ca3101.chunk.js"
+    "revision": "a32d4d07fcf94c914522145e9fd118e0",
+    "url": "/build/static/media/PyrmontBrewery_Kegerator.a32d4d07.png"
   },
   {
-    "revision": "6126e1439814c1c817da7e37c54eed59",
-    "url": "/build/static/media/cheers.6126e143.png"
+    "revision": "f488db083daa142fb56d",
+    "url": "/build/static/js/main.dc210cc1.chunk.js"
   },
   {
     "revision": "ae6f8b77fa0ae29c7ef2c934b48a6f8f",
@@ -44,11 +44,15 @@ self.__precacheManifest = [
     "url": "/build/static/media/pyrmont_sandstone_buildings.a0af8abc.jpeg"
   },
   {
+    "revision": "77b915fd404c1d633d4228fa366fa51e",
+    "url": "/build/static/media/pyrmont_brewery.77b915fd.woff2"
+  },
+  {
     "revision": "170b19fac8d50dc75d0514f1ab6f8bb8",
     "url": "/build/static/media/buy_beer.170b19fa.png"
   },
   {
-    "revision": "92f66fccf6fda261ffe729fc50df1e13",
+    "revision": "f4766d44b2614e934f0e78ce2501f528",
     "url": "/build/index.html"
   }
 ];
