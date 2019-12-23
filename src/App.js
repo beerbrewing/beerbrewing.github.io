@@ -65,8 +65,11 @@ class App extends Component {
               <div className="ButtonNo" id="no" onClick={handleTooYoung}>Erm yeah, but no</div>
               <br/>
               <div className="ButtonYes" id="yes18" onClick={handleOldEnough}>Strewth, I'm bloody old</div>
+              <br/>
+              &copy; 2007 Pyrmont Brewery
             </p>
               <br/>
+
             <br/>
             <br/>
           </header>

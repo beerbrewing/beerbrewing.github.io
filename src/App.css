@@ -64,6 +64,7 @@ p {
   line-height: 1.25;
   justify-content: left;
   align-items: left;
+    -webkit-tap-highlight-color: white;
 
 }
 
