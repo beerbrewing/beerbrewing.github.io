@@ -89,7 +89,7 @@ p {
     opacity: 0.9;
     display: flex;
     cursor: pointer;
-    
+
     justify-content: center;
     align-items: center;
     position: relative;
@@ -125,7 +125,7 @@ p {
     opacity: 1;
     display: flex;
     cursor: pointer;
-    
+
     justify-content: center;
     align-items: center;
     position: relative;
@@ -215,7 +215,7 @@ p {
   color: #00ff00;
     text-decoration-line: none;
     text-align: left;
-    
+
     animation: blinker 0.6s linear infinite;
 }
 
@@ -290,7 +290,7 @@ p {
     animation-timing-function: steps(1, end);
   }
   50%, 100% {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(0, 128, 0);
     color: rgb(0, 255, 0);
     animation-timing-function: steps(1, end);
   }
@@ -303,7 +303,7 @@ p {
     animation-timing-function: steps(1, end);
   }
   50%, 100% {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(128, 0, 0);
     color: rgb(255, 0, 0);
     animation-timing-function: steps(1, end);
   }
@@ -325,11 +325,12 @@ p {
 }
 
 .LeftStringSpin {
-  width: 100%;
+  width: 150%;
   margin: 0 auto;
-  white-space: wrap;
   box-sizing: border-box;
-  overflow: visible;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: normal;
   display: inline-flex;
   animation: LeftStringSpin 4s linear infinite;
   animation-play-state: running;

@@ -138,16 +138,20 @@ class App extends Component {
               Saison<br/>
             </p>
             <p>
-              and good on yers for following us @pyrmontbrewery...<br/>
+              and good on yerse for following us @pyrmontbrewery...<br/>
+              <br/>
               <a href={"https://twitter.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
               Twitter</a><br/>
+              <br/>
               <a href={"https://facebook.com/secretsquirrelbrew"} target={"_blank"}  className={classLink}>
               Facebook</a><br/>
+              <br/>
               <a href={"https://www.instagram.com/pyrmontbrewery"} target={"_blank"} className={classLink}>
               Instagram</a>
               <br/><br/>
-              <img src={CheersThen} alt="" className={cheers}/>
             </p>
+
+            <img src={CheersThen} alt="" className={cheers}/>
 
             <br/>
               beers@pyrmontbrewery.com.au<br/>
@@ -157,6 +161,7 @@ class App extends Component {
             &copy; 2007 Pyrmont Brewery
             <br/><br/>
             0 OK, 100:1
+            <br/>
             <br/>
           </header>
       } </div>
