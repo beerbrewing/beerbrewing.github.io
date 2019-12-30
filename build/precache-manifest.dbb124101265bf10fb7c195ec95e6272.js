@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_arrogant_harris_strong_ale.28eebf4b.png"
   },
   {
-    "revision": "8ad7a2a4bb102162692f",
-    "url": "/build/static/css/main.32aa0350.chunk.css"
+    "revision": "6d5419ec4b4babaf6839",
+    "url": "/build/static/css/main.80882f08.chunk.css"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
@@ -40,8 +40,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_half_way_house_chocolate_stout.04ffa0f2.png"
   },
   {
-    "revision": "8ad7a2a4bb102162692f",
-    "url": "/build/static/js/main.67ae2a15.chunk.js"
+    "revision": "6d5419ec4b4babaf6839",
+    "url": "/build/static/js/main.8b81738e.chunk.js"
   },
   {
     "revision": "0b8878c92d92f8a9576d8ac111d7ae64",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/buy_beer.170b19fa.png"
   },
   {
-    "revision": "90313f5148ea9a4ba079b33c6be69921",
+    "revision": "7436d69be927999ee3a8316678af9a8c",
     "url": "/build/index.html"
   }
 ];

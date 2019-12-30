@@ -103,13 +103,11 @@ class App extends Component {
             Nestled amongst the Pyrmont yellowblock sandstone hides a secret brewery!<br/>
             </a>
           </p>
-          <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
           <div className="StringSpin">
             <div className="LeftStringSpin">
               All grain beers brewed in Pyrmont
             </div>
           </div>
-          </a>
           <div>
             <br/>
           </div>
@@ -226,7 +224,7 @@ class App extends Component {
           <br/>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
-            Read about the history of brewing in and around Pyrmont <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink}>here</a>
+            Read about the history of brewing in and around Pyrmont here
             </a>
           </p>
           <p>
