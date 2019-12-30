@@ -26,6 +26,27 @@ p {
     color: rgb(0, 0, 0);
     font-family: 'pyrmont_brewery';
     width: 80%;
+    opacity: 0.9;
+    position: relative;
+    padding: 20px 20px 20px 20px;
+    border-style: solid;
+    border-top-width: 20px;
+    border-bottom-width: 20px;
+    border-left-width: 30px;
+    border-right-width: 30px;
+    transition-duration: 0s;
+    border-color: rgb(189, 189, 189);;
+}
+
+.Story {
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
+    width: 95%;
+    background-color: rgb(189, 189, 189);
+    color: rgb(0, 0, 0);
+    opacity: 0.8;
+    font-family: 'Helvetica';
+    width: 80%;
     position: relative;
     padding: 20px 20px 20px 20px;
     border-style: solid;
@@ -38,24 +59,24 @@ p {
 }
 
 .Loading {
-  width: 95%;
-  background-color: rgb(189, 189, 189);
-  color: rgb(0, 0, 0);
-  font-family: 'pyrmont_brewery';
-  width: 80%;
-  white-space: wrap;
-  line-height: 1.25;
-  justify-content: left;
-  align-items: left;
-  position: relative;
-  padding: 20px 20px 20px 20px;
-  border-style: solid;
-  border-top-width: 20px;
-  border-bottom-width: 20px;
-  border-left-width: 30px;
-  border-right-width: 30px;
-  transition-duration: 0s;
-  animation: SPECCY_FLASH_TAPE_LOAD 5s infinite;
+    width: 95%;
+    background-color: rgb(189, 189, 189);
+    color: rgb(0, 0, 0);
+    font-family: 'pyrmont_brewery';
+    width: 80%;
+    white-space: wrap;
+    line-height: 1.25;
+    justify-content: left;
+    align-items: left;
+    position: relative;
+    padding: 20px 20px 20px 20px;
+    border-style: solid;
+    border-top-width: 20px;
+    border-bottom-width: 20px;
+    border-left-width: 30px;
+    border-right-width: 30px;
+    transition-duration: 0s;
+    animation: SPECCY_FLASH_TAPE_LOAD 5s infinite;
 }
 
 .App {
@@ -63,12 +84,12 @@ p {
     font-family: 'pyrmont_brewery';
     padding: 0px 10px 0px 10px;
     background-color: #404040;
-  white-space: wrap;
-  line-height: 1.25;
-  justify-content: left;
-  align-items: left;
+    white-space: wrap;
+    line-height: 1.25;
+    justify-content: left;
+    align-items: left;
     -webkit-tap-highlight-color: white;
-background-blend-mode: overlay;
+    background-blend-mode: overlay;
     background-position-y: bottom;
     scroll-snap-type: y mandatory;
     overflow-x: hidden;
@@ -108,7 +129,7 @@ background-blend-mode: overlay;
 
 .ButtonNo {
     background-color: #bf0000;
-  color: #ffffff;
+    color: #ffffff;
     opacity: 1;
     display: flex;
     cursor: pointer;
@@ -122,8 +143,8 @@ background-blend-mode: overlay;
 }
 
 .ButtonNo:hover {
-  animation: SPECCY_FLASH_RED 0.7s infinite;
-  transition-duration: 0s;
+    animation: SPECCY_FLASH_RED 0.7s infinite;
+    transition-duration: 0s;
 }
 
 .ButtonYes {
@@ -141,13 +162,13 @@ background-blend-mode: overlay;
 }
 
 .ButtonYes:hover {
-  animation: SPECCY_FLASH_GREEN 0.7s infinite;
+    animation: SPECCY_FLASH_GREEN 0.7s infinite;
     transition-duration: 0s;
 }
 
 .Beer {
     scroll-snap-align: center;
-    background-color: rgba(0,0,90,1);
+    background-color: rgba(0, 0, 90, 1);
     display: flex;
     justify-content: center;
     opacity: 0.9;
@@ -162,6 +183,7 @@ background-blend-mode: overlay;
     scroll-snap-align: center;
     display: flex;
     width: 40%;
+    opacity: 1;
     cursor: pointer;
     justify-content: left;
     vertical-align: middle;
@@ -173,49 +195,53 @@ background-blend-mode: overlay;
 .BeerDesc {
     display: flex;
     width: 70%;
+    font-family: 'Helvetica';
     text-align: left;
     vertical-align: middle;
     padding-left: 20px;
     justify-content: right;
     align-items: flex-end;
+    font-weight: lighter;
     position: relative;
 }
 
 .App-link {
-  background-color: #00ff00;
-  color: #000000;
+    background-color: #00ff00;
+    color: #000000;
     text-decoration-line: none;
     text-align: left;
     padding: 0.4vh 0.8vw 0.1vh 0.8vw;
 }
 
 .App-link:hover {
-  background-color: #ffff00;
-  color: #000000;
-  text-decoration-line: none;
-  text-align: left;
+    background-color: #ffff00;
+    color: #000000;
+    text-decoration-line: none;
+    text-align: left;
     padding: 0.4vh 0.8vw 0.1vh 0.8vw;
-  animation: SPECCY_FLASH_GREEN 0.7s infinite;
-  transition-duration: 0s;
+    animation: SPECCY_FLASH_GREEN 0.7s infinite;
+    transition-duration: 0s;
 }
 
 .Beer-link:hover {
-  background-color: #ffff00;
-  color: #000000;
-  text-decoration-line: none;
-  text-align: left;
-  animation: SPECCY_FLASH_GREEN 0.7s infinite;
-  transition-duration: 0s;
+    background-color: #ffff00;
+    color: #000000;
+    opacity: 1;
+    text-decoration-line: none;
+    text-align: left;
+    animation: SPECCY_FLASH_GREEN 0.7s infinite;
+    transition-duration: 0s;
 }
 
 .Beer-link {
-  color: #00ff00;
+    color: #00ff00;
+    opacity: 1;
     padding: 0.4vh 0.8vw 0.1vh 0.8vw;
-  text-decoration-line: none;
+    text-decoration-line: none;
 }
 
 .YourBeer-link {
-  color: #00ff00;
+    color: #00ff00;
     text-decoration-line: none;
     text-align: left;
 
@@ -234,9 +260,13 @@ background-blend-mode: overlay;
 }
 
 .Cheers {
-    width: 60%;
+    width: 50%;
+    display: block;
+    opacity: 0.9;
     alignment: center;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .BuyThisBeer {
@@ -278,68 +308,68 @@ background-blend-mode: overlay;
     0%, 49% {
         background-color: rgb(0, 0, 0);
         color: rgb(189, 189, 189);
-      animation-timing-function: steps(1, end);
+        animation-timing-function: steps(1, end);
     }
     50%, 100% {
         background-color: rgb(189, 189, 189);
-      color: rgb(0, 0, 0);
-      animation-timing-function: steps(1, end);
+        color: rgb(0, 0, 0);
+        animation-timing-function: steps(1, end);
     }
 }
 
 @-webkit-keyframes SPECCY_FLASH_GREEN {
-  0%, 49% {
-    background-color: rgb(0, 255, 0);
-    color: rgb(0, 00, 0);
-    animation-timing-function: steps(1, end);
-  }
-  50%, 100% {
-    background-color: rgb(0, 128, 0);
-    color: rgb(255, 255, 255);
-    animation-timing-function: steps(1, end);
-  }
+    0%, 49% {
+        background-color: rgb(0, 255, 0);
+        color: rgb(0, 00, 0);
+        animation-timing-function: steps(1, end);
+    }
+    50%, 100% {
+        background-color: rgb(0, 128, 0);
+        color: rgb(255, 255, 255);
+        animation-timing-function: steps(1, end);
+    }
 }
 
 @-webkit-keyframes SPECCY_FLASH_RED {
-  0%, 49% {
-    background-color: rgb(255, 0, 0);
-    color: rgb(0, 00, 0);
-    animation-timing-function: steps(1, end);
-  }
-  50%, 100% {
-    background-color: rgb(128, 0, 0);
-    color: rgb(255, 255, 255);
-    animation-timing-function: steps(1, end);
-  }
+    0%, 49% {
+        background-color: rgb(255, 0, 0);
+        color: rgb(0, 00, 0);
+        animation-timing-function: steps(1, end);
+    }
+    50%, 100% {
+        background-color: rgb(128, 0, 0);
+        color: rgb(255, 255, 255);
+        animation-timing-function: steps(1, end);
+    }
 }
 
 @-webkit-keyframes SPECCY_FLASH_TAPE_LOAD {
-  0%, 60% {
-    border-color: #bf0000;
-    animation-timing-function: steps(1, end);
-  }
-  60%, 80% {
-    border-color: #00bdbe;
-    animation-timing-function: steps(1, end);
-  }
-  80%, 100% {
-    border-color: rgb(189, 189, 189);
-    animation-timing-function: steps(1, end);
-  }
+    0%, 60% {
+        border-color: #bf0000;
+        animation-timing-function: steps(1, end);
+    }
+    60%, 80% {
+        border-color: #00bdbe;
+        animation-timing-function: steps(1, end);
+    }
+    80%, 100% {
+        border-color: rgb(189, 189, 189);
+        animation-timing-function: steps(1, end);
+    }
 }
 
 .LeftStringSpin {
-  width: 100%;
-  margin: 0 auto;
+    width: 100%;
+    margin: 0 auto;
     opacity: 1.0;
     background-color: red;
-  box-sizing: border-box;
-  overflow: hidden;
-  white-space: nowrap;
-  line-height: normal;
-  display: inline-flex;
-  animation: LeftStringSpin 14s steps(60,start) infinite;
-  animation-play-state: running;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: normal;
+    display: inline-flex;
+    animation: LeftStringSpin 14s steps(60, start) infinite;
+    animation-play-state: running;
 }
 
 .StringSpin {
@@ -350,16 +380,16 @@ background-blend-mode: overlay;
 }
 
 @keyframes LeftStringSpin {
-  0% {
-    transform: translate(0%, 0);
-  }
-  50% {
-    transform: translate(-100%, 0);
-  }
-  50.001% {
-    transform: translate(100%, 0);
-  }
-  100% {
-    transform: translate(0%, 0);
-  }
+    0% {
+        transform: translate(0%, 0);
+    }
+    50% {
+        transform: translate(-100%, 0);
+    }
+    50.001% {
+        transform: translate(100%, 0);
+    }
+    100% {
+        transform: translate(0%, 0);
+    }
 }

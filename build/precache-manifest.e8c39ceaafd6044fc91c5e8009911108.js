@@ -1,19 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "6126e1439814c1c817da7e37c54eed59",
-    "url": "/build/static/media/cheers.6126e143.png"
+    "revision": "a32d4d07fcf94c914522145e9fd118e0",
+    "url": "/build/static/media/PyrmontBrewery_Kegerator.a32d4d07.png"
   },
   {
-    "revision": "75472612fc51ab995cc6",
-    "url": "/build/static/css/main.9fdc778d.chunk.css"
+    "revision": "893839ac9371af275702",
+    "url": "/build/static/css/main.babb402a.chunk.css"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
     "url": "/build/static/js/runtime~main.9df7376b.js"
   },
   {
-    "revision": "5f8d75b74015e5716a7c",
-    "url": "/build/static/js/2.5c3abaf0.chunk.js"
+    "revision": "7758140e1ac95dab92d7",
+    "url": "/build/static/js/2.71fc2723.chunk.js"
+  },
+  {
+    "revision": "ba003fe4ece60d15d98c6748e44a2d9a",
+    "url": "/build/static/media/beer.ba003fe4.png"
   },
   {
     "revision": "5749b01d12aa9b0416b534341bdf2457",
@@ -24,12 +28,12 @@ self.__precacheManifest = [
     "url": "/build/static/media/logo.9d44e6e7.svg"
   },
   {
-    "revision": "a32d4d07fcf94c914522145e9fd118e0",
-    "url": "/build/static/media/PyrmontBrewery_Kegerator.a32d4d07.png"
+    "revision": "893839ac9371af275702",
+    "url": "/build/static/js/main.54d6ee54.chunk.js"
   },
   {
-    "revision": "75472612fc51ab995cc6",
-    "url": "/build/static/js/main.24317ffb.chunk.js"
+    "revision": "6126e1439814c1c817da7e37c54eed59",
+    "url": "/build/static/media/cheers.6126e143.png"
   },
   {
     "revision": "1360df446deb5275903e365394adf20c",
@@ -44,15 +48,11 @@ self.__precacheManifest = [
     "url": "/build/static/media/pyrmont_brewery.77b915fd.woff2"
   },
   {
-    "revision": "ba003fe4ece60d15d98c6748e44a2d9a",
-    "url": "/build/static/media/beer.ba003fe4.png"
-  },
-  {
     "revision": "170b19fac8d50dc75d0514f1ab6f8bb8",
     "url": "/build/static/media/buy_beer.170b19fa.png"
   },
   {
-    "revision": "f99a2eb397f07974bb85d8221f9dd637",
+    "revision": "8f37699ee84db01f6473e44ff4a6ec34",
     "url": "/build/index.html"
   }
 ];
