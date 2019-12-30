@@ -199,16 +199,12 @@ class App extends Component {
             <br/>
           </div>
           <br/>
-          <div className="Story">
-            Read about the history of brewing in and around Pyrmont <a href={"https://tinyurl.com/t2by8hz"}
-                                                                       target={"_blank"} className={classLink}>click/tap
-            here</a></div>
-          <br/>
-          <div className="Story">
-
-            Being a massive fan of open source and creative commons, our head brewer<br/>
-            is sharing a small selection of pilot batch recipes for you to have a go at home:
-            <p>
+          <p>
+            Read about the history of brewing in and around Pyrmont<a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink}>here</a>
+          </p>
+          <p>
+            Being a massive fan of open source and creative commons, our head brewer
+            is sharing a small selection of pilot batch recipes for you to have a go at home:<br/>
             <a href={"Beer Arrogant Bastard.xml"} target={"_blank"} className={classLink}>Arrogant Bastard.xml</a> -
             American Strong Ale<br/>
             <a href={"Beer Brexit.bsmx"} target={"_blank"} className={classLink}>Brexit.bsmx</a> - British Bitter<br/>
@@ -225,10 +221,6 @@ class App extends Component {
             <a href={"Beer Suz Saison.bsmx"} target={"_blank"} className={classLink}>Suz Saison.bsmx</a> - French
             Saison
             </p>
-            <img src={CheersThen} alt="" className={cheers}/>
-          </div>
-
-
           <br/>
           <p>
             pyrmontbrewery.com.au<br/>
