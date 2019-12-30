@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "ab8fb852121a8e43dfb0a3fe2a7b84dd",
-    "url": "/build/static/media/label_whinging_pom_best_bitter.ab8fb852.png"
+    "revision": "c9cf7d775afefea744f6eae138c0bb14",
+    "url": "/build/static/media/label_wokos_cloudy_cider.c9cf7d77.png"
   },
   {
-    "revision": "c3421f00317e844db079",
+    "revision": "1e283cde27f45c89afd9",
     "url": "/build/static/css/main.da8d7c31.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "/build/static/js/runtime~main.9df7376b.js"
   },
   {
-    "revision": "9a0ac0c88175654987e7",
-    "url": "/build/static/js/2.e6ec156d.chunk.js"
+    "revision": "59a557b1af43a0d5d237",
+    "url": "/build/static/js/2.c1d29130.chunk.js"
   },
   {
     "revision": "ba003fe4ece60d15d98c6748e44a2d9a",
@@ -44,12 +44,12 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_maybanke_dark_mild.0b8878c9.png"
   },
   {
-    "revision": "c3421f00317e844db079",
-    "url": "/build/static/js/main.2c7ca5df.chunk.js"
+    "revision": "ab8fb852121a8e43dfb0a3fe2a7b84dd",
+    "url": "/build/static/media/label_whinging_pom_best_bitter.ab8fb852.png"
   },
   {
-    "revision": "c9cf7d775afefea744f6eae138c0bb14",
-    "url": "/build/static/media/label_wokos_cloudy_cider.c9cf7d77.png"
+    "revision": "1e283cde27f45c89afd9",
+    "url": "/build/static/js/main.6938eb7e.chunk.js"
   },
   {
     "revision": "66676d7d3ccb13af0e7793390fa8803c",
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_quarry_quaffer_aussie_lager.f06d1b33.png"
   },
   {
-    "revision": "5d44d1f81304da7908bf86c103d77ec0",
-    "url": "/build/static/media/label_generic.5d44d1f8.png"
+    "revision": "978b766d4e1f94891b685b16944016be",
+    "url": "/build/static/media/label_hell_hole_helles.978b766d.png"
   },
   {
     "revision": "6126e1439814c1c817da7e37c54eed59",
@@ -88,7 +88,11 @@ self.__precacheManifest = [
     "url": "/build/static/media/buy_beer.170b19fa.png"
   },
   {
-    "revision": "c04a95f3834b813d760e1105a8c4e302",
+    "revision": "5d44d1f81304da7908bf86c103d77ec0",
+    "url": "/build/static/media/label_generic.5d44d1f8.png"
+  },
+  {
+    "revision": "b3d99bf576ea0e17a9f7a193c08e14f3",
     "url": "/build/index.html"
   }
 ];
