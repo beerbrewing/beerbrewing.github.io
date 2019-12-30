@@ -7,6 +7,10 @@ html {
     background-color: #241b0c;
     font-family: 'pyrmont_brewery';
     overflow-x: hidden;
+    scroll-snap-type: y proximity;
+    overflow-x: hidden;
+    scroll-padding-top: 15vh;
+    overflow-y: scroll;
 }
 
 span {
@@ -19,14 +23,13 @@ span {
 }
 
 p {
-    scroll-snap-align: center;
-    scroll-snap-stop: normal;
+    scroll-snap-align: start;
     width: 95%;
     background-color: rgb(189, 189, 189);
     color: rgb(0, 0, 0);
     font-family: 'pyrmont_brewery';
     width: 80%;
-    opacity: 0.98;
+    opacity: 0.96;
     position: relative;
     padding: 20px 20px 20px 20px;
     border-style: solid;
@@ -39,12 +42,11 @@ p {
 }
 
 .Story {
-    scroll-snap-align: center;
-    scroll-snap-stop: normal;
+    scroll-snap-align: start;
     width: 95%;
     background-color: rgb(189, 189, 189);
     color: rgb(0, 0, 0);
-    opacity: 0.98;
+    opacity: 0.96;
     font-family: 'Helvetica';
     width: 80%;
     position: relative;
@@ -91,8 +93,10 @@ p {
     -webkit-tap-highlight-color: white;
     background-blend-mode: overlay;
     background-position-y: bottom;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
     overflow-x: hidden;
+    scroll-padding-top: 15vh;
+    overflow-y: scroll;
 }
 
 .App-logo {
@@ -100,6 +104,7 @@ p {
     height: 50vmin;
     pointer-events: none;
     padding: 0px 0px 0px 0px;
+    overflow: hidden;
 }
 
 .App-header {
@@ -114,7 +119,7 @@ p {
 
 .Button {
     background-color: #604070;
-    opacity: 0.98;
+    opacity: 0.96;
     display: flex;
     cursor: pointer;
 
@@ -167,7 +172,7 @@ p {
 }
 
 .Beer {
-    scroll-snap-align: center;
+    scroll-snap-align: start;
     background-color: rgba(0, 0, 90, 1);
     display: flex;
     justify-content: center;
@@ -176,11 +181,10 @@ p {
     align-items: center;
     width: 90%;
     position: relative;
-    padding: 20px 20px 0px 20px;
+    padding: 20px 20px 20px 20px;
 }
 
 .BeerSnap {
-    scroll-snap-align: center;
     display: flex;
     width: 40%;
     opacity: 1;
@@ -221,6 +225,12 @@ p {
     padding: 0.4vh 0.8vw 0.1vh 0.8vw;
     animation: SPECCY_FLASH_GREEN 0.7s infinite;
     transition-duration: 0s;
+}
+
+.App-link2 {
+    text-decoration-line: none;
+    text-decoration: none;
+    color: #000000;
 }
 
 .Beer-link:hover {
@@ -377,6 +387,7 @@ p {
     margin-left: -10vw;
     opacity: 1.0;
     background-color: red;
+    color: white;
 }
 
 @keyframes LeftStringSpin {

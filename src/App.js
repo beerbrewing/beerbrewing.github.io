@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import PyrmontBrewery_Kegerator from './PyrmontBrewery_Kegerator.png';
 import CheersThen from './cheers.png';
-import Wheelie from './wheelie.png';
+import PyrmontBrewery_WheelieBin from './wheelie.png';
 import Loading from './pyrmontbwy.gif';
 import Buildings from './pyrmont_sandstone_buildings.jpeg';
 import './App.css';
@@ -23,6 +23,7 @@ class App extends Component {
 
   render() {
     let classLink = 'App-link';
+    let classLink2 = 'App-link2';
     let beerLink = 'Beer-link';
     let beerLinkYour = 'YourBeer-link';
     let cheers = 'Cheers';
@@ -53,6 +54,7 @@ class App extends Component {
 
         <header className="App-header">
           <p>
+            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             Sorry, but it's mega important that you are 18 or over for us to discuss the supply of alcohol with you
             under the
             liquor and gaming rules here in New South Wales, Australia (and most parts of our planet)<br/><br/>
@@ -61,6 +63,7 @@ class App extends Component {
             <br/>
             <br/>
             R Tape loading error, 0:1
+            </a>
           </p>
           <a href={"https://tinyurl.com/s63efe6"}><img src={logo} className="App-logo" alt=""/></a>
           <br/>
@@ -77,7 +80,9 @@ class App extends Component {
             <br/>
             <div className="ButtonYes" id="yes18" onClick={handleOldEnough}>Strewth, I'm bloody old</div>
             <br/>
+            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             &copy; 2007 Pyrmont Brewery
+            </a>
           </p>
           <br/>
           <br/>
@@ -86,16 +91,20 @@ class App extends Component {
         :
         <header className="App-header">
           <p>
-            Nestled amongst the Pyrmont yellowstone sandstone hides a secret brewery!<br/>
+            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
+            Nestled amongst the Pyrmont yellowblock sandstone hides a secret brewery!<br/>
+            </a>
           </p>
+          <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
           <div className="StringSpin">
             <div className="LeftStringSpin">
               All grain beers brewed in Pyrmont
             </div>
           </div>
-          <br/>
-
-
+          </a>
+          <div>
+            <br/>
+          </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap"><a
               href={"mailto:kegs_halfway@pyrmontbrewery.com?subject=Beer: Half Way House&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -105,7 +114,9 @@ class App extends Component {
               brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade. <br/><br/>This
               beer is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div>
           </div>
-          <br/>
+          <div>
+            <br/>
+          </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap"><a
               href={"mailto:kegs_whingingpom@pyrmontbrewery.com?subject=Beer: Whinging Pom Bitter&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -116,7 +127,9 @@ class App extends Component {
               lower in carbonation and if you want, can be gravity served straight from the keg without
               refrigeration<br/><br/></div>
           </div>
-          <br/>
+          <div>
+            <br/>
+          </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap"><a
               href={"mailto:kegs_maybanke@pyrmontbrewery.com?subject=Beer: Maybanke Dark Mild&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -126,7 +139,9 @@ class App extends Component {
               Australia. An amazing achievement! <br/><br/>This is an English Midlands dark mild (mid-strength) similar
               to Banks' Dark Mild<br/><br/></div>
           </div>
-          <br/>
+          <div>
+            <br/>
+          </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap"><a
               href={"mailto:kegs_arrogant@pyrmontbrewery.com?subject=Beer: Arrogan Harris Strong Ale&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -137,7 +152,9 @@ class App extends Component {
               beer is inspired by the famously yummy brews 'you probably won't like' from San Diego,
               California<br/><br/></div>
           </div>
-          <br/>
+          <div>
+            <br/>
+          </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap"><a
               href={"mailto:kegs_quaffer@pyrmontbrewery.com?subject=Beer: Quarry Quaffer Aussie Lager&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -147,7 +164,9 @@ class App extends Component {
               Robbo]<br/><br/>Very much like VB/Carlton it's sweet and bitter at the same time, Pride of Ringwood hops
               all the way, full strength lager beer<br/><br/></div>
           </div>
-          <br/>
+          <div>
+            <br/>
+          </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap"><a
               href={"mailto:kegs_paradise@pyrmontbrewery.com?subject=Beer: Paradise Saison&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -158,7 +177,9 @@ class App extends Component {
               others (see below) all came from Paradise. <br/><br/>Stronger in alcohol but easy drinking traditional
               farmhouse style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div>
           </div>
-          <br/>
+          <div>
+            <br/>
+          </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap"><a
               href={"mailto:kegs_purgatory@pyrmontbrewery.com?subject=Beer: Purgatory Pale Ale&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -167,7 +188,9 @@ class App extends Component {
             <div className="BeerDesc">Purgatory was the quarry round by the Glebe Island bridge. <br/><br/>This beer is
               similar to some Western Australian style 2-row pale ale with plenty of Challenger hops<br/><br/></div>
           </div>
-          <br/>
+          <div>
+            <br/>
+          </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap"><a
               href={"mailto:kegs_hellhole@pyrmontbrewery.com?subject=Beer: Hell Hole Helles&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -177,7 +200,9 @@ class App extends Component {
               flood a lot making it not much fun to deal with. <br/><br/>German Dortmunder style pilsner lager with
               Tassie Enigma hops<br/><br/></div>
           </div>
-          <br/>
+          <div>
+            <br/>
+          </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap"><a
               href={"mailto:kegs_cider@pyrmontbrewery.com?subject=Beer: Wokos Cloudy Apple Cider&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -187,20 +212,14 @@ class App extends Component {
               Pyrmont<br/><br/>This is a beautiful unfiltered apple cider made with English apples - it's slightly sweet
               but with a dry finish<br/><br/></div>
           </div>
-
-          <br/>
-          <div className="Story">
-            The Pyrmont Brewery has been churning out the good stuff here in the city of Sydney,
-            Australia since 2007. We're not today in a position to sell you beer, but if you live or work in Pyrmont you
-            are quite likely to bump in to it at various local meet-ups<br/>We'll let you know when that changes here
-            and on social media<br/>
-            <img src={PyrmontBrewery_Kegerator} width="70%"
-                 style={{opacity: 0.9, display: "block", marginLeft: "auto", marginRight: "auto"}}></img>
+          <div>
             <br/>
           </div>
           <br/>
           <p>
-            Read about the history of brewing in and around Pyrmont<a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink}>here</a>
+            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
+            Read about the history of brewing in and around Pyrmont <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink}>here</a>
+            </a>
           </p>
           <p>
             Being a massive fan of open source and creative commons, our head brewer
@@ -211,7 +230,7 @@ class App extends Component {
             <a href={"Beer Demo Gremlins.bsmx"} target={"_blank"} className={classLink}>Demo Gremlins.bsmx</a> -
             Australian Pale Ale<br/>
             <a href={"Beer Kaibrau Kolsch.bsmx"} target={"_blank"} className={classLink}>Kaibrau Kolsch.bsmx</a> -
-            German Kölsch<br/>
+            German Kolsch<br/>
             <a href={"Beer Oompa Loomper.bsmx"} target={"_blank"} className={classLink}>Oompa Loomper.bsmx</a> -
             Chocolate Porter<br/>
             <a href={"Beer Rudolf Red.bsmx"} target={"_blank"} className={classLink}>Rudolf Red.bsmx</a> - Red
@@ -222,7 +241,20 @@ class App extends Component {
             Saison
             </p>
           <br/>
+          <div className="Story">
+            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
+              The Pyrmont Brewery has been churning out the good stuff here in the city of Sydney,
+              Australia since 2007. We're not quite in a position today to sell you beer, but if you live or work in Pyrmont you
+              are likely to bump in to it at various local meet-ups<br/>We'll let you know when the liquor producers license
+              comes through, both here and on social media<br/>
+              <img src={PyrmontBrewery_Kegerator} width="70%"
+                   style={{opacity: 0.9, display: "block", marginLeft: "auto", marginRight: "auto"}}></img>
+            </a>
+            <br/>
+          </div>
+
           <p>
+            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             pyrmontbrewery.com.au<br/>
             ABN: 47824483808<br/>
             Tel: 9692 0016
@@ -231,25 +263,29 @@ class App extends Component {
             <br/><br/>
             0 OK, 100:1
             <br/>
+            </a>
           </p>
+
+          <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
           <br/>
           <br/>
-          <img src={logo} className="App-logo" alt="" width={"200px"} height={"100px"}/>
+          <a href={"https://tinyurl.com/s63efe6"}><img src={logo} className="App-logo" alt=""/></a>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
 
           <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
+          </a>
 
-          <br/>
         </header>
       } </div>
   }
