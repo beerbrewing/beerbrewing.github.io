@@ -16,7 +16,10 @@ import LabelMaybankeDarkMild from './label_maybanke_dark_mild.png';
 import LabelWhingingPomBestBitter from './label_whinging_pom_best_bitter.png';
 import LabelWokosCloudyCider from './label_wokos_cloudy_cider.png';
 import LabelPurgatoryPaleAle from './label_purgatory_pale_ale.png';
+import LabelParadiseFrenchSaison from './label_paradise_french_saison.png';
+import LabelQuarryQuafferAussieLager from './label_quarry_quaffer_aussie_lager.png';
 import LabelGeneric from './label_generic.png';
+
 
 
 class App extends Component {
@@ -162,7 +165,7 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelGeneric})`}}><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelQuarryQuafferAussieLager})`}}><a
               href={"mailto:kegs_quaffer@pyrmontbrewery.com?subject=Beer: Quarry Quaffer Aussie Lager&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Quarry Quaffer<br/>Aussie Lager<br/>4.9%<br/></a></div>
@@ -174,14 +177,13 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelGeneric})`}}><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelParadiseFrenchSaison})`}}><a
               href={"mailto:kegs_paradise@pyrmontbrewery.com?subject=Beer: Paradise Saison&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Paradise<br/>Saison<br/>6.8%<br/><br/><br/></a></div>
-            <div className="BeerDesc">Paradise yellowblock quarry is nearest the brewery, so named being the easiest
+            <div className="BeerDesc">Paradise quarry is nearest the brewery, so named being the easiest
               sandstone to extract and work with, Sydney GPO building, Central, Art Gallery, RPA, Town Hall and many
-              others (see below) all came from Paradise. <br/><br/>Stronger in alcohol but easy drinking traditional
-              farmhouse style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div>
+              others all came from Paradise. <br/><br/>Traditional farmhouse style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div>
           </div>
           <div>
             <br/>
