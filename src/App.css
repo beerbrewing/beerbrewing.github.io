@@ -237,6 +237,7 @@ p {
     background-color: #ffff00;
     color: #000000;
     text-decoration-line: none;
+    padding: 1.3vh 0.0vw 0.7vh 0.0vw;
     animation: SPECCY_FLASH_WHITE 0.7s infinite;
     transition-duration: 0s;
 }
