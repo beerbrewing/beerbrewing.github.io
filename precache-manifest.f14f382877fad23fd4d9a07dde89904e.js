@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_whinging_pom_best_bitter.ab8fb852.png"
   },
   {
-    "revision": "f6adb57f28f5921bb9af",
-    "url": "/build/static/css/main.807e4df6.chunk.css"
+    "revision": "358e94a748d10b4da677",
+    "url": "/build/static/css/main.da8d7c31.chunk.css"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
@@ -44,8 +44,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_maybanke_dark_mild.0b8878c9.png"
   },
   {
-    "revision": "f6adb57f28f5921bb9af",
-    "url": "/build/static/js/main.60005b62.chunk.js"
+    "revision": "358e94a748d10b4da677",
+    "url": "/build/static/js/main.aa24f8f8.chunk.js"
   },
   {
     "revision": "c9cf7d775afefea744f6eae138c0bb14",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/buy_beer.170b19fa.png"
   },
   {
-    "revision": "30b05698fecc67c39696523096e277c9",
+    "revision": "ac46b474397ff19fbc62c3d7186316d3",
     "url": "/build/index.html"
   }
 ];
