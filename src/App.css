@@ -70,8 +70,8 @@ p {
     -webkit-tap-highlight-color: white;
 background-blend-mode: overlay;
     background-position-y: bottom;
-    -webkit-overflow-scrolling: touch;
     scroll-snap-type: y mandatory;
+    overflow-x: hidden;
 }
 
 .App-logo {

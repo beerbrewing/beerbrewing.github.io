@@ -161,7 +161,7 @@ class App extends Component {
 
             <br/>
             <p>
-              beers@pyrmontbrewery.com.au<br/>
+              pyrmontbrewery.com.au<br/>
               ABN: 47824483808<br/>
               Tel: 9692 0016
               <br/><br/>
