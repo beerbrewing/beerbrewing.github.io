@@ -254,7 +254,6 @@ p {
 .Beer-link {
     color: rgba(0,0,0,0);
     opacity: 1;
-    height: 40vh;
     padding: 0.4vh 0.8vw 0.1vh 0.8vw;
     text-decoration-line: none;
 }
