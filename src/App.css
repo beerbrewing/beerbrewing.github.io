@@ -6,6 +6,7 @@
 html {
     background-color: #241b0c;
     font-family: 'pyrmont_brewery';
+    overflow-x: hidden;
 }
 
 span {

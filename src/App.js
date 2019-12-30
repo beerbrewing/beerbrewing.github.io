@@ -112,7 +112,7 @@ class App extends Component {
                                                                  className={beerLink}>Program:<br/>Hell Hole<br/>Helles<br/>4.7%<br/></a></div><div className="BeerDesc">Hell Hole was the quarry where the Sydney Fish Markets stands today, it used to flood a lot making it not much fun to deal with. <br/><br/>German Dortmunder style pilsner lager with Tassie Enigma hops<br/><br/></div></div>
             <br/>
                <div className="Beer"><div className="BeerSnap"><a href={"mailto:kegs_cider@pyrmontbrewery.com?subject=Beer: Wokos Cloudy Apple Cider&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"} target={"_blank"}
-                                                                                                                               className={beerLink}>Woko's<br/>Cloudy Cider<br/>5.1%<br/></a></div><div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/><br/>This is a beautiful unfiltered apple cider made with English apples - it's slightly sweet but with a dry finish<br/><br/></div></div>
+                                                                                                                               className={beerLink}>Program:<br/>Woko's<br/>Cloudy Cider<br/>5.1%<br/></a></div><div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/><br/>This is a beautiful unfiltered apple cider made with English apples - it's slightly sweet but with a dry finish<br/><br/></div></div>
 
               <br/>
             <p>
