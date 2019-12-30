@@ -87,7 +87,7 @@ class App extends Component {
             Before we go on, we need you to confirm you are 18 years or older<br/><br/>
             Were you born on or before <div className="speccy_flash_black">{today.toString().substring(0, 15)}?</div>
             <br/>
-            <div className="ButtonNo" id="no" onClick={handleTooYoung}>Erm yeah, but no</div>
+            <div className="ButtonNo" id="no" onClick={handleTooYoung}>No, I'm too young</div>
             <br/>
             <div className="ButtonYes" id="yes18" onClick={handleOldEnough}>Strewth, I'm bloody old</div>
             <br/>
