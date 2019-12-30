@@ -73,7 +73,7 @@ class App extends Component {
             R Tape loading error, 0:1
             </a>
           </p>
-          <a href={"https://tinyurl.com/s63efe6"}><img src={logo} className="App-logo" alt=""/></a>
+          <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
           <br/>
           <br/>
           <br/>
@@ -249,7 +249,7 @@ class App extends Component {
             Saison
             </p>
           <br/>
-          <div className="Story">
+          <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
               The Pyrmont Brewery has been churning out the good stuff here in the city of Sydney,
               Australia since 2007. We're not quite in a position today to sell you beer, but if you live or work in Pyrmont you
@@ -259,7 +259,7 @@ class App extends Component {
                    style={{opacity: 0.9, display: "block", marginLeft: "auto", marginRight: "auto"}}></img>
             </a>
             <br/>
-          </div>
+          </p>
 
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
@@ -274,10 +274,9 @@ class App extends Component {
             </a>
           </p>
 
-          <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
           <br/>
           <br/>
-          <a href={"https://tinyurl.com/s63efe6"}><img src={logo} className="App-logo" alt=""/></a>
+          <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
           <br/>
           <br/>
           <br/>
@@ -292,7 +291,6 @@ class App extends Component {
           <br/>
 
           <br/>
-          </a>
 
         </header>
       } </div>

@@ -189,7 +189,7 @@ p {
     width: 40%;
     background-size: 30vw;
     background-repeat: no-repeat;
-    opacity: 0.8;
+    opacity: 1;
     cursor: pointer;
     justify-content: left;
     position: relative;
@@ -369,8 +369,8 @@ p {
         animation-timing-function: steps(1, end);
     }
     50%, 100% {
-        background-color: rgb(128, 128, 128);
-        color: rgb(255, 255, 255);
+        background-color: rgb(189, 189, 189);
+        color: rgb(0, 0, 0);
         animation-timing-function: steps(1, end);
     }
 }
