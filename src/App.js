@@ -10,6 +10,14 @@ import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import desktopImage from './pyrmontbwy.gif';
 import quarryImage from './beer.png';
 import BuyThisBeer from './buy_beer.png';
+import LabelHalfWayHouseChocolateStout from './label_half_way_house_chocolate_stout.png';
+import LabelArrogantHarrisStrongAle from './label_arrogant_harris_strong_ale.png';
+import LabelMaybankeDarkMild from './label_maybanke_dark_mild.png';
+import LabelWhingingPomBestBitter from './label_whinging_pom_best_bitter.png';
+import LabelWokosCloudyCider from './label_wokos_cloudy_cider.png';
+import LabelPurgatoryPaleAle from './label_purgatory_pale_ale.png';
+import LabelGeneric from './label_generic.png';
+
 
 class App extends Component {
   constructor() {
@@ -106,7 +114,7 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap"><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelHalfWayHouseChocolateStout})`}}><a
               href={"mailto:kegs_halfway@pyrmontbrewery.com?subject=Beer: Half Way House&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Half Way House<br/>Chocolate Stout<br/>4.5%<br/></a></div>
@@ -118,7 +126,7 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap"><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelWhingingPomBestBitter})`}}><a
               href={"mailto:kegs_whingingpom@pyrmontbrewery.com?subject=Beer: Whinging Pom Bitter&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Whinging Pom<br/>Real Ale<br/>4.4%<br/></a></div>
@@ -131,7 +139,7 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap"><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelMaybankeDarkMild})`}}><a
               href={"mailto:kegs_maybanke@pyrmontbrewery.com?subject=Beer: Maybanke Dark Mild&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Maybanke<br/>Dark Mild<br/>3.4%<br/></a></div>
@@ -143,7 +151,7 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap"><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelArrogantHarrisStrongAle})`}}><a
               href={"mailto:kegs_arrogant@pyrmontbrewery.com?subject=Beer: Arrogan Harris Strong Ale&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Arrogant Harris<br/>Strong Ale<br/>7.0%<br/></a></div>
@@ -156,7 +164,7 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap"><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelGeneric})`}}><a
               href={"mailto:kegs_quaffer@pyrmontbrewery.com?subject=Beer: Quarry Quaffer Aussie Lager&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Quarry Quaffer<br/>Aussie Lager<br/>4.9%<br/></a></div>
@@ -168,7 +176,7 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap"><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelGeneric})`}}><a
               href={"mailto:kegs_paradise@pyrmontbrewery.com?subject=Beer: Paradise Saison&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Paradise<br/>Saison<br/>6.8%<br/></a></div>
@@ -181,7 +189,7 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap"><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelPurgatoryPaleAle})`}}><a
               href={"mailto:kegs_purgatory@pyrmontbrewery.com?subject=Beer: Purgatory Pale Ale&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Purgatory<br/>Pale Ale<br/>4.9%<br/></a></div>
@@ -192,7 +200,7 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap"><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelGeneric})`}}><a
               href={"mailto:kegs_hellhole@pyrmontbrewery.com?subject=Beer: Hell Hole Helles&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Hell Hole<br/>Helles<br/>4.7%<br/></a></div>
@@ -204,7 +212,7 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap"><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelWokosCloudyCider})`}}><a
               href={"mailto:kegs_cider@pyrmontbrewery.com?subject=Beer: Wokos Cloudy Apple Cider&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Woko's<br/>Cloudy Cider<br/>5.1%<br/></a></div>
