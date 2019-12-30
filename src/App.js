@@ -3,10 +3,11 @@ import logo from './logo.svg';
 import PyrmontBrewery_Kegerator from './PyrmontBrewery_Kegerator.png';
 import CheersThen from './cheers.png';
 import Wheelie from './wheelie.png';
+import Loading from './pyrmontbwy.gif';
 import Buildings from './pyrmont_sandstone_buildings.jpeg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import desktopImage from './pyrmont_quarry.jpg';
+import desktopImage from './pyrmontbwy.gif';
 import quarryImage from './beer.png';
 import BuyThisBeer from './buy_beer.png';
 
@@ -41,7 +42,7 @@ class App extends Component {
       self.setState({isOldEnough: true, confirmedAge: true} );
     }
 
-    return <div className="App" style={{backgroundImage: `url(${desktopImage})`, backgroundColour: `#ff0000`}}>
+    return <div className="App" style={{  backgroundPosition: 'center', backgroundSize: '100%', backgroundRepeat: 'repeat', backgroundImage: `url(${desktopImage})`, backgroundColour: `#ff0000`}}>
        {mightBeUnder18 ? confirmedAge ?
 
          <header className="App-header">
@@ -58,8 +59,7 @@ class App extends Component {
          </header>
       :
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="" width={"200px"} height={"100px"}/>
-            <p className="Loading">
+            <p>
               Before we go on, we need you to confirm you are 18 years or older<br/><br/>
               Were you born on or before <div className="speccy_flash_black">{today.toString().substring(0, 16)}</div>?
               <div className="ButtonNo" id="no" onClick={handleTooYoung}>Erm yeah, but no</div>
@@ -69,6 +69,7 @@ class App extends Component {
               &copy; 2007 Pyrmont Brewery
             </p>
               <br/>
+            <img src={logo} className="App-logo" alt="" width={"200px"} height={"100px"}/>
 
             <br/>
             <br/>

@@ -59,13 +59,18 @@ p {
     text-align: left;
     font-family: 'pyrmont_brewery';
     padding: 0px 10px 0px 10px;
-    background-color: #241b0c;
+    background-color: #404040;
   white-space: wrap;
   line-height: 1.25;
   justify-content: left;
   align-items: left;
     -webkit-tap-highlight-color: white;
-
+background-blend-mode: overlay;
+    background-position-y: bottom;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(300px);
+    scroll-snap-points-x: repeat(300px);
 }
 
 .App-logo {
@@ -140,6 +145,7 @@ p {
 }
 
 .Beer {
+    scroll-snap-align: start;
     background-color: rgba(22, 36, 48, 0.85);
     display: flex;
     justify-content: center;
