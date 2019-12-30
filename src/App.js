@@ -19,8 +19,16 @@ import LabelPurgatoryPaleAle from './label_purgatory_pale_ale.png';
 import LabelParadiseFrenchSaison from './label_paradise_french_saison.png';
 import LabelQuarryQuafferAussieLager from './label_quarry_quaffer_aussie_lager.png';
 import LabelGeneric from './label_generic.png';
+import ReactPixel from 'react-facebook-pixel';
 
+const advancedMatching = { em: 'kev@pyrmontbrewery.com.au' }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/pixel-with-ads/conversion-tracking#advanced_match
+const options = {
+  autoConfig: true, // set pixel's autoConfig
+  debug: false, // enable logs
+};
+ReactPixel.init('701956460214044', advancedMatching, options);
 
+ReactPixel.pageView(); // For tracking page view
 
 class App extends Component {
   constructor() {
