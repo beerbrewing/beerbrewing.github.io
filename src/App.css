@@ -260,9 +260,9 @@ p {
 }
 
 .Cheers {
-    width: 50%;
+    width: 30%;
     display: block;
-    opacity: 0.98;
+    opacity: 1;
     alignment: center;
     position: relative;
     margin-left: auto;

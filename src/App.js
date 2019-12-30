@@ -86,9 +86,7 @@ class App extends Component {
         :
         <header className="App-header">
           <p>
-
             Nestled amongst the Pyrmont yellowstone sandstone hides a secret brewery!<br/>
-            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink}>More about that here</a>
           </p>
           <div className="StringSpin">
             <div className="LeftStringSpin">
@@ -192,7 +190,7 @@ class App extends Component {
 
           <br/>
           <div className="Story">
-            Our story...<br/><br/>The Pyrmont Brewery has been churning out the good stuff here in the city of Sydney,
+            The Pyrmont Brewery has been churning out the good stuff here in the city of Sydney,
             Australia since 2007. We're not today in a position to sell you beer, but if you live or work in Pyrmont you
             are quite likely to bump in to it at various local meet-ups<br/>We'll let you know when that changes here
             and on social media<br/>
@@ -210,7 +208,7 @@ class App extends Component {
 
             Being a massive fan of open source and creative commons, our head brewer<br/>
             is sharing a small selection of pilot batch recipes for you to have a go at home:
-            <br/><br/>
+            <p>
             <a href={"Beer Arrogant Bastard.xml"} target={"_blank"} className={classLink}>Arrogant Bastard.xml</a> -
             American Strong Ale<br/>
             <a href={"Beer Brexit.bsmx"} target={"_blank"} className={classLink}>Brexit.bsmx</a> - British Bitter<br/>
@@ -225,7 +223,9 @@ class App extends Component {
             <a href={"Beer Seong Cerveza.bsmx"} target={"_blank"} className={classLink}>Seong Cerveza.bsmx</a> -
             Cerveza<br/>
             <a href={"Beer Suz Saison.bsmx"} target={"_blank"} className={classLink}>Suz Saison.bsmx</a> - French
-            Saison<br/>
+            Saison
+            </p>
+            <img src={CheersThen} alt="" className={cheers}/>
           </div>
 
 
@@ -254,7 +254,8 @@ class App extends Component {
           <br/>
           <br/>
           <br/>
-          <img src={CheersThen} alt="" className={cheers}/>
+          <br/>
+          <br/>
 
           <br/>
         </header>
