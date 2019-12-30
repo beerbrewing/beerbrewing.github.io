@@ -18,7 +18,9 @@ import LabelWokosCloudyCider from './label_wokos_cloudy_cider.png';
 import LabelPurgatoryPaleAle from './label_purgatory_pale_ale.png';
 import LabelParadiseFrenchSaison from './label_paradise_french_saison.png';
 import LabelQuarryQuafferAussieLager from './label_quarry_quaffer_aussie_lager.png';
+import LabelHellHoleHelles from './label_hell_hole_helles.png';
 import LabelGeneric from './label_generic.png';
+
 import ReactPixel from 'react-facebook-pixel';
 import ReactGA from 'react-ga';
 
@@ -211,7 +213,7 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelGeneric})`}}><a
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelHellHoleHelles})`}}><a
               href={"mailto:kegs_hellhole@pyrmontbrewery.com?subject=Beer: Hell Hole Helles&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Hell Hole<br/>Helles<br/>4.7%<br/><br/><br/></a></div>
