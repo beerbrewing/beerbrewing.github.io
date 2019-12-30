@@ -18,6 +18,8 @@ span {
 }
 
 p {
+    scroll-snap-align: center;
+    scroll-snap-stop: normal;
     width: 95%;
     background-color: rgb(189, 189, 189);
     color: rgb(0, 0, 0);
@@ -68,9 +70,7 @@ p {
 background-blend-mode: overlay;
     background-position-y: bottom;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: mandatory;
-    scroll-snap-points-y: repeat(300px);
-    scroll-snap-points-x: repeat(300px);
+    scroll-snap-type: y mandatory;
 }
 
 .App-logo {
@@ -102,7 +102,7 @@ background-blend-mode: overlay;
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     box-shadow: 0 10px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    padding: 20px 20px 20px 20px;
+    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
 }
 
 .ButtonNo {
@@ -116,7 +116,7 @@ background-blend-mode: overlay;
     align-items: center;
     align-items: center;
     position: relative;
-  padding: 20px 20px 20px 20px;
+    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
 
 }
 
@@ -135,18 +135,18 @@ background-blend-mode: overlay;
     justify-content: center;
     align-items: center;
     position: relative;
-  padding: 20px 20px 20px 20px;
+    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
 
 }
 
 .ButtonYes:hover {
   animation: SPECCY_FLASH_GREEN 0.7s infinite;
-  transition-duration: 0s;
+    transition-duration: 0s;
 }
 
 .Beer {
-    scroll-snap-align: start;
-    background-color: rgba(0,0,0,1);
+    scroll-snap-align: center;
+    background-color: rgba(0,0,90,1);
     display: flex;
     justify-content: center;
     opacity: 0.9;
@@ -154,13 +154,11 @@ background-blend-mode: overlay;
     align-items: center;
     width: 90%;
     position: relative;
-    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow: 0 5px 3px rgba(0, 0, 0, 0.6), 0 0 40px rgba(50, 50, 30, 0.8) inset;
     padding: 20px 20px 0px 20px;
 }
 
 .BeerSnap {
+    scroll-snap-align: center;
     display: flex;
     width: 40%;
     cursor: pointer;
@@ -187,8 +185,7 @@ background-blend-mode: overlay;
   color: #000000;
     text-decoration-line: none;
     text-align: left;
-  padding-top: 4px;
-  padding-bottom: 4px;
+    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
 }
 
 .App-link:hover {
@@ -196,8 +193,7 @@ background-blend-mode: overlay;
   color: #000000;
   text-decoration-line: none;
   text-align: left;
-  padding-top: 4px;
-  padding-bottom: 4px;
+    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
   animation: SPECCY_FLASH_GREEN 0.7s infinite;
   transition-duration: 0s;
 }
@@ -207,14 +203,13 @@ background-blend-mode: overlay;
   color: #000000;
   text-decoration-line: none;
   text-align: left;
-  padding-top: 4px;
-  padding-bottom: 4px;
   animation: SPECCY_FLASH_GREEN 0.7s infinite;
   transition-duration: 0s;
 }
 
 .Beer-link {
   color: #00ff00;
+    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
   text-decoration-line: none;
 }
 
@@ -274,7 +269,8 @@ background-blend-mode: overlay;
 
 .speccy_flash_black {
     animation: SPECCY_FLASH_BLACK 0.7s infinite;
-  transition-duration: 0s;
+    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
+    transition-duration: 0s;
 }
 
 @-webkit-keyframes SPECCY_FLASH_BLACK {
@@ -332,15 +328,24 @@ background-blend-mode: overlay;
 }
 
 .LeftStringSpin {
-  width: 150%;
+  width: 100%;
   margin: 0 auto;
+    opacity: 1.0;
+    background-color: red;
   box-sizing: border-box;
   overflow: hidden;
   white-space: nowrap;
   line-height: normal;
   display: inline-flex;
-  animation: LeftStringSpin 4s linear infinite;
+  animation: LeftStringSpin 14s steps(60,start) infinite;
   animation-play-state: running;
+}
+
+.StringSpin {
+    width: 120%;
+    margin-left: -10vw;
+    opacity: 1.0;
+    background-color: red;
 }
 
 @keyframes LeftStringSpin {
