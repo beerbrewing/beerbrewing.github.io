@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_whinging_pom_best_bitter.ab8fb852.png"
   },
   {
-    "revision": "cf40c7af9d13e63d56c9",
+    "revision": "c3421f00317e844db079",
     "url": "/build/static/css/main.da8d7c31.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "/build/static/js/runtime~main.9df7376b.js"
   },
   {
-    "revision": "27a4fa711e0d3851db85",
-    "url": "/build/static/js/2.c6665bc6.chunk.js"
+    "revision": "9a0ac0c88175654987e7",
+    "url": "/build/static/js/2.e6ec156d.chunk.js"
   },
   {
     "revision": "ba003fe4ece60d15d98c6748e44a2d9a",
@@ -44,8 +44,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_maybanke_dark_mild.0b8878c9.png"
   },
   {
-    "revision": "cf40c7af9d13e63d56c9",
-    "url": "/build/static/js/main.e44fe6d5.chunk.js"
+    "revision": "c3421f00317e844db079",
+    "url": "/build/static/js/main.2c7ca5df.chunk.js"
   },
   {
     "revision": "c9cf7d775afefea744f6eae138c0bb14",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/buy_beer.170b19fa.png"
   },
   {
-    "revision": "cfa1311ae6d0b35d5e04a906bcd2d565",
+    "revision": "c04a95f3834b813d760e1105a8c4e302",
     "url": "/build/index.html"
   }
 ];
