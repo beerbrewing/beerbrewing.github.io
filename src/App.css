@@ -26,7 +26,7 @@ p {
     color: rgb(0, 0, 0);
     font-family: 'pyrmont_brewery';
     width: 80%;
-    opacity: 0.9;
+    opacity: 0.98;
     position: relative;
     padding: 20px 20px 20px 20px;
     border-style: solid;
@@ -44,7 +44,7 @@ p {
     width: 95%;
     background-color: rgb(189, 189, 189);
     color: rgb(0, 0, 0);
-    opacity: 0.8;
+    opacity: 0.98;
     font-family: 'Helvetica';
     width: 80%;
     position: relative;
@@ -114,7 +114,7 @@ p {
 
 .Button {
     background-color: #604070;
-    opacity: 0.9;
+    opacity: 0.98;
     display: flex;
     cursor: pointer;
 
@@ -262,7 +262,7 @@ p {
 .Cheers {
     width: 50%;
     display: block;
-    opacity: 0.9;
+    opacity: 0.98;
     alignment: center;
     position: relative;
     margin-left: auto;

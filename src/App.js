@@ -87,8 +87,8 @@ class App extends Component {
         <header className="App-header">
           <p>
 
-            Nestled amongst the Pyrmont yellowstone sandstone hides a secret brewery! <a
-            href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink}>More about that</a>
+            Nestled amongst the Pyrmont yellowstone sandstone hides a secret brewery!<br/>
+            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink}>More about that here</a>
           </p>
           <div className="StringSpin">
             <div className="LeftStringSpin">
