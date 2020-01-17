@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_wokos_cloudy_cider.c9cf7d77.png"
   },
   {
-    "revision": "07694148e1a0813f9d31",
+    "revision": "820394070bbd0224496c",
     "url": "/build/static/css/main.da8d7c31.chunk.css"
   },
   {
@@ -48,8 +48,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_whinging_pom_best_bitter.ab8fb852.png"
   },
   {
-    "revision": "07694148e1a0813f9d31",
-    "url": "/build/static/js/main.77fa43ad.chunk.js"
+    "revision": "820394070bbd0224496c",
+    "url": "/build/static/js/main.a219ffef.chunk.js"
   },
   {
     "revision": "66676d7d3ccb13af0e7793390fa8803c",
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_generic.5d44d1f8.png"
   },
   {
-    "revision": "8bfa4264b46a5b00b7d49ba44fdc5909",
+    "revision": "529d82e8837f1370a5ecce09e49ba80c",
     "url": "/build/index.html"
   }
 ];
