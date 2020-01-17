@@ -146,7 +146,7 @@ class App extends Component {
               href={"mailto:kegs_whingingpom@pyrmontbrewery.com?subject=Beer: Whinging Pom Bitter&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Whinging Pom<br/>Real Ale<br/>4.4%<br/><br/></a></div>
-            <div className="BeerDesc">British Bitter for my fellow expats of which there are many in Pyrmont! <br/><br/>A
+            <div className="BeerDesc">British Bitter for all you expats of which there are many in Pyrmont! <br/><br/>A
               classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are
               lower in carbonation and if you want, can be gravity served straight from the keg without
               refrigeration<br/><br/></div>
