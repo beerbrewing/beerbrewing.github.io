@@ -67,6 +67,8 @@ class App extends Component {
       self.setState({isOldEnough: true, confirmedAge: true});
     }
 
+    return <div>Closed</div>;
+
     return <div className="App" style={{
       backgroundPosition: 'center',
       backgroundSize: '100%',
