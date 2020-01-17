@@ -67,7 +67,13 @@ class App extends Component {
       self.setState({isOldEnough: true, confirmedAge: true});
     }
 
-    return <div>Closed</div>;
+    return <div className="App" style={{
+      backgroundPosition: 'center',
+      backgroundSize: '100%',
+      backgroundRepeat: 'repeat',
+      backgroundImage: `url(${desktopImage})`,
+      backgroundColour: `#ff0000`
+    }}><header className="App-header"><p>Closed, sorry</p></header></div>;
 
     return <div className="App" style={{
       backgroundPosition: 'center',
