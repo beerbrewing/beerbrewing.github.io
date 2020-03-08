@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "c9cf7d775afefea744f6eae138c0bb14",
-    "url": "/build/static/media/label_wokos_cloudy_cider.c9cf7d77.png"
+    "revision": "91d6b7eb50a67113b0f8",
+    "url": "/build/static/css/main.522b32c2.chunk.css"
   },
   {
-    "revision": "820394070bbd0224496c",
-    "url": "/build/static/css/main.da8d7c31.chunk.css"
+    "revision": "91d6b7eb50a67113b0f8",
+    "url": "/build/static/js/main.c64f3ca4.chunk.js"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
     "url": "/build/static/js/runtime~main.9df7376b.js"
   },
   {
-    "revision": "59a557b1af43a0d5d237",
-    "url": "/build/static/js/2.c1d29130.chunk.js"
+    "revision": "94d7f3743e68f6e688a1",
+    "url": "/build/static/js/2.a603a32a.chunk.js"
   },
   {
     "revision": "ba003fe4ece60d15d98c6748e44a2d9a",
@@ -48,8 +48,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_whinging_pom_best_bitter.ab8fb852.png"
   },
   {
-    "revision": "820394070bbd0224496c",
-    "url": "/build/static/js/main.a219ffef.chunk.js"
+    "revision": "c9cf7d775afefea744f6eae138c0bb14",
+    "url": "/build/static/media/label_wokos_cloudy_cider.c9cf7d77.png"
   },
   {
     "revision": "66676d7d3ccb13af0e7793390fa8803c",
@@ -80,8 +80,8 @@ self.__precacheManifest = [
     "url": "/build/static/media/pyrmont_sandstone_buildings.a0af8abc.jpeg"
   },
   {
-    "revision": "77b915fd404c1d633d4228fa366fa51e",
-    "url": "/build/static/media/pyrmont_brewery.77b915fd.woff2"
+    "revision": "24bbeca205632d17d38a79866b77c798",
+    "url": "/build/static/media/pyrmont_brewery.24bbeca2.woff2"
   },
   {
     "revision": "170b19fac8d50dc75d0514f1ab6f8bb8",
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_generic.5d44d1f8.png"
   },
   {
-    "revision": "529d82e8837f1370a5ecce09e49ba80c",
+    "revision": "dda188983d0be2d1f916b16e4199cda3",
     "url": "/build/index.html"
   }
 ];

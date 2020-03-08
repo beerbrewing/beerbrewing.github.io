@@ -73,14 +73,6 @@ class App extends Component {
       backgroundRepeat: 'repeat',
       backgroundImage: `url(${desktopImage})`,
       backgroundColour: `#ff0000`
-    }}><header className="App-header"><p>Closed, sorry</p></header></div>;
-
-    return <div className="App" style={{
-      backgroundPosition: 'center',
-      backgroundSize: '100%',
-      backgroundRepeat: 'repeat',
-      backgroundImage: `url(${desktopImage})`,
-      backgroundColour: `#ff0000`
     }}>
       {mightBeUnder18 ? confirmedAge ?
 
@@ -128,6 +120,14 @@ class App extends Component {
             Read all about the history of the Pyrmont Brewery and brewing beer in Sydney here<br/>
             </a>
           </p>
+
+          <p>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink2}>
+              Pyrmont Brewery uses Raspberry Pi's - click here to learn about them<br/>
+            </a>
+            <br/>
+          </p>
+
           <div className="StringSpin">
             <div className="LeftStringSpin">
               All grain beers brewed in Pyrmont
@@ -280,13 +280,6 @@ class App extends Component {
               <img src={PyrmontBrewery_Kegerator} width="70%"
                    style={{opacity: 0.9, display: "block", marginLeft: "auto", marginRight: "auto"}}></img>
             </a>
-            <br/>
-          </p>
-
-          <p>
-          <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink2}>
-            Pyrmont Brewery uses Raspberry Pi - click here to learn about the history of the Raspbeery Pi<br/>
-          </a>
             <br/>
           </p>
 
