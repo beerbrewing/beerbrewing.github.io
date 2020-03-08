@@ -123,8 +123,9 @@ class App extends Component {
         :
         <header className="App-header">
           <p>
-            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
-            Nestled amongst the Pyrmont yellowblock sandstone hides a secret brewery!<br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink2}>
+            Nestled amongst the Pyrmont yellowblock sandstone hides a secret brewery! <br/>
+            Read all about the history of the Pyrmont Brewery and brewing beer in Sydney here<br/>
             </a>
           </p>
           <div className="StringSpin">
@@ -279,6 +280,13 @@ class App extends Component {
               <img src={PyrmontBrewery_Kegerator} width="70%"
                    style={{opacity: 0.9, display: "block", marginLeft: "auto", marginRight: "auto"}}></img>
             </a>
+            <br/>
+          </p>
+
+          <p>
+          <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink2}>
+            Pyrmont Brewery uses Raspberry Pi - click here to learn about the history of the Raspbeery Pi<br/>
+          </a>
             <br/>
           </p>
 
