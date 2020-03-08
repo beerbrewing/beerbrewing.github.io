@@ -122,8 +122,8 @@ class App extends Component {
           </p>
 
           <p>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink2}>
-              Pyrmont Brewery uses Raspberry Pi's - click here to learn about them<br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink2}>
+              Pyrmont Brewery uses Raspberry Pi's - click here to learn more about them
             </a>
             <br/>
           </p>
