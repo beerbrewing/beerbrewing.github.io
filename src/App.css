@@ -215,6 +215,8 @@ p {
 }
 
 .BeerDesc {
+    font-family: Arial;
+    font-size: medium;
     display: flex;
     width: 70%;
     font-size: 2vw;
@@ -249,6 +251,10 @@ p {
     text-decoration-line: none;
     text-decoration: none;
     color: #000000;
+}
+
+.App-link3 {
+    color: blue;
 }
 
 .Beer-link:hover {
@@ -299,6 +305,12 @@ p {
 
 .BuyThisBeer {
     width: 60%;
+    position: relative;
+}
+
+.Sensisble {
+    font-family: Arial;
+    font-size: medium;
     position: relative;
 }
 

@@ -49,7 +49,9 @@ class App extends Component {
   render() {
     let classLink = 'App-link';
     let classLink2 = 'App-link2';
+    let classLink3 = 'App-link3';
     let beerLink = 'Beer-link';
+    let sensible = 'Sensisble';
     let beerLinkYour = 'YourBeer-link';
     let cheers = 'Cheers';
     let buybeer = 'BuyThisBeer';
@@ -83,7 +85,7 @@ class App extends Component {
     }}>
       {afterKev ?
         <header className="App-header">
-          <p>
+          <p className={sensible}>
             Media Brewer - video media technologist Kev can be contacted these ways...
             <br/>
             <br/>
@@ -93,10 +95,21 @@ class App extends Component {
             Or email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className={classLink2}>kev@pyrmontbrewery.com.au</a>
             <br/>
             <br/>
-            Resume <a href={"kjsl_resume_2020.pdf"} target={"_blank"} className={classLink}>PDF</a> - <a href={"kjsl_resume_2020.docx"} target={"_blank"} className={classLink}>Word</a>
+            Resume <a href={"kjsl_resume_2020.pdf"} target={"_blank"} className={classLink3}>PDF</a> - <a href={"kjsl_resume_2020.docx"} target={"_blank"} className={classLink3}>Word</a>
             <br/>
             <br/>
-            What we're good at...<br/><br/>
+
+            Blogs/slides...<br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+              Pyrmont Brewery and brewing beer in Sydney here<br/>
+            </a>
+            <br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+              Raspberry Pi's - click here to learn more about them
+            </a>
+            <br/>
+            <br/>
+            What we're good at the Pyrmont Brewery...<br/><br/>
             HLS (FPS), MPEG-DASH and DVB-DASH manipulation<br/><br/>
             Can and will pull TS and fMP4 files apart and put them back together, maybe somewhere else maybe with its from other files - who knows, anyhow if the codec supports splicing I’ll make it happen, and synch the audio too<br/><br/>
             libav (FFmpeg, gstreamer)<br/><br/>
@@ -105,8 +118,266 @@ class App extends Component {
             Chromecast<br/><br/>
             <br/>
             <br/>
-            Thanks for stopping by!<br/>Sorry for the 8-bit ZX Spectrum inpsired website, it is just a bit of fun with React!<br/>
+            Thanks for stopping by!<br/>As for the 8-bit ZX Spectrum inpsired website? This was just an afternoon of fun with React! It's not something I claim I do at all well ;-)<br/>
             Kev
+            <br/>
+
+            <br/>
+            KEVIN STAUNTON-LAMBERT BSCS<br/>
+            93 Miller Street, Pyrmont, Sydney, Australia • +61 423 173 002<br/>
+            kevleyski@gmail.com<br/>
+            <br/>
+            EMPLOYMENT and EDUCATION (summary)<br/>
+            <br/>
+            October 2016 - (present)<br/>
+            Switch Media [Sydney, Australia]<br/>
+            Solutions Architect - Research & Development<br/>
+            Streaming video engineer, tackling tough problems around the distribution of high<br/>
+            quality encrypted video bitstreams to any player device anywhere in the world.<br/>
+            Foxtel and SBS OnDemand media stitching (SSAI embedding IAB VAST based ads)<br/>
+            HbbTV/SmartTV video streaming for Freeview Australia and New Zealand<br/>
+            <br/>
+            March 2005 - October 2016<br/>
+            Kudelski/Nagra Media/OpenTV [Sydney, Australia]<br/>
+            Software Expert, innovations R&D group.<br/>
+            Developer of embedded Linux middleware for Asia-Pacific, European and<br/>
+            US domestic digital television markets.<br/>
+            Foxtel (and Austar) set-top-box software engineer (all models over 12 year period)<br/>
+            <br/>
+            May 2001 - Aug 2004<br/>
+            Cisco/Scientific Atlanta/PowerTV [Cupertino, California, USA]<br/>
+            Architect and senior lead developer of proprietary set-top-box middleware<br/>
+            technology for US domestic, European and Japanese digital television<br/>
+            markets.<br/>
+            <br/>
+            June 1998 - May 2001<br/>
+            Virgin Media/ntl: [Covent Garden London, UK]<br/>
+            Senior developer of interactive television and broadband ISP services<br/>
+            used by millions of UK subscribers across multiple platforms.<br/>
+            <br/>
+            Sep 1996 - June 1998<br/>
+            Telecom Italia/TMI Telecom [City, London, UK]<br/>
+            Developer of a large data collection/reporting software to assess<br/>
+            utilization and costs of the company wide-area-network.<br/>
+            <br/>
+            Sep 1994 - June 1998<br/>
+            Huddersfield University [Yorkshire, UK]<br/>
+            Graduate B.Sc. Computer Science (Software Development)<br/>
+            <br/>
+            EXPERIENCE<br/>
+            <br/>
+            Development experience<br/>
+            LLVM and GNU C/C++ cross compiler for embedded Linux (ARM, MIPS and x86)<br/>
+            iOS, tvOS and macOS framework and applications (Obj-C and Swift)<br/>
+            Android (TV and mobile) platforms AOSP and Java/Kotlin apps<br/>
+            Python, PHP, golang, Node.js/JavaScript, Roku/BrightScript<br/>
+            WindRiver vxWorks RTOS (MIPS32)<br/>
+            Win32 API and Microsoft.NET and Xamarin/Unity3D (C/C++ and C#)<br/>
+            <br/>
+            Standards<br/>
+            OTT streaming, Live and VOD HLS/FPS, DVB/MPEG-DASH, MSS, ULL-CMAF<br/>
+            W3C HTML/XML/CSS (including WebKit deployments)<br/>
+            DVB Broadcasting, HbbTV 2.0.2 and FreeTV Australia operation standards<br/>
+            Codecs: AV1, H.264, H.265 (including 4K encoding experience), AAC, AC3/EC3<br/>
+            TV based standards (DSM-CC / HDMI / HDCP / EDID)<br/>
+            Microsoft PlayReady DRM<br/>
+            Widevine DRM<br/>
+            <br/>
+            Test, debug and profiling tools<br/>
+            GNU GDB/gconf/gprof including Linux kernel debug kdbg<br/>
+            Trace32 MIPS debugger<br/>
+            Coverity Prevent static analysis, ESLint<br/>
+            Git, Perforce, Bamboo, Jenkins CI and Codecollaborator<br/>
+            <br/>
+            SWITCH MEDIA (Sydney, Australia)<br/>
+            <br/>
+            Solutions Architect for multiple media streaming services including:<br/>
+            Foxtel Go - Android AOSP including Google play services integrated set-top-box. Personal efforts included getting Google certification of set-up wraith application, ExoPlayer debugging and assistance with porting (cross-platform) Xamarin based front end streaming application<br/>
+            SBS OnDemand - embedded player with SSAI ad support for Chromecast, iPhone/iPad, AppleTV and Android tablet devices<br/>
+            Freeview New Zealand HbbTV application (runs on every TV on every channel in NZ)<br/>
+            Google Home integration<br/>
+            <br/>
+            OzTAM (Nielsen) lead SDK maintainer - includes tvOS, iOS, Roku (BrightScript), Android, C# and JavaScript variants - this code (which quietly feeds back audience ratings) is deployed in every streaming device in Australia today<br/>
+            <br/>
+            Research and production implementation of video and audio stream splitting, transport stream and fragmented MP4 manipulation (real-time live stitching) including low latency HLS TS + fMP4 and DASH fMP4/CMAF<br/>
+            <br/>
+            This includes manipulation of FPS encrypted streams (though parallel<br/>
+            analysis of equivalent clear HLS stream in a secure location)<br/>
+            Machine-based video quality assurance on 4K streams (C/C++ OpenCV + FFmpeg libav)<br/>
+            Various ad triggering tech (SCTE) also ad replacement (removing existing broadcast ads and sticking in IAB VAST request based targeted ads)<br/>
+            macOS based stream diagnostics app (AVPlayer error logger)<br/>
+            Transport stream manipulation (e.g. rewriting timecode to playback without discontinuity)<br/>
+            <br/>
+            Have presented my research publicly to technical audiences at conferences and tech meet-ups<br/>
+            <br/>
+            <br/>
+            <br/>
+            NAGRA MEDIA/OPEN TV (Sydney, Australia)<br/>
+            <br/>
+            Owner/Lead engineer for XSI (NDS Extensible SI used by BSkyB/FOXTEL/Sky Italia) middleware component.<br/>
+            <br/>
+            Lead design and software implementation of embedded OpenTV middleware clients, controlling companion devices and Nagra broadcast solutions in Australia and the Asia-Pacific region.<br/>
+            <br/>
+            • Executive level presentations of OpenTV5 PVR embedded Linux middleware onto Broadcom 97425 demonstration CATV set-top-box. Implementation of 'XSI' (propriatory event information) SI adaptor to scan and show live television for NewsCorp customers (SkyUK, SkyNZ, SkyItalia and Foxtel)<br/>
+            <br/>
+            • WebKit integration to present HTML5/CSS3/JavaScript on Broadcom 97425, involving the integration of Qt4.8 and additional DirectFB integration and performance tuning (including OpenGL ES 2.0 GLES)<br/>
+            <br/>
+            • DSM-CC server and client side test integration.<br/>
+            <br/>
+            • SQLite events schedule search and filtering customer demonstrations.<br/>
+            <br/>
+            • Design and development to support catch up TV and search services by integrating OpenTV2 middleware metadata abstraction API with SQLite into existing deployed MIPS32 set-top boxes. (deployment pending)<br/>
+            <br/>
+            • Customer CEO presentations of HTTP with cross-origin support to existing OpenTV2 middleware to support HTML5 companion device remote controls for PVR boxes. Android/iOS controlling Foxtel set-top boxes tuning, playback and search services. (demoware)<br/>
+            <br/>
+            • Design and integration of PVR2 solution for Austar. (deployed)<br/>
+            <br/>
+            • Design and integration of Terrestrial television support for Austar. (deployed)<br/>
+            <br/>
+            • Design and integration of Notify OMM services for FOXTEL. (deployed)<br/>
+            <br/>
+            <br/>
+            CISCO/SCIENTIFIC ATLANTA/POWER TV (Cupertino, California)<br/>
+            <br/>
+            Design and implementation of component-ware support to an existing<br/>
+            XML/JavaScript based middleware solution. This work enabled rapid development of all styles of application via an independent<br/>
+            modular approach within multiple teams, suppliers and target platform<br/>
+            configurations.<br/>
+            <br/>
+            The role required continuous full UML lifecycle software design and<br/>
+            provisioning with strict adherence to various leading industry<br/>
+            standards from such groups as the W3C (XML/Scripting), MPEG (A/V and<br/>
+            data standards), ATSC, DVB and ARIB/Japan Cable Labs.<br/>
+            <br/>
+            In equivalent .NET terms this 3-year effort was akin to implementing<br/>
+            the IUnknown abstract base class, creating a named class registry,<br/>
+            supporting referenced based dynamic loading/unloading of modules<br/>
+            (DLL), as well as providing multi-threaded UI management to a given<br/>
+            device context.<br/>
+            <br/>
+            Other supporting code that I built upon this support<br/>
+            architecture included:<br/>
+            <br/>
+            • Shared object libraries. For example graphics libraries such as<br/>
+            JPEG, GIF and PNG, thus saving the developer from the time and effort<br/>
+            of incorporating their versions of these common libraries and also<br/>
+            greatly reducing the overall application footprint in the process.<br/>
+            <br/>
+            • Multi-threaded animated sprite library providing the customer with the<br/>
+            ability to create smooth interactive user interfaces as well as basic<br/>
+            Macromedia Flash style games.<br/>
+            <br/>
+            • Unicode string pool to support user interfaces for characters in all<br/>
+            languages. This class handled pre-allocated blocks of string memory<br/>
+            which removes the possibility of physical memory fragmentation which<br/>
+            are known performance drags..<br/>
+            <br/>
+            Contributions to the actual XML/JavaScript middleware platform code included:<br/>
+            <br/>
+            • XML processor look ahead heuristics. Such that the processor can<br/>
+            second guess the remainder of a line and groups of similar lines of<br/>
+            XML to enable significantly faster parsing and DOM object creation.<br/>
+            <br/>
+            • Swappable skin-based user interface wrappers. This allows the end-user to dynamically on the fly change the way the entire application<br/>
+            appears to their liking. Similar to XP themes and Avalon use in<br/>
+            Microsoft Longhorn platform.<br/>
+            <br/>
+            • Development of Japanese IME (Input Method Engine) which involved<br/>
+            some understanding of Kana's and Kanji dictionaries. (the engine<br/>
+            itself was built from both Slangsoft and Agfa libraries IME libraries)<br/>
+            <br/>
+            Lead developer of the Japanese on-screen electronic program schedule<br/>
+            guide (EPG) currently in test for a large Japanese MSO for which a<br/>
+            patent has since been filed for as myself the author.<br/>
+            <br/>
+            Microsoft Visual C++ .NET 2003 emulator to allow rapid application<br/>
+            development of interactive digital television applications using an<br/>
+            ordinary desktop PCs running Microsoft Windows. This project saved<br/>
+            countless man-hours of developer time whilst also removing some<br/>
+            dependency on the final customer product being available.<br/>
+            <br/>
+            <br/>
+            Other tools I have help develop include a WYSIWYG tool to allow<br/>
+            graphical content authors to see their handy work on a real television<br/>
+            set in real time from their PC.<br/>
+            <br/>
+            Extensive use of UML, Visual C++ .NET 2003, GNU C/C++ and assembler<br/>
+            has contributed to my strong object oriented component-ware<br/>
+            development skills and deep understanding and appreciation of the .NET<br/>
+            framework currently used in all modern Microsoft operating systems.<br/>
+            <br/>
+            <br/>
+            NTL: / VIRGIN MEDIA (London, UK)<br/>
+            <br/>
+            My role included design and development of both client and server<br/>
+            based applications and application components.<br/>
+            <br/>
+            One back office system that I personally developed was creating an<br/>
+            efficient HTTP content re-director which I chose to developed using<br/>
+            Microsoft IIS ISAPI filter technology.<br/>
+            <br/>
+            The module developed efficiently reformed the data responses (in<br/>
+            multiple threads) as they leave the Windows IIS server cluster to<br/>
+            support the multitude of simultaneous connected clients.<br/>
+            <br/>
+            In this instance the filter required significant logic and<br/>
+            appreciation of the capabilities of each connecting client based on<br/>
+            their HTTP referrer due to the issue that the DHTML and user interface<br/>
+            restrictions vary considerably between the various supported web<br/>
+            browser clients.<br/>
+            <br/>
+            Another Microsoft windows based solution included development of a<br/>
+            windows desktop information ticker service. This involved creating a<br/>
+            shared ActiveX component that in turn used the common .NET WiiInet<br/>
+            services to connect to the news feed URL. Using the .NET MSXML<br/>
+            processor I then extracted the response data from the call over the<br/>
+            Internet.<br/>
+            <br/>
+            I also provided an ActiveX container program in the form of a<br/>
+            Microsoft windows shell extension (Win32) enabling the ticker<br/>
+            component to be docked in the Windows task bar or as a floating window<br/>
+            component on the users desktop. This project also made its way from<br/>
+            ntl: to the BBC and can be downloaded today via their news.bbc.co.uk<br/>
+            web site.<br/>
+            <br/>
+            This project also lead to a minor offshoot cross platform solution to<br/>
+            allow Apple Macintosh and Linux home users to gain access to this<br/>
+            service. This I chose to implement at the time via a Java applet<br/>
+            embedded in the web page on the ntl: website.<br/>
+            <br/>
+            Other duties whilst employed by ntl: included general admin of the ISP<br/>
+            services and the MS SQL Server based billing system.<br/>
+            <br/>
+            Skills developed included: XML/JavaScript, VxWorks, SQL Server<br/>
+            (Transact-SQL), MS WebTV/WinCE, MS IIS/ISAPI, Windows NT Server,<br/>
+            TCP/UDP/IP, Sockets, DNS, Perl and Sun OS Solaris UNIX.<br/>
+            <br/>
+            <br/>
+            TMI / TELECOM ITALIA (London, UK)<br/>
+            <br/>
+            (one full year as part of undergraduate course and later part-time contractural whilst an undergraduate)<br/>
+            <br/>
+            Development of easy to use project tracking (database) solution<br/>
+            between London and Rome.<br/>
+            <br/>
+            Other duties included general local and wide area network user support.<br/>
+            <br/>
+            Skills developed included: TCP/IP, Novell Netware 4.11,<br/>
+            V.90/X.25/Frame Relay. Basic Cisco, Motorola switches and NewBridge<br/>
+            NetCool admin, Microsoft Access JET, Microsoft Visual Basic and Borland<br/>
+            Turbo C++ (DOS).<br/>
+            <br/>
+            <br/>
+            EDUCATION<br/>
+            <br/>
+            Graduate of Computer Science (Software Development) BSCS 2.1 with honours awarded for my dissertation, Interconnecting World Wide Web<br/>
+            with Databases (1997/98) demonstrated how multiple tier enterprise<br/>
+            technologies were evolving at the time, in particular, focus was given<br/>
+            to ISAPI, ASP and ADO all new technology still under development at this time<br/>
+            <br/>
+            My education and skills have been asserted by both the United States<br/>
+            government and also the Australian Computer Society (ACS).<br/>
+            <br/>
             <br/>
           </p>
           <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
@@ -160,14 +431,13 @@ class App extends Component {
         <header className="App-header">
           <p>
             <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink2}>
-            Nestled amongst the Pyrmont yellowblock sandstone hides a secret brewery! <br/>
-            Read all about the history of the Pyrmont Brewery and brewing beer in Sydney here<br/>
+              Nestled amongst the Pyrmont yellowblock sandstone hides a secret brewery! (about us)
             </a>
           </p>
 
           <p>
             <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink2}>
-              Pyrmont Brewery uses Raspberry Pi's - click here to learn more about them
+              We use Raspberry Pi's (learn more)
             </a>
             <br/>
           </p>
