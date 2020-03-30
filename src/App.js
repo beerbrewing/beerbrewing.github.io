@@ -93,6 +93,9 @@ class App extends Component {
             Or email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className={classLink2}>kev@pyrmontbrewery.com.au</a>
             <br/>
             <br/>
+            Kev's resume <a href={"kjsl_resume_2020.pdf"} target={"_blank"} className={classLink}>PDF</a> - <a href={"kjsl_resume_2020.docx"} target={"_blank"} className={classLink}>Word</a>
+            <br/>
+            <br/>
             Thanks for stopping by!<br/>
             Kev
             <br/>
