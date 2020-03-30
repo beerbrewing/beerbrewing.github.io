@@ -434,10 +434,9 @@ class App extends Component {
               Nestled amongst the Pyrmont yellowblock sandstone hides a secret brewery! (about us)
             </a>
           </p>
-
           <p>
             <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink2}>
-              We use Raspberry Pi's (learn more)
+              We use Raspberry Pi's (learn more!)
             </a>
             <br/>
           </p>
