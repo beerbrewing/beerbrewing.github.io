@@ -1,31 +1,31 @@
 self.__precacheManifest = [
   {
-    "revision": "91d6b7eb50a67113b0f8",
-    "url": "/build/static/css/main.522b32c2.chunk.css"
+    "revision": "1e8b229b14c67c831279",
+    "url": "/build/static/css/main.2875a023.chunk.css"
   },
   {
-    "revision": "91d6b7eb50a67113b0f8",
-    "url": "/build/static/js/main.c64f3ca4.chunk.js"
+    "revision": "1e8b229b14c67c831279",
+    "url": "/build/static/js/main.d121e322.chunk.js"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
     "url": "/build/static/js/runtime~main.9df7376b.js"
   },
   {
-    "revision": "94d7f3743e68f6e688a1",
-    "url": "/build/static/js/2.a603a32a.chunk.js"
+    "revision": "7c236a22cdc17828797b",
+    "url": "/build/static/js/2.ae7946c3.chunk.js"
   },
   {
     "revision": "ba003fe4ece60d15d98c6748e44a2d9a",
     "url": "/build/static/media/beer.ba003fe4.png"
   },
   {
-    "revision": "5749b01d12aa9b0416b534341bdf2457",
-    "url": "/build/static/media/pyrmontbwy.5749b01d.gif"
-  },
-  {
     "revision": "9d44e6e7839b710ce1c16f27cfa9504c",
     "url": "/build/static/media/logo.9d44e6e7.svg"
+  },
+  {
+    "revision": "5749b01d12aa9b0416b534341bdf2457",
+    "url": "/build/static/media/pyrmontbwy.5749b01d.gif"
   },
   {
     "revision": "a32d4d07fcf94c914522145e9fd118e0",
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_generic.5d44d1f8.png"
   },
   {
-    "revision": "dda188983d0be2d1f916b16e4199cda3",
+    "revision": "307b9962f3719c6c5198e260757d1281",
     "url": "/build/index.html"
   }
 ];
