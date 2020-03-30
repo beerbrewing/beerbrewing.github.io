@@ -86,20 +86,21 @@ class App extends Component {
       {afterKev ?
         <header className="App-header">
           <p className={sensible}>
-            Media Brewer - video media technologist Kev can be contacted these ways...
+            <h1>"Media Brewer"</h1>
+            Kev the freelancer video media technologist can be contacted in the following ways...
             <br/>
             <br/>
-            Head to  <a href={"https://www.linkedin.com/in/kevleyski/"} target={"_blank"} className={classLink2}>LinkedIn @kevleyski</a>
+            Head to  <a href={"https://www.linkedin.com/in/kevleyski/"} target={"_blank"} className={classLink3}>LinkedIn @kevleyski</a>
             <br/>
             <br/>
-            Or email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className={classLink2}>kev@pyrmontbrewery.com.au</a>
+            Or email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className={classLink3}>kev@pyrmontbrewery.com.au</a>
             <br/>
             <br/>
             Resume <a href={"kjsl_resume_2020.pdf"} target={"_blank"} className={classLink3}>PDF</a> - <a href={"kjsl_resume_2020.docx"} target={"_blank"} className={classLink3}>Word</a>
             <br/>
             <br/>
 
-            Blogs/slides...<br/>
+            Example technology blogs/slides...<br/>
             <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
               Pyrmont Brewery and brewing beer in Sydney here<br/>
             </a>
@@ -109,19 +110,12 @@ class App extends Component {
             </a>
             <br/>
             <br/>
-            What we're good at the Pyrmont Brewery...<br/><br/>
-            HLS (FPS), MPEG-DASH and DVB-DASH manipulation<br/><br/>
-            Can and will pull TS and fMP4 files apart and put them back together, maybe somewhere else maybe with its from other files - who knows, anyhow if the codec supports splicing I’ll make it happen, and synch the audio too<br/><br/>
-            libav (FFmpeg, gstreamer)<br/><br/>
-            AVFoundation (AppleTV, iOS, macOS)<br/><br/>
-            ExoPlayer (Android TV)<br/><br/>
-            Chromecast<br/><br/>
-            <br/>
-            <br/>
-            Thanks for stopping by!<br/>As for the 8-bit ZX Spectrum inpsired website? This was just an afternoon of fun with React! It's not something I claim I do at all well ;-)<br/>
+            Thanks for stopping by!<br/>As for the 8-bit ZX Spectrum inspired website? This was just an afternoon hack with React! It's not something I claim I do at all well! ;-)<br/>
             Kev
             <br/>
-
+            <br/>
+            <br/>
+            Giz' a job...<br/>
             <br/>
             KEVIN STAUNTON-LAMBERT BSCS<br/>
             93 Miller Street, Pyrmont, Sydney, Australia • +61 423 173 002<br/>
@@ -417,10 +411,11 @@ class App extends Component {
             <br/>
             <div className="ButtonYes" id="yes18" onClick={handleOldEnough}>Strewth, I'm bloody old</div>
             <br/>
-            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>Looking for Media Brewer</div>
-            <br/>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             &copy; 2007 Pyrmont Brewery
+            <br/>
+              <br/>
+            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>Looking for the Media Brewer? (go here)</div>
             </a>
           </p>
           <br/>
