@@ -594,7 +594,7 @@ class App extends Component {
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             pyrmontbrewery.com.au<br/>
-            ABN: 47824483808<br/>
+            ABN: 47 824 483 808<br/>
             Tel: 9692 0016
             <br/><br/>
             &copy; 2007 Pyrmont Brewery

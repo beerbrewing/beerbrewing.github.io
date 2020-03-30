@@ -24,6 +24,8 @@ span {
 
 p {
     scroll-snap-align: start;
+    font-size: 1.5vw;
+
     width: 95%;
     background-color: rgb(189, 189, 189);
     color: rgb(0, 0, 0);
@@ -213,11 +215,9 @@ p {
 }
 
 .BeerDesc {
-    font-family: Arial;
-    font-size: medium;
     display: flex;
     width: 70%;
-    font-size: 2vw;
+    font-size: 1.5vw;
     text-align: left;
     vertical-align: middle;
     padding-left: 20px;
