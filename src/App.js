@@ -40,7 +40,8 @@ class App extends Component {
     super();
     this.state = {
       isOldEnough: false,
-      confirmedAge: false
+      confirmedAge: false,
+      afterKev: false
     };
   }
 
@@ -55,6 +56,7 @@ class App extends Component {
     let today = new Date(new Date().setFullYear(new Date().getFullYear() - 18))
     let mightBeUnder18 = !this.state.isOldEnough;
     let confirmedAge = this.state.confirmedAge;
+    let afterKev = this.state.afterKev;
     let self = this;
 
     function handleTooYoung(e) {
@@ -67,6 +69,11 @@ class App extends Component {
       self.setState({isOldEnough: true, confirmedAge: true});
     }
 
+    function handleAfterKev(e) {
+      e.preventDefault();
+      self.setState({isOldEnough: true, confirmedAge: true, afterKev: true});
+    }
+
     return <div className="App" style={{
       backgroundPosition: 'center',
       backgroundSize: '100%',
@@ -74,7 +81,30 @@ class App extends Component {
       backgroundImage: `url(${desktopImage})`,
       backgroundColour: `#ff0000`
     }}>
-      {mightBeUnder18 ? confirmedAge ?
+      {afterKev ?
+        <header className="App-header">
+          <p>
+            Media Brewer - video media technologist Kev can be contacted these ways...
+            <br/>
+            <br/>
+            Head to  <a href={"https://www.linkedin.com/in/kevleyski/"} target={"_blank"} className={classLink2}>LinkedIn @kevleyski</a>
+            <br/>
+            <br/>
+            Or email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className={classLink2}>kev@pyrmontbrewery.com.au</a>
+            <br/>
+            <br/>
+            Thanks for stopping by!<br/>
+            Kev
+            <br/>
+          </p>
+          <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
+          <br/>
+          <br/>
+          <br/>
+        </header>
+        :
+
+      mightBeUnder18 ? confirmedAge ?
 
         <header className="App-header">
           <p>
@@ -103,6 +133,8 @@ class App extends Component {
             <div className="ButtonNo" id="no" onClick={handleTooYoung}>No, I'm too young</div>
             <br/>
             <div className="ButtonYes" id="yes18" onClick={handleOldEnough}>Strewth, I'm bloody old</div>
+            <br/>
+            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>Looking for Media Brewer</div>
             <br/>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             &copy; 2007 Pyrmont Brewery
