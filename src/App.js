@@ -87,9 +87,13 @@ class App extends Component {
         <header className="App-header">
           <p className={sensible}>
             <h1>"Media Brewer"</h1>
-            At this time of COVID-19 I find myself currently between jobs working from home - and beer brewing demand is down<br/>My main profession is actually software engineering - I'm more than happy to help out on small projects. Maybe write about your technology, help you bring up proof-of-concept, or work on small code projects (I have experience in most programming languages and will just adapt to your style)<br/>
+            At this time of lockdown due to COVID-19, I find myself currently in the unfortunate situation of being between jobs and working from home - and beer brewing demand is down generally<br/><br/>
+            My main profession is actually software engineering - I'm more than happy to help out on small projects as a temporary solution. <br/>
+            Maybe I'll write about your technology, help you bring up proof-of-concept, or work on small code projects (I have experience in most programming languages and will just adapt to your style)<br/>
+            Other side projects I've been working on recently is peer-to-peer media sharing, e.g. over Protocol Labs IPFS<br/>
+            And streaming weddings (in NSW only 5 persons are currenlty allowed to attend a wedding ceremony), we're attempting to virtually inject the congregation!<br/>
             <br/>
-            You can contact me about freelancing or full-time paid work in the following ways...
+            You can contact me about casual freelancing in the following ways...
             <br/>
             <br/>
             Head to LinkedIn <a href={"https://www.linkedin.com/in/kevleyski/"} target={"_blank"} className={classLink3}>@kevleyski</a>
@@ -98,7 +102,7 @@ class App extends Component {
             Or email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className={classLink3}>kev@pyrmontbrewery.com.au</a>
             <br/>
             <br/>
-            My resume <a href={"kjsl_resume_2020.pdf"} target={"_blank"} className={classLink3}>PDF</a> - <a href={"kjsl_resume_2020.docx"} target={"_blank"} className={classLink3}>Word</a>
+            My resume/reference <a href={"kjsl_resume_2020.pdf"} target={"_blank"} className={classLink3}>PDF</a> - <a href={"kjsl_resume_2020.docx"} target={"_blank"} className={classLink3}>Word</a>
             <br/>
             <br/>
 
@@ -112,7 +116,9 @@ class App extends Component {
             </a>
             <br/>
             <br/>
-            Thanks for stopping by!<br/>As for the 8-bit ZX Spectrum inspired website? This was just an afternoon hack with React! It's not something I claim I do at all well! ;-)<br/>
+            Thanks for stopping by!<br/>As for this 80's 8-bit ZX Spectrum inspired website? <br/>This was just an afternoon hack with React! It's not something I claim I do at all well and yes it's organic marketing for my beers!<br/>
+
+            Please stay safe,<br/>
             Kev
             <br/>
           </p>
@@ -157,7 +163,7 @@ class App extends Component {
             &copy; 2007 Pyrmont Brewery
             <br/>
               <br/>
-            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>COVID-19 update - looking for the 'Media Brewer'? head here</div>
+            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>COVID-19 update - I'm looking for 'Media Brewer'?</div>
             </a>
           </p>
           <br/>
