@@ -93,10 +93,19 @@ class App extends Component {
             Or email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className={classLink2}>kev@pyrmontbrewery.com.au</a>
             <br/>
             <br/>
-            Kev's resume <a href={"kjsl_resume_2020.pdf"} target={"_blank"} className={classLink}>PDF</a> - <a href={"kjsl_resume_2020.docx"} target={"_blank"} className={classLink}>Word</a>
+            Resume <a href={"kjsl_resume_2020.pdf"} target={"_blank"} className={classLink}>PDF</a> - <a href={"kjsl_resume_2020.docx"} target={"_blank"} className={classLink}>Word</a>
             <br/>
             <br/>
-            Thanks for stopping by!<br/>
+            What we're good at...<br/><br/>
+            HLS (FPS), MPEG-DASH and DVB-DASH manipulation<br/><br/>
+            Can and will pull TS and fMP4 files apart and put them back together, maybe somewhere else maybe with its from other files - who knows, anyhow if the codec supports splicing I’ll make it happen, and synch the audio too<br/><br/>
+            libav (FFmpeg, gstreamer)<br/><br/>
+            AVFoundation (AppleTV, iOS, macOS)<br/><br/>
+            ExoPlayer (Android TV)<br/><br/>
+            Chromecast<br/><br/>
+            <br/>
+            <br/>
+            Thanks for stopping by!<br/>Sorry for the 8-bit ZX Spectrum inpsired website, it is just a bit of fun with React!<br/>
             Kev
             <br/>
           </p>
