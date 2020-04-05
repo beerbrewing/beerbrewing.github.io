@@ -106,13 +106,17 @@ class App extends Component {
             <br/>
             <br/>
 
-            Some example blogs/slides...<br/>
+            Some example blogs/slides and examples...<br/>
             <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
               Pyrmont Brewery and brewing beer in and around Sydney in colonial tie up until today, click here<br/>
             </a>
             <br/>
             <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
               Raspberry Pi's - including AstroPi and possibly the Australian Space Agency involvement - click here to learn more about them
+            </a>
+            <br/>
+            <a href={"bitmovin.html"} target={"_blank"} className={classLink3}>
+              Bitmovin test player
             </a>
             <br/>
             <br/>
@@ -163,7 +167,7 @@ class App extends Component {
             &copy; 2007 Pyrmont Brewery
             <br/>
               <br/>
-            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>COVID-19 update - I'm looking for 'Media Brewer'?</div>
+            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>COVID-19 update - looking for 'Media Brewer'?</div>
             </a>
           </p>
           <br/>
