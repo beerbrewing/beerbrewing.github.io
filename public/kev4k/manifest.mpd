@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MPD id="f350e18e-5b6b-4cad-a828-aabf5deac358" profiles="urn:mpeg:dash:profile:isoff-live:2011,urn:com:dashif:dash264" type="static" mediaPresentationDuration="P0Y0M0DT0H0M15.015S" minBufferTime="P0Y0M0DT0H0M2.000S" xmlns="urn:mpeg:dash:schema:mpd:2011" xmlns:ns2="http://www.w3.org/1999/xlink">
+    <Period id="cb5e92f5-f607-48eb-be36-a87b466aed5b" start="P0Y0M0DT0H0M0.000S" bitmovin:label="cb5e92f5-f607-48eb-be36-a87b466aed5b" xmlns:bitmovin="http://www.bitmovin.net/mpd/2015">
+        <AdaptationSet segmentAlignment="true" mimeType="video/mp4">
+            <Representation id="4414fce2-0854-4ee8-b77e-603364dc5138" bandwidth="30000000" width="3840" height="2160" frameRate="30000/1001" codecs="avc1.640033">
+                <SegmentTemplate media="h264/30000000/seg_$Number$.m4s" initialization="h264/30000000/init.mp4" duration="120120" startNumber="0" timescale="30000"/>
+            </Representation>
+            <Representation id="d94bf941-11d1-4494-94a5-c3a71ace3aae" bandwidth="5800000" width="1920" height="1080" frameRate="30000/1001" codecs="avc1.640032">
+                <SegmentTemplate media="h264/5800000/seg_$Number$.m4s" initialization="h264/5800000/init.mp4" duration="120120" startNumber="0" timescale="30000"/>
+            </Representation>
+            <Representation id="e95dded4-b2c7-4c03-9e8c-725ec5dc0a45" bandwidth="4300000" width="1920" height="1080" frameRate="30000/1001" codecs="avc1.640032">
+                <SegmentTemplate media="h264/4300000/seg_$Number$.m4s" initialization="h264/4300000/init.mp4" duration="120120" startNumber="0" timescale="30000"/>
+            </Representation>
+            <Representation id="ef33337e-fc41-4396-b8a5-c6e58e4d03c2" bandwidth="3000000" width="1280" height="720" frameRate="30000/1001" codecs="avc1.64001F">
+                <SegmentTemplate media="h264/3000000/seg_$Number$.m4s" initialization="h264/3000000/init.mp4" duration="120120" startNumber="0" timescale="30000"/>
+            </Representation>
+            <Representation id="c7009ec7-d65f-4514-8417-08924c64c1aa" bandwidth="2300000" width="1280" height="720" frameRate="30000/1001" codecs="avc1.64001F">
+                <SegmentTemplate media="h264/2300000/seg_$Number$.m4s" initialization="h264/2300000/init.mp4" duration="120120" startNumber="0" timescale="30000"/>
+            </Representation>
+            <Representation id="fa7a5a98-5f39-4e0f-9f3d-c4a25545f005" bandwidth="1500000" width="1024" height="576" frameRate="30000/1001" codecs="avc1.64001F">
+                <SegmentTemplate media="h264/1500000/seg_$Number$.m4s" initialization="h264/1500000/init.mp4" duration="120120" startNumber="0" timescale="30000"/>
+            </Representation>
+            <Representation id="522346cc-8c14-460e-8367-daffbfad85ec" bandwidth="1000000" width="768" height="432" frameRate="30000/1001" codecs="avc1.64001E">
+                <SegmentTemplate media="h264/1000000/seg_$Number$.m4s" initialization="h264/1000000/init.mp4" duration="120120" startNumber="0" timescale="30000"/>
+            </Representation>
+            <Representation id="6e960efe-2f1d-4272-b645-2a91d56cf17a" bandwidth="750000" width="640" height="360" frameRate="30000/1001" codecs="avc1.64001E">
+                <SegmentTemplate media="h264/750000/seg_$Number$.m4s" initialization="h264/750000/init.mp4" duration="120120" startNumber="0" timescale="30000"/>
+            </Representation>
+            <Representation id="08cb4f66-5056-411e-91e3-81cd487b945a" bandwidth="550000" width="512" height="288" frameRate="30000/1001" codecs="avc1.640015">
+                <SegmentTemplate media="h264/550000/seg_$Number$.m4s" initialization="h264/550000/init.mp4" duration="120120" startNumber="0" timescale="30000"/>
+            </Representation>
+            <Representation id="c2271904-0029-4cad-b9eb-a96f4abe506c" bandwidth="375000" width="384" height="216" frameRate="30000/1001" codecs="avc1.64000D">
+                <SegmentTemplate media="h264/375000/seg_$Number$.m4s" initialization="h264/375000/init.mp4" duration="120120" startNumber="0" timescale="30000"/>
+            </Representation>
+            <Representation id="f3ecdf88-a3a9-4f86-b7ac-7fe1e6446123" bandwidth="240000" width="384" height="216" frameRate="30000/1001" codecs="avc1.64000D">
+                <SegmentTemplate media="h264/240000/seg_$Number$.m4s" initialization="h264/240000/init.mp4" duration="120120" startNumber="0" timescale="30000"/>
+            </Representation>
+        </AdaptationSet>
+        <AdaptationSet lang="en" segmentAlignment="true" mimeType="audio/mp4">
+            <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
+            <Representation id="817075cb-1194-4274-8b7b-12f71ab3605e" bandwidth="128000" audioSamplingRate="48000" codecs="mp4a.40.2">
+                <SegmentTemplate media="aac/128000/seg_$Number$.m4s" initialization="aac/128000/init.mp4" duration="192000" startNumber="0" timescale="48000"/>
+            </Representation>
+        </AdaptationSet>
+    </Period>
+</MPD>

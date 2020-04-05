@@ -105,20 +105,13 @@
 <body>
 <div id="wrapper">
     <div id="banner">
-        <div class="logo"><img src="images/bitmovin-logo.png"></div>
         <div class="title"><h1>Bitmovin HTML5 Player</h1></div>
         <div class="clear"></div>
     </div>
     <div class="container">
-        <h1>HTML5 Adaptive Streaming Player for MPEG-DASH & HLS</h1>
-        <h2>Your videos play everywhere with low startup delay, no buffering and in highest quality.</h2>
         <div class="content">
             <div class="player-wrapper">
                 <div id="player"></div>
-            </div>
-            <div class="description">
-                <p>For more information about the bitmovin player, please have a look at our online <a
-                        href="//bitmovin.com/support" target="_blank">Developer Section</a>.</p>
             </div>
         </div>
     </div>
@@ -131,10 +124,10 @@
         key: '9bbc81b3-f931-4b85-94de-b7df9d92a434'
     };
     var source = {
-        dash: 'https://pyrmontbrewery.s3-ap-southeast-2.amazonaws.com/bitmovin/kev4k/manifest.mpd',
-        hls: 'https://pyrmontbrewery.s3-ap-southeast-2.amazonaws.com/bitmovin/kev4k/manifest.m3u8',
-        progressive: 'https://pyrmontbrewery.s3-ap-southeast-2.amazonaws.com/IMG_0346.MOV',
-        poster: 'https://pyrmontbrewery.s3-ap-southeast-2.amazonaws.com/pyrmontbrewerylogo.jpg'
+        dash: 'kev4k/manifest.mpd',
+        hls: 'kev4k/manifest.m3u8',
+        progressive: 'IMG_0346.MOV',
+        poster: 'pyrmontbrewerylogo.jpg'
     };
 
     player = new bitmovin.player.Player(document.getElementById('player'), conf);
