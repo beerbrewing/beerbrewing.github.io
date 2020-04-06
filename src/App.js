@@ -168,9 +168,6 @@ class App extends Component {
               Bitmovin test player
             </a>
             <br/>
-            <iframe width="600" height="450"
-                    src="https://datastudio.google.com/embed/reporting/9886b2f5-a251-45c3-aede-db12dfcb3840/page/QeELB"
-                    frameBorder="0" style="border:0" allowFullScreen></iframe>
             <br/>
             Thanks for stopping by!<br/>As for this 80's 8-bit ZX Spectrum inspired website? <br/>This was just an afternoon hack with React! It's not something I claim I do at all well and yes it's organic marketing for my beers!<br/>
 
