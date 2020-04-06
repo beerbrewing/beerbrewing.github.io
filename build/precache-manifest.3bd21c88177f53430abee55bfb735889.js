@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "86fa2b5d1b29dbe0dfcb",
-    "url": "/build/static/css/main.10b29ad9.chunk.css"
+    "revision": "d62efb1196c8e6092560",
+    "url": "/build/static/css/main.ecd005ed.chunk.css"
   },
   {
-    "revision": "86fa2b5d1b29dbe0dfcb",
-    "url": "/build/static/js/main.e4d05526.chunk.js"
+    "revision": "d62efb1196c8e6092560",
+    "url": "/build/static/js/main.34d16528.chunk.js"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
     "url": "/build/static/js/runtime~main.9df7376b.js"
   },
   {
-    "revision": "7c236a22cdc17828797b",
-    "url": "/build/static/js/2.ae7946c3.chunk.js"
+    "revision": "3f4a519f6fc40a7e0e0f",
+    "url": "/build/static/js/2.46e34eb7.chunk.js"
   },
   {
     "revision": "ba003fe4ece60d15d98c6748e44a2d9a",
@@ -30,6 +30,10 @@ self.__precacheManifest = [
   {
     "revision": "a32d4d07fcf94c914522145e9fd118e0",
     "url": "/build/static/media/PyrmontBrewery_Kegerator.a32d4d07.png"
+  },
+  {
+    "revision": "f48ddd9ca3ec61a6497a30f975823c5a",
+    "url": "/build/static/media/slides_cover.f48ddd9c.png"
   },
   {
     "revision": "04ffa0f2899a8a6ac1c708133fb2053f",
@@ -92,7 +96,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_generic.5d44d1f8.png"
   },
   {
-    "revision": "806987363010e89dde1f8c1b3367efbc",
+    "revision": "5cec3af5fdbaeb47672210564c8cbd43",
     "url": "/build/index.html"
   }
 ];

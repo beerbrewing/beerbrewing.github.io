@@ -227,6 +227,19 @@ p {
     position: relative;
 }
 
+.Info {
+    scroll-snap-align: start;
+    display: flex;
+    background-size: cover;
+    justify-content: center;
+    opacity: 0.9;
+    align-items: center;
+    width: 90%;
+    position: relative;
+    padding: 20px 20px 20px 20px;
+}
+
+
 .App-link {
     background-color: #00ff00;
     color: #000000;
