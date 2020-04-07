@@ -167,6 +167,8 @@
     };
     var source;
 
+  document.write("canPlayType<br/>video<br/>playback<br/>support<br/>is<br/>");
+
   if(supportsVideoType('webm') === "probably") {
     var source = {
       dash: 'https://bitmovin-a.akamaihd.net/content/multi-codec/vp9/stream.mpd',
@@ -174,7 +176,7 @@
       progressive: 'IMG_0346.MOV',
       poster: 'browser-usage-chrome.png'
     };
-    document.write("Detected video playback support is WEBM");
+    document.write("WebM");
   } else {
     var source = {
       dash: 'https://bitmovin-a.akamaihd.net/content/multi-codec/h264/stream.mpd',
@@ -183,7 +185,7 @@
       poster: 'browser-usage.png'
     };
 
-    document.write("Detected video playback support is H.264");
+    document.write("H.264");
 
   }
 
