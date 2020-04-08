@@ -88,7 +88,7 @@ class App extends Component {
         <header className="App-header">
           <p className={sensible}>
             <h1>"Media Brewer"</h1>
-            At this time of lockdown due to COVID-19, I find myself currently in the unfortunate situation of being between jobs and working from home - and beer brewing demand is down generally<br/><br/>
+            At this time of lockdown due to COVID-19 - and beer brewing demand is down generally<br/><br/>
             My main profession is actually software engineering - I'm more than happy to help out on small projects as a temporary solution. <br/>
             Maybe I'll write about your technology, help you bring up proof-of-concept, or work on small code projects (I have experience in most programming languages and will just adapt to your style)<br/>
             Other side projects I've been working on recently is peer-to-peer media sharing, e.g. over Protocol Labs IPFS<br/>
@@ -225,7 +225,7 @@ class App extends Component {
         :
         <header className="App-header">
           <p>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink2}>
+            <a href={"aboutus.html"} target={"_blank"} className={classLink2}>
             <div className="Info">
               <div className="BeerSnap" style={{backgroundImage: `url(${SlidesCover})`}}><br/><br/><br/><br/><br/><br/></div>
               <div className="BeerDesc">Nestled amongst the Pyrmont yellowblock sandstone hides a secret brewery!</div>
@@ -389,7 +389,7 @@ class App extends Component {
           </p>
 
           <p>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink2}>
+            <a href={"raspberrypi.html"} target={"_blank"} className={classLink2}>
               We use Raspberry Pi's (learn more!)
             </a>
             <br/>
