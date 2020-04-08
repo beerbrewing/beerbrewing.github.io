@@ -167,26 +167,25 @@
     };
     var source;
 
-  document.write("canPlayType<br/>video<br/>playback<br/>support<br/>is<br/>");
-
   if(supportsVideoType('webm') === "probably") {
     var source = {
       dash: 'https://bitmovin-a.akamaihd.net/content/multi-codec/vp9/stream.mpd',
-      hls: 'https://bitmovin-a.akamaihd.net/content/multi-codec/vp9/stream.m3u8',
-      progressive: 'IMG_0346.MOV',
       poster: 'browser-usage-webm.png'
     };
-    document.write("WebM");
   } else {
-    var source = {
-      dash: 'https://bitmovin-a.akamaihd.net/content/multi-codec/h264/stream.mpd',
-      hls: 'https://bitmovin-a.akamaihd.net/content/multi-codec/h264/stream.m3u8',
-      progressive: 'IMG_0346.MOV',
-      poster: 'browser-usage-h264.png'
-    };
-
-    document.write("H.264");
-
+    // Detect Safari or IE
+    var ua = navigator.userAgent.toLowerCase();
+    if ((ua.indexOf('safari') != -1) || (ua.indexOf('edge') != -1)) {
+      var source = {
+        dash: 'https://bitmovin-a.akamaihd.net/content/multi-codec/hevc/stream.mpd',
+        poster: 'browser-usage-hevc.png'
+      };
+    } else {
+      var source = {
+        dash: 'https://bitmovin-a.akamaihd.net/content/multi-codec/h264/stream.mpd',
+        poster: 'browser-usage-h264.png'
+      };
+    }
   }
 
   player = new bitmovin.player.Player(document.getElementById('player'), conf);
