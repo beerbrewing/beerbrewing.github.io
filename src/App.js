@@ -225,7 +225,7 @@ class App extends Component {
         :
         <header className="App-header">
           <p>
-            <a href={"aboutus.html"} target={"_blank"} className={classLink2}>
+            <a href={"about.html"} target={"_blank"} className={classLink2}>
             <div className="Info">
               <div className="BeerSnap" style={{backgroundImage: `url(${SlidesCover})`}}><br/><br/><br/><br/><br/><br/></div>
               <div className="BeerDesc">Nestled amongst the Pyrmont yellowblock sandstone hides a secret brewery!</div>
