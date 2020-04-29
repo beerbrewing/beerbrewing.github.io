@@ -103,7 +103,7 @@ class App extends Component {
             Or email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className={classLink3}>kev@pyrmontbrewery.com.au</a>
             <br/>
             <br/>
-            My resume/reference <a href={"kjsl_resume_2020.pdf"} target={"_blank"} className={classLink3}>PDF</a> - <a href={"kjsl_resume_2020.docx"} target={"_blank"} className={classLink3}>Word</a>
+            My <a href={"resume.html"} target={"_blank"} className={classLink3}>resume is here</a> and also <a href={"kjsl_resume_2020.pdf"} target={"_blank"} className={classLink3}>PDF</a> - <a href={"kjsl_resume_2020.docx"} target={"_blank"} className={classLink3}>Word</a>
             <br/>
             <br/>
 
