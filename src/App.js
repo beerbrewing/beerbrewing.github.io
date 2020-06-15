@@ -6,7 +6,8 @@ import PyrmontBrewery_WheelieBin from './wheelie.png';
 import Loading from './pyrmontbwy.gif';
 import Buildings from './pyrmont_sandstone_buildings.jpeg';
 import './App.css';
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import Time from './Time';
+import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import desktopImage from './pyrmontbwy.gif';
 import quarryImage from './beer.png';
 import BuyThisBeer from './buy_beer.png';
@@ -77,7 +78,15 @@ class App extends Component {
       self.setState({isOldEnough: true, confirmedAge: true, afterKev: true});
     }
 
-    return <div className="App" style={{
+    return <Router>  <Switch>
+      <Route path="/about">
+        <About />
+      </Route>
+      <Route path="/time" render={() => {window.location.href="time.html"}}></Route>
+      <Route path="/">
+        <Home />
+      </Route>
+    </Switch><div className="App" style={{
       backgroundPosition: 'center',
       backgroundSize: '100%',
       backgroundRepeat: 'repeat',
@@ -428,15 +437,16 @@ class App extends Component {
 
         </header>
       } </div>
+      </Router>
   }
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return "";
 }
 
 function About() {
-  return <h2>About</h2>;
+  return <h3>About</h3>;
 }
 
 function Topic({match}) {

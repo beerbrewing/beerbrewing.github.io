@@ -1,31 +1,31 @@
 self.__precacheManifest = [
   {
-    "revision": "a2b82c73b055c61e7551",
-    "url": "/build/static/css/main.ecd005ed.chunk.css"
+    "revision": "13f76e0cfa0337b1ed17",
+    "url": "/build/static/css/main.3e3e4430.chunk.css"
   },
   {
-    "revision": "a2b82c73b055c61e7551",
-    "url": "/build/static/js/main.bce0744a.chunk.js"
+    "revision": "13f76e0cfa0337b1ed17",
+    "url": "/build/static/js/main.6c59ac56.chunk.js"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
     "url": "/build/static/js/runtime~main.9df7376b.js"
   },
   {
-    "revision": "3f4a519f6fc40a7e0e0f",
-    "url": "/build/static/js/2.46e34eb7.chunk.js"
+    "revision": "f94019385badf8ac5940",
+    "url": "/build/static/js/2.e473c1b9.chunk.js"
   },
   {
     "revision": "ba003fe4ece60d15d98c6748e44a2d9a",
     "url": "/build/static/media/beer.ba003fe4.png"
   },
   {
-    "revision": "9d44e6e7839b710ce1c16f27cfa9504c",
-    "url": "/build/static/media/logo.9d44e6e7.svg"
-  },
-  {
     "revision": "5749b01d12aa9b0416b534341bdf2457",
     "url": "/build/static/media/pyrmontbwy.5749b01d.gif"
+  },
+  {
+    "revision": "9d44e6e7839b710ce1c16f27cfa9504c",
+    "url": "/build/static/media/logo.9d44e6e7.svg"
   },
   {
     "revision": "a32d4d07fcf94c914522145e9fd118e0",
@@ -84,10 +84,6 @@ self.__precacheManifest = [
     "url": "/build/static/media/pyrmont_sandstone_buildings.a0af8abc.jpeg"
   },
   {
-    "revision": "24bbeca205632d17d38a79866b77c798",
-    "url": "/build/static/media/pyrmont_brewery.24bbeca2.woff2"
-  },
-  {
     "revision": "170b19fac8d50dc75d0514f1ab6f8bb8",
     "url": "/build/static/media/buy_beer.170b19fa.png"
   },
@@ -96,7 +92,11 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_generic.5d44d1f8.png"
   },
   {
-    "revision": "cc846fdcd712986c524e9337e355188a",
+    "revision": "24bbeca205632d17d38a79866b77c798",
+    "url": "/build/static/media/pyrmont_brewery.24bbeca2.woff2"
+  },
+  {
+    "revision": "751ecf7c531f1b3d68c926ebb5e8fa19",
     "url": "/build/index.html"
   }
 ];
