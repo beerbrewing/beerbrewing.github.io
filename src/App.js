@@ -15,6 +15,7 @@ import SlidesCover from './slides_cover.png';
 import LabelHalfWayHouseChocolateStout from './label_half_way_house_chocolate_stout.png';
 import LabelArrogantHarrisStrongAle from './label_arrogant_harris_strong_ale.png';
 import LabelMaybankeDarkMild from './label_maybanke_dark_mild.png';
+import LabelCaneiteBourbonImperial from './label_caneite_imperial.png';
 import LabelWhingingPomBestBitter from './label_whinging_pom_best_bitter.png';
 import LabelWokosCloudyCider from './label_wokos_cloudy_cider.png';
 import LabelPurgatoryPaleAle from './label_purgatory_pale_ale.png';
@@ -271,6 +272,17 @@ class App extends Component {
               classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are
               lower in carbonation and if you want, can be gravity served straight from the keg without
               refrigeration<br/><br/></div>
+          </div>
+          <div>
+            <br/>
+          </div>
+          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelCaneiteBourbonImperial})`}}><a
+              href={"mailto:kegs_caneite@pyrmontbrewery.com?subject=Beer: Caneite Imperial&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
+              target={"_blank"}
+              className={beerLink}>Program:<br/>Caneite<br/>Bourbon<br/>Barrel<br/>Imperial<br/>10.5%<br/><br/></a></div>
+            <div className="BeerDesc">Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these balls and squash it into building materials<br/><br/>This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
+              <br/><br/></div>
           </div>
           <div>
             <br/>
