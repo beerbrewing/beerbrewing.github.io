@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "f87a627b52b89ac063a2",
+    "revision": "35c654ee04fd2c06f704",
     "url": "/build/static/css/main.3e3e4430.chunk.css"
   },
   {
-    "revision": "f87a627b52b89ac063a2",
-    "url": "/build/static/js/main.18231cfd.chunk.js"
+    "revision": "35c654ee04fd2c06f704",
+    "url": "/build/static/js/main.663d41d9.chunk.js"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
@@ -100,7 +100,7 @@ self.__precacheManifest = [
     "url": "/build/static/media/pyrmont_brewery.24bbeca2.woff2"
   },
   {
-    "revision": "ca57b610031a2c0093fa65f3118ce555",
+    "revision": "c9fd1d5a0fb76e9a5284f54c3d362a1b",
     "url": "/build/index.html"
   }
 ];

@@ -289,7 +289,7 @@ class App extends Component {
               href={"mailto:kegs_caneite@pyrmontbrewery.com?subject=Beer: Caneite Imperial&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Caneite<br/>Bourbon<br/>Barrel<br/>Imperial<br/>10.5%<br/><br/></a></div>
-            <div className="BeerDesc">Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these balls and squash it into building materials<br/><br/>This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
+            <div className="BeerDesc">Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these giant balls and squash it into building materials<br/><br/>This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
               <br/><br/></div>
           </div>
           <div>
