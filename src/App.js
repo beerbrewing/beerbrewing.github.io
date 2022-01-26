@@ -7,12 +7,13 @@ import Loading from './pyrmontbwy.gif';
 import Buildings from './pyrmont_sandstone_buildings.jpeg';
 import './App.css';
 import Time from './Time';
-import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
+import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import desktopImage from './pyrmontbwy.gif';
 import quarryImage from './beer.png';
 import BuyThisBeer from './buy_beer.png';
 import SlidesCover from './slides_cover.png';
 import LabelHalfWayHouseChocolateStout from './label_half_way_house_chocolate_stout.png';
+import LabelHalfWayHouseZeroAlc from './label_half_way_house_zero_alcohol.png';
 import LabelArrogantHarrisStrongAle from './label_arrogant_harris_strong_ale.png';
 import LabelMaybankeDarkMild from './label_maybanke_dark_mild.png';
 import LabelCaneiteBourbonImperial from './label_caneite_imperial.png';
@@ -22,6 +23,7 @@ import LabelPurgatoryPaleAle from './label_purgatory_pale_ale.png';
 import LabelParadiseFrenchSaison from './label_paradise_french_saison.png';
 import LabelQuarryQuafferAussieLager from './label_quarry_quaffer_aussie_lager.png';
 import LabelHellHoleHelles from './label_hell_hole_helles.png';
+import LabelGoldsbroughNEPIA from './label_goldsbrough_neipa.png';
 import LabelGeneric from './label_generic.png';
 
 import ReactPixel from 'react-facebook-pixel';
@@ -79,84 +81,15 @@ class App extends Component {
       self.setState({isOldEnough: true, confirmedAge: true, afterKev: true});
     }
 
-    return <Router>
-      <Switch>
+    return <BrowserRouter>
+      <Routes>
       <Route path="/about">
-        <header className="App-header">
-          <p className={sensible}>
-            Some example blogs/slides and examples...<br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              Pyrmont Brewery and brewing beer in and around Sydney in colonial times up until today, click here<br/>
-            </a>
-            <iframe
-                src="https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/embed?start=false&loop=false&delayms=3000"
-                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-                webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              Raspberry Pi's - including AstroPi and possibly the Australian Space Agency involvement - click here to learn more about them
-            </a>
-            <iframe
-                src="https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/embed?start=false&loop=false&delayms=3000"
-                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-                webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              Wild Fire! - click here to for ideas around how video engineers can also help save lives
-            </a>
-            <iframe
-                src="https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/embed?start=false&loop=false&delayms=3000"
-                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-                webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              XDebug - click here for info on debuggina dn profiling with XDebug
-            </a>
-            <iframe
-                src="https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/embed?start=false&loop=false&delayms=3000"
-                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-                webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              WebAssembly - click here to learn for a quick intro about what it is
-            </a>
-            <iframe
-                src="https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/embed?start=false&loop=false&delayms=3000"
-                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-                webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              AV1 Video codec - click here to learn what its about and how to get going with it
-            </a>
-            <iframe
-                src="https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/embed?start=false&loop=false&delayms=3000"
-                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-                webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              Low Latency media streaming - click here to learn how it all works
-            </a>
-            <iframe
-                src="https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/embed?start=false&loop=false&delayms=3000"
-                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-                webkitallowfullscreen="true"></iframe>
-            <br/>
-            <br/>
-            <br/>
-            Thanks for stopping by!<br/>As for this 80's 8-bit ZX Spectrum inspired website? <br/>This was just an afternoon hack with React! It's not something I claim I do at all well and yes it's organic marketing for my beers!<br/>
-            <br/>
-          </p>
-          <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
-          <br/>
-          <br/>
-          <br/>
-        </header>      </Route>
+      </Route>
       <Route path="/time" render={() => {window.location.href="time.html"}}></Route>
         <Route path="/streams" render={() => {window.location.href="streams.html"}}></Route>
       <Route path="/">
-        <Home />
       </Route>
-    </Switch><div className="App" style={{
+    </Routes><div className="App" style={{
       backgroundPosition: 'center',
       backgroundSize: '100%',
       backgroundRepeat: 'repeat',
@@ -264,7 +197,7 @@ class App extends Component {
               href={"mailto:kegs_halfway@pyrmontbrewery.com?subject=Beer: Half Way House&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Half Way House<br/>Chocolate Stout<br/>4.5%<br/></a></div>
-            <div className="BeerDesc">Half Way House was the sandstone quarry and later a pub on Miller Street where the
+            <div className="BeerDesc">Half Way House Chocolate Stout 4.5%<br/><br/>Half Way House was the sandstone quarry and later a pub on Miller Street where the
               brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade. <br/><br/>This
               beer is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div>
           </div>
@@ -276,10 +209,21 @@ class App extends Component {
               href={"mailto:kegs_whingingpom@pyrmontbrewery.com?subject=Beer: Whinging Pom Bitter&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Whinging Pom<br/>Real Ale<br/>4.4%<br/><br/></a></div>
-            <div className="BeerDesc">British Bitter for all you expats of which there are many in Pyrmont! <br/><br/>A
+            <div className="BeerDesc">Whinging Pom Real Ale 4.4%<br/><br/>British Bitter for all you expats of which there are many in Pyrmont! <br/><br/>A
               classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are
               lower in carbonation and if you want, can be gravity served straight from the keg without
               refrigeration<br/><br/></div>
+          </div>
+          <div>
+            <br/>
+          </div>
+          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelGoldsbroughNEPIA})`}}><a
+                href={"mailto:kegs_whingingpom@pyrmontbrewery.com?subject=Beer: Whinging Pom Bitter&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
+                target={"_blank"}
+                className={beerLink}>Program:<br/>Goldsbrough<br/>Hazy New England IIPA<br/>7.3%<br/><br/></a></div>
+            <div className="BeerDesc">Goldsbrough Hazy New England IIPA 7.3%<br/><br/>Goldsborough Mort was the large wool stores in Pyrmont. This fruity Double IPA Hazy inspired by Mountain Culture "Dolly"
+              <br/><br/>Fruity notes, lots of fresh dry hopping in this one<br/><br/></div>
           </div>
           <div>
             <br/>
@@ -289,7 +233,7 @@ class App extends Component {
               href={"mailto:kegs_caneite@pyrmontbrewery.com?subject=Beer: Caneite Imperial&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Caneite<br/>Bourbon<br/>Barrel<br/>Imperial<br/>10.5%<br/><br/></a></div>
-            <div className="BeerDesc">Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these giant balls and squash it into building materials<br/><br/>This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
+            <div className="BeerDesc">Caneite Bourbon Barrel Imperial 10.5%<br/><br/>Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these giant balls and squash it into building materials<br/><br/>This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
               <br/><br/></div>
           </div>
           <div>
@@ -300,7 +244,7 @@ class App extends Component {
               href={"mailto:kegs_maybanke@pyrmontbrewery.com?subject=Beer: Maybanke Dark Mild&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Maybanke<br/>Dark Mild<br/>3.4%<br/><br/><br/></a></div>
-            <div className="BeerDesc">Maybanke Anderson set up and operated the first kindergarten school here in
+            <div className="BeerDesc">>Maybanke Dark Mild 3.4%<br/><br/>Maybanke Anderson set up and operated the first kindergarten school here in
               Australia. An amazing achievement! <br/><br/>This is an English Midlands dark mild (mid-strength) similar
               to Banks' Dark Mild<br/><br/></div>
           </div>
@@ -312,7 +256,7 @@ class App extends Component {
               href={"mailto:kegs_arrogant@pyrmontbrewery.com?subject=Beer: Arrogan Harris Strong Ale&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Arrogant Harris<br/>Strong Ale<br/>7.0%<br/><br/></a></div>
-            <div className="BeerDesc">John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and
+            <div className="BeerDesc">Arrogant Harris Strong Ale 7.0%<br/><br/>John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and
               lived in Pyrmont. He didn't always get on with everyone and was court marshalled (twice)<br/><br/>This
               beer is inspired by the famously yummy brews 'you probably won't like' from San Diego,
               California<br/><br/></div>
@@ -325,7 +269,7 @@ class App extends Component {
               href={"mailto:kegs_quaffer@pyrmontbrewery.com?subject=Beer: Quarry Quaffer Aussie Lager&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Quarry Quaffer<br/>Aussie Lager<br/>4.9%<br/></a></div>
-            <div className="BeerDesc">"Like a wave of Angels crashing over me tongue!" [Dave 'Sensational'
+            <div className="BeerDesc">Quarry Quaffer Aussie Lager 4.9%<br/><br/>"Like a wave of Angels crashing over me tongue!" [Dave 'Sensational'
               Robbo]<br/><br/>Very much like VB/Carlton it's sweet and bitter at the same time, Pride of Ringwood hops
               all the way, full strength lager beer<br/><br/></div>
           </div>
@@ -379,6 +323,16 @@ class App extends Component {
           <div>
             <br/>
           </div>
+          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelHalfWayHouseZeroAlc})`}}><a
+                href={"mailto:kegs_halfway@pyrmontbrewery.com?subject=Beer: Half Way House ZERO&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
+                target={"_blank"}
+                className={beerLink}>Program:<br/>Half Way House ZERO<br/>Chocolate Stout<br/>&lt;0.5%<br/></a></div>
+            <div className="BeerDesc">Half Way House ZERO Alcohol Stout &lt;0.5%<br/><br/>Half Way House de-alcoholized through pasturisation at 80C<br/><br/></div>
+          </div>
+          <div>
+            <br/>
+          </div>
           <br/>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
@@ -425,6 +379,13 @@ class App extends Component {
           </p>
 
           <p>
+            <a href={"beercoin.html"} target={"_blank"} className={classLink2}>
+              Pyrmont Brewery has its own cryptocurrency "Beercoin" to track via blockchain inventory, recipie, fermenter tank, bite, keg, venue (learn more!)
+            </a>
+            <br/>
+          </p>
+
+          <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             pyrmontbrewery.com.au<br/>
             ABN: 47 824 483 808<br/>
@@ -457,7 +418,7 @@ class App extends Component {
 
         </header>
       } </div>
-      </Router>
+      </BrowserRouter>
   }
 }
 
@@ -466,7 +427,76 @@ function Home() {
 }
 
 function About() {
-  return <h3>About</h3>;
+  return <h3>About</h3>
+    // <header className="App-header">
+    //   <p className={sensible}>
+    //     Some example blogs/slides and examples...<br/>
+    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+    //       Pyrmont Brewery and brewing beer in and around Sydney in colonial times up until today, click here<br/>
+    //     </a>
+    //     <iframe
+    //         src="https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/embed?start=false&loop=false&delayms=3000"
+    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+    //         webkitallowfullscreen="true"></iframe>
+    //     <br/>
+    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+    //       Raspberry Pi's - including AstroPi and possibly the Australian Space Agency involvement - click here to learn more about them
+    //     </a>
+    //     <iframe
+    //         src="https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/embed?start=false&loop=false&delayms=3000"
+    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+    //         webkitallowfullscreen="true"></iframe>
+    //     <br/>
+    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+    //       Wild Fire! - click here to for ideas around how video engineers can also help save lives
+    //     </a>
+    //     <iframe
+    //         src="https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/embed?start=false&loop=false&delayms=3000"
+    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+    //         webkitallowfullscreen="true"></iframe>
+    //     <br/>
+    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+    //       XDebug - click here for info on debuggina dn profiling with XDebug
+    //     </a>
+    //     <iframe
+    //         src="https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/embed?start=false&loop=false&delayms=3000"
+    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+    //         webkitallowfullscreen="true"></iframe>
+    //     <br/>
+    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+    //       WebAssembly - click here to learn for a quick intro about what it is
+    //     </a>
+    //     <iframe
+    //         src="https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/embed?start=false&loop=false&delayms=3000"
+    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+    //         webkitallowfullscreen="true"></iframe>
+    //     <br/>
+    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+    //       AV1 Video codec - click here to learn what its about and how to get going with it
+    //     </a>
+    //     <iframe
+    //         src="https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/embed?start=false&loop=false&delayms=3000"
+    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+    //         webkitallowfullscreen="true"></iframe>
+    //     <br/>
+    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+    //       Low Latency media streaming - click here to learn how it all works
+    //     </a>
+    //     <iframe
+    //         src="https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/embed?start=false&loop=false&delayms=3000"
+    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+    //         webkitallowfullscreen="true"></iframe>
+    //     <br/>
+    //     <br/>
+    //     <br/>
+    //     Thanks for stopping by!<br/>As for this 80's 8-bit ZX Spectrum inspired website? <br/>This was just an afternoon hack with React! It's not something I claim I do at all well and yes it's organic marketing for my beers!<br/>
+    //     <br/>
+    //   </p>
+    //   <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
+    //   <br/>
+    //   <br/>
+    //   <br/>
+    // </header>;
 }
 
 function Topic({match}) {
