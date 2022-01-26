@@ -15,6 +15,7 @@ import SlidesCover from './slides_cover.png';
 import LabelHalfWayHouseChocolateStout from './label_half_way_house_chocolate_stout.png';
 import LabelArrogantHarrisStrongAle from './label_arrogant_harris_strong_ale.png';
 import LabelMaybankeDarkMild from './label_maybanke_dark_mild.png';
+import LabelCaneiteBourbonImperial from './label_caneite_imperial.png';
 import LabelWhingingPomBestBitter from './label_whinging_pom_best_bitter.png';
 import LabelWokosCloudyCider from './label_wokos_cloudy_cider.png';
 import LabelPurgatoryPaleAle from './label_purgatory_pale_ale.png';
@@ -78,11 +79,80 @@ class App extends Component {
       self.setState({isOldEnough: true, confirmedAge: true, afterKev: true});
     }
 
-    return <Router>  <Switch>
+    return <Router>
+      <Switch>
       <Route path="/about">
-        <About />
-      </Route>
+        <header className="App-header">
+          <p className={sensible}>
+            Some example blogs/slides and examples...<br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+              Pyrmont Brewery and brewing beer in and around Sydney in colonial times up until today, click here<br/>
+            </a>
+            <iframe
+                src="https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/embed?start=false&loop=false&delayms=3000"
+                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+                webkitallowfullscreen="true"></iframe>
+            <br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+              Raspberry Pi's - including AstroPi and possibly the Australian Space Agency involvement - click here to learn more about them
+            </a>
+            <iframe
+                src="https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/embed?start=false&loop=false&delayms=3000"
+                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+                webkitallowfullscreen="true"></iframe>
+            <br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+              Wild Fire! - click here to for ideas around how video engineers can also help save lives
+            </a>
+            <iframe
+                src="https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/embed?start=false&loop=false&delayms=3000"
+                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+                webkitallowfullscreen="true"></iframe>
+            <br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+              XDebug - click here for info on debuggina dn profiling with XDebug
+            </a>
+            <iframe
+                src="https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/embed?start=false&loop=false&delayms=3000"
+                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+                webkitallowfullscreen="true"></iframe>
+            <br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+              WebAssembly - click here to learn for a quick intro about what it is
+            </a>
+            <iframe
+                src="https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/embed?start=false&loop=false&delayms=3000"
+                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+                webkitallowfullscreen="true"></iframe>
+            <br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+              AV1 Video codec - click here to learn what its about and how to get going with it
+            </a>
+            <iframe
+                src="https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/embed?start=false&loop=false&delayms=3000"
+                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+                webkitallowfullscreen="true"></iframe>
+            <br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
+              Low Latency media streaming - click here to learn how it all works
+            </a>
+            <iframe
+                src="https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/embed?start=false&loop=false&delayms=3000"
+                frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
+                webkitallowfullscreen="true"></iframe>
+            <br/>
+            <br/>
+            <br/>
+            Thanks for stopping by!<br/>As for this 80's 8-bit ZX Spectrum inspired website? <br/>This was just an afternoon hack with React! It's not something I claim I do at all well and yes it's organic marketing for my beers!<br/>
+            <br/>
+          </p>
+          <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
+          <br/>
+          <br/>
+          <br/>
+        </header>      </Route>
       <Route path="/time" render={() => {window.location.href="time.html"}}></Route>
+        <Route path="/streams" render={() => {window.location.href="streams.html"}}></Route>
       <Route path="/">
         <Home />
       </Route>
@@ -116,70 +186,9 @@ class App extends Component {
             <br/>
             <br/>
 
-            Some example blogs/slides and examples...<br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              Pyrmont Brewery and brewing beer in and around Sydney in colonial times up until today, click here<br/>
+            <a href={"/about"} className={classLink3}>
+              Some example blogs/slides and examples, click here<br/>
             </a>
-            <iframe
-              src="https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/embed?start=false&loop=false&delayms=3000"
-              frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-              webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              Raspberry Pi's - including AstroPi and possibly the Australian Space Agency involvement - click here to learn more about them
-            </a>
-            <iframe
-              src="https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/embed?start=false&loop=false&delayms=3000"
-              frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-              webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              Wild Fire! - click here to for ideas around how video engineers can also help save lives
-            </a>
-            <iframe
-              src="https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/embed?start=false&loop=false&delayms=3000"
-              frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-              webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              XDebug - click here for info on debuggina dn profiling with XDebug
-            </a>
-            <iframe
-              src="https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/embed?start=false&loop=false&delayms=3000"
-              frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-              webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              WebAssembly - click here to learn for a quick intro about what it is
-            </a>
-            <iframe
-              src="https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/embed?start=false&loop=false&delayms=3000"
-              frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-              webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              AV1 Video codec - click here to learn what its about and how to get going with it
-            </a>
-            <iframe
-              src="https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/embed?start=false&loop=false&delayms=3000"
-              frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-              webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-              Low Latency media streaming - click here to learn how it all works
-            </a>
-            <iframe
-              src="https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/embed?start=false&loop=false&delayms=3000"
-              frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-              webkitallowfullscreen="true"></iframe>
-            <br/>
-            <a href={"bitmovin.html"} target={"_blank"} className={classLink3}>
-              Bitmovin test player
-            </a>
-            <br/>
-            <br/>
-            Thanks for stopping by!<br/>As for this 80's 8-bit ZX Spectrum inspired website? <br/>This was just an afternoon hack with React! It's not something I claim I do at all well and yes it's organic marketing for my beers!<br/>
-
             Please stay safe,<br/>
             Kev
             <br/>
@@ -271,6 +280,17 @@ class App extends Component {
               classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are
               lower in carbonation and if you want, can be gravity served straight from the keg without
               refrigeration<br/><br/></div>
+          </div>
+          <div>
+            <br/>
+          </div>
+          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelCaneiteBourbonImperial})`}}><a
+              href={"mailto:kegs_caneite@pyrmontbrewery.com?subject=Beer: Caneite Imperial&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
+              target={"_blank"}
+              className={beerLink}>Program:<br/>Caneite<br/>Bourbon<br/>Barrel<br/>Imperial<br/>10.5%<br/><br/></a></div>
+            <div className="BeerDesc">Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these giant balls and squash it into building materials<br/><br/>This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
+              <br/><br/></div>
           </div>
           <div>
             <br/>

@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "13f76e0cfa0337b1ed17",
+    "revision": "35c654ee04fd2c06f704",
     "url": "/build/static/css/main.3e3e4430.chunk.css"
   },
   {
-    "revision": "13f76e0cfa0337b1ed17",
-    "url": "/build/static/js/main.6c59ac56.chunk.js"
+    "revision": "35c654ee04fd2c06f704",
+    "url": "/build/static/js/main.663d41d9.chunk.js"
   },
   {
     "revision": "b4d8ef2cb7791815737b",
     "url": "/build/static/js/runtime~main.9df7376b.js"
   },
   {
-    "revision": "f94019385badf8ac5940",
-    "url": "/build/static/js/2.e473c1b9.chunk.js"
+    "revision": "56736269bbd199fdaa1a",
+    "url": "/build/static/js/2.e2de7855.chunk.js"
   },
   {
     "revision": "ba003fe4ece60d15d98c6748e44a2d9a",
@@ -92,11 +92,15 @@ self.__precacheManifest = [
     "url": "/build/static/media/label_generic.5d44d1f8.png"
   },
   {
+    "revision": "63958d072291d1e1111ae769c51182a9",
+    "url": "/build/static/media/label_caneite_imperial.63958d07.png"
+  },
+  {
     "revision": "24bbeca205632d17d38a79866b77c798",
     "url": "/build/static/media/pyrmont_brewery.24bbeca2.woff2"
   },
   {
-    "revision": "751ecf7c531f1b3d68c926ebb5e8fa19",
+    "revision": "c9fd1d5a0fb76e9a5284f54c3d362a1b",
     "url": "/build/index.html"
   }
 ];
