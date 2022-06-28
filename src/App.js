@@ -364,7 +364,13 @@ class App extends Component {
             <br/>
           </p>
           <p>
-            &gt;Open Source and NFT recipes<br/><br/>
+            <a href={"nftrecipies.html"} target={"_blank"} className={classLink2}>
+              &gt; NFT Recipies!<br/><br/>Pyrmont Brewery is selling NFTs (Ethereum network) of seasonal beer recipies if you want to buy them
+            </a>
+            <br/>
+          </p>
+          <p>
+            &gt;Open Source<br/><br/>
             Being a massive fan of open source and creative commons, our head brewer
             is sharing a small selection of pilot batch recipes for you to have a go at home:<br/>
             <a href={"Beer Arrogant Bastard.xml"} target={"_blank"} className={classLink}>Arrogant Bastard.xml</a> -
@@ -384,7 +390,6 @@ class App extends Component {
             Saison
             </p>
             <br/>
-            Some past seasonal recipes are available for sale as an NFT too!
           <br/>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
