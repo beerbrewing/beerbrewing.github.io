@@ -161,7 +161,7 @@ class App extends Component {
             <br/>
             <div className="ButtonNo" id="no" onClick={handleTooYoung}>No, I'm too young</div>
             <br/>
-            <div className="ButtonYes" id="yes18" onClick={handleOldEnough}>Strewth, I'm bloody old</div>
+            <div className="ButtonYes" id="yes18" onClick={handleOldEnough}>Strewth, yeah I'm bloody old</div>
             <br/>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             &copy; 2007 Pyrmont Brewery
@@ -176,10 +176,11 @@ class App extends Component {
         :
         <header className="App-header">
           <p>
-            <a href={"about.html"} target={"_blank"} className={classLink2}>
+            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             <div className="Info">
-              <div className="BeerSnap" style={{backgroundImage: `url(${SlidesCover})`}}><br/><br/><br/><br/><br/><br/></div>
-              <div className="BeerDesc">Nestled amongst the Pyrmont yellowblock sandstone hides a secret brewery!</div>
+              <div className="BeerSnap" style={{backgroundImage: `url(${SlidesCover})`}}><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+              &nbsp;
+              <div className="BeerDesc">&gt; Nestled amongst Pyrmont's sandstone hides a secret brewery!<br/><br/>Brewing ales similar to those that came from the original 1880 Pyrmont Brewery.<div className="speccy_flash_black">Read all out it here</div></div>
             </div>
             </a>
           </p>
@@ -192,13 +193,14 @@ class App extends Component {
           <div>
             <br/>
           </div>
+          Core range
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap" style={{backgroundImage: `url(${LabelHalfWayHouseChocolateStout})`}}><a
               href={"mailto:kegs_halfway@pyrmontbrewery.com?subject=Beer: Half Way House&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Half Way House<br/>Chocolate Stout<br/>4.5%<br/></a></div>
-            <div className="BeerDesc">Half Way House Chocolate Stout 4.5%<br/><br/>Half Way House was the sandstone quarry and later a pub on Miller Street where the
-              brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade. <br/><br/>This
+            <div className="BeerDesc">&gt; Half Way House Chocolate Stout<br/>4.5% IBU 29 EBC 68<br/><br/>Half Way House was the sandstone quarry and later a pub on Miller Street where the
+              brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade.<br/><br/>This
               beer is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div>
           </div>
           <div>
@@ -209,7 +211,7 @@ class App extends Component {
               href={"mailto:kegs_whingingpom@pyrmontbrewery.com?subject=Beer: Whinging Pom Bitter&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Whinging Pom<br/>Real Ale<br/>4.4%<br/><br/></a></div>
-            <div className="BeerDesc">Whinging Pom Real Ale 4.4%<br/><br/>British Bitter for all you expats of which there are many in Pyrmont! <br/><br/>A
+            <div className="BeerDesc">&gt; Whinging Pom Real Ale<br/>4.4% IBU 30 EBC 27<br/><br/>British Bitter for all you expats of which there are many in Pyrmont! <br/><br/>A
               classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are
               lower in carbonation and if you want, can be gravity served straight from the keg without
               refrigeration<br/><br/></div>
@@ -218,11 +220,21 @@ class App extends Component {
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
+            <div className="BeerSnap" style={{backgroundImage: `url(${LabelMaybankeDarkMild})`}}><a
+                href={"mailto:kegs_maybanke@pyrmontbrewery.com?subject=Beer: Maybanke Dark Mild&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
+                target={"_blank"}
+                className={beerLink}>Program:<br/>Maybanke<br/>Dark Mild<br/>3.4%<br/><br/><br/></a></div>
+            <div className="BeerDesc">&gt; Maybanke Dark Mild<br/>3.4% IBU 20 EBC 35<br/><br/>Maybanke Anderson set up and operated the first kindergarten school here in
+              Australia. An amazing achievement! <br/><br/>This is an English Midlands dark mild (mid-strength) similar
+              to Banks' Dark Mild<br/><br/></div>
+          </div>
+          Seasonals
+          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap" style={{backgroundImage: `url(${LabelGoldsbroughNEPIA})`}}><a
                 href={"mailto:kegs_whingingpom@pyrmontbrewery.com?subject=Beer: Whinging Pom Bitter&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
                 target={"_blank"}
                 className={beerLink}>Program:<br/>Goldsbrough<br/>Hazy New England IIPA<br/>7.3%<br/><br/></a></div>
-            <div className="BeerDesc">Goldsbrough Hazy New England IIPA 7.3%<br/><br/>Goldsborough Mort was the large wool stores in Pyrmont. This fruity Double IPA Hazy inspired by Mountain Culture "Dolly"
+            <div className="BeerDesc">&gt; Goldsbrough Hazy New England IIPA<br/>7.3% IBU 13 EBC 12<br/><br/>Goldsborough Mort was the large wool stores in Pyrmont. This fruity Double IPA Hazy inspired by Mountain Culture "Dolly"
               <br/><br/>Fruity notes, lots of fresh dry hopping in this one<br/><br/></div>
           </div>
           <div>
@@ -233,32 +245,23 @@ class App extends Component {
               href={"mailto:kegs_caneite@pyrmontbrewery.com?subject=Beer: Caneite Imperial&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Caneite<br/>Bourbon<br/>Barrel<br/>Imperial<br/>10.5%<br/><br/></a></div>
-            <div className="BeerDesc">Caneite Bourbon Barrel Imperial 10.5%<br/><br/>Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these giant balls and squash it into building materials<br/><br/>This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
+            <div className="BeerDesc">&gt; Caneite Bourbon Barrel Imperial<br/>10.5% IBU 50 EBC 73<br/><br/>Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these giant balls and squash it into building materials<br/><br/>This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
               <br/><br/></div>
           </div>
           <div>
             <br/>
-          </div>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelMaybankeDarkMild})`}}><a
-              href={"mailto:kegs_maybanke@pyrmontbrewery.com?subject=Beer: Maybanke Dark Mild&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-              target={"_blank"}
-              className={beerLink}>Program:<br/>Maybanke<br/>Dark Mild<br/>3.4%<br/><br/><br/></a></div>
-            <div className="BeerDesc">>Maybanke Dark Mild 3.4%<br/><br/>Maybanke Anderson set up and operated the first kindergarten school here in
-              Australia. An amazing achievement! <br/><br/>This is an English Midlands dark mild (mid-strength) similar
-              to Banks' Dark Mild<br/><br/></div>
           </div>
           <div>
             <br/>
           </div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap" style={{backgroundImage: `url(${LabelArrogantHarrisStrongAle})`}}><a
-              href={"mailto:kegs_arrogant@pyrmontbrewery.com?subject=Beer: Arrogan Harris Strong Ale&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
+              href={"mailto:kegs_arrogant@pyrmontbrewery.com?subject=Beer: Arrogant Harris Strong Ale&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Arrogant Harris<br/>Strong Ale<br/>7.0%<br/><br/></a></div>
-            <div className="BeerDesc">Arrogant Harris Strong Ale 7.0%<br/><br/>John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and
+            <div className="BeerDesc">&gt; Arrogant Harris Strong Ale<br/>7.0% IBU 75 EBC 37<br/><br/>John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and
               lived in Pyrmont. He didn't always get on with everyone and was court marshalled (twice)<br/><br/>This
-              beer is inspired by the famously yummy brews 'you probably won't like' from San Diego,
+              beer is inspired by the famously yummy brews 'you probably really won't like and are not worthy of' from San Diego,
               California<br/><br/></div>
           </div>
           <div>
@@ -269,21 +272,22 @@ class App extends Component {
               href={"mailto:kegs_quaffer@pyrmontbrewery.com?subject=Beer: Quarry Quaffer Aussie Lager&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Quarry Quaffer<br/>Aussie Lager<br/>4.9%<br/></a></div>
-            <div className="BeerDesc">Quarry Quaffer Aussie Lager 4.9%<br/><br/>"Like a wave of Angels crashing over me tongue!" [Dave 'Sensational'
+            <div className="BeerDesc">&gt; Quarry Quaffer Aussie Lager<br/>4.9% IBU 20 EBC 10<br/><br/>"Like a wave of Angels crashing over me tongue!" [Dave 'Sensational'
               Robbo]<br/><br/>Very much like VB/Carlton it's sweet and bitter at the same time, Pride of Ringwood hops
               all the way, full strength lager beer<br/><br/></div>
           </div>
           <div>
             <br/>
           </div>
+          Quarry range
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap" style={{backgroundImage: `url(${LabelParadiseFrenchSaison})`}}><a
               href={"mailto:kegs_paradise@pyrmontbrewery.com?subject=Beer: Paradise Saison&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Paradise<br/>Saison<br/>6.8%<br/><br/><br/></a></div>
-            <div className="BeerDesc">Paradise quarry is nearest the brewery, so named being the easiest
+            <div className="BeerDesc">&gt; Paradise Saison<br/>6.8% IBU 26 EBC 9<br/><br/>This quarry face is nearest the brewery, so named being the easiest
               sandstone to extract and work with, Sydney GPO building, Central, Art Gallery, RPA, Town Hall and many
-              others all came from Paradise. <br/><br/>Traditional farmhouse style Saison, gently hopped with Centennial and Nelson Sauvignon<br/><br/></div>
+              others all came from Paradise. <br/><br/>Gently hopped with Centennial and Nelson Sauvignon<br/><br/></div>
           </div>
           <div>
             <br/>
@@ -293,7 +297,7 @@ class App extends Component {
               href={"mailto:kegs_purgatory@pyrmontbrewery.com?subject=Beer: Purgatory Pale Ale&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Purgatory<br/>Pale Ale<br/>4.9%<br/><br/><br/></a></div>
-            <div className="BeerDesc">Purgatory was the quarry round by the Glebe Island bridge. <br/><br/>This beer is
+            <div className="BeerDesc">&gt; Purgatory Pale<br/>4.9% IBU 40 EBC 12<br/><br/>This quarry round by the Glebe Island bridge. <br/><br/>This beer is
               similar to some Western Australian style 2-row pale ale with plenty of Challenger hops<br/><br/></div>
           </div>
           <div>
@@ -304,7 +308,7 @@ class App extends Component {
               href={"mailto:kegs_hellhole@pyrmontbrewery.com?subject=Beer: Hell Hole Helles&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Hell Hole<br/>Helles<br/>4.7%<br/><br/><br/></a></div>
-            <div className="BeerDesc">Hell Hole was the quarry where the Sydney Fish Markets stands today, it used to
+            <div className="BeerDesc">&gt; Hell Hole Helles<br/>4.7% IBC 35 EBC 7<br/><br/>This quarry where the Sydney Fish Markets stands today, it used to
               flood a lot making it not much fun to deal with. <br/><br/>German Dortmunder style pilsner lager with
               Tassie Enigma hops<br/><br/></div>
           </div>
@@ -316,19 +320,20 @@ class App extends Component {
               href={"mailto:kegs_cider@pyrmontbrewery.com?subject=Beer: Wokos Cloudy Apple Cider&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
               target={"_blank"}
               className={beerLink}>Program:<br/>Woko's<br/>Cloudy Cider<br/>5.1%<br/><br/></a></div>
-            <div className="BeerDesc">James 'Woko' Watkinson was well known for teaching swimming and water polo in
-              Pyrmont<br/><br/>This is a beautiful unfiltered apple cider made with English apples - it's slightly sweet
+            <div className="BeerDesc">&gt; Wokos's Cloudy Apple Cider<br/>5.1%<br/><br/>James 'Woko' Watkinson was well known for teaching swimming and water polo in
+              Pyrmont<br/><br/>This is an unfiltered apple cider made with English apples (concentrate) - it's slightly sweet to medium
               but with a dry finish<br/><br/></div>
           </div>
           <div>
             <br/>
           </div>
+          Low alcohol
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap" style={{backgroundImage: `url(${LabelHalfWayHouseZeroAlc})`}}><a
                 href={"mailto:kegs_halfway@pyrmontbrewery.com?subject=Beer: Half Way House ZERO&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
                 target={"_blank"}
-                className={beerLink}>Program:<br/>Half Way House ZERO<br/>Chocolate Stout<br/>&lt;0.5%<br/></a></div>
-            <div className="BeerDesc">Half Way House ZERO Alcohol Stout &lt;0.5%<br/><br/>Half Way House de-alcoholized through pasturisation at 80C<br/><br/></div>
+                className={beerLink}>Program:<br/>Half Way House ZERO<br/>Chocolate Stout<br/>&lt;0.5% IBU 29 EBC 68<br/></a></div>
+            <div className="BeerDesc">&gt; Half Way House ZERO Alcohol Stout &lt;0.5%<br/><br/>Half Way House de-alcoholized through long pasteurisation at 80C and re-carbonated - most of the character of the original Half Way Stout is still in there<br/><br/></div>
           </div>
           <div>
             <br/>
@@ -340,6 +345,26 @@ class App extends Component {
             </a>
           </p>
           <p>
+            <a href={"beercoin.html"} target={"_blank"} className={classLink2}>
+              &gt; Beercoin!<br/><br/>Pyrmont Brewery has its own cryptocurrency "Beercoin" to track via blockchain inventory, recipe manifest -> fermenter vessel -> brite tank -> keg -> to venue (learn more!)
+            </a>
+            <br/>
+          </p>
+          <p>
+            <a href={"metaverse.html"} target={"_blank"} className={classLink2}>
+              &gt; Metaverse VR/AR brewery!<br/><br/>Pyrmont Brewery is also heading to the metaverse! Worlds first VR brewery in WebXR where you can select ingredients and have real beer brewed and sent to you! Brew your own virtually pay with Beercoin save and sell your recipe for others as a NFT (learn more!)
+            </a>
+            <br/>
+          </p>
+          <p>
+            <a href={"raspberrypi.html"} target={"_blank"} className={classLink2}>
+              &gt; Raspberry Pi @ Pyrmont Brewery<br/><br/>
+              We use various Raspberry Pi's to help brew and monitor our beers at the Pyrmont Brewery (learn more!)
+            </a>
+            <br/>
+          </p>
+          <p>
+            &gt;Open Source and NFT recipes<br/><br/>
             Being a massive fan of open source and creative commons, our head brewer
             is sharing a small selection of pilot batch recipes for you to have a go at home:<br/>
             <a href={"Beer Arrogant Bastard.xml"} target={"_blank"} className={classLink}>Arrogant Bastard.xml</a> -
@@ -358,6 +383,8 @@ class App extends Component {
             <a href={"Beer Suz Saison.bsmx"} target={"_blank"} className={classLink}>Suz Saison.bsmx</a> - French
             Saison
             </p>
+            <br/>
+            Some past seasonal recipes are available for sale as an NFT too!
           <br/>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
@@ -370,21 +397,6 @@ class App extends Component {
             </a>
             <br/>
           </p>
-
-          <p>
-            <a href={"raspberrypi.html"} target={"_blank"} className={classLink2}>
-              We use Raspberry Pi's (learn more!)
-            </a>
-            <br/>
-          </p>
-
-          <p>
-            <a href={"beercoin.html"} target={"_blank"} className={classLink2}>
-              Pyrmont Brewery has its own cryptocurrency "Beercoin" to track via blockchain inventory, recipie, fermenter tank, bite, keg, venue (learn more!)
-            </a>
-            <br/>
-          </p>
-
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             pyrmontbrewery.com.au<br/>
