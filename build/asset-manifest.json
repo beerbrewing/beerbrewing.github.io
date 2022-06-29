@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/build/static/css/main.5264de81.css",
+    "main.css": "/build/static/css/main.9eb427d3.css",
     "main.js": "/build/static/js/main.14a072ca.js",
     "static/media/pyrmontbwy.gif": "/build/static/media/pyrmontbwy.0835e1cad621844cf7ed.gif",
     "static/media/slides_cover.png": "/build/static/media/slides_cover.8177aad41f2dfc147db1.png",
@@ -26,11 +26,11 @@
     "static/media/buy_beer.png": "/build/static/media/buy_beer.9d000f507435f62eba06.png",
     "static/media/pyrmont_brewery.woff2": "/build/static/media/pyrmont_brewery.9d46e53b531a8376d70e.woff2",
     "index.html": "/build/index.html",
-    "main.5264de81.css.map": "/build/static/css/main.5264de81.css.map",
+    "main.9eb427d3.css.map": "/build/static/css/main.9eb427d3.css.map",
     "main.14a072ca.js.map": "/build/static/js/main.14a072ca.js.map"
   },
   "entrypoints": [
-    "static/css/main.5264de81.css",
+    "static/css/main.9eb427d3.css",
     "static/js/main.14a072ca.js"
   ]
 }
