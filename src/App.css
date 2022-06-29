@@ -19,13 +19,11 @@ span {
     align-items: left;
     font-family: 'pyrmont_brewery';
     position: relative;
-    padding: 20px 20px 20px 20px;
+    padding: 5px 5px 5px 5px;
 }
 
 p {
     scroll-snap-align: start;
-    font-size: 1.5vw;
-
     width: 95%;
     background-color: rgb(189, 189, 189);
     color: rgb(0, 0, 0);
@@ -33,10 +31,10 @@ p {
     width: 80%;
     opacity: 0.96;
     position: relative;
-    padding: 20px 20px 20px 20px;
+    padding: 5px 5px 5px 5px;
     border-style: solid;
-    border-top-width: 20px;
-    border-bottom-width: 20px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
     border-left-width: 30px;
     border-right-width: 30px;
     transition-duration: 0s;
@@ -51,10 +49,10 @@ p {
     opacity: 0.96;
     width: 80%;
     position: relative;
-    padding: 20px 20px 20px 20px;
+    padding: 5px 5px 5px 5px;
     border-style: solid;
-    border-top-width: 20px;
-    border-bottom-width: 20px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
     border-left-width: 30px;
     border-right-width: 30px;
     transition-duration: 0s;
@@ -72,10 +70,10 @@ p {
     justify-content: left;
     align-items: left;
     position: relative;
-    padding: 20px 20px 20px 20px;
+    padding: 5px 5px 5px 5px;
     border-style: solid;
-    border-top-width: 20px;
-    border-bottom-width: 20px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
     border-left-width: 30px;
     border-right-width: 30px;
     transition-duration: 0s;
@@ -85,7 +83,8 @@ p {
 .App {
     text-align: left;
     font-family: 'pyrmont_brewery';
-    padding: 0px 10px 0px 10px;
+    font-size: small;
+    padding: 0px 5px 0px 5px;
     background-color: #404040;
     white-space: wrap;
     line-height: 1.25;
@@ -114,7 +113,6 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 3vw;
     color: white;
 }
 
@@ -129,7 +127,7 @@ p {
     position: relative;
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow: 0 10px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     padding: 0.4vh 0.8vw 0.1vh 0.8vw;
 }
 
@@ -199,7 +197,7 @@ p {
     align-items: center;
     width: 90%;
     position: relative;
-    padding: 20px 20px 20px 20px;
+    padding: 5px 5px 5px 5px;
 }
 
 .BeerSnap {
@@ -214,15 +212,25 @@ p {
     left: 2%;
 }
 
-.BeerDesc {
+.OtherDesc {
     display: flex;
-    width: 70%;
-    font-size: 1.5vw;
+    width: 80%;
     text-align: left;
     vertical-align: middle;
-    padding-left: 20px;
     justify-content: right;
     align-items: flex-end;
+    font-weight: lighter;
+    position: relative;
+}
+
+.BeerDesc {
+    display: flex;
+    width: 80%;
+    text-align: left;
+    vertical-align: middle;
+    justify-content: right;
+    align-items: flex-end;
+    padding-left: 20px;
     font-weight: lighter;
     position: relative;
 }
@@ -236,7 +244,7 @@ p {
     align-items: center;
     width: 90%;
     position: relative;
-    padding: 20px 20px 20px 20px;
+    padding: 5px 5px 5px 5px;
 }
 
 
@@ -289,16 +297,14 @@ p {
     color: #00ff00;
     text-decoration-line: none;
     text-align: left;
-
     animation: blinker 0.6s linear infinite;
 }
 
 .YourBeerDesc {
     display: flex;
-    width: 70%;
+    width: 60%;
     text-align: left;
     vertical-align: middle;
-    padding-left: 20px;
     justify-content: right;
     align-items: flex-end;
     position: relative;
@@ -447,10 +453,11 @@ p {
     display: inline-flex;
     animation: LeftStringSpin 14s steps(60, start) infinite;
     animation-play-state: running;
+    padding: 20px 20px 20px 20px;
 }
 
 .StringSpin {
-    width: 120%;
+    width: 150%;
     margin-left: -10vw;
     opacity: 1.0;
     background-color: red;

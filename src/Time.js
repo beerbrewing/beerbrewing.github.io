@@ -5,7 +5,7 @@ import CheersThen from './cheers.png';
 import PyrmontBrewery_WheelieBin from './wheelie.png';
 import Loading from './pyrmontbwy.gif';
 import Buildings from './pyrmont_sandstone_buildings.jpeg';
-import './Time.css';
+import './App.css';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import desktopImage from './pyrmontbwy.gif';
 import quarryImage from './beer.png';

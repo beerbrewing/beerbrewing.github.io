@@ -177,11 +177,9 @@ class App extends Component {
         <header className="App-header">
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
-            <div className="Info">
-              <div className="BeerSnap" style={{backgroundImage: `url(${SlidesCover})`}}><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
-              &nbsp;
-              <div className="BeerDesc">&gt; Nestled amongst Pyrmont's sandstone hides a secret brewery!<br/><br/>Brewing ales similar to those that came from the original 1880 Pyrmont Brewery.<div className="speccy_flash_black">Read all out it here</div></div>
-            </div>
+            <div className="OtherDesc">&gt; Nestled amongst Pyrmont's sandstone hides a secret brewery!<br/><br/>Brewing ales similar to those that came from the original 1880 Pyrmont Brewery.</div>
+              <br/>
+            <div className="speccy_flash_black">Read all about it here</div>
             </a>
           </p>
 
@@ -193,7 +191,7 @@ class App extends Component {
           <div>
             <br/>
           </div>
-          Core range
+          Core range<br/><br/>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap" style={{backgroundImage: `url(${LabelHalfWayHouseChocolateStout})`}}><a
               href={"mailto:kegs_halfway@pyrmontbrewery.com?subject=Beer: Half Way House&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -228,7 +226,8 @@ class App extends Component {
               Australia. An amazing achievement! <br/><br/>This is an English Midlands dark mild (mid-strength) similar
               to Banks' Dark Mild<br/><br/></div>
           </div>
-          Seasonals
+          <br/>
+          Seasonals<br/><br/>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap" style={{backgroundImage: `url(${LabelGoldsbroughNEPIA})`}}><a
                 href={"mailto:kegs_whingingpom@pyrmontbrewery.com?subject=Beer: Whinging Pom Bitter&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -247,9 +246,6 @@ class App extends Component {
               className={beerLink}>Program:<br/>Caneite<br/>Bourbon<br/>Barrel<br/>Imperial<br/>10.5%<br/><br/></a></div>
             <div className="BeerDesc">&gt; Caneite Bourbon Barrel Imperial<br/>10.5% IBU 50 EBC 73<br/><br/>Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these giant balls and squash it into building materials<br/><br/>This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
               <br/><br/></div>
-          </div>
-          <div>
-            <br/>
           </div>
           <div>
             <br/>
@@ -279,7 +275,7 @@ class App extends Component {
           <div>
             <br/>
           </div>
-          Quarry range
+          Quarry range<br/><br/>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap" style={{backgroundImage: `url(${LabelParadiseFrenchSaison})`}}><a
               href={"mailto:kegs_paradise@pyrmontbrewery.com?subject=Beer: Paradise Saison&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -327,7 +323,7 @@ class App extends Component {
           <div>
             <br/>
           </div>
-          Low alcohol
+          Low alcohol<br/><br/>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap" style={{backgroundImage: `url(${LabelHalfWayHouseZeroAlc})`}}><a
                 href={"mailto:kegs_halfway@pyrmontbrewery.com?subject=Beer: Half Way House ZERO&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
@@ -335,10 +331,6 @@ class App extends Component {
                 className={beerLink}>Program:<br/>Half Way House ZERO<br/>Chocolate Stout<br/>&lt;0.5% IBU 29 EBC 68<br/></a></div>
             <div className="BeerDesc">&gt; Half Way House ZERO Alcohol Stout &lt;0.5%<br/><br/>Half Way House de-alcoholized through long pasteurisation at 80C and re-carbonated - most of the character of the original Half Way Stout is still in there<br/><br/></div>
           </div>
-          <div>
-            <br/>
-          </div>
-          <br/>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             Read about the history of brewing in and around Pyrmont here
