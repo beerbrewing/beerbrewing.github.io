@@ -1,0 +1,86 @@
+
+<html>
+
+<head>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      overflow: hidden;
+
+      font-family: "Arial";
+      font-size: 58pt;
+
+      display: flex;
+      height: 95%;
+      width: 100%;
+      text-align: left;
+      text-indent: 10px;
+    }
+
+    div {
+
+      display: inline-block;
+      align-self: flex-end;		}
+  </style>
+</head>
+
+<body>
+<div id="dom-target" style="display: none;"></div>
+
+<div>
+  <div id="clock"></div>
+</div>
+</body>
+
+<script>
+  var div = null;
+  var myData = null;
+  var diff = 0;
+
+  function updateTime()
+  {
+    timeObj = document.getElementById("clock");
+
+
+    // if (!div) {
+    //   div = document.getElementById("dom-target");
+    //   myData = div.textContent;
+    //   their = new Date(myData);
+    //   now = new Date();
+    //   diff = now - their;
+    //   console.log("Time diff " + diff);
+    // }
+
+    now = new Date();
+    now = new Date(now.valueOf() - diff);
+
+    var hash = parseInt(window.location.hash.substr(1));
+    if (hash > "") {
+      offset = now.valueOf() - diff + hash;
+      now = new Date(offset);
+    }
+
+
+    if ((now.getSeconds() % (60 * 60)) == 0)
+      document.body.style.backgroundColor = "#900090";
+    else if ((now.getSeconds() % 60) == 0)
+      document.body.style.backgroundColor = "#009000";
+    else if ((now.getSeconds() % 10) == 0)
+      document.body.style.backgroundColor = "#900000";
+    else if ((now.getSeconds() % 5) == 0)
+      document.body.style.backgroundColor = "#000030";
+    else
+      document.body.style.backgroundColor = "black";
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+
+    timeObj.innerText = ("0" + now.getDate()).slice(-2) + "-" + monthNames[now.getMonth()] + "-" +
+            now.getFullYear() + " " + ("0" + now.getHours()).slice(-2)  + ":" + ("0" + now.getMinutes()).slice(-2) +
+            ":" + ("0" + now.getSeconds()).slice(-2) + "." + now.getMilliseconds().toString().slice(0,2);
+  }
+
+  setInterval(updateTime, 10);
+</script>
+</html>
