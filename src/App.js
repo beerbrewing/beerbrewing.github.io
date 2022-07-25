@@ -28,6 +28,7 @@ import LabelGeneric from './label_generic.png';
 
 import ReactPixel from 'react-facebook-pixel';
 import ReactGA from 'react-ga';
+import Beer from "./Beer";
 
 const advancedMatching = { em: 'kev@pyrmontbrewery.com.au' }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/pixel-with-ads/conversion-tracking#advanced_match
 const options = {
@@ -192,64 +193,42 @@ class App extends Component {
             <br/>
           </div>
           Core range<br/><br/>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelHalfWayHouseChocolateStout})`}}><a
-              href={"mailto:kegs_halfway@pyrmontbrewery.com?subject=Beer: Half Way House&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-              target={"_blank"}
-              className={beerLink}>Program:<br/>Half Way House<br/>Chocolate Stout<br/>4.5%<br/></a></div>
-            <div className="BeerDesc">&gt; Half Way House Chocolate Stout<br/>4.5% IBU 29 EBC 68<br/><br/>Half Way House was the sandstone quarry and later a pub on Miller Street where the
-              brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade.<br/><br/>This
-              beer is an English style double chocolate stout (and yes contains real Lindt couverture!)<br/><br/></div>
-          </div>
-          <div>
-            <br/>
-          </div>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelWhingingPomBestBitter})`}}><a
-              href={"mailto:kegs_whingingpom@pyrmontbrewery.com?subject=Beer: Whinging Pom Bitter&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-              target={"_blank"}
-              className={beerLink}>Program:<br/>Whinging Pom<br/>Real Ale<br/>4.4%<br/><br/></a></div>
-            <div className="BeerDesc">&gt; Whinging Pom Real Ale<br/>4.4% IBU 30 EBC 27<br/><br/>British Bitter for all you expats of which there are many in Pyrmont! <br/><br/>A
-              classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are
-              lower in carbonation and if you want, can be gravity served straight from the keg without
-              refrigeration<br/><br/></div>
-          </div>
-          <div>
-            <br/>
-          </div>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelMaybankeDarkMild})`}}><a
-                href={"mailto:kegs_maybanke@pyrmontbrewery.com?subject=Beer: Maybanke Dark Mild&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-                target={"_blank"}
-                className={beerLink}>Program:<br/>Maybanke<br/>Dark Mild<br/>3.4%<br/><br/><br/></a></div>
-            <div className="BeerDesc">&gt; Maybanke Dark Mild<br/>3.4% IBU 20 EBC 35<br/><br/>Maybanke Anderson set up and operated the first kindergarten school here in
-              Australia. An amazing achievement! <br/><br/>This is an English Midlands dark mild (mid-strength) similar
-              to Banks' Dark Mild<br/><br/></div>
-          </div>
-          <br/>
+          <Beer name="Half Way House" abv="4.5" ibu="29" ebc="68"
+                beerstyle="Chocolate Stout" label_url={`url(${LabelHalfWayHouseChocolateStout})`}>
+            Half Way House was the sandstone quarry and later a pub on Miller Street where the
+            brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade.<br/><br/>This
+            beer is an English style double chocolate stout (and yes contains real Lindt couverture!)
+          </Beer>
+          <div><br/></div>
+          <Beer name="Whinging Pom" abv="4.4" ibu="30" ebc="27"
+                beerstyle="Real English Ale" label_url={`url(${LabelWhingingPomBestBitter})`}>
+            British Bitter for all you expats of which there are many in Pyrmont! <br/><br/>
+            A classic UK Maris Otter based Real Ale, with UK Fuggles and East Kent Goldings. Our English styles are
+            lower in carbonation and if you want, can be gravity served straight from the keg without
+            refrigeration
+          </Beer>
+          <div><br/></div>
+          <Beer name="Maybanke" abv="3.4" ibu="20" ebc="35"
+                beerstyle="Dark Mild" label_url={`url(${LabelMaybankeDarkMild})`}>
+            Maybanke Anderson set up and operated the first kindergarten school here in
+            Australia. An amazing achievement!<br/><br/>
+            This is an English Midlands dark mild (mid-strength) similar
+            to Banks' Dark Mild
+          </Beer>
+          <div><br/></div>
           Seasonals<br/><br/>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelGoldsbroughNEPIA})`}}><a
-                href={"mailto:kegs_whingingpom@pyrmontbrewery.com?subject=Beer: Whinging Pom Bitter&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-                target={"_blank"}
-                className={beerLink}>Program:<br/>Goldsbrough<br/>Hazy New England IIPA<br/>7.3%<br/><br/></a></div>
-            <div className="BeerDesc">&gt; Goldsbrough Hazy New England IIPA<br/>7.3% IBU 13 EBC 12<br/><br/>Goldsborough Mort was the large wool stores in Pyrmont. This fruity Double IPA Hazy inspired by Mountain Culture "Dolly"
-              <br/><br/>Fruity notes, lots of fresh dry hopping in this one<br/><br/></div>
-          </div>
-          <div>
-            <br/>
-          </div>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelCaneiteBourbonImperial})`}}><a
-              href={"mailto:kegs_caneite@pyrmontbrewery.com?subject=Beer: Caneite Imperial&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-              target={"_blank"}
-              className={beerLink}>Program:<br/>Caneite<br/>Bourbon<br/>Barrel<br/>Imperial<br/>10.5%<br/><br/></a></div>
-            <div className="BeerDesc">&gt; Caneite Bourbon Barrel Imperial<br/>10.5% IBU 50 EBC 73<br/><br/>Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these giant balls and squash it into building materials<br/><br/>This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
-              <br/><br/></div>
-          </div>
-          <div>
-            <br/>
-          </div>
+          <Beer name="Goldsbrough" abv="7.3" ibu="13" ebc="12"
+                beerstyle="Hazy NEIPA" label_url={`url(${LabelGoldsbroughNEPIA})`}>
+            Goldsborough Mort was the large wool stores in Pyrmont. This fruity Double IPA Hazy inspired by Mountain Culture "Dolly"<br/><br/>
+            Fruity notes, lots of fresh dry hopping in this one
+          </Beer>
+          <div><br/></div>
+          <Beer name="Caneite" abv="10.5" ibu="50" ebc="73"
+                beerstyle="Bourbon Barrel Imperial" label_url={`url(${LabelCaneiteBourbonImperial})`}>
+            Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these giant balls and squash it into building materials<br/><br/>
+            This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
+          </Beer>
+          <div><br/></div>
           <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
             <div className="BeerSnap" style={{backgroundImage: `url(${LabelArrogantHarrisStrongAle})`}}><a
               href={"mailto:kegs_arrogant@pyrmontbrewery.com?subject=Beer: Arrogant Harris Strong Ale&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
