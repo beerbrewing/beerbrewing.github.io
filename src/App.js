@@ -229,87 +229,56 @@ class App extends Component {
             This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
           </Beer>
           <div><br/></div>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelArrogantHarrisStrongAle})`}}><a
-              href={"mailto:kegs_arrogant@pyrmontbrewery.com?subject=Beer: Arrogant Harris Strong Ale&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-              target={"_blank"}
-              className={beerLink}>Program:<br/>Arrogant Harris<br/>Strong Ale<br/>7.0%<br/><br/></a></div>
-            <div className="BeerDesc">&gt; Arrogant Harris Strong Ale<br/>7.0% IBU 75 EBC 37<br/><br/>John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and
-              lived in Pyrmont. He didn't always get on with everyone and was court marshalled (twice)<br/><br/>This
-              beer is inspired by the famously yummy brews 'you probably really won't like and are not worthy of' from San Diego,
-              California<br/><br/></div>
-          </div>
-          <div>
-            <br/>
-          </div>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelQuarryQuafferAussieLager})`}}><a
-              href={"mailto:kegs_quaffer@pyrmontbrewery.com?subject=Beer: Quarry Quaffer Aussie Lager&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-              target={"_blank"}
-              className={beerLink}>Program:<br/>Quarry Quaffer<br/>Aussie Lager<br/>4.9%<br/></a></div>
-            <div className="BeerDesc">&gt; Quarry Quaffer Aussie Lager<br/>4.9% IBU 20 EBC 10<br/><br/>"Like a wave of Angels crashing over me tongue!" [Dave 'Sensational'
-              Robbo]<br/><br/>Very much like VB/Carlton it's sweet and bitter at the same time, Pride of Ringwood hops
-              all the way, full strength lager beer<br/><br/></div>
-          </div>
-          <div>
-            <br/>
-          </div>
-          Quarry range<br/><br/>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelParadiseFrenchSaison})`}}><a
-              href={"mailto:kegs_paradise@pyrmontbrewery.com?subject=Beer: Paradise Saison&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-              target={"_blank"}
-              className={beerLink}>Program:<br/>Paradise<br/>Saison<br/>6.8%<br/><br/><br/></a></div>
-            <div className="BeerDesc">&gt; Paradise Saison<br/>6.8% IBU 26 EBC 9<br/><br/>This quarry face is nearest the brewery, so named being the easiest
-              sandstone to extract and work with, Sydney GPO building, Central, Art Gallery, RPA, Town Hall and many
-              others all came from Paradise. <br/><br/>Gently hopped with Centennial and Nelson Sauvignon<br/><br/></div>
-          </div>
-          <div>
-            <br/>
-          </div>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelPurgatoryPaleAle})`}}><a
-              href={"mailto:kegs_purgatory@pyrmontbrewery.com?subject=Beer: Purgatory Pale Ale&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-              target={"_blank"}
-              className={beerLink}>Program:<br/>Purgatory<br/>Pale Ale<br/>4.9%<br/><br/><br/></a></div>
-            <div className="BeerDesc">&gt; Purgatory Pale<br/>4.9% IBU 40 EBC 12<br/><br/>This quarry round by the Glebe Island bridge. <br/><br/>This beer is
-              similar to some Western Australian style 2-row pale ale with plenty of Challenger hops<br/><br/></div>
-          </div>
-          <div>
-            <br/>
-          </div>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelHellHoleHelles})`}}><a
-              href={"mailto:kegs_hellhole@pyrmontbrewery.com?subject=Beer: Hell Hole Helles&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-              target={"_blank"}
-              className={beerLink}>Program:<br/>Hell Hole<br/>Helles<br/>4.7%<br/><br/><br/></a></div>
-            <div className="BeerDesc">&gt; Hell Hole Helles<br/>4.7% IBC 35 EBC 7<br/><br/>This quarry where the Sydney Fish Markets stands today, it used to
-              flood a lot making it not much fun to deal with. <br/><br/>German Dortmunder style pilsner lager with
-              Tassie Enigma hops<br/><br/></div>
-          </div>
-          <div>
-            <br/>
-          </div>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelWokosCloudyCider})`}}><a
-              href={"mailto:kegs_cider@pyrmontbrewery.com?subject=Beer: Wokos Cloudy Apple Cider&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-              target={"_blank"}
-              className={beerLink}>Program:<br/>Woko's<br/>Cloudy Cider<br/>5.1%<br/><br/></a></div>
-            <div className="BeerDesc">&gt; Wokos's Cloudy Apple Cider<br/>5.1%<br/><br/>James 'Woko' Watkinson was well known for teaching swimming and water polo in
-              Pyrmont<br/><br/>This is an unfiltered apple cider made with English apples (concentrate) - it's slightly sweet to medium
-              but with a dry finish<br/><br/></div>
-          </div>
-          <div>
-            <br/>
-          </div>
+          <Beer name="Arrogant Harris" abv="7.0" ibu="75" ebc="37"
+                beerstyle="Strong Ale" label_url={`url(${LabelArrogantHarrisStrongAle})`}>
+            John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and
+            lived in Pyrmont. He didn't always get on with everyone and was court marshalled (twice)<br/><br/>
+            This beer is inspired by the famously yummy brews 'you probably really won't like and are not worthy of' from San Diego,
+            California
+          </Beer>
+          <div><br/></div>
+          <Beer name="Quarry Quaffer" abv="4.9" ibu="25" ebc="6"
+                beerstyle="Aussie Bitter Ale" label_url={`url(${LabelQuarryQuafferAussieLager})`}>
+            Like a wave of Angels crashing over me tongue!" [Dave 'Sensational' Robbo]<br/><br/>
+            Very much like VB/Carlton it's sweet and bitter at the same time, Pride of Ringwood hops
+            all the way, full strength lager beer
+          </Beer>
+          <div><br/></div>
+          Pyrmont Quarrys range<br/><br/>
+          <Beer name="Paradise" abv="6.8" ibu="26" ebc="9"
+                beerstyle="French Saison" label_url={`url(${LabelParadiseFrenchSaison})`}>
+            This quarry face is nearest the brewery, so named being the easiest
+            sandstone to extract and work with, Sydney GPO building, Central, Art Gallery, RPA, Town Hall and many
+            others all came from Paradise. <br/><br/>
+            Gently hopped with Centennial and Nelson Sauvignon
+          </Beer>
+          <div><br/></div>
+          <Beer name="Purgatory" abv="4.9" ibu="40" ebc="12"
+                beerstyle="Pale Ale" label_url={`url(${LabelPurgatoryPaleAle})`}>
+            This quarry was nearest to Glebe Island bridge/Jackson Landing. <br/><br/>
+            This beer is similar to some Western Australian style 2-row pale ale with plenty of Challenger hops
+          </Beer>
+          <div><br/></div>
+          <Beer name="Hell Hole" abv="4.7" ibu="35" ebc="7"
+                beerstyle="Helles" label_url={`url(${LabelHellHoleHelles})`}>
+            This quarry where the Sydney Fish Markets stands today, it used to
+            flood a lot making it not much fun to deal with.<br/><br/>
+            German Dortmunder style pilsner lager but with Tassie Enigma hops
+          </Beer>
+          <div><br/></div>
+          <Beer name="Wokos" abv="5.1" ibu="0" ebc="11"
+                beerstyle="Cloudy Apple Cider" label_url={`url(${LabelWokosCloudyCider})`}>
+            James 'Woko' Watkinson was well known for teaching swimming and water polo in Pyrmont<br/><br/>
+            This is an unfiltered apple cider made with English apples (concentrate) - it's slightly sweet to medium
+            but with a dry finish
+          </Beer>
+          <div><br/></div>
           Low alcohol<br/><br/>
-          <div className="Beer" style={{backgroundImage: `url(${quarryImage})`}}>
-            <div className="BeerSnap" style={{backgroundImage: `url(${LabelHalfWayHouseZeroAlc})`}}><a
-                href={"mailto:kegs_halfway@pyrmontbrewery.com?subject=Beer: Half Way House ZERO&body=I'd like 50L Keg (A type) / 20L Keg (A type) / 19L Corny keg (ball lock) / 330ml Cans X 24"}
-                target={"_blank"}
-                className={beerLink}>Program:<br/>Half Way House ZERO<br/>Chocolate Stout<br/>&lt;0.5% IBU 29 EBC 68<br/></a></div>
-            <div className="BeerDesc">&gt; Half Way House ZERO Alcohol Stout &lt;0.5%<br/><br/>Half Way House de-alcoholized through long pasteurisation at 80C and re-carbonated - most of the character of the original Half Way Stout is still in there<br/><br/></div>
-          </div>
+          <Beer name="Half Way House ZERO" abv="Less than 0.5" ibu="29" ebc="68"
+                beerstyle="Chocolate Stout" label_url={`url(${LabelHalfWayHouseZeroAlc})`}>
+            Half Way House de-alcoholized through long pasteurisation at 80C and re-carbonated - most of the character
+            of the original Half Way Stout is still in here
+          </Beer>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             Read about the history of brewing in and around Pyrmont here
@@ -336,7 +305,7 @@ class App extends Component {
           </p>
           <p>
             <a href={"nftrecipies.html"} target={"_blank"} className={classLink2}>
-              &gt; NFT Recipies!<br/><br/>Pyrmont Brewery is selling NFTs (Ethereum network) of seasonal beer recipies if you want to buy them
+              &gt; Own NFT Recipies!<br/><br/>Pyrmont Brewery is selling NFTs (Ethereum Mainnet) of some seasonal beer recipies if you want to buy them or brew them in the Metaverse brewery
             </a>
             <br/>
           </p>
