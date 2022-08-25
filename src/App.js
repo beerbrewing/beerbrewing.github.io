@@ -168,7 +168,7 @@ class App extends Component {
             &copy; 2007 Pyrmont Brewery
             <br/>
               <br/>
-            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>COVID-19 update - looking for 'Media Brewer'?</div>
+            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>Looking for Kev 'Media Brewer'?</div>
             </a>
           </p>
           <br/>
@@ -183,7 +183,18 @@ class App extends Component {
             <div className="speccy_flash_black">Read all about it here</div>
             </a>
           </p>
-
+          <p>
+            <a href={"metaversebrewery.html"} target={"_blank"} className={classLink2}>
+              &gt; Metaverse VR/AR brewery!<br/><br/>Pyrmont Brewery is also in the metaverse! Worlds first VR brewery in WebXR where you can select ingredients and have real beer brewed and sent to you! Brew your own virtually pay with Beercoin save and sell your recipe for others as a NFT (learn more!)
+            </a>
+            <br/>
+          </p>
+          <p>
+            <a href={"aibeerlabels.html"} target={"_blank"} className={classLink2}>
+              &gt; AI Beer Label maker<br/><br/>Can't draw? Use your words instead! DALL.E based AI to generate a legal can wrapper label and get them printed
+            </a>
+            <br/>
+          </p>
           <div className="StringSpin">
             <div className="LeftStringSpin">
               All grain beers brewed in Pyrmont
@@ -192,7 +203,7 @@ class App extends Component {
           <div>
             <br/>
           </div>
-          Core range<br/><br/>
+          LOAD "CORE_RANGE" beers<br/><br/>
           <Beer name="Half Way House" abv="4.5" ibu="29" ebc="68"
                 beerstyle="Chocolate Stout" label_url={`url(${LabelHalfWayHouseChocolateStout})`}>
             Half Way House was the sandstone quarry and later a pub on Miller Street where the
@@ -216,7 +227,7 @@ class App extends Component {
             to Banks' Dark Mild
           </Beer>
           <div><br/></div>
-          Seasonals<br/><br/>
+          LOAD "SEASONALS" beer<br/><br/>
           <Beer name="Goldsbrough" abv="7.3" ibu="13" ebc="12"
                 beerstyle="Hazy NEIPA" label_url={`url(${LabelGoldsbroughNEPIA})`}>
             Goldsborough Mort was the large wool stores in Pyrmont. This fruity Double IPA Hazy inspired by Mountain Culture "Dolly"<br/><br/>
@@ -244,7 +255,7 @@ class App extends Component {
             all the way, full strength lager beer
           </Beer>
           <div><br/></div>
-          Pyrmont Quarrys range<br/><br/>
+          LOAD "QUARRYS" beer range<br/><br/>
           <Beer name="Paradise" abv="6.8" ibu="26" ebc="9"
                 beerstyle="French Saison" label_url={`url(${LabelParadiseFrenchSaison})`}>
             This quarry face is nearest the brewery, so named being the easiest
@@ -287,12 +298,6 @@ class App extends Component {
           <p>
             <a href={"beercoin.html"} target={"_blank"} className={classLink2}>
               &gt; Beercoin!<br/><br/>Pyrmont Brewery has its own cryptocurrency "Beercoin" to track via blockchain inventory, recipe manifest -> fermenter vessel -> brite tank -> keg -> to venue (learn more!)
-            </a>
-            <br/>
-          </p>
-          <p>
-            <a href={"metaverse.html"} target={"_blank"} className={classLink2}>
-              &gt; Metaverse VR/AR brewery!<br/><br/>Pyrmont Brewery is also heading to the metaverse! Worlds first VR brewery in WebXR where you can select ingredients and have real beer brewed and sent to you! Brew your own virtually pay with Beercoin save and sell your recipe for others as a NFT (learn more!)
             </a>
             <br/>
           </p>
