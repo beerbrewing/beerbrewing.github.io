@@ -191,7 +191,7 @@ class App extends Component {
           </p>
           <p>
             <a href={"aibeerlabels.html"} target={"_blank"} className={classLink2}>
-              &gt; AI Beer Label maker<br/><br/>Can't draw? Use your words instead! DALL.E based AI to generate a legal can wrapper label and get them printed
+              &gt; AI Beer Label maker<br/><br/>Can't draw? Use your words instead! DALL.E-2 based text to image AI to generate a legal can wrappers and have them printed
             </a>
             <br/>
           </p>
