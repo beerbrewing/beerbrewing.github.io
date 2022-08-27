@@ -101,11 +101,9 @@ class App extends Component {
         <header className="App-header">
           <p className={sensible}>
             <h1>"Media Brewer"</h1>
-            At this time of lockdown due to COVID-19 - and beer brewing demand is down generally<br/><br/>
             My main profession is actually software engineering - I'm more than happy to help out on small projects as a temporary solution. <br/>
             Maybe I'll write about your technology, help you bring up proof-of-concept, or work on small code projects (I have experience in most programming languages and will just adapt to your style)<br/>
             Other side projects I've been working on recently is peer-to-peer media sharing, e.g. over Protocol Labs IPFS<br/>
-            And streaming weddings (in NSW only 5 persons are currenlty allowed to attend a wedding ceremony), we're attempting to virtually inject the congregation!<br/>
             <br/>
             You can contact me about casual freelancing in the following ways...
             <br/>
@@ -116,15 +114,36 @@ class App extends Component {
             Or email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className={classLink3}>kev@pyrmontbrewery.com.au</a>
             <br/>
             <br/>
-            My <a href={"resume.html"} target={"_blank"} className={classLink3}>resume is here</a> and also <a href={"kjsl_resume_2020.pdf"} target={"_blank"} className={classLink3}>PDF</a> - <a href={"kjsl_resume_2020.docx"} target={"_blank"} className={classLink3}>Word</a>
+            My <a href={"build/resume.html"} target={"_blank"} className={classLink3}>resume is here</a>
             <br/>
             <br/>
-
-            <a href={"/about"} className={classLink3}>
-              Some example blogs/slides and examples, click here<br/>
-            </a>
-            Please stay safe,<br/>
-            Kev
+            I've also done a fair amount of public speaking
+            <br/>
+            Some of my public presentations topics (with links to descriptive version of the slide decks):
+            <br/>
+            <br/>
+            <a href={"https://docs.google.com/presentation/d/164PPi6yb2yFfJNBAkduXvRIrUiPzpjjjJ8IWAsqlNK4/edit#slide=id.p"} target={"_blank"} className={classLink3}>Common Media Server Data</a> - presented in San Fransico on behalf of the CES CTA Wave
+            <br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>Low Latency media streaming</a> - presented at Sydney ICC - RTMP/RIST/SRT/WebRTC/LL-HLS/ULL-CMAF (150+ audience)
+            <br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>AV1 Video Codec</a> - presented at Sydney Hilton hotel (100+ audience)
+            <br/>
+            <a href={""} target={"_blank"} className={classLink3}>VOD2Live</a> - presented at Demuxed San Francisco (750+ audience)
+            <br/>
+            <a href={""} target={"_blank"} className={classLink3}>WebAssembly at the CDN Edge</a> - publicly presented at Sydney Video meet-up
+            <br/>
+            <a href={""} target={"_blank"} className={classLink3}>Raspberry Pi</a> - presented at JayCar Electronics maker hub Central Park
+            <br/>
+            <a href={""} target={"_blank"} className={classLink3}>AI TensorFlow for ATR</a> - Google Sydney side presentation
+            <br/>
+            <a href={""} target={"_blank"} className={classLink3}>XDebug Profiling</a> - publicly presented at Deputy Sydney
+            <br/>
+            <a href={""} target={"_blank"} className={classLink3}>History of Brewing in Australia</a> - publicly presented before the Pyrmont History Group and also wework
+            <br/>
+            <br/>
+            <br/>
+            Also my <a href={"build/dissertation.html"} className={classLink3}>
+            1997 university dissertation is here</a> and was a discussion on the state of the internet, world wide web and eCommerce at that time, you can still learn HTML and how CGI works from this today (2022) its not changed that much :-)<br/>
             <br/>
           </p>
           <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
