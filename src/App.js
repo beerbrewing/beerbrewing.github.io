@@ -114,7 +114,7 @@ class App extends Component {
             Or email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className={classLink3}>kev@pyrmontbrewery.com.au</a>
             <br/>
             <br/>
-            My <a href={"build/resume.html"} target={"_blank"} className={classLink3}>resume is here</a>
+            My <a href={"resume.html"} target={"_blank"} className={classLink3}>resume is here</a>
             <br/>
             <br/>
             I've also done a fair amount of public speaking
@@ -142,7 +142,7 @@ class App extends Component {
             <br/>
             <br/>
             <br/>
-            Also my <a href={"build/dissertation.html"} className={classLink3}>
+            Also my <a href={"dissertation.html"} className={classLink3}>
             1997 university dissertation is here</a> and was a discussion on the state of the internet, world wide web and eCommerce at that time, you can still learn HTML and how CGI works from this today (2022) its not changed that much :-)<br/>
             <br/>
           </p>
