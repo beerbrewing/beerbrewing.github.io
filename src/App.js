@@ -128,17 +128,17 @@ class App extends Component {
             <br/>
             <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>AV1 Video Codec</a> - presented at Sydney Hilton hotel (100+ audience)
             <br/>
-            <a href={""} target={"_blank"} className={classLink3}>VOD2Live</a> - presented at Demuxed San Francisco (750+ audience)
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>VOD2Live</a> - presented at Demuxed San Francisco (750+ audience)
             <br/>
-            <a href={""} target={"_blank"} className={classLink3}>WebAssembly at the CDN Edge</a> - publicly presented at Sydney Video meet-up
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>WebAssembly at the CDN Edge</a> - publicly presented at Sydney Video meet-up
             <br/>
-            <a href={""} target={"_blank"} className={classLink3}>Raspberry Pi</a> - presented at JayCar Electronics maker hub Central Park
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>Raspberry Pi</a> - presented at JayCar Electronics maker hub Central Park
             <br/>
-            <a href={""} target={"_blank"} className={classLink3}>AI TensorFlow for ATR</a> - Google Sydney side presentation
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vTxzthkg5eJDQRtc7GswXj80eFrgBa9oza7O5NIhpOIoj5QbeYv_gNvHaZAAgb1VgDlQhwK40e29xPV/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>AI TensorFlow for ATR</a> - Google Sydney side presentation
             <br/>
-            <a href={""} target={"_blank"} className={classLink3}>XDebug Profiling</a> - publicly presented at Deputy Sydney
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>XDebug Profiling</a> - publicly presented at Deputy Sydney
             <br/>
-            <a href={""} target={"_blank"} className={classLink3}>History of Brewing in Australia</a> - publicly presented before the Pyrmont History Group and also wework
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>History of Brewing in Australia</a> - publicly presented before the Pyrmont History Group and also wework
             <br/>
             <br/>
             <br/>
@@ -204,13 +204,13 @@ class App extends Component {
           </p>
           <p>
             <a href={"metaversebrewery.html"} target={"_blank"} className={classLink2}>
-              &gt; Metaverse VR/AR brewery!<br/><br/>Pyrmont Brewery is also in the metaverse! Worlds first VR brewery in WebXR where you can select ingredients and have real beer brewed and sent to you! Brew your own virtually pay with Beercoin save and sell your recipe for others as a NFT (learn more!)
+              &gt; Metaverse VR/AR brewery!<br/><br/>The world's first VR brewery! Meta Horizon World where you tailor real beer brewed in Pyrmont! Virtually pay with Beercoin save and sell your recipe for others as a NFT (learn more here!)
             </a>
             <br/>
           </p>
           <p>
             <a href={"aibeerlabels.html"} target={"_blank"} className={classLink2}>
-              &gt; AI Beer Label maker<br/><br/>Can't draw? Use your words instead! DALL.E-2 based text to image AI to generate a legal can wrappers and have them printed
+              &gt; AI Beer Label/Beer mat coaster maker<br/><br/>Can't draw? Use your words instead! DALL.E-2 based text to image AI to generate a legal can wrappers and have them printed
             </a>
             <br/>
           </p>
