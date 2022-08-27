@@ -142,7 +142,7 @@ p {
     align-items: center;
     align-items: center;
     position: relative;
-    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
+    padding: 0.2vh 0.8vw 0.1vh 0.8vw;
 
 }
 
@@ -161,7 +161,7 @@ p {
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
+    padding: 0.2vh 0.8vw 0.1vh 0.8vw;
 
 }
 
@@ -189,7 +189,7 @@ p {
 
 .Beer {
     scroll-snap-align: start;
-    background-color: rgba(0, 0, 90, 1);
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     background-size: cover;
     justify-content: center;
@@ -197,19 +197,22 @@ p {
     align-items: center;
     width: 90%;
     position: relative;
-    padding: 5px 5px 5px 5px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
 }
 
 .BeerSnap {
     display: flex;
-    width: 40%;
+    background-color: rgba(190, 190, 190, 1);
+    width: 50%;
     background-size: 30vw;
     background-repeat: no-repeat;
     opacity: 1;
-    cursor: pointer;
+    cursor: grabbing;
     justify-content: left;
     position: relative;
-    left: 2%;
+    left: 0;
+    top: 0;
 }
 
 .OtherDesc {
@@ -225,12 +228,39 @@ p {
 
 .BeerDesc {
     display: flex;
-    width: 70%;
+    color: #00ffff;
+    width: 100%;
+    text-align: left;
+    vertical-align: middle;
+    justify-content: right;
+    align-items: flex-end;
+    padding-left: 0px;
+    font-weight: lighter;
+    position: relative;
+}
+
+.BeerTitle {
+    display: inline;
+    color: #ffffff;
+    width: 100%;
     text-align: left;
     vertical-align: middle;
     justify-content: right;
     align-items: flex-end;
     padding-left: 20px;
+    font-weight: lighter;
+    position: relative;
+}
+
+.BeerABV {
+    display: inline;
+    color: #ffff00;
+    width: 100%;
+    text-align: left;
+    vertical-align: middle;
+    justify-content: right;
+    align-items: flex-end;
+    padding-left: 26px;
     font-weight: lighter;
     position: relative;
 }
@@ -253,7 +283,7 @@ p {
     color: #000000;
     text-decoration-line: none;
     text-align: left;
-    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
+    padding: 0.4vh 0.1vw 0.3vh 0.2vw;
 }
 
 .App-link:hover {
@@ -261,7 +291,7 @@ p {
     color: #000000;
     text-decoration-line: none;
     text-align: left;
-    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
+    padding: 0.4vh 0.1vw 0.3vh 0.2vw;
     animation: SPECCY_FLASH_GREEN 0.7s infinite;
     transition-duration: 0s;
 }
@@ -291,6 +321,7 @@ p {
     color: rgba(0,0,0,0);
     opacity: 1;
     height: 200px;
+    width: 98%;
     padding: 0.4vh 0.8vw 0.1vh 0.8vw;
     text-decoration-line: none;
 }
@@ -359,8 +390,9 @@ p {
 }
 
 .speccy_flash_black {
+    display: inline;
     animation: SPECCY_FLASH_BLACK 0.7s infinite;
-    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
+    padding: 0.3vh 0.0vw 0.1vh 0.2vw;
     transition-duration: 0s;
 }
 

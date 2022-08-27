@@ -99,6 +99,7 @@ class App extends Component {
     }}>
       {afterKev ?
         <header className="App-header">
+          <p><a href="back" className={classLink2}>&lt;-</a></p>
           <p className={sensible}>
             <h1>"Media Brewer"</h1>
             My main profession is actually software engineering - I'm more than happy to help out on small projects as a temporary solution. <br/>
@@ -146,7 +147,7 @@ class App extends Component {
             1997 university dissertation is here</a> and was a discussion on the state of the internet, world wide web and eCommerce at that time, you can still learn HTML and how CGI works from this today (2022) its not changed that much :-)<br/>
             <br/>
           </p>
-          <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
+          <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt="Pyrmont Brewery Logo which is a secret squirrel"/></a>
           <br/>
           <br/>
           <br/>
@@ -156,6 +157,7 @@ class App extends Component {
       mightBeUnder18 ? confirmedAge ?
 
         <header className="App-header">
+          <p><a href="back" className={classLink2}>&lt;-</a></p>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             Sorry, but it's mega important that you are 18 or over for us to discuss the supply of alcohol with you
@@ -168,7 +170,7 @@ class App extends Component {
             R Tape loading error, 0:1
             </a>
           </p>
-          <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
+          <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt="Pyrmont Brewery Logo which is a secret squirrel"/></a>
           <br/>
           <br/>
           <br/>
@@ -197,20 +199,18 @@ class App extends Component {
         <header className="App-header">
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
-            <div className="OtherDesc">&gt; Nestled amongst Pyrmont's sandstone hides a secret brewery!<br/><br/>Brewing ales similar to those that came from the original 1880 Pyrmont Brewery.</div>
-              <br/>
-            <div className="speccy_flash_black">Read all about it here</div>
+            <div className="speccy_flash_black">GOTO</div>&gt; Nestled amongst Pyrmont's sandstone hides a secret brewery!<br/><br/>Brewing ales similar to those that came from the original 1880 Pyrmont Brewery
             </a>
           </p>
           <p>
             <a href={"metaversebrewery.html"} target={"_blank"} className={classLink2}>
-              &gt; Metaverse VR/AR brewery!<br/><br/>The world's first VR brewery! Meta Horizon World where you tailor real beer brewed in Pyrmont! Virtually pay with Beercoin save and sell your recipe for others as a NFT (learn more here!)
+              <div className="speccy_flash_black">GOTO</div>&gt; Metaverse VR/AR brewery!<br/><br/>The world's first VR brewery! Meta Horizon World where you tailor real beer brewed in Pyrmont!
             </a>
             <br/>
           </p>
           <p>
             <a href={"aibeerlabels.html"} target={"_blank"} className={classLink2}>
-              &gt; AI Beer Label/Beer mat coaster maker<br/><br/>Can't draw? Use your words instead! DALL.E-2 based text to image AI to generate a legal can wrappers and have them printed
+              <div className="speccy_flash_black">GOTO</div>&gt; AI Beer Label/Beer mat coaster maker<br/><br/>Can't draw? Use your words instead! DALL.E-2 based text to image AI to generate a legal can wrappers and get them printed
             </a>
             <br/>
           </p>
@@ -226,8 +226,8 @@ class App extends Component {
           <Beer name="Half Way House" abv="4.5" ibu="29" ebc="68"
                 beerstyle="Chocolate Stout" label_url={`url(${LabelHalfWayHouseChocolateStout})`}>
             Half Way House was the sandstone quarry and later a pub on Miller Street where the
-            brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade.<br/><br/>This
-            beer is an English style double chocolate stout (and yes contains real Lindt couverture!)
+            brewery is today. The pub didn't survive the Glebe Island bridge to Anzac bridge upgrade.<br/><br/>
+            English stout (and yes contains real Swiss Lindt couverture!)
           </Beer>
           <div><br/></div>
           <Beer name="Whinging Pom" abv="4.4" ibu="30" ebc="27"
@@ -254,7 +254,7 @@ class App extends Component {
           </Beer>
           <div><br/></div>
           <Beer name="Caneite" abv="10.5" ibu="50" ebc="73"
-                beerstyle="Bourbon Barrel Imperial" label_url={`url(${LabelCaneiteBourbonImperial})`}>
+                beerstyle="Bourbon Imperial" label_url={`url(${LabelCaneiteBourbonImperial})`}>
             Caneite was CSR Pyrmont's solution as to what to do with the sugar cane husks/bagasse, mix it in these giant balls and squash it into building materials<br/><br/>
             This is a sweet Marris Otter based Imperial stout which is conditioned with Bourbon oak barrel
           </Beer>
@@ -263,7 +263,7 @@ class App extends Component {
                 beerstyle="Strong Ale" label_url={`url(${LabelArrogantHarrisStrongAle})`}>
             John Harris was surgeon to the New South Wales Corps, owned most of Ultimo and
             lived in Pyrmont. He didn't always get on with everyone and was court marshalled (twice)<br/><br/>
-            This beer is inspired by the famously yummy brews 'you probably really won't like and are not worthy of' from San Diego,
+            Inspired by the famously yummy brews 'you probably really won't like and are not worthy of' from San Diego,
             California
           </Beer>
           <div><br/></div>
@@ -286,7 +286,7 @@ class App extends Component {
           <Beer name="Purgatory" abv="4.9" ibu="40" ebc="12"
                 beerstyle="Pale Ale" label_url={`url(${LabelPurgatoryPaleAle})`}>
             This quarry was nearest to Glebe Island bridge/Jackson Landing. <br/><br/>
-            This beer is similar to some Western Australian style 2-row pale ale with plenty of Challenger hops
+            Similar to some Western Australian style 2-row pale ale with plenty of Challenger hops
           </Beer>
           <div><br/></div>
           <Beer name="Hell Hole" abv="4.7" ibu="35" ebc="7"
@@ -303,38 +303,38 @@ class App extends Component {
             but with a dry finish
           </Beer>
           <div><br/></div>
-          Low alcohol<br/><br/>
+          LOAD "LOW_ALCOHOL"<br/><br/>
           <Beer name="Half Way House ZERO" abv="Less than 0.5" ibu="29" ebc="68"
-                beerstyle="Chocolate Stout" label_url={`url(${LabelHalfWayHouseZeroAlc})`}>
+                beerstyle="" label_url={`url(${LabelHalfWayHouseZeroAlc})`}>
             Half Way House de-alcoholized through long pasteurisation at 80C and re-carbonated - most of the character
             of the original Half Way Stout is still in here
           </Beer>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
-            Read about the history of brewing in and around Pyrmont here
+              <div className="speccy_flash_black">GOTO</div>&gt; History of brewing in Pyrmont<br/><br/>Read about the history of brewing in and around Pyrmont here
             </a>
           </p>
           <p>
             <a href={"beercoin.html"} target={"_blank"} className={classLink2}>
-              &gt; Beercoin!<br/><br/>Pyrmont Brewery has its own cryptocurrency "Beercoin" to track via blockchain inventory, recipe manifest -> fermenter vessel -> brite tank -> keg -> to venue (learn more!)
+              <div className="speccy_flash_black">GOTO</div>&gt; Beercoin!<br/><br/>Pyrmont Brewery has its own cryptocurrency "Beercoin" to track via blockchain inventory, recipe manifest -> fermenter vessel -> brite tank -> keg -> to venue (learn more!)
             </a>
             <br/>
           </p>
           <p>
             <a href={"raspberrypi.html"} target={"_blank"} className={classLink2}>
-              &gt; Raspberry Pi @ Pyrmont Brewery<br/><br/>
+              <div className="speccy_flash_black">GOTO</div>&gt; Raspberry Pi @ Pyrmont Brewery<br/><br/>
               We use various Raspberry Pi's to help brew and monitor our beers at the Pyrmont Brewery (learn more!)
             </a>
             <br/>
           </p>
           <p>
             <a href={"nftrecipies.html"} target={"_blank"} className={classLink2}>
-              &gt; Own NFT Recipies!<br/><br/>Pyrmont Brewery is selling NFTs (Ethereum Mainnet) of some seasonal beer recipies if you want to buy them or brew them in the Metaverse brewery
+              <div className="speccy_flash_black">GOTO</div>&gt; Own NFT Recipies!<br/><br/>Pyrmont Brewery is selling NFTs (Ethereum Mainnet) of some seasonal beer recipies if you want to buy them or brew them in the Metaverse brewery
             </a>
             <br/>
           </p>
           <p>
-            &gt;Open Source<br/><br/>
+            &gt; Open Source Beer!<br/><br/>
             Being a massive fan of open source and creative commons, our head brewer
             is sharing a small selection of pilot batch recipes for you to have a go at home:<br/>
             <a href={"Beer Arrogant Bastard.xml"} target={"_blank"} className={classLink}>Arrogant Bastard.xml</a> -
@@ -362,7 +362,8 @@ class App extends Component {
               are likely to bump in to it at various local meet-ups<br/>We'll let you know when the liquor producers license
               comes through, both here and on social media<br/>
               <img src={PyrmontBrewery_Kegerator} width="70%"
-                   style={{opacity: 0.9, display: "block", marginLeft: "auto", marginRight: "auto"}}></img>
+                   style={{opacity: 0.9, display: "block", marginLeft: "auto", marginRight: "auto"}}
+              alt="A kegerator fridge with beer taps and fridegs with cans of Pyrmont beer surrounding it"></img>
             </a>
             <br/>
           </p>
@@ -381,7 +382,7 @@ class App extends Component {
 
           <br/>
           <br/>
-          <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
+          <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt="Pyrmont Brewery Logo which is a secret squirrel"/></a>
           <br/>
           <br/>
           <br/>
@@ -405,79 +406,6 @@ class App extends Component {
 
 function Home() {
   return "";
-}
-
-function About() {
-  return <h3>About</h3>
-    // <header className="App-header">
-    //   <p className={sensible}>
-    //     Some example blogs/slides and examples...<br/>
-    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-    //       Pyrmont Brewery and brewing beer in and around Sydney in colonial times up until today, click here<br/>
-    //     </a>
-    //     <iframe
-    //         src="https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/embed?start=false&loop=false&delayms=3000"
-    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-    //         webkitallowfullscreen="true"></iframe>
-    //     <br/>
-    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-    //       Raspberry Pi's - including AstroPi and possibly the Australian Space Agency involvement - click here to learn more about them
-    //     </a>
-    //     <iframe
-    //         src="https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/embed?start=false&loop=false&delayms=3000"
-    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-    //         webkitallowfullscreen="true"></iframe>
-    //     <br/>
-    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-    //       Wild Fire! - click here to for ideas around how video engineers can also help save lives
-    //     </a>
-    //     <iframe
-    //         src="https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/embed?start=false&loop=false&delayms=3000"
-    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-    //         webkitallowfullscreen="true"></iframe>
-    //     <br/>
-    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-    //       XDebug - click here for info on debuggina dn profiling with XDebug
-    //     </a>
-    //     <iframe
-    //         src="https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/embed?start=false&loop=false&delayms=3000"
-    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-    //         webkitallowfullscreen="true"></iframe>
-    //     <br/>
-    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-    //       WebAssembly - click here to learn for a quick intro about what it is
-    //     </a>
-    //     <iframe
-    //         src="https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/embed?start=false&loop=false&delayms=3000"
-    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-    //         webkitallowfullscreen="true"></iframe>
-    //     <br/>
-    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-    //       AV1 Video codec - click here to learn what its about and how to get going with it
-    //     </a>
-    //     <iframe
-    //         src="https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/embed?start=false&loop=false&delayms=3000"
-    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-    //         webkitallowfullscreen="true"></iframe>
-    //     <br/>
-    //     <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>
-    //       Low Latency media streaming - click here to learn how it all works
-    //     </a>
-    //     <iframe
-    //         src="https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/embed?start=false&loop=false&delayms=3000"
-    //         frameBorder="0" width="960" height="569" allowFullScreen="true" mozallowfullscreen="true"
-    //         webkitallowfullscreen="true"></iframe>
-    //     <br/>
-    //     <br/>
-    //     <br/>
-    //     Thanks for stopping by!<br/>As for this 80's 8-bit ZX Spectrum inspired website? <br/>This was just an afternoon hack with React! It's not something I claim I do at all well and yes it's organic marketing for my beers!<br/>
-    //     <br/>
-    //   </p>
-    //   <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt=""/></a>
-    //   <br/>
-    //   <br/>
-    //   <br/>
-    // </header>;
 }
 
 function Topic({match}) {
