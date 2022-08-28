@@ -83,7 +83,7 @@ p {
 .App {
     text-align: left;
     font-family: 'pyrmont_brewery';
-    font-size: small;
+    font-size: 1.3vh;
     padding: 0px 5px 0px 5px;
     background-color: #404040;
     white-space: wrap;
@@ -207,6 +207,7 @@ p {
     width: 50%;
     background-size: 30vw;
     background-repeat: no-repeat;
+    background-size: cover;
     opacity: 1;
     cursor: grabbing;
     justify-content: left;
@@ -283,7 +284,7 @@ p {
     color: #000000;
     text-decoration-line: none;
     text-align: left;
-    padding: 0.4vh 0.1vw 0.3vh 0.2vw;
+    padding: 0.6vh 0.2vw 0.7vh 0.2vw;
 }
 
 .App-link:hover {
@@ -291,7 +292,7 @@ p {
     color: #000000;
     text-decoration-line: none;
     text-align: left;
-    padding: 0.4vh 0.1vw 0.3vh 0.2vw;
+    padding: 0.6vh 0.2vw 0.7vh 0.2vw;
     animation: SPECCY_FLASH_GREEN 0.7s infinite;
     transition-duration: 0s;
 }

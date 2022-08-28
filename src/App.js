@@ -99,7 +99,7 @@ class App extends Component {
     }}>
       {afterKev ?
         <header className="App-header">
-          <p><a href="back" className={classLink2}>&lt;-</a></p>
+          <p><a href="/" className={classLink2}>&lt;-</a></p>
           <p className={sensible}>
             <h1>"Media Brewer"</h1>
             My main profession is actually software engineering - I'm more than happy to help out on small projects as a temporary solution. <br/>
@@ -157,7 +157,7 @@ class App extends Component {
       mightBeUnder18 ? confirmedAge ?
 
         <header className="App-header">
-          <p><a href="back" className={classLink2}>&lt;-</a></p>
+          <p><a href="/" className={classLink2}>&lt;-</a></p>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             Sorry, but it's mega important that you are 18 or over for us to discuss the supply of alcohol with you
@@ -178,12 +178,14 @@ class App extends Component {
         :
         <header className="App-header">
           <p>
+            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             Before we go on, we need you to confirm you are 18 years or older<br/><br/>
             Were you born on or before <div className="speccy_flash_black">{today.toString().substring(0, 15)}?</div>
+            </a>
             <br/>
-            <div className="ButtonNo" id="no" onClick={handleTooYoung}>No, I'm too young</div>
+            <div className="ButtonNo" id="no" onClick={handleTooYoung}><br/>No, I'm too young<br/><br/></div>
             <br/>
-            <div className="ButtonYes" id="yes18" onClick={handleOldEnough}>Strewth, yeah I'm bloody old</div>
+            <div className="ButtonYes" id="yes18" onClick={handleOldEnough}><br/>Strewth, yeah I'm bloody old<br/><br/></div>
             <br/>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             &copy; 2007 Pyrmont Brewery
@@ -222,7 +224,7 @@ class App extends Component {
           <div>
             <br/>
           </div>
-          LOAD "CORE_RANGE" beers<br/><br/>
+          LOAD "OUR_CORE_RANGE" beers<br/><br/>
           <Beer name="Half Way House" abv="4.5" ibu="29" ebc="68"
                 beerstyle="Chocolate Stout" label_url={`url(${LabelHalfWayHouseChocolateStout})`}>
             Half Way House was the sandstone quarry and later a pub on Miller Street where the
@@ -246,7 +248,7 @@ class App extends Component {
             to Banks' Dark Mild
           </Beer>
           <div><br/></div>
-          LOAD "SEASONALS" beer<br/><br/>
+          LOAD "OUR_SEASONALS" beer<br/><br/>
           <Beer name="Goldsbrough" abv="7.3" ibu="13" ebc="12"
                 beerstyle="Hazy NEIPA" label_url={`url(${LabelGoldsbroughNEPIA})`}>
             Goldsborough Mort was the large wool stores in Pyrmont. This fruity Double IPA Hazy inspired by Mountain Culture "Dolly"<br/><br/>
@@ -274,7 +276,7 @@ class App extends Component {
             all the way, full strength lager beer
           </Beer>
           <div><br/></div>
-          LOAD "QUARRYS" beer range<br/><br/>
+          LOAD "OUR_QUARRYS_RANGE" beer<br/><br/>
           <Beer name="Paradise" abv="6.8" ibu="26" ebc="9"
                 beerstyle="French Saison" label_url={`url(${LabelParadiseFrenchSaison})`}>
             This quarry face is nearest the brewery, so named being the easiest
@@ -303,7 +305,7 @@ class App extends Component {
             but with a dry finish
           </Beer>
           <div><br/></div>
-          LOAD "LOW_ALCOHOL"<br/><br/>
+          LOAD "OUR_LOW_ALCOHOL" beers<br/><br/>
           <Beer name="Half Way House ZERO" abv="Less than 0.5" ibu="29" ebc="68"
                 beerstyle="" label_url={`url(${LabelHalfWayHouseZeroAlc})`}>
             Half Way House de-alcoholized through long pasteurisation at 80C and re-carbonated - most of the character
