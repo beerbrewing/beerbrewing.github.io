@@ -13,6 +13,17 @@ html {
     overflow-y: scroll;
 }
 
+.tvsimulator {
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    pointer-events: none;
+    background: -webkit-repeating-linear-gradient(top, transparent 0px, transparent 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0.9) 4px);
+    background-size: 100% 2px;
+}
 span {
     width: 95%;
     justify-content: left;
@@ -513,4 +524,12 @@ p {
     100% {
         transform: translate(0%, 0);
     }
+}
+
+.BeerMats {
+    margin: auto;
+    display: block;
+    opacity: 1;
+    height: 90%;
+    width: 90%;
 }

@@ -29,6 +29,7 @@ import LabelGeneric from './label_generic.png';
 import ReactPixel from 'react-facebook-pixel';
 import ReactGA from 'react-ga';
 import Beer from "./Beer";
+import BeerMats from "./BeerMats";
 
 const advancedMatching = { em: 'kev@pyrmontbrewery.com.au' }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/pixel-with-ads/conversion-tracking#advanced_match
 const options = {
@@ -157,6 +158,7 @@ class App extends Component {
       mightBeUnder18 ? confirmedAge ?
 
         <header className="App-header">
+          <div className="tvsimulator"></div>
           <p><a href="/" className={classLink2}>&lt;-</a></p>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
@@ -173,15 +175,18 @@ class App extends Component {
           <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt="Pyrmont Brewery Logo which is a secret squirrel"/></a>
           <br/>
           <br/>
+          <BeerMats />
           <br/>
         </header>
         :
         <header className="App-header">
+          <div className="tvsimulator"></div>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             Before we go on, we need you to confirm you are 18 years or older<br/><br/>
             Were you born on or before <div className="speccy_flash_black">{today.toString().substring(0, 15)}?</div>
             </a>
+            <br/>
             <br/>
             <div className="ButtonNo" id="no" onClick={handleTooYoung}><br/>No, I'm too young<br/><br/></div>
             <br/>
@@ -196,9 +201,11 @@ class App extends Component {
           </p>
           <br/>
           <br/>
+          <BeerMats />
         </header>
         :
         <header className="App-header">
+          <div className="tvsimulator"></div>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             <div className="speccy_flash_black">GOTO</div>&gt; Nestled amongst Pyrmont's sandstone hides a secret brewery!<br/><br/>Brewing ales similar to those that came from the original 1880 Pyrmont Brewery
@@ -212,7 +219,7 @@ class App extends Component {
           </p>
           <p>
             <a href={"aibeerlabels.html"} target={"_blank"} className={classLink2}>
-              <div className="speccy_flash_black">GOTO</div>&gt; AI Beer Label/Beer mat coaster maker<br/><br/>Can't draw? Use your words instead! DALL.E-2 based text to image AI to generate a legal can wrappers and get them printed
+              <div className="speccy_flash_black">GOTO</div>&gt; AI Beer Label/Beer mat coaster maker<br/><br/>Can't draw? Use your words instead! DALL·E 2 based text to image AI to generate a legal can wrappers and get them printed
             </a>
             <br/>
           </p>
@@ -387,6 +394,7 @@ class App extends Component {
           <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt="Pyrmont Brewery Logo which is a secret squirrel"/></a>
           <br/>
           <br/>
+          <BeerMats />
           <br/>
           <br/>
           <br/>
