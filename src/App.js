@@ -394,10 +394,10 @@ class App extends Component {
           <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt="Pyrmont Brewery Logo which is a secret squirrel"/></a>
           <br/>
           <br/>
+          <br/>
+          <br/>
+          <br/>
           <BeerMats />
-          <br/>
-          <br/>
-          <br/>
           <br/>
           <br/>
           <br/>

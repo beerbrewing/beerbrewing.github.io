@@ -20,6 +20,7 @@ html {
     bottom: 0px;
     left: 0px;
     right: 0px;
+    height: 200000px;
     pointer-events: none;
     background: -webkit-repeating-linear-gradient(top, transparent 0px, transparent 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0.9) 4px);
     background-size: 100% 2px;
@@ -94,7 +95,7 @@ p {
 .App {
     text-align: left;
     font-family: 'pyrmont_brewery';
-    font-size: 1.3vh;
+    font-size: calc(1vw + 1vh);
     padding: 0px 5px 0px 5px;
     background-color: #404040;
     white-space: wrap;
@@ -527,6 +528,11 @@ p {
 }
 
 .BeerMats {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    top: 15px;
     margin: auto;
     display: block;
     opacity: 1;
