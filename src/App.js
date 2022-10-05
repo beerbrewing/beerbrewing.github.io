@@ -182,7 +182,10 @@ class App extends Component {
         <header className="App-header">
           <div className="tvsimulator"></div>
           <p>
-            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
+            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>Looking for Kev 'Media Brewer'? head here</div>
+            <br/>
+          Welcome to Pyrmont Brewery!<br/>
+          <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
             Before we go on, we need you to confirm you are 18 years or older<br/><br/>
             Were you born on or before <div className="speccy_flash_black">{today.toString().substring(0, 15)}?</div>
             </a>
@@ -196,7 +199,10 @@ class App extends Component {
             &copy; 2007 Pyrmont Brewery
             <br/>
               <br/>
-            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>Looking for Kev 'Media Brewer'?</div>
+              We acknowledge the Gadigal people of the Eora Nation as custodians of the Country the brewery was founded<br/>
+              We thank them for protecting the Pirrama, the local harbour area we all share here together<br/>
+              We pay our respects to Elders past and emerging and all the First Nations people present today<br/>
+              <br/>
             </a>
           </p>
           <br/>
@@ -214,12 +220,6 @@ class App extends Component {
           <p>
             <a href={"metaversebrewery.html"} target={"_blank"} className={classLink2}>
               <div className="speccy_flash_black">GOTO</div>&gt; Metaverse VR/AR brewery!<br/><br/>The world's first VR brewery! Meta Horizon World where you tailor real beer brewed in Pyrmont!
-            </a>
-            <br/>
-          </p>
-          <p>
-            <a href={"aibeerlabels.html"} target={"_blank"} className={classLink2}>
-              <div className="speccy_flash_black">GOTO</div>&gt; AI Beer Label/Beer mat coaster maker<br/><br/>Can't draw? Use your words instead! DALL·E 2 based text to image AI to generate a legal can wrappers and get them printed
             </a>
             <br/>
           </p>
@@ -333,6 +333,12 @@ class App extends Component {
             <a href={"raspberrypi.html"} target={"_blank"} className={classLink2}>
               <div className="speccy_flash_black">GOTO</div>&gt; Raspberry Pi @ Pyrmont Brewery<br/><br/>
               We use various Raspberry Pi's to help brew and monitor our beers at the Pyrmont Brewery (learn more!)
+            </a>
+            <br/>
+          </p>
+          <p>
+            <a href={"aibeerlabels.html"} target={"_blank"} className={classLink2}>
+              <div className="speccy_flash_black">GOTO</div>&gt; AI Beer Label/Beer mat coaster maker<br/><br/>Can't draw? Use your words instead! DALL·E 2 based text to image AI to generate a legal can wrappers and get them printed
             </a>
             <br/>
           </p>
