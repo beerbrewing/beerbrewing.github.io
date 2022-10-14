@@ -117,9 +117,9 @@ class App extends Component {
             My <a href={"resume.html"} target={"_blank"} className={classLink3}>resume is here</a>
             <br/>
             <br/>
-            I've also done a reasonable amount of public speaking
+            I've also done a reasonable amount of public speaking <a href={"https://www.linkedin.com/in/kevleyski/details/featured/?profileUrn=urn%3Ali%3Afsd_profile%3AACoAAACF8OUBIghnUwUP2cmE9jZV3lvcxg6lla0"} target={"_blank"} className={classLink3}>(see LinkedIn)</a>
             <br/>
-            Some of my public presentations:
+            Some of the slide decks from those:
             <br/>
             <br/>
             <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQv3IiJbCcLXNwZD7iunweYgkDfq0Nz4qr8UzuVjTCkZoszo9SyH4-pxhSMZrZTkN_lZIDldXib2VMp/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>Raspberry Pi into the Metaverse with LCEVC</a> - presented at Demuxed 2022 San Francisco
