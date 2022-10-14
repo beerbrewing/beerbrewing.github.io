@@ -50,13 +50,13 @@ class BeerMats extends Component {
         let classLink2 = 'App-link2';
 
         return <div className="BeerMats">
-            <div className="StringSpin">
-                <div className="LeftStringSpin">
-                    Pyrmont Brewery AI Beer mats made with DALL.E 2
+            <header className="App-header">
+            LOAD "BEERMATS"
+                <div className="StringSpin">
+                    <div className="LeftStringSpin">
+                        Pyrmont Brewery AI Beer mats made with DALL.E 2
+                    </div>
                 </div>
-            </div>
-            <br/>
-            <br/>
             <img className={BeerMatsLink} src={BeerMat1} />
             <br/>
             <img className={BeerMatsLink} src={BeerMat2} />
@@ -107,16 +107,6 @@ class BeerMats extends Component {
             <br/>
             <br/>
             <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
             <p>
                 <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
                     pyrmontbrewery.com.au<br/>
@@ -125,13 +115,23 @@ class BeerMats extends Component {
                     <br/><br/>
                     &copy; 2007 Pyrmont Brewery
                     <br/><br/>
-                    0 OK, 100:1
+                    0 OK, 0:1
                     <br/>
                 </a>
             </p>
             <br/>
             <br/>
-            </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            </header>
+        </div>
     }
 }
 

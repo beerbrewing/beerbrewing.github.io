@@ -108,43 +108,43 @@ class App extends Component {
             I've been writing code since the 80s which you might have noticed from the 1982 Sinclair ZX Spectrum style of the brewery website :-)
             <br/>
             <br/>
-            Find out more at my LinkedIn <a href={"https://www.linkedin.com/in/kevleyski/"} target={"_blank"} className={classLink3}>@kevleyski</a>
+            Find out more at my LinkedIn <a href={"https://www.linkedin.com/in/kevleyski/"} target={"_blank"} className="speccy_flash_blue_white">@kevleyski</a>
             <br/>
             <br/>
-            email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className={classLink3}>kev@pyrmontbrewery.com.au</a>
+            email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"} className="speccy_flash_blue_white">kev@pyrmontbrewery.com.au</a>
             <br/>
             <br/>
-            My <a href={"resume.html"} target={"_blank"} className={classLink3}>resume is here</a>
+            My <a href={"resume.html"} target={"_blank"} className="speccy_flash_blue_white">resume is here</a>
             <br/>
             <br/>
-            I've also done a reasonable amount of public speaking <a href={"https://www.linkedin.com/in/kevleyski/details/featured/?profileUrn=urn%3Ali%3Afsd_profile%3AACoAAACF8OUBIghnUwUP2cmE9jZV3lvcxg6lla0"} target={"_blank"} className={classLink3}>(see LinkedIn)</a>
+            I've also done a reasonable amount of public speaking <a href={"https://www.linkedin.com/in/kevleyski/details/featured/?profileUrn=urn%3Ali%3Afsd_profile%3AACoAAACF8OUBIghnUwUP2cmE9jZV3lvcxg6lla0"} target={"_blank"} className="speccy_flash_blue">(see LinkedIn)</a>
             <br/>
             Some of the slide decks from those:
             <br/>
             <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQv3IiJbCcLXNwZD7iunweYgkDfq0Nz4qr8UzuVjTCkZoszo9SyH4-pxhSMZrZTkN_lZIDldXib2VMp/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>Raspberry Pi into the Metaverse with LCEVC</a> - presented at Demuxed 2022 San Francisco
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQv3IiJbCcLXNwZD7iunweYgkDfq0Nz4qr8UzuVjTCkZoszo9SyH4-pxhSMZrZTkN_lZIDldXib2VMp/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">Raspberry Pi into the Metaverse with LCEVC</a> - presented at Demuxed 2022 San Francisco
             <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQZRz0dEDaYuoVW_c67mZQdBVetIx2BAZacTuPWli5OV7wMPcECiqT8j79DI_Y1yqlUak_AKE10nW_V/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>Common Media Server Data</a> - presented in San Francisco on behalf of the CES CTA Wave
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQZRz0dEDaYuoVW_c67mZQdBVetIx2BAZacTuPWli5OV7wMPcECiqT8j79DI_Y1yqlUak_AKE10nW_V/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">Common Media Server Data</a> - presented in San Francisco on behalf of the CES CTA Wave
             <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>Low Latency media streaming</a> - presented at Sydney ICC - RTMP/RIST/SRT/WebRTC/LL-HLS/ULL-CMAF (150+ audience)
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRn6zabikGWZOyXG5924sb9BoK1E35wtNjQZ68mr8NwGDID1dzuZYuPYfKXDttIkMNQ4qLgxC84IC_I/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">Low Latency media streaming</a> - presented at Sydney ICC - RTMP/RIST/SRT/WebRTC/LL-HLS/ULL-CMAF (150+ audience)
             <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>AV1 Video Codec</a> - presented at Sydney Hilton hotel (100+ audience)
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQa7fH73RpJGE6bT4lqrn1il8slRPJIn_AXB_HGT-Q0IydWNJMvv7UA-WJHhOGQm6rEcsPIG7_XBHmm/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">AV1 Video Codec</a> - presented at Sydney Hilton hotel (100+ audience)
             <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>VOD2Live</a> - presented at Demuxed San Francisco (750+ audience)
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vR5eczB2evEqYFL0vQ4dazuWmx9mbzJDyHFIs8pIGgKYD9c9yeLycpHcprUuXQTBp6DkzdGBSlnuawI/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">VOD2Live</a> - presented at Demuxed San Francisco (750+ audience)
             <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>WebAssembly at the CDN Edge</a> - publicly presented at Sydney Video meet-up
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vRX58ErIM9fg8cUOGolq-LnvcLd1IhR9XanRiUEaRf9nbVWdFsnQgLU1dcSRxm43m0HPg7OQjizjlJ9/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">WebAssembly at the CDN Edge</a> - publicly presented at Sydney Video meet-up
             <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>Raspberry Pi</a> - presented at JayCar Electronics maker hub Central Park
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vSy9Q-L7epQagpJuqpImXzekAqMfpbJT6pMjYFsHoUaGrxTIY2-9n2_bxhe0QU-5Qi4bMr2dYQLyfab/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">Raspberry Pi</a> - presented at JayCar Electronics maker hub Central Park
             <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vTxzthkg5eJDQRtc7GswXj80eFrgBa9oza7O5NIhpOIoj5QbeYv_gNvHaZAAgb1VgDlQhwK40e29xPV/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>AI TensorFlow for ATR</a> - Google Sydney side presentation
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vTxzthkg5eJDQRtc7GswXj80eFrgBa9oza7O5NIhpOIoj5QbeYv_gNvHaZAAgb1VgDlQhwK40e29xPV/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">AI TensorFlow for ATR</a> - Google Sydney side presentation
             <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>XDebug Profiling</a> - publicly presented at Deputy Sydney
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQZJ5mgP2jY2tc2PEdFS8Ci1qiy7Zl4YlypWHoR8JVCUr6LpsHdbi290PM16If1JMYZbG8b7WbanQog/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">XDebug Profiling</a> - publicly presented at Deputy Sydney
             <br/>
-            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className={classLink3}>History of Brewing in Australia</a> - publicly presented before the Pyrmont History Group and also wework
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQ195P_Pi9yvdBtV_PkECqyT6-WRqu7PtfmPjZzXKHy7hYJPV6P5VQFrWqhdtnohslk4T0OZ7LO0S7r/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">History of Brewing in Australia</a> - publicly presented before the Pyrmont History Group and also wework
             <br/>
             <br/>
             <br/>
-            Also my <a href={"dissertation.html"} className={classLink3}>
+            Also my <a href={"dissertation.html"} className="speccy_flash_blue_white">
             1997 university dissertation is here</a> and was a discussion on the state of the internet, world wide web and eCommerce arround 1997! I feel you can still learn HTML, what how HTTP the Web and CGI fundamentally still works today as its not changed that much :-)<br/>
             <br/>
           </p>
@@ -182,7 +182,7 @@ class App extends Component {
         <header className="App-header">
           <div className="tvsimulator"></div>
           <p>
-            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>Looking for Kev 'Media Brewer'? head here</div>
+            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>Looking for Kev 'Media Brewer'? GO TO</div>
             <br/>
           Welcome to Pyrmont Brewery!<br/>
           <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
@@ -199,9 +199,7 @@ class App extends Component {
             &copy; 2007 Pyrmont Brewery
             <br/>
               <br/>
-              We acknowledge the Gadigal people of the Eora Nation as custodians of the Country the brewery was founded<br/>
-              We thank them for protecting the Pirrama, the local harbour area we all share here together<br/>
-              We pay our respects to Elders past and emerging and all the First Nations people present today<br/>
+              We acknowledge the Gadigal people, we thank them for protecting our Pirrama, the local harbour area we all share. We pay our respects to Elders past and emerging and all the First Nations people<br/>
               <br/>
             </a>
           </p>
@@ -214,12 +212,12 @@ class App extends Component {
           <div className="tvsimulator"></div>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
-            <div className="speccy_flash_black">GOTO</div>&gt; Nestled amongst Pyrmont's sandstone hides a secret brewery!<br/><br/>Brewing ales similar to those that came from the original 1880 Pyrmont Brewery
+            <div className="speccy_flash_magenta">GO TO</div>&gt; Nestled amongst Pyrmont's sandstone hides a secret brewery!<br/><br/>Brewing ales similar to those that came from the original 1880 Pyrmont Brewery
             </a>
           </p>
           <p>
             <a href={"metaversebrewery.html"} target={"_blank"} className={classLink2}>
-              <div className="speccy_flash_black">GOTO</div>&gt; Metaverse VR/AR brewery!<br/><br/>The world's first VR brewery! Meta Horizon World where you tailor real beer brewed in Pyrmont!
+              <div className="speccy_flash_magenta">GO TO</div>&gt; Metaverse VR/AR brewery!<br/><br/>The world's first VR brewery! Meta Horizon World where you tailor real beer brewed in Pyrmont!
             </a>
             <br/>
           </p>
@@ -231,7 +229,7 @@ class App extends Component {
           <div>
             <br/>
           </div>
-          LOAD "OUR_CORE_RANGE" beers<br/><br/>
+          Bytes:  CoreRange<br/><br/>
           <Beer name="Half Way House" abv="4.5" ibu="29" ebc="68"
                 beerstyle="Chocolate Stout" label_url={`url(${LabelHalfWayHouseChocolateStout})`}>
             Half Way House was the sandstone quarry and later a pub on Miller Street where the
@@ -255,7 +253,7 @@ class App extends Component {
             to Banks' Dark Mild
           </Beer>
           <div><br/></div>
-          LOAD "OUR_SEASONALS" beer<br/><br/>
+          Bytes:  Seasonals<br/><br/>
           <Beer name="Goldsbrough" abv="7.3" ibu="13" ebc="12"
                 beerstyle="Hazy NEIPA" label_url={`url(${LabelGoldsbroughNEPIA})`}>
             Goldsborough Mort was the large wool stores in Pyrmont. This fruity Double IPA Hazy inspired by Mountain Culture "Dolly"<br/><br/>
@@ -283,7 +281,7 @@ class App extends Component {
             all the way, full strength lager beer
           </Beer>
           <div><br/></div>
-          LOAD "OUR_QUARRYS_RANGE" beer<br/><br/>
+          Bytes:  QuarryRange<br/><br/>
           <Beer name="Paradise" abv="6.8" ibu="26" ebc="9"
                 beerstyle="French Saison" label_url={`url(${LabelParadiseFrenchSaison})`}>
             This quarry face is nearest the brewery, so named being the easiest
@@ -312,7 +310,7 @@ class App extends Component {
             but with a dry finish
           </Beer>
           <div><br/></div>
-          LOAD "OUR_LOW_ALCOHOL" beers<br/><br/>
+          Program:  NoAlcohol<br/><br/>
           <Beer name="Half Way House ZERO" abv="Less than 0.5" ibu="29" ebc="68"
                 beerstyle="" label_url={`url(${LabelHalfWayHouseZeroAlc})`}>
             Half Way House de-alcoholized through long pasteurisation at 80C and re-carbonated - most of the character
@@ -320,31 +318,31 @@ class App extends Component {
           </Beer>
           <p>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
-              <div className="speccy_flash_black">GOTO</div>&gt; History of brewing in Pyrmont<br/><br/>Read about the history of brewing in and around Pyrmont here
+              <div className="speccy_flash_magenta">GO TO</div>&gt; History of brewing in Pyrmont<br/><br/>Read about the history of brewing in and around Pyrmont here
             </a>
           </p>
           <p>
             <a href={"beercoin.html"} target={"_blank"} className={classLink2}>
-              <div className="speccy_flash_black">GOTO</div>&gt; Beercoin!<br/><br/>Pyrmont Brewery has its own cryptocurrency "Beercoin" to track via blockchain inventory, recipe manifest -> fermenter vessel -> brite tank -> keg -> to venue (learn more!)
+              <div className="speccy_flash_magenta">GO TO</div>&gt; Beercoin!<br/><br/>Pyrmont Brewery has its own cryptocurrency "Beercoin" to track via blockchain inventory, recipe manifest -> fermenter vessel -> brite tank -> keg -> to venue (learn more!)
             </a>
             <br/>
           </p>
           <p>
             <a href={"raspberrypi.html"} target={"_blank"} className={classLink2}>
-              <div className="speccy_flash_black">GOTO</div>&gt; Raspberry Pi @ Pyrmont Brewery<br/><br/>
+              <div className="speccy_flash_magenta">GO TO</div>&gt; Raspberry Pi @ Pyrmont Brewery<br/><br/>
               We use various Raspberry Pi's to help brew and monitor our beers at the Pyrmont Brewery (learn more!)
             </a>
             <br/>
           </p>
           <p>
             <a href={"aibeerlabels.html"} target={"_blank"} className={classLink2}>
-              <div className="speccy_flash_black">GOTO</div>&gt; AI Beer Label/Beer mat coaster maker<br/><br/>Can't draw? Use your words instead! DALL·E 2 based text to image AI to generate a legal can wrappers and get them printed
+              <div className="speccy_flash_magenta">GO TO</div>&gt; AI Beer Label/Beer mat coaster maker<br/><br/>Can't draw? Use your words instead! DALL·E 2 based text to image AI to generate a legal can wrappers and get them printed
             </a>
             <br/>
           </p>
           <p>
             <a href={"nftrecipies.html"} target={"_blank"} className={classLink2}>
-              <div className="speccy_flash_black">GOTO</div>&gt; Own NFT Recipies!<br/><br/>Pyrmont Brewery is selling NFTs (Ethereum Mainnet) of some seasonal beer recipies if you want to buy them or brew them in the Metaverse brewery
+              <div className="speccy_flash_magenta">GO TO</div>&gt; Own NFT Recipies!<br/><br/>Pyrmont Brewery is selling NFTs (Ethereum Mainnet) of some seasonal beer recipies if you want to buy them or brew them in the Metaverse brewery
             </a>
             <br/>
           </p>
@@ -390,9 +388,10 @@ class App extends Component {
             <br/><br/>
             &copy; 2007 Pyrmont Brewery
             <br/><br/>
-            0 OK, 100:1
+            0 OK, 0:1
             <br/>
             </a>
+            <br/>
           </p>
 
           <br/>

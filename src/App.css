@@ -41,7 +41,7 @@ p {
     color: rgb(0, 0, 0);
     font-family: 'pyrmont_brewery';
     width: 80%;
-    opacity: 0.96;
+    opacity: 0.9;
     position: relative;
     padding: 5px 5px 5px 5px;
     border-style: solid;
@@ -159,7 +159,7 @@ p {
 }
 
 .ButtonNo:hover {
-    animation: SPECCY_FLASH_RED 0.7s infinite;
+    animation: SPECCY_FLASH_RED 0.625s infinite;
     transition-duration: 0s;
 }
 
@@ -178,7 +178,7 @@ p {
 }
 
 .ButtonYes:hover {
-    animation: SPECCY_FLASH_GREEN 0.7s infinite;
+    animation: SPECCY_FLASH_GREEN 0.625s infinite;
     transition-duration: 0s;
 }
 
@@ -195,7 +195,7 @@ p {
 }
 
 .ButtonKev:hover {
-    animation: SPECCY_FLASH_BLUE 0.7s infinite;
+    animation: SPECCY_FLASH_BLUE 0.625s infinite;
     transition-duration: 0s;
 }
 
@@ -305,7 +305,7 @@ p {
     text-decoration-line: none;
     text-align: left;
     padding: 0.6vh 0.2vw 0.7vh 0.2vw;
-    animation: SPECCY_FLASH_GREEN 0.7s infinite;
+    animation: SPECCY_FLASH_GREEN 0.625s infinite;
     transition-duration: 0s;
 }
 
@@ -325,7 +325,7 @@ p {
     opacity: 1;
     text-decoration-line: none;
     text-align: left;
-    animation: SPECCY_FLASH_GREEN 0.7s infinite;
+    animation: SPECCY_FLASH_GREEN 0.625s infinite;
     transition-duration: 0s;
 }
 
@@ -404,9 +404,10 @@ p {
 
 .speccy_flash_black {
     display: inline;
-    animation: SPECCY_FLASH_BLACK 0.7s infinite;
-    padding: 0.3vh 0.0vw 0.1vh 0.2vw;
+    animation: SPECCY_FLASH_BLACK 0.625s infinite;
+    padding: 0.4vh 0.0vw 0.1vh 0.3vw;
     transition-duration: 0s;
+    text-decoration: none;
 }
 
 @-webkit-keyframes SPECCY_FLASH_BLACK {
@@ -422,15 +423,57 @@ p {
     }
 }
 
-@-webkit-keyframes SPECCY_FLASH_GREEN {
+.speccy_flash_magenta {
+    display: inline;
+    animation: SPECCY_FLASH_MAGENTA 0.625s infinite;
+    padding: 0.4vh 0.0vw 0.1vh 0.3vw;
+    transition-duration: 0s;
+    text-decoration: none;
+}
+
+@-webkit-keyframes SPECCY_FLASH_MAGENTA {
     0%, 49% {
-        background-color: rgb(0, 255, 0);
-        color: rgb(0, 0, 0);
+        background-color: rgb(0, 0, 189);
+        color: rgb(255, 0, 255);
         animation-timing-function: steps(1, end);
     }
     50%, 100% {
+        background-color: rgb(255, 0, 255);
+        color: rgb(0, 0, 189);
+        animation-timing-function: steps(1, end);
+    }
+}
+
+.speccy_flash_blue_white {
+    display: inline;
+    animation: SPECCY_FLASH_BLUE_WHITE 0.625s infinite;
+    padding: 0.4vh 0.0vw 0.1vh 0.3vw;
+    transition-duration: 0s;
+    text-decoration: none;
+}
+
+@-webkit-keyframes SPECCY_FLASH_BLUE_WHITE {
+    0%, 49% {
+        background-color: rgb(0, 0, 189);
+        color: rgb(255, 255, 255);
+        animation-timing-function: steps(1, end);
+    }
+    50%, 100% {
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 189);
+        animation-timing-function: steps(1, end);
+    }
+}
+
+@-webkit-keyframes SPECCY_FLASH_GREEN {
+    0%, 49% {
         background-color: rgb(0, 128, 0);
         color: rgb(255, 255, 255);
+        animation-timing-function: steps(1, end);
+    }
+    50%, 100% {
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 128, 0);
         animation-timing-function: steps(1, end);
     }
 }
