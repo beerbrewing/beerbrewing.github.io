@@ -11,6 +11,11 @@ html {
     overflow-x: hidden;
     scroll-padding-top: 15vh;
     overflow-y: scroll;
+    -webkit-scroll-snap-type: step;
+    -webkit-scroll-snap-interval: 22vh;
+    scroll-snap-type: step;
+    scroll-snap-interval: 22vh;
+    scroll-behavior: auto;
 }
 
 .tvsimulator {

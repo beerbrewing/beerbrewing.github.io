@@ -26,18 +26,9 @@ import LabelHellHoleHelles from './label_hell_hole_helles.png';
 import LabelGoldsbroughNEPIA from './label_goldsbrough_neipa.png';
 import LabelGeneric from './label_generic.png';
 
-import ReactPixel from 'react-facebook-pixel';
 import ReactGA from 'react-ga';
 import Beer from "./Beer";
 import BeerMats from "./BeerMats";
-
-const advancedMatching = { em: 'kev@pyrmontbrewery.com.au' }; // optional, more info: https://developers.facebook.com/docs/facebook-pixel/pixel-with-ads/conversion-tracking#advanced_match
-const options = {
-  autoConfig: true, // set pixel's autoConfig
-  debug: false, // enable logs
-};
-ReactPixel.init('701956460214044', advancedMatching, options);
-ReactPixel.pageView(); // For tracking page view
 
 ReactGA.initialize('UA-155182441-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -103,9 +94,10 @@ class App extends Component {
           <p><a href="/" className={classLink2}>&lt;-</a></p>
           <p>
             <h1>About Kev "Media Brewer"</h1>
-            I brew craft beer and ales but my main profession is actually software engineering, my day-to-day job is focused on VR/AR, Deep Learning, Computer Vision and video streaming
+            Whilst yes, I'm government certifying in brewing craft beer and ales but my main profession is actually software engineering, my day-to-day job is focused on VR/AR, AI Deep Learning, Computer Vision and low latency video streaming at massive world wide scale for various massive companies you'll know very well
             <br/>
-            I've been writing code since the 80s which you might have noticed from the 1982 Sinclair ZX Spectrum style of the brewery website :-)
+            <br/>
+            I've been writing code since the 1980s which you might have noticed from the 1982 Sinclair ZX Spectrum style of the brewery website! Yes its deliberate, and yeah its not easy to make a website look this crazy. These days I write Rust code and help up and coming technologies such as WebAssembly, WebGPU and WebXR
             <br/>
             <br/>
             Find out more at my LinkedIn <a href={"https://www.linkedin.com/in/kevleyski/"} target={"_blank"} className="speccy_flash_blue_white">@kevleyski</a>
@@ -119,8 +111,10 @@ class App extends Component {
             <br/>
             I've also done a reasonable amount of public speaking <a href={"https://www.linkedin.com/in/kevleyski/details/featured/?profileUrn=urn%3Ali%3Afsd_profile%3AACoAAACF8OUBIghnUwUP2cmE9jZV3lvcxg6lla0"} target={"_blank"} className="speccy_flash_blue">(see LinkedIn)</a>
             <br/>
-            Some of the slide decks from those:
+            Some of my slide decks, feel free to borrow but please cite me that you did as I put a fair amount of research into some of these:
             <br/>
+            <br/>
+            <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQl1mbwLAmtnsabRnlZn0Cnem9jF4aUgH6rBRA4y1TsZiRaTUw_6nH2DaRmiNKkU-wpkp2veohnNIYC/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">WebXR Video</a> - presented at syd&lt;video&gt; Microsoft Reactor Sydney
             <br/>
             <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQv3IiJbCcLXNwZD7iunweYgkDfq0Nz4qr8UzuVjTCkZoszo9SyH4-pxhSMZrZTkN_lZIDldXib2VMp/pub?start=false&loop=false&delayms=3000"} target={"_blank"} className="speccy_flash_magenta">Raspberry Pi into the Metaverse with LCEVC</a> - presented at Demuxed 2022 San Francisco
             <br/>
@@ -254,6 +248,12 @@ class App extends Component {
           </Beer>
           <div><br/></div>
           Bytes:  Seasonals<br/><br/>
+          <Beer name="TAFE" abv="3.42" ibu="22" ebc="12.5"
+                beerstyle="English Ale" label_url={`url(${LabelMaybankeDarkMild})`}>
+            Brew I made as part of TAFE NSW Brewing course, its English Ale style but
+            you'll find some new world Aussie Topaz and dry hopped Enigma in here
+          </Beer>
+          <div><br/></div>
           <Beer name="Goldsbrough" abv="7.3" ibu="13" ebc="12"
                 beerstyle="Hazy NEIPA" label_url={`url(${LabelGoldsbroughNEPIA})`}>
             Goldsborough Mort was the large wool stores in Pyrmont. This fruity Double IPA Hazy inspired by Mountain Culture "Dolly"<br/><br/>
