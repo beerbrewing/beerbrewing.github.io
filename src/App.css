@@ -133,6 +133,17 @@ p {
     color: white;
 }
 
+.App-header-notspeccy {
+    font-family: sans-serif;
+    min-height: 100vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    justify-content: normal;
+}
+
 .Button {
     background-color: #604070;
     opacity: 0.96;
@@ -191,11 +202,12 @@ p {
     opacity: 1;
     display: flex;
     cursor: pointer;
+    background-color: #ffffff;
 
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 0.4vh 0.8vw 0.1vh 0.8vw;
+    padding: 0.0vh 0.8vw 0.1vh 1.8vw;
 
 }
 
@@ -454,6 +466,13 @@ p {
     animation: SPECCY_FLASH_BLUE_WHITE 0.625s infinite;
     padding: 0.4vh 0.0vw 0.1vh 0.3vw;
     transition-duration: 0s;
+    text-decoration: none;
+}
+
+.not_speccy {
+    display: inline;
+    opacity: 1;
+    font-family: sans-serif;
     text-decoration: none;
 }
 
