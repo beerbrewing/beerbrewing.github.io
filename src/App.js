@@ -94,32 +94,38 @@ class App extends Component {
           <p><a href="/" className={classLink2}>&lt;-</a></p>
           <p className="not_speccy">
             <h1>Commercial Brewery Automation</h1>
-            Pyrmont Brewery provides consultancy into automation and optimisation using the very latest in computer
+            Pyrmont Brewery can provide consultancy into production automation and optimisation using the very latest
+            in computer
             vision/probe technology utilising AI to continuously analyse live production data against historical batch
             trends, (optionally) across multiple sites/states/countries with variations in local inventory substitutions
             to maintain flavour/aroma profile consistency within a given budget and product specification
             <br/>
             <br/>
-            Our head brewer Kev is Cert IV Commercial Brewing (student) and a Cert III brewer
+            Long goal is to also resurrect the 1880s brewery in Pyrmont, supplying some older style ales that were
+            available in that era.
             <br/>
             <br/>
-            Kev is also presenting at the Hobart Chartered International Brewers and Distillers 2025 go see his presentation and have a chat if you will
-            be
-            there. Details will follow here.
+            Our head brewer Kev is Cert IV Commercial Brewing (student) and a Cert III brewer (<a href={"resume.html"}
+                                                                                                  target={"_blank"}>resume</a>)
+            and is open to work, colab brew and still training at TAFE.
             <br/>
             <br/>
-            Kev is also looking for work and can be reached through on LinkedIn here <a href={"https://www.linkedin.com/in/kevleyski/"}
-                                                           target={"_blank"}>@kevleyski</a>
+            Kev will be at the Hobart Chartered International Brewers and Distillers 2025 go see his presentation and
+            have a chat if you will
+            be there.
+            <br/>More details will follow here, but short term you can email him here:
+            <br/>
+            <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"}>kev@pyrmontbrewery.com.au</a>
             <br/>
             <br/>
-            email <a href={"mailto:kev@pyrmontbrewery.com.au"} target={"_blank"}>kev@pyrmontbrewery.com.au</a>
+            Facebook: <a href={"https://www.facebook.com/pyrmontbrewery"}
+                         target={"_blank"}>https://www.facebook.com/pyrmontbrewery</a>
+            <br/>
+            LinkedIn: <a href={"https://www.linkedin.com/in/kevleyski/"}
+                         target={"_blank"}>https://www.linkedin.com/in/kevleyski</a>
             <br/>
             <br/>
-            Kev is also available for computer software work, streaming video, computer vision, AI and computer
-            software <a href={"resume.html"} target={"_blank"}>his resume is here</a>
-            <br/>
-            <br/>
-            Some of Kev's slide decks, feel free to borrow (but do give a nod to the brewery please):
+            Some of Kev's slide decks, feel free to borrow (give a quick nod to the brewery please):
             <br/>
             <br/>
             <a href={"https://docs.google.com/presentation/d/e/2PACX-1vQl1mbwLAmtnsabRnlZn0Cnem9jF4aUgH6rBRA4y1TsZiRaTUw_6nH2DaRmiNKkU-wpkp2veohnNIYC/pub?start=false&loop=false&delayms=3000"}
@@ -211,7 +217,7 @@ class App extends Component {
                 <br/>
                 For production brewing automation and optimisation using AI technology click here!
                 <br/>
-                <br/>(also, come find us at the CIBD 2025 Convention!)
+                <br/>also, come find us at the CIBD 2025 brewers convention!
                 <br/>
                 <br/>
               </div>
@@ -237,7 +243,7 @@ class App extends Component {
               <br/>
               <br/>
               We acknowledge the Gadigal people, we thank them for protecting the local harbour area we all
-              share. We pay our respects to Elders past and emerging and all of the First Nations people<br/>
+              share. We pay our respects to Elders past and emerging and all First Nations people<br/>
               <br/>
             </a>
           </p>
@@ -251,7 +257,7 @@ class App extends Component {
             <p>
               <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
                 <div className="speccy_flash_magenta">GO TO</div>
-                &gt; Nestled amongst Pyrmont's sandstone hides a secret brewery! <br/>Brewing ales similar to those
+                &gt; Brewing ales similar to those
                 that came from the original 1880 Pyrmont Brewery read all about it here
               </a>
             </p>
