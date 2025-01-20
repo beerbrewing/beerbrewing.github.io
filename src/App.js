@@ -204,8 +204,6 @@ class App extends Component {
         <header className="App-header">
           <div className="tvsimulator"></div>
           <p>
-            <br/>
-            Welcome to Pyrmont Brewery!<br/>
             <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
 
               <br/>
@@ -227,11 +225,10 @@ class App extends Component {
             </div>
             <br/>
             <div className="ButtonNo" id="no" onClick={handleTooYoung}><br/>No, I'm too young<br/><br/></div>
-            <br/>
 
             <p>
               <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
-                Learn more about the 1880's Pyrmont Brewery here
+                Learn about the 1880's Pyrmont Brewery and brewing in Sydney Australia here
               </a>
             </p>
 
@@ -416,7 +413,7 @@ class App extends Component {
               <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
                 pyrmontbrewery.com.au<br/>
                 ABN: 47 824 483 808<br/>
-                Tel: 9692 0016
+                Tel: 02 9692 0016
                 <br/><br/>
                 &copy; 2007 Pyrmont Brewery
                 <br/><br/>
