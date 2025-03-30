@@ -217,8 +217,6 @@ class App extends Component {
                 <br/>
                 For production brewing automation and optimisation using AI technology click here!
                 <br/>
-                <br/>also, come find us at the CIBD 2025 brewers convention!
-                <br/>
                 <br/>
               </div>
               <br/>
