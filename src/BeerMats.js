@@ -1,5 +1,5 @@
 import App from "./App";
-import BeerAI from './ai_beermats/pyrmoontbrewery_beerai.jpg';
+import BeerAI from './ai_beermats/pyrmontbrewery_beerai.jpg';
 import BeerMat1 from './ai_beermats/pyrmontbrewery_beermat_dalle_kangaroos_drinking_beer.png';
 import BeerMat2 from './ai_beermats/pyrmontbrewery_beermat_dalle_koalas_having_a_frothy_opera_house.png';
 import BeerMat3 from './ai_beermats/pyrmontbrewery_beermat_dalle_koalas_consolation_beer.png';
