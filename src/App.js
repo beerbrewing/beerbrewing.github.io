@@ -230,6 +230,15 @@ class App extends Component {
             <br/>
             <div className="ButtonNo" id="no" onClick={handleTooYoung}><br/>No, I'm too young<br/><br/></div>
 
+            <br/>
+            <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>
+              <br/>
+              See you at GABS Sydney 2025!
+              <br/>
+              <br/>
+            </div>
+            <br/>
+
             <p>
               <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
                 Learn about the 1880's Pyrmont Brewery and brewing in Sydney Australia here
