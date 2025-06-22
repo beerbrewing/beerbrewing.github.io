@@ -1,48 +1,82 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { allArticles, categories } from './libraryData';
+import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { allArticles } from './libraryData';
 import './LibrarySearch.css';
 
 const LibrarySearch = () => {
   const [query, setQuery] = useState('');
-  const [filteredArticles, setFilteredArticles] = useState(allArticles);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [highlighted, setHighlighted] = useState(-1);
+  const inputRef = useRef(null);
+  const navigate = useNavigate();
 
-  const handleInputChange = (event) => {
-    const newQuery = event.target.value;
-    setQuery(newQuery);
-    if (newQuery) {
-      const filtered = allArticles.filter(article =>
-        article.title.toLowerCase().includes(newQuery.toLowerCase()) ||
-        article.content.toLowerCase().includes(newQuery.toLowerCase())
-      );
-      setFilteredArticles(filtered);
-    } else {
-      setFilteredArticles(allArticles);
+  const filteredArticles = allArticles.filter(article =>
+    article.title.toLowerCase().includes(query.toLowerCase()) ||
+    article.content.toLowerCase().includes(query.toLowerCase())
+  ).sort((a, b) => a.title.localeCompare(b.title));
+
+  const handleInputChange = (e) => {
+    setQuery(e.target.value);
+    setShowDropdown(true);
+    setHighlighted(-1);
+  };
+
+  const handleSelect = (articleId) => {
+    setQuery('');
+    setShowDropdown(false);
+    navigate(`/library#${articleId}`);
+  };
+
+  const handleBlur = () => {
+    setTimeout(() => setShowDropdown(false), 100);
+  };
+
+  const handleKeyDown = (e) => {
+    if (!showDropdown) return;
+    if (e.key === 'ArrowDown') {
+      setHighlighted(h => Math.min(h + 1, filteredArticles.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      setHighlighted(h => Math.max(h - 1, 0));
+    } else if (e.key === 'Enter' && highlighted >= 0) {
+      handleSelect(filteredArticles[highlighted].id);
     }
   };
 
   return (
-    <div className="library-search">
-      <h3>Search the Brewery Library</h3>
-      <input
-        type="text"
-        value={query}
-        onChange={handleInputChange}
-        placeholder="Search articles..."
-      />
-      <select>
-        {categories.map(category => (
-          <optgroup label={category.name} key={category.name}>
-            {filteredArticles
-              .filter(article => category.articles.find(ca => ca.id === article.id))
-              .map(article => (
-                <option key={article.id} value={article.id}>
-                  <Link to={`/library#${article.id}`}>{article.title}</Link>
-                </option>
-              ))}
-          </optgroup>
-        ))}
-      </select>
+    <div className="library-search-combo" onBlur={handleBlur}>
+      <div className="combo-row">
+        <input
+          ref={inputRef}
+          type="text"
+          value={query}
+          onChange={handleInputChange}
+          onFocus={() => setShowDropdown(true)}
+          onKeyDown={handleKeyDown}
+          placeholder="Search or select article..."
+          className="combo-input"
+        />
+        <button
+          className="combo-search-btn"
+          tabIndex={-1}
+          onMouseDown={e => { e.preventDefault(); if (filteredArticles.length) handleSelect(filteredArticles[0].id); }}
+          aria-label="Search"
+        >
+          <span className="combo-magnifier" />
+        </button>
+      </div>
+      {showDropdown && filteredArticles.length > 0 && (
+        <ul className="combo-dropdown">
+          {filteredArticles.map((article, idx) => (
+            <li
+              key={article.id}
+              className={highlighted === idx ? 'highlighted' : ''}
+              onMouseDown={() => handleSelect(article.id)}
+            >
+              {article.title}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

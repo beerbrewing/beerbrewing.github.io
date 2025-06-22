@@ -96,7 +96,8 @@ class App extends Component {
         <header className="App-header-notspeccy">
           <p><a href="/" className={classLink2}>&lt;-</a></p>
           <p className="not_speccy">
-            <h1>Commercial Brewery Automation</h1>
+              <LibrarySearch />
+              <h1>Commercial Brewery Automation</h1>
             Pyrmont Brewery can provide consultancy into production automation and optimisation using the very latest
             in computer
             vision/probe technology utilising AI to continuously analyse live production data against historical batch
@@ -190,18 +191,16 @@ class App extends Component {
         <header className="App-header">
           <div className="tvsimulator"></div>
           <p><a href="/" className={classLink2}>&lt;-</a></p>
+          <LibrarySearch />
           <p>
-            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
-              Sorry, but it's mega important that you are 18 or over for us to discuss the supply of alcohol with you
-              under the
-              liquor and gaming rules here in New South Wales, Australia <br/>(and most parts of our planet!)<br/><br/>
-              Please though, do come back when you are 18!<br/>
-              <br/>
-              (remember, drinking alcohol is neither big or clever, we encourage responsible service of alcohol)
-              <br/>
-              <br/>
-              R Tape loading error, 0:1
-            </a>
+            Sorry, but it's mega important that you are 18 or over for us to discuss the supply of alcohol with you
+            under the liquor and gaming rules here in New South Wales, Australia <br/>(and most parts of our planet!)<br/><br/>
+            Please though, do come back when you are 18!<br/>
+            <br/>
+            (remember, drinking alcohol is neither big or clever, we encourage responsible service of alcohol)
+            <br/>
+            <br/>
+            R Tape loading error, 0:1
           </p>
           <a href={"https://tinyurl.com/t2by8hz"}><img src={logo} className="App-logo" alt="Pyrmont Brewery Logo which is a secret squirrel"/></a>
           <br/>
@@ -213,7 +212,6 @@ class App extends Component {
         <header className="App-header">
           <div className="tvsimulator"></div>
           <p>
-            <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
 
               <br/>
               <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>
@@ -227,7 +225,6 @@ class App extends Component {
               <LibrarySearch />
 
               If you're looking for beer then we need you to confirm you were born on or before <div className="speccy_flash_black">{today.toString().substring(0, 15)}?</div>
-            </a>
             <br/>
             <br/>
             <div className="ButtonYes" id="yes18" onClick={handleOldEnough}><br/>Strewth, yeah I'm bloody old<br/><br/>
