@@ -93,8 +93,8 @@
 .search-dropdown-container {
   position: absolute;
   top: 100%;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   background: #fff;
   border: 3px solid #222;
   z-index: 1000;
@@ -106,11 +106,9 @@
   margin: 0;
   padding: 0;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex-direction: column;
-  transform: translateX(-50%);
-  left: 50%;
   -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: transparent;
 }
@@ -132,8 +130,8 @@
   gap: 0;
   padding: 0;
   flex: 1;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: visible;
+  position: relative;
 }
 
 .category-item {
@@ -153,6 +151,7 @@
   -ms-user-select: none;
   user-select: none;
   touch-action: manipulation;
+  overflow: visible;
 }
 
 .category-item:hover {
@@ -224,6 +223,10 @@
   max-height: 100%;
   max-width: 500px;
   min-width: 350px;
+  /* Allow the panel to expand beyond parent bounds */
+  overflow: visible;
+  /* Add gap at top for navigation */
+  padding-top: 20px;
 }
 
 /* Position variants for different screen edges */
@@ -286,10 +289,12 @@
 
 .articles-list {
   padding: 12px 0;
+  overflow: visible;
 }
 
 .subcategories-list {
   padding: 12px 0;
+  overflow: visible;
 }
 
 .subcategory-group {
@@ -312,6 +317,7 @@
 
 .subcategory-articles {
   padding: 0 12px;
+  overflow: visible;
 }
 
 .article-item {
@@ -404,6 +410,7 @@
 .article-title {
   font-weight: bold;
   margin-bottom: 2px;
+  display: block;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -415,6 +422,7 @@
   font-size: 0.85em;
   color: #666;
   font-style: italic;
+  display: block;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -431,8 +439,8 @@
   .search-dropdown-container {
     width: 95vw;
     height: 60vh;
-    transform: translateX(-50%);
     left: 50%;
+    transform: translateX(-50%);
   }
   
   .category-grid {
@@ -447,6 +455,7 @@
     min-width: auto;
     max-width: none;
     height: auto;
+    overflow: visible;
   }
   
   .category-item {

@@ -22,6 +22,62 @@ const flattenArticles = (data, parentPath = '') => {
   return articles;
 };
 
+// Simple fuzzy search function
+const fuzzySearch = (text, searchTerm) => {
+  if (!searchTerm) return true;
+  
+  const normalizedText = text.toLowerCase();
+  const normalizedSearch = searchTerm.toLowerCase();
+  
+  // Exact match
+  if (normalizedText.includes(normalizedSearch)) return true;
+  
+  // Fuzzy match - check if characters appear in order
+  let searchIndex = 0;
+  for (let i = 0; i < normalizedText.length && searchIndex < normalizedSearch.length; i++) {
+    if (normalizedText[i] === normalizedSearch[searchIndex]) {
+      searchIndex++;
+    }
+  }
+  
+  return searchIndex === normalizedSearch.length;
+};
+
+// Calculate similarity score for better ranking
+const calculateSimilarity = (text, searchTerm) => {
+  if (!searchTerm) return 0;
+  
+  const normalizedText = text.toLowerCase();
+  const normalizedSearch = searchTerm.toLowerCase();
+  
+  // Exact match gets highest score
+  if (normalizedText.includes(normalizedSearch)) {
+    return 100;
+  }
+  
+  // Fuzzy match score
+  let searchIndex = 0;
+  let totalDistance = 0;
+  let lastMatchIndex = -1;
+  
+  for (let i = 0; i < normalizedText.length && searchIndex < normalizedSearch.length; i++) {
+    if (normalizedText[i] === normalizedSearch[searchIndex]) {
+      if (lastMatchIndex !== -1) {
+        totalDistance += i - lastMatchIndex - 1;
+      }
+      lastMatchIndex = i;
+      searchIndex++;
+    }
+  }
+  
+  if (searchIndex === normalizedSearch.length) {
+    // Return score based on how close the matches are
+    return Math.max(50 - totalDistance, 10);
+  }
+  
+  return 0;
+};
+
 const LibrarySearch = () => {
   const [query, setQuery] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
@@ -34,11 +90,28 @@ const LibrarySearch = () => {
 
   const allArticles = flattenArticles(libraryData);
   
-  const filteredArticles = allArticles.filter(article =>
-    article.title.toLowerCase().includes(query.toLowerCase()) ||
-    article.content.toLowerCase().includes(query.toLowerCase()) ||
-    article.categoryPath.toLowerCase().includes(query.toLowerCase())
-  ).sort((a, b) => a.title.localeCompare(b.title));
+  const filteredArticles = allArticles.filter(article => {
+    const titleMatch = fuzzySearch(article.title, query);
+    const contentMatch = fuzzySearch(article.content, query);
+    const categoryMatch = fuzzySearch(article.categoryPath, query);
+    
+    return titleMatch || contentMatch || categoryMatch;
+  }).map(article => {
+    const titleScore = calculateSimilarity(article.title, query);
+    const contentScore = calculateSimilarity(article.content, query);
+    const categoryScore = calculateSimilarity(article.categoryPath, query);
+    
+    return {
+      ...article,
+      searchScore: Math.max(titleScore, contentScore, categoryScore)
+    };
+  }).sort((a, b) => {
+    // Sort by search score (highest first), then alphabetically
+    if (b.searchScore !== a.searchScore) {
+      return b.searchScore - a.searchScore;
+    }
+    return a.title.localeCompare(b.title);
+  });
 
   const calculateSubcategoryPosition = (categoryElement, categoryId) => {
     if (!categoryElement) return {};
@@ -46,6 +119,8 @@ const LibrarySearch = () => {
     const rect = categoryElement.getBoundingClientRect();
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
+    const dropdownContainer = document.querySelector('.search-dropdown-container');
+    const containerRect = dropdownContainer ? dropdownContainer.getBoundingClientRect() : null;
     
     // Default position (to the right)
     let position = {
@@ -81,6 +156,26 @@ const LibrarySearch = () => {
     if (spaceToRight < 400 && spaceToLeft < 400) {
       position.maxWidth = `${Math.min(spaceToRight, spaceToLeft) - 20}px`;
       position.minWidth = '250px';
+    }
+    
+    // Ensure the subcategory panel doesn't go outside the viewport
+    if (containerRect) {
+      const containerRight = containerRect.right;
+      const containerLeft = containerRect.left;
+      
+      // If subcategory would extend beyond right edge of viewport
+      if (rect.right + 400 > windowWidth) {
+        position.left = 'auto';
+        position.right = '100%';
+        position.maxWidth = `${Math.min(spaceToLeft - 20, 500)}px`;
+      }
+      
+      // If subcategory would extend beyond left edge of viewport
+      if (rect.left - 400 < 0) {
+        position.left = '100%';
+        position.right = 'auto';
+        position.maxWidth = `${Math.min(spaceToRight - 20, 500)}px`;
+      }
     }
     
     return position;
@@ -131,7 +226,6 @@ const LibrarySearch = () => {
   };
 
   const handleCategoryTouchStart = (categoryId, categoryElement, e) => {
-    e.preventDefault();
     e.stopPropagation();
     
     // Start touch hold timer
@@ -147,7 +241,6 @@ const LibrarySearch = () => {
   };
 
   const handleCategoryTouchEnd = (e) => {
-    e.preventDefault();
     e.stopPropagation();
     
     // Clear the touch hold timer
@@ -175,7 +268,6 @@ const LibrarySearch = () => {
   };
 
   const handleArticleTouch = (articleId, e) => {
-    e.preventDefault();
     e.stopPropagation();
     handleSelect(articleId);
   };
@@ -283,12 +375,12 @@ const LibrarySearch = () => {
             className={highlighted === idx ? 'highlighted' : ''}
             onMouseDown={() => handleSelect(article.id)}
             onTouchStart={(e) => {
-              e.preventDefault();
+              e.stopPropagation();
               handleSelect(article.id);
             }}
           >
-            <div className="article-title">{article.title}</div>
-            <div className="article-category">{article.categoryPath}</div>
+            <span className="article-title">{article.title}</span>
+            <span className="article-category">{article.categoryPath}</span>
           </li>
         ))}
       </ul>
