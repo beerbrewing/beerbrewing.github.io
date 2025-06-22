@@ -29,6 +29,7 @@ import LabelGeneric from './label_generic.png';
 import ReactGA from 'react-ga';
 import Beer from "./Beer";
 import BeerMats from "./BeerMats";
+import Library from './Library';
 
 ReactGA.initialize('UA-155182441-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -75,11 +76,16 @@ class App extends Component {
     }
 
     return <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/library">Library</Link>
+      </nav>
       <Routes>
       <Route path="/about">
       </Route>
       <Route path="/time" render={() => {window.location.href="time.html"}}></Route>
         <Route path="/streams" render={() => {window.location.href="streams.html"}}></Route>
+      <Route path="/library" element={<Library />} />
       <Route path="/">
       </Route>
     </Routes><div className="App" style={{
