@@ -2,47 +2,68 @@ import React, { useState } from 'react';
 import Category from './Category';
 import TableOfContents from './TableOfContents';
 import Search from './Search';
+import { libraryData } from './libraryData';
 import './Library.css';
 
-const allArticles = [
-  {
-    id: 'brewing-basics',
-    title: 'Brewing Basics',
-    content: 'An introduction to the fundamental concepts of brewing beer.'
-  },
-  {
-    id: 'yeast-management',
-    title: 'Yeast Management',
-    content: 'Everything you need to know about handling and maintaining healthy yeast.'
-  }
-];
-
-const categories = [
-  {
-    name: 'Getting Started',
-    articles: allArticles
-  }
-];
-
 const Library = () => {
-  const [articles, setArticles] = useState(allArticles);
+  const [filteredData, setFilteredData] = useState(libraryData);
 
   const handleSearch = (query) => {
-    const filteredArticles = allArticles.filter(article =>
-      article.title.toLowerCase().includes(query.toLowerCase()) ||
-      article.content.toLowerCase().includes(query.toLowerCase())
-    );
-    setArticles(filteredArticles);
+    const lowerCaseQuery = query.toLowerCase();
+
+    if (!lowerCaseQuery) {
+      setFilteredData(libraryData);
+      return;
+    }
+
+    const search = (data) => {
+      return data.reduce((acc, item) => {
+        if (item.name.toLowerCase().includes(lowerCaseQuery)) {
+          acc.push(item);
+        } else if (item.articles) {
+          const matchingArticles = item.articles.filter(article =>
+            article.title.toLowerCase().includes(lowerCaseQuery) ||
+            article.content.toLowerCase().includes(lowerCaseQuery)
+          );
+          if (matchingArticles.length > 0) {
+            acc.push({ ...item, articles: matchingArticles });
+          }
+        } else if (item.subcategories) {
+          const matchingSubcategories = search(item.subcategories);
+          if (matchingSubcategories.length > 0) {
+            acc.push({ ...item, subcategories: matchingSubcategories });
+          }
+        }
+        return acc;
+      }, []);
+    };
+
+    setFilteredData(search(libraryData));
   };
+
+  const flattenArticles = (data) => {
+    let articles = [];
+    data.forEach(item => {
+      if (item.articles) {
+        articles = articles.concat(item.articles);
+      }
+      if (item.subcategories) {
+        articles = articles.concat(flattenArticles(item.subcategories));
+      }
+    });
+    return articles;
+  };
+  
+  const articles = flattenArticles(filteredData);
 
   return (
     <div className="library">
       <h1>Reference Library</h1>
       <p>Welcome to the brewery reference library. Here you can find articles and information on various brewing topics.</p>
       <Search onSearch={handleSearch} />
-      <TableOfContents articles={articles} />
-      {categories.map(category => (
-        <Category key={category.name} category={{...category, articles: articles.filter(a => category.articles.find(ca => ca.id === a.id))}} />
+      <TableOfContents items={filteredData} />
+      {filteredData.map(category => (
+        <Category key={category.id} category={category} />
       ))}
     </div>
   );

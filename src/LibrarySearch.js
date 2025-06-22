@@ -1,7 +1,26 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { allArticles } from './libraryData';
+import { libraryData } from './libraryData';
 import './LibrarySearch.css';
+
+const flattenArticles = (data, parentPath = '') => {
+  let articles = [];
+  data.forEach(item => {
+    if (item.articles) {
+      item.articles.forEach(article => {
+        articles.push({
+          ...article,
+          categoryPath: parentPath ? `${parentPath} > ${item.name}` : item.name
+        });
+      });
+    }
+    if (item.subcategories) {
+      const subPath = parentPath ? `${parentPath} > ${item.name}` : item.name;
+      articles = articles.concat(flattenArticles(item.subcategories, subPath));
+    }
+  });
+  return articles;
+};
 
 const LibrarySearch = () => {
   const [query, setQuery] = useState('');
@@ -10,9 +29,12 @@ const LibrarySearch = () => {
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
+  const allArticles = flattenArticles(libraryData);
+  
   const filteredArticles = allArticles.filter(article =>
     article.title.toLowerCase().includes(query.toLowerCase()) ||
-    article.content.toLowerCase().includes(query.toLowerCase())
+    article.content.toLowerCase().includes(query.toLowerCase()) ||
+    article.categoryPath.toLowerCase().includes(query.toLowerCase())
   ).sort((a, b) => a.title.localeCompare(b.title));
 
   const handleInputChange = (e) => {
@@ -64,7 +86,8 @@ const LibrarySearch = () => {
               className={highlighted === idx ? 'highlighted' : ''}
               onMouseDown={() => handleSelect(article.id)}
             >
-              {article.title}
+              <div className="article-title">{article.title}</div>
+              <div className="article-category">{article.categoryPath}</div>
             </li>
           ))}
         </ul>

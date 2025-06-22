@@ -1,16 +1,28 @@
 import React from 'react';
 
-const TableOfContents = ({ articles }) => {
+const renderItems = (items) => {
+  return (
+    <ul>
+      {items.map(item => (
+        <li key={item.id}>
+          {item.articles || item.subcategories ? (
+            <a href={`#${item.id}`}>{item.name}</a>
+          ) : (
+            <a href={`#${item.id}`}>{item.title}</a>
+          )}
+          {item.articles && renderItems(item.articles)}
+          {item.subcategories && renderItems(item.subcategories)}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const TableOfContents = ({ items }) => {
   return (
     <div>
       <h2>Table of Contents</h2>
-      <ul>
-        {articles.map(article => (
-          <li key={article.id}>
-            <a href={`#${article.id}`}>{article.title}</a>
-          </li>
-        ))}
-      </ul>
+      {renderItems(items)}
     </div>
   );
 };
