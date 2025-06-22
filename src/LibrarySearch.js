@@ -52,17 +52,9 @@ const LibrarySearch = () => {
           onChange={handleInputChange}
           onFocus={() => setShowDropdown(true)}
           onKeyDown={handleKeyDown}
-          placeholder="Search or select article..."
+          placeholder="Search Pyrmont Brewery Library"
           className="combo-input"
         />
-        <button
-          className="combo-search-btn"
-          tabIndex={-1}
-          onMouseDown={e => { e.preventDefault(); if (filteredArticles.length) handleSelect(filteredArticles[0].id); }}
-          aria-label="Search"
-        >
-          <span className="combo-magnifier" />
-        </button>
       </div>
       {showDropdown && filteredArticles.length > 0 && (
         <ul className="combo-dropdown">
