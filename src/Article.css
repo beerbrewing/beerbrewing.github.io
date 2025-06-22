@@ -1,0 +1,110 @@
+.article {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* Added to provide positioning context */
+}
+
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.back-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.back-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+.article-search-container {
+  flex-grow: 1;
+  max-width: 400px;
+}
+
+/* Make the search component more compact inside articles */
+.article .library-search-combo {
+  width: 100%;
+  max-width: 100%;
+}
+
+.article-back-button-container {
+  position: fixed; /* Changed from sticky to fixed for better browser support */
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+}
+
+.article-back-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.article-back-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.article-back-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+/* Ensure the back button doesn't get in the way on mobile */
+@media (max-width: 768px) {
+  .article-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .article-search-container {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 10px;
+  }
+
+  .article-back-button-container {
+    top: 5px;
+    left: 5px;
+  }
+
+  .article-back-button {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}

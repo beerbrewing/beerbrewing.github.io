@@ -25,13 +25,13 @@ const flattenArticles = (data, parentPath = '') => {
 // Simple fuzzy search function
 const fuzzySearch = (text, searchTerm) => {
   if (!searchTerm) return true;
-  
+
   const normalizedText = text.toLowerCase();
   const normalizedSearch = searchTerm.toLowerCase();
-  
+
   // Exact match
   if (normalizedText.includes(normalizedSearch)) return true;
-  
+
   // Fuzzy match - check if characters appear in order
   let searchIndex = 0;
   for (let i = 0; i < normalizedText.length && searchIndex < normalizedSearch.length; i++) {
@@ -39,27 +39,27 @@ const fuzzySearch = (text, searchTerm) => {
       searchIndex++;
     }
   }
-  
+
   return searchIndex === normalizedSearch.length;
 };
 
 // Calculate similarity score for better ranking
 const calculateSimilarity = (text, searchTerm) => {
   if (!searchTerm) return 0;
-  
+
   const normalizedText = text.toLowerCase();
   const normalizedSearch = searchTerm.toLowerCase();
-  
+
   // Exact match gets highest score
   if (normalizedText.includes(normalizedSearch)) {
     return 100;
   }
-  
+
   // Fuzzy match score
   let searchIndex = 0;
   let totalDistance = 0;
   let lastMatchIndex = -1;
-  
+
   for (let i = 0; i < normalizedText.length && searchIndex < normalizedSearch.length; i++) {
     if (normalizedText[i] === normalizedSearch[searchIndex]) {
       if (lastMatchIndex !== -1) {
@@ -69,12 +69,12 @@ const calculateSimilarity = (text, searchTerm) => {
       searchIndex++;
     }
   }
-  
+
   if (searchIndex === normalizedSearch.length) {
     // Return score based on how close the matches are
     return Math.max(50 - totalDistance, 10);
   }
-  
+
   return 0;
 };
 
@@ -89,18 +89,18 @@ const LibrarySearch = () => {
   const navigate = useNavigate();
 
   const allArticles = flattenArticles(libraryData);
-  
+
   const filteredArticles = allArticles.filter(article => {
     const titleMatch = fuzzySearch(article.title, query);
     const contentMatch = fuzzySearch(article.content, query);
     const categoryMatch = fuzzySearch(article.categoryPath, query);
-    
+
     return titleMatch || contentMatch || categoryMatch;
   }).map(article => {
     const titleScore = calculateSimilarity(article.title, query);
     const contentScore = calculateSimilarity(article.content, query);
     const categoryScore = calculateSimilarity(article.categoryPath, query);
-    
+
     return {
       ...article,
       searchScore: Math.max(titleScore, contentScore, categoryScore)
@@ -115,34 +115,37 @@ const LibrarySearch = () => {
 
   const calculateSubcategoryPosition = (categoryElement, categoryId) => {
     if (!categoryElement) return {};
-    
+
     const rect = categoryElement.getBoundingClientRect();
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     const dropdownContainer = document.querySelector('.search-dropdown-container');
     const containerRect = dropdownContainer ? dropdownContainer.getBoundingClientRect() : null;
-    
-    // Default position (to the right)
+
+    // Default position - partially visible to allow parent category access
     let position = {
-      left: '100%',
+      left: '60%', // Only cover 60% from the left, leave 40% of the category visible
       top: '0',
       maxHeight: '100%',
       maxWidth: '500px',
-      minWidth: '350px'
+      minWidth: '350px',
+      width: '80%', // Only use 80% of the available width
+      opacity: '0.98', // Slight transparency
+      background: 'rgba(255, 255, 255, 0.95)' // Semi-transparent background
     };
-    
+
     // Check if there's enough space to the right
     const spaceToRight = windowWidth - rect.right;
     const spaceToLeft = rect.left;
     const spaceBelow = windowHeight - rect.top;
     const spaceAbove = rect.top;
-    
-    // If not enough space to the right, position to the left
+
+    // If not enough space to the right, position to the left but still keep parent partially visible
     if (spaceToRight < 400) {
       position.left = 'auto';
-      position.right = '100%';
+      position.right = '60%'; // Cover 60% from the right, leave 40% visible on left
     }
-    
+
     // Adjust height based on available vertical space
     if (spaceBelow < 400) {
       position.top = 'auto';
@@ -151,33 +154,33 @@ const LibrarySearch = () => {
     } else {
       position.maxHeight = `${Math.min(spaceBelow, 600)}px`;
     }
-    
+
     // Adjust width based on available horizontal space
     if (spaceToRight < 400 && spaceToLeft < 400) {
       position.maxWidth = `${Math.min(spaceToRight, spaceToLeft) - 20}px`;
       position.minWidth = '250px';
     }
-    
+
     // Ensure the subcategory panel doesn't go outside the viewport
     if (containerRect) {
       const containerRight = containerRect.right;
       const containerLeft = containerRect.left;
-      
+
       // If subcategory would extend beyond right edge of viewport
       if (rect.right + 400 > windowWidth) {
         position.left = 'auto';
-        position.right = '100%';
+        position.right = '60%'; // Still ensure parent visibility
         position.maxWidth = `${Math.min(spaceToLeft - 20, 500)}px`;
       }
-      
+
       // If subcategory would extend beyond left edge of viewport
       if (rect.left - 400 < 0) {
-        position.left = '100%';
+        position.left = '60%'; // Still ensure parent visibility
         position.right = 'auto';
         position.maxWidth = `${Math.min(spaceToRight - 20, 500)}px`;
       }
     }
-    
+
     return position;
   };
 
@@ -227,7 +230,7 @@ const LibrarySearch = () => {
 
   const handleCategoryTouchStart = (categoryId, categoryElement, e) => {
     e.stopPropagation();
-    
+
     // Start touch hold timer
     const timer = setTimeout(() => {
       setExpandedCategory(categoryId);
@@ -236,13 +239,13 @@ const LibrarySearch = () => {
         setSubcategoryPosition(prev => ({ ...prev, [categoryId]: position }));
       }
     }, 500); // 500ms hold time
-    
+
     setTouchHoldTimer(timer);
   };
 
   const handleCategoryTouchEnd = (e) => {
     e.stopPropagation();
-    
+
     // Clear the touch hold timer
     if (touchHoldTimer) {
       clearTimeout(touchHoldTimer);
@@ -298,7 +301,7 @@ const LibrarySearch = () => {
       return (
         <div className="category-grid">
           {libraryData.map((category, index) => (
-            <div 
+            <div
               key={category.id}
               data-category-id={category.id}
               className={`category-item ${expandedCategory === category.id ? 'expanded' : ''}`}
@@ -312,21 +315,21 @@ const LibrarySearch = () => {
               <div className="category-header">
                 <h3>{category.name}</h3>
                 <span className="article-count">
-                  {category.articles ? category.articles.length : 
-                   category.subcategories ? 
+                  {category.articles ? category.articles.length :
+                   category.subcategories ?
                      category.subcategories.reduce((total, sub) => total + (sub.articles ? sub.articles.length : 0), 0) : 0} articles
                 </span>
               </div>
-              
+
               {expandedCategory === category.id && (
-                <div 
+                <div
                   className="subcategory-panel"
                   style={subcategoryPosition[category.id] || {}}
                 >
                   {category.articles && (
                     <div className="articles-list">
                       {category.articles.map(article => (
-                        <div 
+                        <div
                           key={article.id}
                           className="article-item"
                           onClick={(e) => handleArticleClick(article.id, e)}
@@ -337,15 +340,15 @@ const LibrarySearch = () => {
                       ))}
                     </div>
                   )}
-                  
+
                   {category.subcategories && (
                     <div className="subcategories-list">
                       {category.subcategories.map(subcategory => (
                         <div key={subcategory.id} className="subcategory-group">
-                          <h4>{subcategory.name}</h4>
+                          <div className="subcategory-header">{subcategory.name}</div>
                           <div className="subcategory-articles">
                             {subcategory.articles.map(article => (
-                              <div 
+                              <div
                                 key={article.id}
                                 className="article-item"
                                 onClick={(e) => handleArticleClick(article.id, e)}
@@ -411,4 +414,3 @@ const LibrarySearch = () => {
 };
 
 export default LibrarySearch;
-

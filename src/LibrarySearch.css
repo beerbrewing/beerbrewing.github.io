@@ -208,9 +208,10 @@
   user-select: none;
 }
 
+/* Updated styles for the subcategory panel to be semi-transparent */
 .subcategory-panel {
   position: absolute;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.95); /* Changed from solid white to semi-transparent */
   border: 2px solid #222;
   overflow-y: auto;
   z-index: 100;
@@ -219,14 +220,16 @@
   animation: slideIn 0.2s ease-out;
   /* Default positioning - will be overridden by inline styles */
   left: 100%;
-  top: 0;
-  max-height: 100%;
+  top: 20px; /* Moved down by 20px from 0 */
+  max-height: calc(100% - 20px); /* Adjusted to account for the top offset */
   max-width: 500px;
   min-width: 350px;
   /* Allow the panel to expand beyond parent bounds */
   overflow: visible;
-  /* Add gap at top for navigation */
-  padding-top: 20px;
+  /* Only cover part of the parent categories */
+  width: 80%;
+  left: 60%; /* Position to show part of the parent */
+  padding-top: 0; /* Removed the padding-top since we've moved down by 20px */
 }
 
 /* Position variants for different screen edges */
@@ -313,6 +316,24 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
+}
+
+.subcategory-header {
+  margin: 0 0 12px 0;
+  padding: 12px 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
 }
 
 .subcategory-articles {
@@ -338,6 +359,8 @@
   -ms-user-select: none;
   user-select: none;
   touch-action: manipulation;
+  /* Add color to distinguish articles */
+  background-color: #f9f2e6; /* Light beige background for articles */
 }
 
 .article-item:hover {
@@ -438,40 +461,20 @@
 @media (max-width: 768px) {
   .search-dropdown-container {
     width: 95vw;
-    height: 60vh;
     left: 50%;
     transform: translateX(-50%);
   }
-  
-  .category-grid {
-    grid-template-columns: 1fr;
+
+  .library-search-combo {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
   }
-  
-  .subcategory-panel {
-    position: static;
-    border: none;
-    border-top: 1px solid #eee;
-    box-shadow: none;
-    min-width: auto;
-    max-width: none;
-    height: auto;
-    overflow: visible;
-  }
-  
-  .category-item {
-    min-height: auto;
-  }
-  
-  .category-header {
-    min-height: 60px;
-  }
-  
-  .article-item {
-    min-height: 50px;
-  }
-  
-  .combo-dropdown li {
-    min-height: 50px;
+
+  .combo-input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -480,14 +483,14 @@
   .search-dropdown-container {
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .category-item,
   .article-item,
   .combo-dropdown li {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
   }
-  
+
   .combo-input {
     -webkit-appearance: none;
     border-radius: 0;

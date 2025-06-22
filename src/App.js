@@ -212,6 +212,8 @@ class App extends Component {
         <header className="App-header">
           <div className="tvsimulator"></div>
           <p>
+            <br/>
+              <LibrarySearch />
 
               <br/>
               <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>
@@ -221,8 +223,6 @@ class App extends Component {
                 <br/>
               </div>
               <br/>
-
-              <LibrarySearch />
 
               If you're looking for beer then we need you to confirm you were born on or before <div className="speccy_flash_black">{today.toString().substring(0, 15)}?</div>
             <br/>
