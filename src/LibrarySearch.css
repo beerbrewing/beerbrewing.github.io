@@ -1,0 +1,15 @@
+.library-search {
+  margin-bottom: 20px;
+}
+
+.library-search input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.library-search select {
+  width: 100%;
+  padding: 8px;
+}
+

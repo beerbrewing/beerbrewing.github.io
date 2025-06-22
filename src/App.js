@@ -30,6 +30,7 @@ import ReactGA from 'react-ga';
 import Beer from "./Beer";
 import BeerMats from "./BeerMats";
 import Library from './Library';
+import LibrarySearch from './LibrarySearch';
 
 ReactGA.initialize('UA-155182441-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -76,10 +77,6 @@ class App extends Component {
     }
 
     return <BrowserRouter>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/library">Library</Link>
-      </nav>
       <Routes>
       <Route path="/about">
       </Route>
@@ -226,6 +223,8 @@ class App extends Component {
                 <br/>
               </div>
               <br/>
+
+              <LibrarySearch />
 
               If you're looking for beer then we need you to confirm you were born on or before <div className="speccy_flash_black">{today.toString().substring(0, 15)}?</div>
             </a>
