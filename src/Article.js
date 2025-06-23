@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import LibrarySearch from './LibrarySearch';
 import Breadcrumb from './Breadcrumb';
 import { libraryData } from './libraryData';
@@ -98,7 +99,9 @@ const Article = ({ article }) => {
       )}
 
       <h3 className="article-title">{article.title}</h3>
-      <div className="article-content">{article.content}</div>
+      <div className="article-content">
+        <ReactMarkdown>{article.content}</ReactMarkdown>
+      </div>
     </div>
   );
 };

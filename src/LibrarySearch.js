@@ -376,7 +376,7 @@ const LibrarySearch = () => {
                       <div key={subcategory.id} className="subcategory-group">
                         <div className="subcategory-header">{subcategory.name}</div>
                         <div className="subcategory-articles">
-                          {subcategory.articles.map(article => (
+                          {subcategory.articles && subcategory.articles.map(article => (
                             <div
                               key={article.id}
                               className="article-item"
