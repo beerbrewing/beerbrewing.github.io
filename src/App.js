@@ -264,6 +264,10 @@ class App extends Component {
           <header className="App-header">
             <div className="tvsimulator"></div>
             <p>
+              <br/>
+              <LibrarySearch />
+              <br/>
+
               <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
                 <div className="speccy_flash_magenta">GO TO</div>
                 &gt; Brewing ales similar to those

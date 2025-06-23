@@ -570,6 +570,8 @@ p {
     animation: LeftStringSpin 14s steps(60, start) infinite;
     animation-play-state: running;
     padding: 20px 20px 20px 20px;
+    position: relative;
+    z-index: 1; /* Adding a low z-index to ensure it doesn't overlap with the search dropdown */
 }
 
 .StringSpin {
@@ -578,6 +580,8 @@ p {
     opacity: 1.0;
     background-color: red;
     color: white;
+    position: relative;
+    z-index: 1; /* Adding a low z-index to ensure it doesn't overlap with the search dropdown */
 }
 
 @keyframes LeftStringSpin {

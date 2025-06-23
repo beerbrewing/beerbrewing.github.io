@@ -19,8 +19,9 @@
   align-items: flex-start;
   position: relative;
   font-family: 'Press Start 2P', 'VT323', 'monospace', 'Courier New', Courier, monospace;
-  width: 100%;
+  width: 30%;
   max-width: 480px;
+  z-index: 99999; /* Highest z-index to ensure it's always at the frontmost layer */
 }
 
 .combo-row {
@@ -93,11 +94,11 @@
 .search-dropdown-container {
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0; /* Changed from 50% to 0 to align with the left edge of the search input */
+  transform: none; /* Removed translateX(-50%) since we want left alignment */
   background: #fff;
   border: 3px solid #222;
-  z-index: 1000;
+  z-index: 99999; /* Highest z-index to ensure it's always at the frontmost layer */
   width: 90vw;
   max-width: 1200px;
   height: 70vh;
@@ -211,10 +212,10 @@
 /* Updated styles for the subcategory panel to be semi-transparent */
 .subcategory-panel {
   position: absolute;
-  background: rgba(255, 255, 255, 0.95); /* Changed from solid white to semi-transparent */
+  background: rgba(255, 0, 255, 0.95); /* Changed from solid white to semi-transparent */
   border: 2px solid #222;
   overflow-y: auto;
-  z-index: 100;
+  z-index: 10000; /* Increased from 100 to 10000 to ensure subcategories appear above everything else */
   box-shadow: 4px 4px 8px rgba(0,0,0,0.1);
   -webkit-overflow-scrolling: touch;
   animation: slideIn 0.2s ease-out;
@@ -383,7 +384,7 @@
   background: #fff;
   border: 2px solid #222;
   border-top: none;
-  z-index: 10;
+  z-index: 10000; /* Increased from 10 to 10000 to ensure dropdown appears on top */
   max-height: 220px;
   overflow-y: auto;
   width: 100%;
@@ -461,8 +462,9 @@
 @media (max-width: 768px) {
   .search-dropdown-container {
     width: 95vw;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0; /* Keep aligned to the left */
+    transform: none; /* No transform needed */
+    max-width: 95vw; /* Limit the width to prevent overflow */
   }
 
   .library-search-combo {

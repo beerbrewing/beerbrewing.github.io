@@ -191,6 +191,9 @@ const LibrarySearch = () => {
     setExpandedCategory(null);
   };
 
+  // Add this helper function to check if there are any search results
+  const hasSearchResults = query.trim() !== '' && filteredArticles.length > 0;
+
   const handleSelect = (articleId) => {
     setQuery('');
     setShowDropdown(false);
@@ -297,96 +300,102 @@ const LibrarySearch = () => {
   }, [expandedCategory]);
 
   const renderCategoryDropdown = () => {
-    if (query.trim() === '') {
+    // If we have a query and matching articles, show the search results
+    if (query.trim() !== '') {
       return (
-        <div className="category-grid">
-          {libraryData.map((category, index) => (
-            <div
-              key={category.id}
-              data-category-id={category.id}
-              className={`category-item ${expandedCategory === category.id ? 'expanded' : ''}`}
-              onMouseEnter={(e) => handleCategoryHover(category.id, e.currentTarget)}
-              onMouseLeave={handleCategoryLeave}
-              onClick={(e) => handleCategoryClick(category.id, e.currentTarget)}
-              onTouchStart={(e) => handleCategoryTouchStart(category.id, e.currentTarget, e)}
-              onTouchEnd={handleCategoryTouchEnd}
-              onTouchMove={handleCategoryTouchMove}
-            >
-              <div className="category-header">
-                <h3>{category.name}</h3>
-                <span className="article-count">
-                  {category.articles ? category.articles.length :
-                   category.subcategories ?
-                     category.subcategories.reduce((total, sub) => total + (sub.articles ? sub.articles.length : 0), 0) : 0} articles
-                </span>
-              </div>
-
-              {expandedCategory === category.id && (
-                <div
-                  className="subcategory-panel"
-                  style={subcategoryPosition[category.id] || {}}
-                >
-                  {category.articles && (
-                    <div className="articles-list">
-                      {category.articles.map(article => (
-                        <div
-                          key={article.id}
-                          className="article-item"
-                          onClick={(e) => handleArticleClick(article.id, e)}
-                          onTouchStart={(e) => handleArticleTouch(article.id, e)}
-                        >
-                          {article.title}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {category.subcategories && (
-                    <div className="subcategories-list">
-                      {category.subcategories.map(subcategory => (
-                        <div key={subcategory.id} className="subcategory-group">
-                          <div className="subcategory-header">{subcategory.name}</div>
-                          <div className="subcategory-articles">
-                            {subcategory.articles.map(article => (
-                              <div
-                                key={article.id}
-                                className="article-item"
-                                onClick={(e) => handleArticleClick(article.id, e)}
-                                onTouchStart={(e) => handleArticleTouch(article.id, e)}
-                              >
-                                {article.title}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+        <ul className="combo-dropdown">
+          {filteredArticles.length > 0 ? (
+            filteredArticles.map((article, idx) => (
+              <li
+                key={article.id}
+                className={highlighted === idx ? 'highlighted' : ''}
+                onMouseDown={() => handleSelect(article.id)}
+                onTouchStart={(e) => {
+                  e.stopPropagation();
+                  handleSelect(article.id);
+                }}
+              >
+                <span className="article-title">{article.title}</span>
+                <span className="article-category">{article.categoryPath}</span>
+              </li>
+            ))
+          ) : (
+            <li className="no-results">No matching articles found</li>
+          )}
+        </ul>
       );
     }
 
+    // Otherwise, show the category grid (no changes to this part)
     return (
-      <ul className="combo-dropdown">
-        {filteredArticles.map((article, idx) => (
-          <li
-            key={article.id}
-            className={highlighted === idx ? 'highlighted' : ''}
-            onMouseDown={() => handleSelect(article.id)}
-            onTouchStart={(e) => {
-              e.stopPropagation();
-              handleSelect(article.id);
-            }}
+      <div className="category-grid">
+        {libraryData.map((category, index) => (
+          <div
+            key={category.id}
+            data-category-id={category.id}
+            className={`category-item ${expandedCategory === category.id ? 'expanded' : ''}`}
+            onMouseEnter={(e) => handleCategoryHover(category.id, e.currentTarget)}
+            onMouseLeave={handleCategoryLeave}
+            onClick={(e) => handleCategoryClick(category.id, e.currentTarget)}
+            onTouchStart={(e) => handleCategoryTouchStart(category.id, e.currentTarget, e)}
+            onTouchEnd={handleCategoryTouchEnd}
+            onTouchMove={handleCategoryTouchMove}
           >
-            <span className="article-title">{article.title}</span>
-            <span className="article-category">{article.categoryPath}</span>
-          </li>
+            <div className="category-header">
+              <h3>{category.name}</h3>
+              <span className="article-count">
+                {category.articles ? category.articles.length :
+                 category.subcategories ?
+                   category.subcategories.reduce((total, sub) => total + (sub.articles ? sub.articles.length : 0), 0) : 0} articles
+              </span>
+            </div>
+
+            {expandedCategory === category.id && (
+              <div
+                className="subcategory-panel"
+                style={subcategoryPosition[category.id] || {}}
+              >
+                {category.articles && (
+                  <div className="articles-list">
+                    {category.articles.map(article => (
+                      <div
+                        key={article.id}
+                        className="article-item"
+                        onClick={(e) => handleArticleClick(article.id, e)}
+                        onTouchStart={(e) => handleArticleTouch(article.id, e)}
+                      >
+                        {article.title}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {category.subcategories && (
+                  <div className="subcategories-list">
+                    {category.subcategories.map(subcategory => (
+                      <div key={subcategory.id} className="subcategory-group">
+                        <div className="subcategory-header">{subcategory.name}</div>
+                        <div className="subcategory-articles">
+                          {subcategory.articles.map(article => (
+                            <div
+                              key={article.id}
+                              className="article-item"
+                              onClick={(e) => handleArticleClick(article.id, e)}
+                              onTouchStart={(e) => handleArticleTouch(article.id, e)}
+                            >
+                              {article.title}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         ))}
-      </ul>
+      </div>
     );
   };
 
