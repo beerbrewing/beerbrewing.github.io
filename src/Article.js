@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useEffect, useState, useCallback, memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import LibrarySearch from './LibrarySearch';
 import Breadcrumb from './Breadcrumb';
@@ -18,80 +18,20 @@ const MarkdownRenderers = {
   img: ({node, src, alt, ...props}) => <img src={src} alt={alt || "Article image"} {...props} />
 };
 
-// Track the most recently viewed article ID at the module level
-let lastViewedArticleId = null;
-
-const Article = ({ article }) => {
+// Article component with React 18 optimizations
+const Article = memo(({ article, onClose }) => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [breadcrumbPath, setBreadcrumbPath] = useState([]);
-  const [isActive, setIsActive] = useState(false);
-  const articleRef = useRef(null);
-  const scrollEventApplied = useRef(false);
 
-  useEffect(() => {
-    if (article) {
-      // Update the path
-      const path = findPathToArticle(libraryData, article.id);
-      setBreadcrumbPath(path);
-
-      // Set this article as the last viewed
-      lastViewedArticleId = article.id;
-
-      // Mark this article as active
-      setIsActive(true);
-
-      // Update all other articles to ensure proper z-ordering
-      const allArticleElements = document.querySelectorAll('.article');
-      allArticleElements.forEach(el => {
-        if (el.id === article.id) {
-          el.classList.add('active');
-        } else {
-          el.classList.remove('active');
-        }
-      });
-
-      // Handle scroll behavior to prevent jumping back to hash
-      if (!scrollEventApplied.current && articleRef.current) {
-        // Allow initial scroll to article position
-        setTimeout(() => {
-          // Add event to capture scroll and prevent unwanted jumping
-          window.addEventListener('scroll', handleScroll, { passive: true });
-          scrollEventApplied.current = true;
-        }, 100);
-      }
-    }
-
-    return () => {
-      // Clean up scroll handler when component unmounts
-      window.removeEventListener('scroll', handleScroll);
-      scrollEventApplied.current = false;
-    };
-  }, [article]);
-
-  // Prevent scroll jumping when user manually scrolls
-  const handleScroll = () => {
-    if (window.location.hash) {
-      const currentScroll = window.pageYOffset;
-      // After a small delay, if user has scrolled away from the hash target,
-      // remove the hash to prevent jumping back
-      setTimeout(() => {
-        if (Math.abs(window.pageYOffset - currentScroll) > 5) {
-          // User has scrolled - remove hash to prevent jumping back
-          navigate(window.location.pathname, { replace: true });
-        }
-      }, 100);
-    }
-  };
-
-  const findPathToArticle = (data, articleId, currentPath = []) => {
+  // Find path to article (memoized to prevent unnecessary recalculations)
+  const findPathToArticle = useCallback((data, articleId, currentPath = []) => {
     for (const item of data) {
-      // Check if the current item is the article
+      // Check if current item is the article
       if (item.id === articleId) {
         return [...currentPath, item];
       }
 
-      // Check if article is in this category's articles
+      // Check articles in this category
       if (item.articles) {
         const foundArticle = item.articles.find(a => a.id === articleId);
         if (foundArticle) {
@@ -99,21 +39,20 @@ const Article = ({ article }) => {
         }
       }
 
-      // Check in subcategories
+      // Check subcategories
       if (item.subcategories) {
         const newPath = [...currentPath, item];
-        const foundInSubcategories = findPathInSubcategories(item.subcategories, articleId, newPath);
-        if (foundInSubcategories) {
-          return foundInSubcategories;
-        }
+        const result = findPathInSubcategories(item.subcategories, articleId, newPath);
+        if (result) return result;
       }
     }
     return null;
-  };
+  }, []);
 
+  // Helper function for subcategory search
   const findPathInSubcategories = (subcategories, articleId, currentPath) => {
     for (const subcat of subcategories) {
-      // Check if article is in this subcategory's articles
+      // Check subcategory articles
       if (subcat.articles) {
         const foundArticle = subcat.articles.find(a => a.id === articleId);
         if (foundArticle) {
@@ -121,33 +60,42 @@ const Article = ({ article }) => {
         }
       }
 
-      // Check in next level of subcategories
+      // Check nested subcategories
       if (subcat.subcategories) {
         const newPath = [...currentPath, subcat];
-        const foundInSubcategories = findPathInSubcategories(subcat.subcategories, articleId, newPath);
-        if (foundInSubcategories) {
-          return foundInSubcategories;
-        }
+        const result = findPathInSubcategories(subcat.subcategories, articleId, newPath);
+        if (result) return result;
       }
     }
     return null;
   };
 
+  // Handle navigation back
   const handleBackNavigation = () => {
-    // If there's a previous page in history, go back
     if (window.history.length > 1) {
       window.history.back();
     } else {
-      // Otherwise, navigate to the library page
       navigate('/library');
     }
   };
 
+  // Update breadcrumb path when article changes
+  useEffect(() => {
+    if (article) {
+      const path = findPathToArticle(libraryData, article.id);
+      setBreadcrumbPath(path || []);
+    }
+  }, [article, findPathToArticle]);
+
+  // Exit early if no article is provided
+  if (!article) {
+    return null;
+  }
+
   return (
     <article
-      ref={articleRef}
       id={article.id}
-      className={`article ${isActive ? 'active' : ''}`}
+      className="article active"
       aria-labelledby={`article-title-${article.id}`}
     >
       <div className="article-back-button-container">
@@ -179,6 +127,9 @@ const Article = ({ article }) => {
       </div>
     </article>
   );
-};
+});
+
+// Add display name for better debugging
+Article.displayName = 'Article';
 
 export default Article;
