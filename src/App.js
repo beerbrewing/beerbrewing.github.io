@@ -81,8 +81,6 @@ const App = () => {
         <Route path="/about" element={<div>About Page</div>} />
         <Route path="/time" element={<Time />} />
         <Route path="/streams" element={() => { window.location.href = "streams.html"; return null; }} />
-        <Route path="/build" element={<Navigate to="/" />} />
-        <Route path="/build/index.html" element={<Navigate to="/build" />} />
         <Route path="/" element={
           <div className="App" style={{
             backgroundPosition: 'center',
