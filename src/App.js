@@ -239,6 +239,7 @@ const App = () => {
                     {/*</div>*/}
                     {/*<br/>*/}
 
+                    <br />
                     <div>
                       <a href={"https://tinyurl.com/t2by8hz"} target={"_blank"} className={classLink2}>
                         Learn about the 1880's Pyrmont Brewery and brewing in Sydney Australia here
