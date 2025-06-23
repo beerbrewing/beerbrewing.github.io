@@ -1,9 +1,10 @@
 .library {
   padding: 20px;
+  font-size: 20px;
 }
 
 .category {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .article {

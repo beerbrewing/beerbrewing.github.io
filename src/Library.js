@@ -1,12 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Category from './Category';
 import TableOfContents from './TableOfContents';
+import Article from './Article';
 import Search from './Search';
 import { libraryData } from './libraryData';
 import './Library.css';
 
 const Library = () => {
   const [filteredData, setFilteredData] = useState(libraryData);
+  const [selectedArticle, setSelectedArticle] = useState(null);
+
+  // Check for article ID in URL hash
+  useEffect(() => {
+    const checkForSelectedArticle = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const article = findArticleById(libraryData, hash);
+        setSelectedArticle(article);
+      } else {
+        setSelectedArticle(null);
+      }
+    };
+
+    // Initial check
+    checkForSelectedArticle();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', checkForSelectedArticle);
+
+    return () => {
+      window.removeEventListener('hashchange', checkForSelectedArticle);
+    };
+  }, []);
+
+  // Helper function to find an article by its ID
+  const findArticleById = (data, articleId) => {
+    for (const category of data) {
+      // Check direct articles in the category
+      if (category.articles) {
+        const foundArticle = category.articles.find(article => article.id === articleId);
+        if (foundArticle) return foundArticle;
+      }
+
+      // Check in subcategories
+      if (category.subcategories) {
+        const foundInSub = findArticleById(category.subcategories, articleId);
+        if (foundInSub) return foundInSub;
+      }
+    }
+    return null;
+  };
 
   const handleSearch = (query) => {
     const lowerCaseQuery = query.toLowerCase();
@@ -53,18 +96,25 @@ const Library = () => {
     });
     return articles;
   };
-  
+
   const articles = flattenArticles(filteredData);
 
+  // If an article is selected, render just that article
+  if (selectedArticle) {
+    return (
+      <div className="library single-article-view">
+        <Article article={selectedArticle} />
+      </div>
+    );
+  }
+
+  // Otherwise render the full library with table of contents
   return (
     <div className="library">
-      <h1>Reference Library</h1>
-      <p>Welcome to the brewery reference library. Here you can find articles and information on various brewing topics.</p>
-      <Search onSearch={handleSearch} />
-      <TableOfContents items={filteredData} />
       {filteredData.map(category => (
         <Category key={category.id} category={category} />
       ))}
+      <TableOfContents items={filteredData} />
     </div>
   );
 };

@@ -400,7 +400,7 @@ const LibrarySearch = () => {
   };
 
   return (
-    <div className="library-search-combo" onBlur={handleBlur}>
+    <div className="library-search-combo">
       <div className="combo-row">
         <input
           ref={inputRef}
