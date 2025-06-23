@@ -85,6 +85,7 @@ const LibrarySearch = () => {
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [touchHoldTimer, setTouchHoldTimer] = useState(null);
   const [subcategoryPosition, setSubcategoryPosition] = useState({});
+  const [selectedArticle, setSelectedArticle] = useState(null);
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
@@ -200,14 +201,25 @@ const LibrarySearch = () => {
       e.stopPropagation();
     }
 
-    // Immediately close all menus and reset state
-    setQuery('');
-    setShowDropdown(false);
-    setExpandedCategory(null);
+    const selectedArticle = allArticles.find(article => article.id === articleId);
+    if (selectedArticle) {
+      setSelectedArticle(selectedArticle);
+      setShowDropdown(false);
+    }
+  };
 
-    // Use a direct navigation instead of a React Router navigation
-    // This forcefully reloads the article component even if already viewing an article
-    window.location.href = `/library#${articleId}`;
+  const renderSelectedArticlePopover = () => {
+    if (!selectedArticle) return null;
+
+    return (
+      <div className="article-popover">
+        <div className="popover-content">
+          <button className="close-button" onClick={() => setSelectedArticle(null)}>Close</button>
+          <h2>{selectedArticle.title}</h2>
+          <p>{selectedArticle.content}</p>
+        </div>
+      </div>
+    );
   };
 
   const handleBlur = () => {
@@ -479,6 +491,7 @@ const LibrarySearch = () => {
           {renderCategoryDropdown()}
         </div>
       )}
+      {renderSelectedArticlePopover()}
     </div>
   );
 };
