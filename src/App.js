@@ -83,6 +83,7 @@ const App = () => {
         <Route path="/streams" element={() => { window.location.href = "streams.html"; return null; }} />
         <Route path="/library" element={<Library />} />
         <Route path="/build" element={<Navigate to="/" />} />
+        <Route path="/build/index.html" element={<Navigate to="/" />} />
         <Route path="/" element={
           <div className="App" style={{
             backgroundPosition: 'center',
