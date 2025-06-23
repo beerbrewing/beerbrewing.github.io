@@ -6,6 +6,18 @@ import Breadcrumb from './Breadcrumb';
 import { libraryData } from './libraryData';
 import './Article.css';
 
+// Custom Markdown renderer components for accessibility
+const MarkdownRenderers = {
+  // Make headings more accessible with proper IDs for navigation
+  h1: ({node, ...props}) => <h1 id={`heading-${props.children.toString().toLowerCase().replace(/\s+/g, '-')}`} tabIndex="-1" {...props} />,
+  h2: ({node, ...props}) => <h2 id={`heading-${props.children.toString().toLowerCase().replace(/\s+/g, '-')}`} tabIndex="-1" {...props} />,
+  h3: ({node, ...props}) => <h3 id={`heading-${props.children.toString().toLowerCase().replace(/\s+/g, '-')}`} tabIndex="-1" {...props} />,
+  // Make links more accessible
+  a: ({node, ...props}) => <a {...props} aria-label={`Link to ${props.children}`} />,
+  // Make images accessible with alt text
+  img: ({node, src, alt, ...props}) => <img src={src} alt={alt || "Article image"} {...props} />
+};
+
 const Article = ({ article }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -78,14 +90,15 @@ const Article = ({ article }) => {
   };
 
   return (
-    <div id={article.id} className="article">
+    <article id={article.id} className="article" aria-labelledby={`article-title-${article.id}`}>
       <div className="article-back-button-container">
         <button
           onClick={handleBackNavigation}
           className="article-back-button"
           aria-label="Go back to previous page"
         >
-          ←
+          <span aria-hidden="true">&lt;-</span>
+          <span className="sr-only"></span>
         </button>
       </div>
       <div className="article-header">
@@ -95,14 +108,16 @@ const Article = ({ article }) => {
       </div>
 
       {breadcrumbPath.length > 0 && (
-        <Breadcrumb path={breadcrumbPath} />
+        <nav aria-label="Breadcrumb navigation">
+          <Breadcrumb path={breadcrumbPath} />
+        </nav>
       )}
 
-      <h3 className="article-title">{article.title}</h3>
-      <div className="article-content">
-        <ReactMarkdown>{article.content}</ReactMarkdown>
+      <h3 id={`article-title-${article.id}`} className="article-title" tabIndex="-1">{article.title}</h3>
+      <div className="article-content" role="region" aria-label={`Content of article: ${article.title}`}>
+        <ReactMarkdown components={MarkdownRenderers}>{article.content}</ReactMarkdown>
       </div>
-    </div>
+    </article>
   );
 };
 

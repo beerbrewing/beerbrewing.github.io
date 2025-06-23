@@ -194,11 +194,21 @@ const LibrarySearch = () => {
   // Add this helper function to check if there are any search results
   const hasSearchResults = query.trim() !== '' && filteredArticles.length > 0;
 
-  const handleSelect = (articleId) => {
+  const handleSelect = (articleId, e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    // Close all dropdown menus first
     setQuery('');
     setShowDropdown(false);
     setExpandedCategory(null);
-    navigate(`/library#${articleId}`);
+
+    // Navigate to the article with a slight delay to ensure UI state is updated
+    setTimeout(() => {
+      navigate(`/library#${articleId}`);
+    }, 50);
   };
 
   const handleBlur = () => {
@@ -274,13 +284,23 @@ const LibrarySearch = () => {
   };
 
   const handleArticleTouch = (articleId, e) => {
-    e.stopPropagation();
-    handleSelect(articleId);
+    e.preventDefault();  // Prevent default behavior
+    e.stopPropagation(); // Stop event from bubbling up
+
+    // Use a small timeout to ensure event propagation is fully stopped
+    setTimeout(() => {
+      handleSelect(articleId);
+    }, 10);
   };
 
   const handleArticleClick = (articleId, e) => {
-    e.stopPropagation();
-    handleSelect(articleId);
+    e.preventDefault();  // Prevent default behavior
+    e.stopPropagation(); // Stop event from bubbling up
+
+    // Use a small timeout to ensure event propagation is fully stopped
+    setTimeout(() => {
+      handleSelect(articleId);
+    }, 10);
   };
 
   // Recalculate positions on window resize
@@ -303,32 +323,36 @@ const LibrarySearch = () => {
     // If we have a query and matching articles, show the search results
     if (query.trim() !== '') {
       return (
-        <ul className="combo-dropdown">
+        <ul className="combo-dropdown" id="search-results-list" role="listbox" aria-label="Search results">
           {filteredArticles.length > 0 ? (
             filteredArticles.map((article, idx) => (
               <li
                 key={article.id}
+                id={`search-result-${idx}`}
                 className={highlighted === idx ? 'highlighted' : ''}
                 onMouseDown={() => handleSelect(article.id)}
                 onTouchStart={(e) => {
                   e.stopPropagation();
                   handleSelect(article.id);
                 }}
+                role="option"
+                aria-selected={highlighted === idx}
+                tabIndex={highlighted === idx ? 0 : -1}
               >
                 <span className="article-title">{article.title}</span>
                 <span className="article-category">{article.categoryPath}</span>
               </li>
             ))
           ) : (
-            <li className="no-results">No matching articles found</li>
+            <li className="no-results" role="status">No matching articles found</li>
           )}
         </ul>
       );
     }
 
-    // Otherwise, show the category grid (no changes to this part)
+    // Otherwise, show the category grid with improved accessibility
     return (
-      <div className="category-grid">
+      <div className="category-grid" role="menu" aria-label="Article categories">
         {libraryData.map((category, index) => (
           <div
             key={category.id}
@@ -340,10 +364,22 @@ const LibrarySearch = () => {
             onTouchStart={(e) => handleCategoryTouchStart(category.id, e.currentTarget, e)}
             onTouchEnd={handleCategoryTouchEnd}
             onTouchMove={handleCategoryTouchMove}
+            role="menuitem"
+            aria-haspopup="true"
+            aria-expanded={expandedCategory === category.id}
+            tabIndex="0"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleCategoryClick(category.id, e.currentTarget);
+              }
+            }}
           >
             <div className="category-header">
               <h3>{category.name}</h3>
-              <span className="article-count">
+              <span className="article-count" aria-label={`${category.articles ? category.articles.length : 
+                category.subcategories ? 
+                  category.subcategories.reduce((total, sub) => total + (sub.articles ? sub.articles.length : 0), 0) : 0} articles in this category`}>
                 {category.articles ? category.articles.length :
                  category.subcategories ?
                    category.subcategories.reduce((total, sub) => total + (sub.articles ? sub.articles.length : 0), 0) : 0} articles
@@ -354,15 +390,26 @@ const LibrarySearch = () => {
               <div
                 className="subcategory-panel"
                 style={subcategoryPosition[category.id] || {}}
+                role="region"
+                aria-label={`${category.name} subcategories and articles`}
               >
                 {category.articles && (
-                  <div className="articles-list">
+                  <div className="articles-list" role="list" aria-label={`Articles in ${category.name}`}>
                     {category.articles.map(article => (
                       <div
                         key={article.id}
                         className="article-item"
                         onClick={(e) => handleArticleClick(article.id, e)}
                         onTouchStart={(e) => handleArticleTouch(article.id, e)}
+                        role="listitem"
+                        tabIndex="0"
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleArticleClick(article.id, e);
+                          }
+                        }}
+                        aria-label={article.title}
                       >
                         {article.title}
                       </div>
@@ -373,15 +420,24 @@ const LibrarySearch = () => {
                 {category.subcategories && (
                   <div className="subcategories-list">
                     {category.subcategories.map(subcategory => (
-                      <div key={subcategory.id} className="subcategory-group">
-                        <div className="subcategory-header">{subcategory.name}</div>
-                        <div className="subcategory-articles">
+                      <div key={subcategory.id} className="subcategory-group" role="group" aria-label={subcategory.name}>
+                        <div className="subcategory-header" role="heading" aria-level="4">{subcategory.name}</div>
+                        <div className="subcategory-articles" role="list">
                           {subcategory.articles && subcategory.articles.map(article => (
                             <div
                               key={article.id}
                               className="article-item"
                               onClick={(e) => handleArticleClick(article.id, e)}
                               onTouchStart={(e) => handleArticleTouch(article.id, e)}
+                              role="listitem"
+                              tabIndex="0"
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                  e.preventDefault();
+                                  handleArticleClick(article.id, e);
+                                }
+                              }}
+                              aria-label={article.title}
                             >
                               {article.title}
                             </div>
@@ -400,21 +456,27 @@ const LibrarySearch = () => {
   };
 
   return (
-    <div className="library-search-combo">
+    <div className="library-search-combo" role="search">
       <div className="combo-row">
+        <label htmlFor="library-search-input" className="sr-only">Search: </label>
         <input
           ref={inputRef}
+          id="library-search-input"
           type="text"
           value={query}
           onChange={handleInputChange}
           onFocus={() => setShowDropdown(true)}
           onKeyDown={handleKeyDown}
-          placeholder="Search Pyrmont Brewery Library"
+          placeholder="Pyrmont Brewery Library"
           className="combo-input"
+          aria-expanded={showDropdown}
+          aria-owns="search-results-list"
+          aria-autocomplete="list"
+          aria-activedescendant={highlighted >= 0 ? `search-result-${highlighted}` : undefined}
         />
       </div>
       {showDropdown && (
-        <div className="search-dropdown-container">
+        <div className="search-dropdown-container" aria-live="polite">
           {renderCategoryDropdown()}
         </div>
       )}
