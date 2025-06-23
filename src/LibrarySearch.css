@@ -212,16 +212,13 @@
 /* Updated styles for the subcategory panel to be semi-transparent */
 .subcategory-panel {
   position: absolute;
-  background: rgba(255, 0, 255, 0.95); /* Changed from solid white to semi-transparent */
-  border: 2px solid #222;
   overflow-y: auto;
   z-index: 10000; /* Increased from 100 to 10000 to ensure subcategories appear above everything else */
-  box-shadow: 4px 4px 8px rgba(0,0,0,0.1);
   -webkit-overflow-scrolling: touch;
   animation: slideIn 0.2s ease-out;
   /* Default positioning - will be overridden by inline styles */
-  left: 100%;
-  top: 20px; /* Moved down by 20px from 0 */
+  left: 20% !important;
+  top: 40px !important; /* Moved down by 20px from 0 */
   max-height: calc(100% - 20px); /* Adjusted to account for the top offset */
   max-width: 500px;
   min-width: 350px;
