@@ -198,31 +198,38 @@ export const libraryData = [
       {
         name: 'Lagers',
         id: 'lagers',
-        articles: [
+        subcategories: [
           {
-            id: 'lager-basics',
-            title: 'Lager Brewing Basics',
-            content: 'Introduction to lager brewing, including the differences from ale brewing and temperature control requirements. Understanding bottom-fermenting yeasts.'
+            name: 'European Lagers',
+            id: 'european-lagers',
+            articles: [
+              {
+                id: 'pilsner-brewing',
+                title: 'Pilsner Brewing Guide',
+                content: 'How to brew crisp, clean pilsners with traditional European ingredients and methods. Learn about authentic Czech and German pilsner techniques.'
+              },
+              {
+                id: 'marzen-oktoberfest',
+                title: 'Märzen and Oktoberfest',
+                content: 'Brewing rich amber lagers for the fall season, focusing on traditional German Märzen and Oktoberfest styles with Vienna and Munich malts.'
+              }
+            ]
           },
           {
-            id: 'pilsner-brewing',
-            title: 'Pilsner Brewing',
-            content: 'How to brew crisp, clean pilsners with proper lagering techniques and noble hop character. From Czech to German pilsner variations.'
-          },
-          {
-            id: 'bock-brewing',
-            title: 'Bock Beer Brewing',
-            content: 'Brewing traditional German bock beers including maibock, doppelbock, and eisbock. Learn about high-gravity brewing and extended lagering.'
-          },
-          {
-            id: 'vienna-lager',
-            title: 'Vienna and Märzen Brewing',
-            content: 'How to brew Vienna lagers and Oktoberfest-style Märzen beers. Learn about Vienna malt and the balance between malt and hop character.'
-          },
-          {
-            id: 'lager-conditioning',
-            title: 'Lager Conditioning and Storage',
-            content: 'Proper techniques for conditioning and storing lager beers. Learn about diacetyl rests, cold conditioning, and the importance of patience in lager brewing.'
+            name: 'American Lagers',
+            id: 'american-lagers',
+            articles: [
+              {
+                id: 'american-light-lager',
+                title: 'American Light Lager',
+                content: 'Brewing techniques for clean, crisp American light lagers. Learn about adjunct usage, high attenuation, and achieving that refreshing character.'
+              },
+              {
+                id: 'california-common',
+                title: 'California Common',
+                content: 'How to brew the uniquely American California Common (Steam Beer) style with its characteristic lager yeast fermented at warmer temperatures.'
+              }
+            ]
           }
         ]
       },
