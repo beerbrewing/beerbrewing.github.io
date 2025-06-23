@@ -76,14 +76,12 @@ const App = () => {
   const afterKevState = afterKev;
 
   return (
-    <BrowserRouter basename="/build" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
         <Route path="/about" element={<div>About Page</div>} />
         <Route path="/time" element={<Time />} />
         <Route path="/streams" element={() => { window.location.href = "streams.html"; return null; }} />
         <Route path="/library" element={<Library />} />
-        <Route path="/build" element={<Navigate to="/" />} />
-        <Route path="/build/index.html" element={<Navigate to="/" />} />
         <Route path="/" element={
           <div className="App" style={{
             backgroundPosition: 'center',
