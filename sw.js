@@ -14,15 +14,22 @@ const PRECACHE_URLS = [
 
 // Install event - precache static assets
 self.addEventListener('install', event => {
+    console.log('Service Worker installing.');
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(PRECACHE_URLS))
+            .then(cache => {
+                return cache.addAll(PRECACHE_URLS)
+                    .catch(error => {
+                        console.error('Failed to cache assets:', error);
+                    });
+            })
             .then(() => self.skipWaiting())
     );
 });
 
 // Activate event - clean up old caches
 self.addEventListener('activate', event => {
+    console.log('Service Worker activating.');
     const currentCaches = [CACHE_NAME, MEDIA_CACHE_NAME];
 
     event.waitUntil(
