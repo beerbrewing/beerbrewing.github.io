@@ -1,0 +1,32 @@
+{
+  "name": "Advanced Techniques",
+  "id": "advanced-techniques",
+  "articles": [
+    {
+      "id": "all-grain-brewing",
+      "title": "All-Grain Brewing",
+      "content": "Complete guide to all-grain brewing, including equipment setup, mash calculations, and process control. Learn about lautering, sparging, and efficiency optimisation."
+    },
+    {
+      "id": "recipe-formulation",
+      "title": "Recipe Formulation",
+      "content": "Learn how to create your own beer recipes, balance ingredients, and predict beer characteristics. Understanding style guidelines and ingredient interactions."
+    },
+    {
+      "id": "sour-beer-brewing",
+      "title": "Sour Beer Brewing",
+      "content": "Introduction to sour beer brewing techniques including kettle souring, barrel ageing, and mixed fermentation. Learn about bacteria and wild yeast management."
+    },
+    {
+      "id": "barrel-aging",
+      "title": "Barrel Ageing Techniques",
+      "content": "Advanced techniques for ageing beer in barrels, including wood selection, infection prevention, and ageing timeframes. Learn about barrel preparation and maintenance."
+    },
+    {
+      "id": "high-gravity-brewing",
+      "title": "High Gravity Brewing",
+      "content": "Techniques for brewing high-alcohol beers including barleywines, imperial stouts, and other strong ales. Learn about yeast management and fermentation control."
+    }
+  ]
+}
+

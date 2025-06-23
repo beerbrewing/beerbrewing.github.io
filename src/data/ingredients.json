@@ -1,0 +1,131 @@
+{
+  "name": "Ingredients",
+  "id": "ingredients",
+  "subcategories": [
+    {
+      "name": "Malt",
+      "id": "malt",
+      "articles": [
+        {
+          "id": "malt-types",
+          "title": "Types of Malt",
+          "content": "Understanding the different types of malt available, from base malts to specialty malts and their contributions to beer flavour. Learn about pale, pilsner, Munich, crystal, and roasted malts."
+        },
+        {
+          "id": "malt-extract",
+          "title": "Malt Extract vs All-Grain",
+          "content": "Comparing malt extract brewing to all-grain brewing, including pros, cons, and when to use each method. Understand the differences in flavour, complexity, and time investment."
+        },
+        {
+          "id": "mashing",
+          "title": "Mashing Techniques",
+          "content": "Learn about different mashing techniques including single infusion, step mashing, and decoction mashing. Understand temperature rests and their effects on beer characteristics."
+        },
+        {
+          "id": "malt-storage",
+          "title": "Malt Storage and Handling",
+          "content": "Best practices for storing and handling malt to maintain freshness and quality. Learn about proper storage conditions, shelf life, and signs of spoiled malt."
+        },
+        {
+          "id": "malt-calculations",
+          "title": "Malt Calculations and Efficiency",
+          "content": "Understanding extract potential, efficiency calculations, and how to predict your beer's original gravity. Learn to calculate mash efficiency and adjust recipes accordingly."
+        }
+      ]
+    },
+    {
+      "name": "Hops",
+      "id": "hops",
+      "articles": [
+        {
+          "id": "hop-varieties",
+          "title": "Hop Varieties and Characteristics",
+          "content": "Explore different hop varieties, their alpha acid content, and the unique flavours and aromas they contribute to beer. From noble hops to modern American varieties."
+        },
+        {
+          "id": "hop-timing",
+          "title": "Hop Timing and Utilisation",
+          "content": "Understanding when to add hops during the brewing process and how timing affects bitterness, flavour, and aroma. Learn about boil times and IBU calculations."
+        },
+        {
+          "id": "dry-hopping",
+          "title": "Dry Hopping Techniques",
+          "content": "Learn about dry hopping methods to add intense hop aroma to your beers without increasing bitterness. Techniques, timing, and best practices for maximum hop character."
+        },
+        {
+          "id": "hop-storage",
+          "title": "Hop Storage and Freshness",
+          "content": "How to properly store hops to maintain their quality and potency. Learn about vacuum sealing, freezing, and signs of hop degradation over time."
+        },
+        {
+          "id": "hop-substitutions",
+          "title": "Hop Substitutions and Blending",
+          "content": "How to substitute hops when your preferred variety isn't available. Learn about hop characteristics and how to create similar flavour profiles with different varieties."
+        }
+      ]
+    },
+    {
+      "name": "Yeast",
+      "id": "yeast",
+      "articles": [
+        {
+          "id": "yeast-management",
+          "title": "Yeast Management",
+          "content": "Everything you need to know about handling and maintaining healthy yeast, including pitching rates and temperature control. Learn about yeast health and vitality."
+        },
+        {
+          "id": "yeast-strains",
+          "title": "Yeast Strains and Selection",
+          "content": "Understanding different yeast strains, their characteristics, and how to choose the right yeast for your beer style. From ale yeasts to lager yeasts and specialty strains."
+        },
+        {
+          "id": "fermentation-control",
+          "title": "Fermentation Control",
+          "content": "Learn how to control fermentation temperature and conditions to produce consistent, high-quality beer. Temperature management is crucial for yeast performance."
+        },
+        {
+          "id": "yeast-starters",
+          "title": "Yeast Starters and Propagation",
+          "content": "How to create and use yeast starters to ensure healthy fermentation. Learn about starter calculations, aeration, and when starters are necessary."
+        },
+        {
+          "id": "yeast-harvesting",
+          "title": "Yeast Harvesting and Reuse",
+          "content": "Techniques for harvesting and reusing yeast from previous batches. Learn about yeast washing, storage, and how many generations you can reuse yeast."
+        }
+      ]
+    },
+    {
+      "name": "Water",
+      "id": "water",
+      "articles": [
+        {
+          "id": "water-chemistry",
+          "title": "Water Chemistry Basics",
+          "content": "Understanding water chemistry and how different mineral profiles affect beer flavour and brewing efficiency. Learn about calcium, magnesium, sulphate, and chloride."
+        },
+        {
+          "id": "water-treatment",
+          "title": "Water Treatment Methods",
+          "content": "Learn about various water treatment methods including filtering, boiling, and chemical adjustments. How to modify your water for different beer styles."
+        },
+        {
+          "id": "water-profiles",
+          "title": "Famous Water Profiles",
+          "content": "Understanding the water profiles of famous brewing cities and how to replicate them. From Burton-on-Trent to Pilsen and Munich water characteristics."
+        },
+        {
+          "id": "water-testing",
+          "title": "Water Testing and Analysis",
+          "content": "How to test your brewing water and interpret the results. Learn about water testing kits, professional analysis, and what parameters matter most for brewing."
+        },
+        {
+          "id": "water-calculations",
+          "title": "Water Adjustment Calculations",
+          "content": "How to calculate water adjustments for different beer styles. Learn about salt additions, acid adjustments, and software tools for water chemistry."
+        }
+      ]
+    }
+  ]
+}
+

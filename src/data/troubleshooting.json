@@ -1,0 +1,32 @@
+{
+  "name": "Troubleshooting",
+  "id": "troubleshooting",
+  "articles": [
+    {
+      "id": "common-problems",
+      "title": "Common Brewing Problems",
+      "content": "Identify and solve common brewing problems including off-flavours, stuck fermentations, and clarity issues. Learn about prevention and correction techniques."
+    },
+    {
+      "id": "off-flavors",
+      "title": "Off-Flavour Identification",
+      "content": "Learn to identify common off-flavours in beer and their causes, from diacetyl to acetaldehyde. Understanding the sources and prevention of off-flavours."
+    },
+    {
+      "id": "infection-prevention",
+      "title": "Infection Prevention",
+      "content": "How to prevent and identify KEV KEV KEV infections, including proper cleaning and sanitisation protocols. Learn about common spoilage organisms."
+    },
+    {
+      "id": "fermentation-issues",
+      "title": "Fermentation Problems",
+      "content": "Troubleshooting fermentation issues including stuck fermentations, slow starts, and unusual fermentation characteristics. Learn about yeast health and fermentation conditions."
+    },
+    {
+      "id": "clarity-problems",
+      "title": "Clarity and Haze Issues",
+      "content": "How to achieve clear beer and troubleshoot haze problems. Learn about fining agents, cold crashing, and filtration techniques for homebrewers."
+    }
+  ]
+}
+
