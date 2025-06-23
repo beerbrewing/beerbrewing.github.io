@@ -3,13 +3,19 @@
 
 <head>
   <style>
+    @font-face {
+      font-family: kevs;
+      src: url(DejaVuSansMono.ttf);
+    }
+
     body {
       background-color: black;
       color: white;
       overflow: hidden;
 
-      font-family: "Arial";
+      font-family: "kevs";
       font-size: 58pt;
+      font-weight: lighter;
 
       display: flex;
       height: 95%;
@@ -76,9 +82,11 @@
       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
 
+    let milli = now.getMilliseconds().toString().slice(0,3);
+    if (milli.length === 2) milli += "0";
     timeObj.innerText = ("0" + now.getDate()).slice(-2) + "-" + monthNames[now.getMonth()] + "-" +
             now.getFullYear() + " " + ("0" + now.getHours()).slice(-2)  + ":" + ("0" + now.getMinutes()).slice(-2) +
-            ":" + ("0" + now.getSeconds()).slice(-2) + "." + now.getMilliseconds().toString().slice(0,2);
+            ":" + ("0" + now.getSeconds()).slice(-2) + "." + milli;
   }
 
   setInterval(updateTime, 10);
