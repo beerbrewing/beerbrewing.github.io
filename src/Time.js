@@ -22,14 +22,10 @@ import LabelQuarryQuafferAussieLager from './label_quarry_quaffer_aussie_lager.p
 import LabelHellHoleHelles from './label_hell_hole_helles.png';
 import LabelGeneric from './label_generic.png';
 
-import ReactGA from 'react-ga';
+import ReactGA4 from 'react-ga4';
 
 
-ReactGA.initialize('UA-155182441-1');
-ReactGA.pageview(window.location.pathname + window.location.search);
-
-
-
+ReactGA4.initialize('G-0BEBKXKRP3');
 
 class Time extends Component {
   constructor() {

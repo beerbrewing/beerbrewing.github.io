@@ -8,15 +8,15 @@ import Buildings from './pyrmont_sandstone_buildings.jpeg';
 import './App.css';
 import Time from './Time';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import ReactGA from 'react-ga';
+import ReactGA4 from 'react-ga4';
 import Beer from "./Beer";
 import BeerMats from "./BeerMats";
 import Library from './Library';
 import LibrarySearch from './LibrarySearch';
 
-// Initialize Google Analytics
-ReactGA.initialize('UA-155182441-1');
-ReactGA.pageview(window.location.pathname + window.location.search);
+// Initialize Google Analytics 4
+ReactGA4.initialize('G-0BEBKXKRP3'); // You'll need to replace this with your actual GA4 measurement ID
+// No need for separate pageview call here as GA4 automatically tracks initial pageview
 
 // Import only the images that are actually used in the rendered JSX
 import desktopImage from './pyrmontbwy.gif';

@@ -4,12 +4,12 @@
   "private": true,
   "homepage": "https://beerbrewing.github.io/build",
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-facebook-pixel": "^0.1.3",
-    "react-ga": "^3.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-facebook-pixel": "^1.0.4",
+    "react-ga4": "^2.1.0",
     "react-markdown": "^10.1.0",
-    "react-router-dom": "^6.2.1",
+    "react-router-dom": "^6.30.1",
     "react-scripts": "5.0.1"
   },
   "scripts": {
