@@ -466,7 +466,7 @@ const LibrarySearch = () => {
           onChange={handleInputChange}
           onFocus={() => setShowDropdown(true)}
           onKeyDown={handleKeyDown}
-          placeholder="Pyrmont Brewery Library"
+          placeholder="Pyrmont Brewery Search"
           className="combo-input"
           aria-expanded={showDropdown}
           aria-owns="search-results-list"

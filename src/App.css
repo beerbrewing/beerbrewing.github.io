@@ -27,7 +27,7 @@ html {
     right: 0px;
     height: 200000px;
     pointer-events: none;
-    background: -webkit-repeating-linear-gradient(top, transparent 0px, transparent 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0.9) 4px);
+    background: repeating-linear-gradient(to top, transparent 0px, transparent 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0.9) 4px);
     background-size: 100% 2px;
 }
 span {

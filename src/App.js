@@ -7,7 +7,7 @@ import Loading from './pyrmontbwy.gif';
 import Buildings from './pyrmont_sandstone_buildings.jpeg';
 import './App.css';
 import Time from './Time';
-import { BrowserRouter, Routes, Route, Link, createRoutesFromChildren } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, createRoutesFromChildren, Navigate } from "react-router-dom";
 import ReactGA4 from 'react-ga4';
 import Beer from "./Beer";
 import BeerMats from "./BeerMats";
@@ -82,6 +82,7 @@ const App = () => {
         <Route path="/time" element={<Time />} />
         <Route path="/streams" element={() => { window.location.href = "streams.html"; return null; }} />
         <Route path="/library" element={<Library />} />
+        <Route path="/build" element={<Navigate to="/" />} />
         <Route path="/" element={
           <div className="App" style={{
             backgroundPosition: 'center',
