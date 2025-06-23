@@ -90,8 +90,7 @@ const App = () => {
         backgroundPosition: 'center',
         backgroundSize: '100%',
         backgroundRepeat: 'repeat',
-        backgroundImage: `url(${desktopImage})`,
-        backgroundColor: `#ff0000`
+        backgroundImage: `url(${desktopImage})`
       }}>
         {afterKevState ?
           <header className="App-header-notspeccy">
