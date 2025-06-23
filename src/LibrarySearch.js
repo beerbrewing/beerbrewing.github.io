@@ -200,15 +200,14 @@ const LibrarySearch = () => {
       e.stopPropagation();
     }
 
-    // Close all dropdown menus first
+    // Immediately close all menus and reset state
     setQuery('');
     setShowDropdown(false);
     setExpandedCategory(null);
 
-    // Navigate to the article with a slight delay to ensure UI state is updated
-    setTimeout(() => {
-      navigate(`/library#${articleId}`);
-    }, 50);
+    // Use a direct navigation instead of a React Router navigation
+    // This forcefully reloads the article component even if already viewing an article
+    window.location.href = `/library#${articleId}`;
   };
 
   const handleBlur = () => {

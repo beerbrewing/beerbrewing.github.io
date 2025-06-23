@@ -1,6 +1,11 @@
 import React from 'react';
 
 const renderItems = (items) => {
+  // Add a safety check to prevent mapping over undefined
+  if (!items || !Array.isArray(items)) {
+    return null;
+  }
+
   return (
     <ul>
       {items.map(item => (
@@ -18,11 +23,15 @@ const renderItems = (items) => {
   );
 };
 
-const TableOfContents = ({ items }) => {
+// Update the component to accept either 'items' or 'data' prop
+const TableOfContents = ({ items, data }) => {
+  // Use whichever prop is provided (items or data)
+  const contentItems = items || data;
+
   return (
     <div>
       <h2>Table of Contents</h2>
-      {renderItems(items)}
+      {renderItems(contentItems)}
     </div>
   );
 };

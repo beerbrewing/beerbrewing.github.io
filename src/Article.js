@@ -18,15 +18,36 @@ const MarkdownRenderers = {
   img: ({node, src, alt, ...props}) => <img src={src} alt={alt || "Article image"} {...props} />
 };
 
+// Track the most recently viewed article ID at the module level
+let lastViewedArticleId = null;
+
 const Article = ({ article }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [breadcrumbPath, setBreadcrumbPath] = useState([]);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     if (article) {
+      // Update the path
       const path = findPathToArticle(libraryData, article.id);
       setBreadcrumbPath(path);
+
+      // Set this article as the last viewed
+      lastViewedArticleId = article.id;
+
+      // Mark this article as active
+      setIsActive(true);
+
+      // Update all other articles to ensure proper z-ordering
+      const allArticleElements = document.querySelectorAll('.article');
+      allArticleElements.forEach(el => {
+        if (el.id === article.id) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      });
     }
   }, [article]);
 
@@ -90,17 +111,22 @@ const Article = ({ article }) => {
   };
 
   return (
-    <article id={article.id} className="article" aria-labelledby={`article-title-${article.id}`}>
+    <article
+      id={article.id}
+      className={`article ${isActive ? 'active' : ''}`}
+      aria-labelledby={`article-title-${article.id}`}
+    >
       <div className="article-back-button-container">
         <button
           onClick={handleBackNavigation}
           className="article-back-button"
           aria-label="Go back to previous page"
         >
-          <span aria-hidden="true">&lt;-</span>
-          <span className="sr-only"></span>
+          <span aria-hidden="true">←</span>
+          <span className="sr-only">Back</span>
         </button>
       </div>
+
       <div className="article-header">
         <div className="article-search-container">
           <LibrarySearch />

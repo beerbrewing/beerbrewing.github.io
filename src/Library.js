@@ -9,6 +9,7 @@ import './Library.css';
 const Library = () => {
   const [filteredData, setFilteredData] = useState(libraryData);
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const [visibleArticles, setVisibleArticles] = useState([]);
 
   // Check for article ID in URL hash
   useEffect(() => {
@@ -16,9 +17,16 @@ const Library = () => {
       const hash = window.location.hash.substring(1);
       if (hash) {
         const article = findArticleById(libraryData, hash);
-        setSelectedArticle(article);
+        if (article) {
+          setSelectedArticle(article);
+          // Close all other articles and only show the selected one
+          setVisibleArticles([article.id]);
+        } else {
+          setSelectedArticle(null);
+        }
       } else {
         setSelectedArticle(null);
+        setVisibleArticles([]); // Close all articles when no hash is present
       }
     };
 
@@ -49,6 +57,14 @@ const Library = () => {
       }
     }
     return null;
+  };
+
+  // Handle closing an article
+  const handleCloseArticle = (articleId) => {
+    setVisibleArticles(prevArticles => prevArticles.filter(id => id !== articleId));
+    setSelectedArticle(null);
+    // Remove the hash from the URL
+    window.history.pushState("", document.title, window.location.pathname + window.location.search);
   };
 
   const handleSearch = (query) => {
@@ -103,7 +119,7 @@ const Library = () => {
   if (selectedArticle) {
     return (
       <div className="library single-article-view">
-        <Article article={selectedArticle} />
+        <Article article={selectedArticle} onClose={handleCloseArticle} />
       </div>
     );
   }
@@ -111,10 +127,33 @@ const Library = () => {
   // Otherwise render the full library with table of contents
   return (
     <div className="library">
-      {filteredData.map(category => (
-        <Category key={category.id} category={category} />
-      ))}
-      <TableOfContents items={filteredData} />
+      <div className="library-header">
+        <h2>Pyrmont Brewery Library</h2>
+        <div className="library-search">
+          <Search onSearch={handleSearch} />
+        </div>
+      </div>
+
+      <div className="library-container">
+        <div className="library-sidebar">
+          <TableOfContents data={filteredData} />
+        </div>
+
+        <div className="library-content">
+          {articles.length > 0 ? (
+            <div className="library-categories">
+              {filteredData.map(category => (
+                <Category
+                  key={category.id}
+                  category={category}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="no-results">No articles match your search.</div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
