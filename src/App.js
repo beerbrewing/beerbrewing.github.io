@@ -208,28 +208,27 @@ const App = () => {
                 :
                 <header className="App-header">
                   <div className="tvsimulator"></div>
-                  <div>
-                    <br />
+                  <div className="pyrmont_brewery">
+                    <br/>
                     <LibrarySearch />
 
-                    <br />
+                    <br/>
                     <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>
-                      <br />
+                      <br/>
                       Production brewing automation and optimisation
-                      <br />
-                      <br />
+                      <br/>
+                      <br/>
                     </div>
-                    <br />
+                    <br/>
 
-                    <div>
-                      If you're looking for beer then we need you to confirm you were born on or before <span className="speccy_flash_black">{today.toString().substring(0, 15)}?</span>
+                    If you're looking for beer then we need you to confirm you were born on or before <div className="speccy_flash_black">{today.toString().substring(0, 15)}?</div>
+                    <br/>
+                    <br/>
+                    <div className="ButtonYes" id="yes18" onClick={handleOldEnough}><br/>Strewth, yeah I'm bloody old<br/><br/>
                     </div>
-                    <br />
-                    <br />
-                    <div className="ButtonYes" id="yes18" onClick={handleOldEnough}><br />Strewth, yeah I'm bloody old<br /><br />
-                    </div>
-                    <br />
-                    <div className="ButtonNo" id="no" onClick={handleTooYoung}><br />No, I'm too young<br /><br /></div>
+                    <br/>
+                    <div className="ButtonNo" id="no" onClick={handleTooYoung}><br/>No, I'm too young<br/><br/></div>
+
 
                     {/*<br/>*/}
                     {/*<div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>*/}

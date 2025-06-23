@@ -58,6 +58,25 @@ p {
     border-color: rgb(189, 189, 189);;
 }
 
+.pyrmont_brewery {
+    scroll-snap-align: start;
+    width: 95%;
+    background-color: rgb(189, 189, 189);
+    color: rgb(0, 0, 0);
+    font-family: 'pyrmont_brewery';
+    width: 80%;
+    opacity: 0.9;
+    position: relative;
+    padding: 5px 5px 5px 5px;
+    border-style: solid;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 30px;
+    border-right-width: 30px;
+    transition-duration: 0s;
+    border-color: rgb(189, 189, 189);;
+}
+
 .Story {
     scroll-snap-align: start;
     width: 95%;
