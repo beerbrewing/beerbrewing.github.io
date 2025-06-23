@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import LibrarySearch from './LibrarySearch';
@@ -26,6 +26,8 @@ const Article = ({ article }) => {
   const location = useLocation();
   const [breadcrumbPath, setBreadcrumbPath] = useState([]);
   const [isActive, setIsActive] = useState(false);
+  const articleRef = useRef(null);
+  const scrollEventApplied = useRef(false);
 
   useEffect(() => {
     if (article) {
@@ -48,8 +50,39 @@ const Article = ({ article }) => {
           el.classList.remove('active');
         }
       });
+
+      // Handle scroll behavior to prevent jumping back to hash
+      if (!scrollEventApplied.current && articleRef.current) {
+        // Allow initial scroll to article position
+        setTimeout(() => {
+          // Add event to capture scroll and prevent unwanted jumping
+          window.addEventListener('scroll', handleScroll, { passive: true });
+          scrollEventApplied.current = true;
+        }, 100);
+      }
     }
+
+    return () => {
+      // Clean up scroll handler when component unmounts
+      window.removeEventListener('scroll', handleScroll);
+      scrollEventApplied.current = false;
+    };
   }, [article]);
+
+  // Prevent scroll jumping when user manually scrolls
+  const handleScroll = () => {
+    if (window.location.hash) {
+      const currentScroll = window.pageYOffset;
+      // After a small delay, if user has scrolled away from the hash target,
+      // remove the hash to prevent jumping back
+      setTimeout(() => {
+        if (Math.abs(window.pageYOffset - currentScroll) > 5) {
+          // User has scrolled - remove hash to prevent jumping back
+          navigate(window.location.pathname, { replace: true });
+        }
+      }, 100);
+    }
+  };
 
   const findPathToArticle = (data, articleId, currentPath = []) => {
     for (const item of data) {
@@ -112,6 +145,7 @@ const Article = ({ article }) => {
 
   return (
     <article
+      ref={articleRef}
       id={article.id}
       className={`article ${isActive ? 'active' : ''}`}
       aria-labelledby={`article-title-${article.id}`}

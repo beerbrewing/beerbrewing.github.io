@@ -4,12 +4,54 @@ import TableOfContents from './TableOfContents';
 import Article from './Article';
 import Search from './Search';
 import { libraryData } from './libraryData';
+import { useLocation } from 'react-router-dom';
 import './Library.css';
 
 const Library = () => {
   const [filteredData, setFilteredData] = useState(libraryData);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [visibleArticles, setVisibleArticles] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const location = useLocation();
+
+  // Force a full page refresh when location changes
+  const lastLocationRef = React.useRef(location);
+  useEffect(() => {
+    // Check if this is a genuine location change (not just the initial render)
+    if (lastLocationRef.current !== location && document.location.href) {
+      // Refresh the page
+      window.location.reload();
+    }
+    // Update the last location ref
+    lastLocationRef.current = location;
+  }, [location]);
+
+  // Handle all location changes including path, search params and hash
+  useEffect(() => {
+    // Reset everything when navigating to base library path with no hash or search
+    if (location.pathname === '/library' && !location.hash && !location.search) {
+      setFilteredData(libraryData);
+      setSelectedArticle(null);
+      setVisibleArticles([]);
+      setSearchQuery('');
+      return;
+    }
+
+    // Get search query from URL parameters
+    const queryParams = new URLSearchParams(location.search);
+    const searchFromUrl = queryParams.get('search');
+
+    if (searchFromUrl) {
+      // Update search query state
+      setSearchQuery(searchFromUrl);
+      // Perform search
+      handleSearch(searchFromUrl);
+    } else if (!location.hash) {
+      // If no search and no hash, reset to default view
+      setFilteredData(libraryData);
+      setSearchQuery('');
+    }
+  }, [location]); // Re-run when any part of location changes
 
   // Check for article ID in URL hash
   useEffect(() => {
@@ -130,7 +172,7 @@ const Library = () => {
       <div className="library-header">
         <h2>Pyrmont Brewery Library</h2>
         <div className="library-search">
-          <Search onSearch={handleSearch} />
+          <Search onSearch={handleSearch} initialQuery={searchQuery} />
         </div>
       </div>
 
