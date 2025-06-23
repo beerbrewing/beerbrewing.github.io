@@ -1,0 +1,32 @@
+{
+  "name": "Quality Control",
+  "id": "quality-control",
+  "articles": [
+    {
+      "id": "tasting-evaluation",
+      "title": "Beer Tasting and Evaluation",
+      "content": "How to properly taste and evaluate your beer, including aroma, appearance, flavour, and mouthfeel assessment. Learn to identify off-flavours and quality issues."
+    },
+    {
+      "id": "lab-testing",
+      "title": "Laboratory Testing for Homebrewers",
+      "content": "Essential lab tests for homebrewers including gravity measurements, pH testing, and microbiological analysis. Learn about testing equipment and procedures."
+    },
+    {
+      "id": "consistency-techniques",
+      "title": "Brewing for Consistency",
+      "content": "How to brew consistent beer batch after batch. Learn about process control, record keeping, and quality assurance techniques."
+    },
+    {
+      "id": "packaging-quality",
+      "title": "Packaging and Quality Maintenance",
+      "content": "Best practices for bottling, kegging, and maintaining beer quality after packaging. Learn about oxygen control, carbonation, and storage conditions."
+    },
+    {
+      "id": "competition-preparation",
+      "title": "Preparing Beer for Competition",
+      "content": "How to prepare and submit your beer for homebrew competitions. Learn about style guidelines, presentation, and judging criteria."
+    }
+  ]
+}
+

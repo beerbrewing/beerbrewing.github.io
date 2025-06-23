@@ -1,0 +1,32 @@
+{
+  "name": "Getting Started",
+  "id": "getting-started",
+  "articles": [
+    {
+      "id": "brewing-basics",
+      "title": "Brewing Basics",
+      "content": "An introduction to the fundamental concepts of brewing beer, including the brewing process, equipment needed, and basic terminology. Learn about the four main ingredients and how they work together to create beer."
+    },
+    {
+      "id": "equipment-guide",
+      "title": "Essential Equipment Guide",
+      "content": "A comprehensive guide to the essential equipment needed for homebrewing, from basic kits to advanced setups. Includes fermenters, airlocks, thermometers, hydrometers, and more."
+    },
+    {
+      "id": "sanitisation",
+      "title": "Sanitisation Best Practices",
+      "content": "Learn the importance of proper sanitisation in brewing and the best methods to ensure your beer stays infection-free. Covers cleaning vs sanitising, common sanitisers, and best practices."
+    },
+    {
+      "id": "first-batch",
+      "title": "Your First Batch",
+      "content": "Step-by-step instructions for brewing your very first batch of beer, including common mistakes to avoid. From wort preparation to bottling, this guide covers everything a beginner needs to know."
+    },
+    {
+      "id": "brewing-safety",
+      "title": "Brewing Safety Guidelines",
+      "content": "Essential safety information for homebrewers, including handling hot liquids, chemical safety, electrical safety, and proper ventilation. Safety should always come first in brewing."
+    }
+  ]
+}
+

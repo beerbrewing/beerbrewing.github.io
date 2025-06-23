@@ -1,0 +1,138 @@
+{
+  "name": "Beer Styles",
+  "id": "beer-styles",
+  "subcategories": [
+    {
+      "name": "Ales",
+      "id": "ales",
+      "articles": [
+        {
+          "id": "pale-ale",
+          "title": "Pale Ale Brewing",
+          "content": "How to brew classic pale ales, including English and American variations with their distinct hop profiles. Learn about malt bills, hop schedules, and fermentation techniques."
+        },
+        {
+          "id": "ipa-brewing",
+          "title": "IPA Brewing Guide",
+          "content": "Complete guide to brewing India Pale Ales, from session IPAs to double IPAs with intense hop character. Modern techniques and classic approaches."
+        },
+        {
+          "id": "stout-porter",
+          "title": "Stout and Porter Brewing",
+          "content": "Learn to brew dark beers including stouts and porters with rich, complex flavours from roasted malts. From dry stouts to imperial stouts."
+        },
+        {
+          "id": "wheat-beer",
+          "title": "Wheat Beer Brewing",
+          "content": "How to brew refreshing wheat beers including hefeweizens, witbiers, and American wheat beers. Learn about wheat malt characteristics and yeast selection."
+        },
+        {
+          "id": "amber-ale",
+          "title": "Amber and Red Ale Brewing",
+          "content": "Brewing balanced amber and red ales with moderate hop bitterness and rich malt character. Learn about crystal malt usage and hop balance."
+        }
+      ]
+    },
+    {
+      "name": "Lagers",
+      "id": "lagers",
+      "subcategories": [
+        {
+          "name": "European Lagers",
+          "id": "european-lagers",
+          "articles": [
+            {
+              "id": "pilsner-brewing",
+              "title": "Pilsner Brewing Guide",
+              "content": "How to brew crisp, clean pilsners with traditional European ingredients and methods. Learn about authentic Czech and German pilsner techniques."
+            },
+            {
+              "id": "marzen-oktoberfest",
+              "title": "Märzen and Oktoberfest",
+              "content": "Brewing rich amber lagers for the fall season, focusing on traditional German Märzen and Oktoberfest styles with Vienna and Munich malts."
+            }
+          ]
+        },
+        {
+          "name": "American Lagers",
+          "id": "american-lagers",
+          "articles": [
+            {
+              "id": "american-light-lager",
+              "title": "American Light Lager",
+              "content": "Brewing techniques for clean, crisp American light lagers. Learn about adjunct usage, high attenuation, and achieving that refreshing character."
+            },
+            {
+              "id": "california-common",
+              "title": "California Common",
+              "content": "How to brew the uniquely American California Common (Steam Beer) style with its characteristic lager yeast fermented at warmer temperatures."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Belgian Styles",
+      "id": "belgian-styles",
+      "articles": [
+        {
+          "id": "saison-brewing",
+          "title": "Saison Brewing",
+          "content": "Learn to brew traditional Belgian saisons with their characteristic spicy, fruity yeast character. From simple table saisons to complex farmhouse ales."
+        },
+        {
+          "id": "belgian-strong-ales",
+          "title": "Belgian Strong Ales",
+          "content": "Brewing complex Belgian strong ales including dubbels, tripels, and quadrupels with high alcohol content. Learn about candi sugar and Belgian yeast strains."
+        },
+        {
+          "id": "witbier-brewing",
+          "title": "Witbier and Belgian Wheat",
+          "content": "How to brew refreshing Belgian wheat beers with coriander, orange peel, and other spices. Learn about unmalted wheat and traditional ingredients."
+        },
+        {
+          "id": "lambic-brewing",
+          "title": "Lambic and Gueuze Brewing",
+          "content": "Introduction to spontaneous fermentation and traditional Belgian lambic brewing. Learn about wild yeasts, bacteria, and long ageing processes."
+        },
+        {
+          "id": "belgian-yeast",
+          "title": "Belgian Yeast Characteristics",
+          "content": "Understanding the unique characteristics of Belgian yeast strains and how they contribute to the distinctive flavours of Belgian beers."
+        }
+      ]
+    },
+    {
+      "name": "Specialty Styles",
+      "id": "specialty-styles",
+      "articles": [
+        {
+          "id": "sour-beer-styles",
+          "title": "Sour Beer Styles",
+          "content": "Overview of various sour beer styles including Berliner Weisse, Gose, Flanders Red, and American sour ales. Learn about different souring techniques."
+        },
+        {
+          "id": "barrel-aged-beers",
+          "title": "Barrel-Aged Beer Brewing",
+          "content": "How to brew and age beers in barrels for complex flavours. Learn about barrel selection, ageing times, and blending techniques."
+        },
+        {
+          "id": "fruit-beer-brewing",
+          "title": "Fruit Beer Brewing",
+          "content": "Techniques for brewing fruit beers, from simple additions to complex fruit-forward styles. Learn about fruit selection, timing, and processing methods."
+        },
+        {
+          "id": "spiced-beer-brewing",
+          "title": "Spiced and Herbed Beer Brewing",
+          "content": "How to incorporate spices, herbs, and other flavourings into your beer. Learn about spice selection, timing, and balancing flavours."
+        },
+        {
+          "id": "smoked-beer-brewing",
+          "title": "Smoked Beer Brewing",
+          "content": "Techniques for brewing smoked beers including rauchbiers and other smoked styles. Learn about different smoking methods and wood types."
+        }
+      ]
+    }
+  ]
+}
+

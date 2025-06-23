@@ -1,0 +1,1600 @@
+.library-search {
+  margin-bottom: 20px;
+}
+
+.library-search input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.library-search select {
+  width: 100%;
+  padding: 8px;
+}
+
+.library-search-combo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  font-family: 'Press Start 2P', 'VT323', 'monospace', 'Courier New', Courier, monospace;
+  width: 30%;
+  max-width: 480px;
+  z-index: 99999; /* Highest z-index to ensure it's always at the frontmost layer */
+}
+
+.combo-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.combo-input {
+  font-family: 'pyrmont_brewery';
+  font-size: 1em;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  width: 100%;
+  min-width: 488px;
+  box-sizing: border-box;
+  background: #fff;
+  color: #222;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.combo-search-btn {
+  background: none;
+  border: none;
+  margin-left: 4px;
+  padding: 0 8px;
+  cursor: pointer;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.combo-magnifier {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: none;
+  position: relative;
+}
+
+.combo-magnifier:before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 3px solid #222;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+}
+
+.combo-magnifier:after {
+  content: '';
+  display: block;
+  width: 7px;
+  height: 3px;
+  background: #222;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+.search-dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: 0; /* Changed from 50% to 0 to align with the left edge of the search input */
+  transform: none; /* Removed translateX(-50%) since we want left alignment */
+  background: #fff;
+  border: 3px solid #222;
+  z-index: 99999; /* Highest z-index to ensure it's always at the frontmost layer */
+  width: 90vw;
+  max-width: 1200px;
+  height: auto; /* Change from fixed 70vh height to auto */
+  max-height: 70vh; /* Use max-height instead to prevent it from being too large */
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.search-dropdown-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0;
+  padding: 0;
+  flex: 1;
+  overflow: visible;
+  position: relative;
+}
+
+.category-item {
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background: #fff;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  overflow: visible;
+}
+
+.category-item:hover {
+  background: #f8f8f8;
+}
+
+.category-item.expanded {
+  background: #f0f0f0;
+}
+
+.category-item:active {
+  background: #e8e8e8;
+  transform: scale(0.98);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+/* Touch hold feedback */
+.category-item.touch-holding {
+  background: #e0e0e0;
+  transform: scale(0.95);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.category-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.category-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #222;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.article-count {
+  font-size: 0.8em;
+  color: #666;
+  font-style: italic;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Updated styles for the subcategory panel to be semi-transparent */
+.subcategory-panel {
+  position: absolute;
+  overflow-y: auto;
+  z-index: 99999 !important; /* Increased from 100 to 10000 to ensure subcategories appear above everything else */
+  -webkit-overflow-scrolling: touch;
+  animation: slideIn 0.2s ease-out;
+  /* Default positioning - will be overridden by inline styles */
+  left: 20% !important;
+  top: 40px !important; /* Moved down by 20px from 0 */
+  max-height: calc(100% - 20px); /* Adjusted to account for the top offset */
+  max-width: 500px;
+  min-width: 350px;
+  /* Allow the panel to expand beyond parent bounds */
+  overflow: visible;
+  /* Only cover part of the parent categories */
+  width: 80%;
+  left: 60%; /* Position to show part of the parent */
+  padding-top: 0; /* Removed the padding-top since we've moved down by 20px */
+}
+
+/* Position variants for different screen edges */
+.subcategory-panel.position-left {
+  left: auto;
+  right: 100%;
+}
+
+.subcategory-panel.position-bottom {
+  top: auto;
+  bottom: 0;
+}
+
+.subcategory-panel.position-top {
+  bottom: auto;
+  top: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply different animations based on position */
+.subcategory-panel.position-left {
+  animation: slideInLeft 0.2s ease-out;
+}
+
+.subcategory-panel.position-bottom {
+  animation: slideInBottom 0.2s ease-out;
+}
+
+.articles-list {
+  padding: 12px 0;
+  overflow: visible;
+}
+
+.subcategories-list {
+  padding: 12px 0;
+  overflow: visible;
+}
+
+.subcategory-group {
+  margin-bottom: 20px;
+}
+
+.subcategory-group h4 {
+  margin: 0 0 12px 0;
+  padding: 12px 20px;
+  background: #f5f5f5;
+  font-size: 0.9em;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
+}
+
+.subcategory-header {
+  margin: 0 0 12px 0;
+  padding: 12px 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
+}
+
+.subcategory-articles {
+  padding: 0 12px;
+  overflow: visible;
+}
+
+.article-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.85em;
+  color: #444;
+  transition: background-color 0.1s ease;
+  border-radius: 3px;
+  margin: 3px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  /* Add color to distinguish articles */
+  background-color: #f9f2e6; /* Light beige background for articles */
+}
+
+.article-item:hover {
+  background: #222;
+  color: #fff;
+}
+
+.article-item:active {
+  background: #333;
+  color: #fff;
+  transform: scale(0.98);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.combo-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 2px solid #222;
+  border-top: none;
+  z-index: 2147483647; /* Maximum z-index value to ensure dropdown appears on top */
+  max-height: 220px;
+  overflow-y: auto;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+  /* Fix to ensure the dropdown appears directly below the input */
+  margin-top: 0;
+}
+
+/* Adjust the search dropdown container for when showing full categories */
+.search-dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: 0; /* Changed from 50% to 0 to align with the left edge of the search input */
+  transform: none; /* Removed translateX(-50%) since we want left alignment */
+  background: #fff;
+  border: 3px solid #222;
+  z-index: 99999; /* Highest z-index to ensure it's always at the frontmost layer */
+  width: 90vw;
+  max-width: 1200px;
+  height: auto; /* Change from fixed 70vh height to auto */
+  max-height: 70vh; /* Use max-height instead to prevent it from being too large */
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.search-dropdown-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0;
+  padding: 0;
+  flex: 1;
+  overflow: visible;
+  position: relative;
+}
+
+.category-item {
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background: #fff;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  overflow: visible;
+}
+
+.category-item:hover {
+  background: #f8f8f8;
+}
+
+.category-item.expanded {
+  background: #f0f0f0;
+}
+
+.category-item:active {
+  background: #e8e8e8;
+  transform: scale(0.98);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+/* Touch hold feedback */
+.category-item.touch-holding {
+  background: #e0e0e0;
+  transform: scale(0.95);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.category-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.category-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #222;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.article-count {
+  font-size: 0.8em;
+  color: #666;
+  font-style: italic;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Updated styles for the subcategory panel to be semi-transparent */
+.subcategory-panel {
+  position: absolute;
+  overflow-y: auto;
+  z-index: 99999 !important; /* Increased from 100 to 10000 to ensure subcategories appear above everything else */
+  -webkit-overflow-scrolling: touch;
+  animation: slideIn 0.2s ease-out;
+  /* Default positioning - will be overridden by inline styles */
+  left: 20% !important;
+  top: 40px !important; /* Moved down by 20px from 0 */
+  max-height: calc(100% - 20px); /* Adjusted to account for the top offset */
+  max-width: 500px;
+  min-width: 350px;
+  /* Allow the panel to expand beyond parent bounds */
+  overflow: visible;
+  /* Only cover part of the parent categories */
+  width: 80%;
+  left: 60%; /* Position to show part of the parent */
+  padding-top: 0; /* Removed the padding-top since we've moved down by 20px */
+}
+
+/* Position variants for different screen edges */
+.subcategory-panel.position-left {
+  left: auto;
+  right: 100%;
+}
+
+.subcategory-panel.position-bottom {
+  top: auto;
+  bottom: 0;
+}
+
+.subcategory-panel.position-top {
+  bottom: auto;
+  top: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply different animations based on position */
+.subcategory-panel.position-left {
+  animation: slideInLeft 0.2s ease-out;
+}
+
+.subcategory-panel.position-bottom {
+  animation: slideInBottom 0.2s ease-out;
+}
+
+.articles-list {
+  padding: 12px 0;
+  overflow: visible;
+}
+
+.subcategories-list {
+  padding: 12px 0;
+  overflow: visible;
+}
+
+.subcategory-group {
+  margin-bottom: 20px;
+}
+
+.subcategory-group h4 {
+  margin: 0 0 12px 0;
+  padding: 12px 20px;
+  background: #f5f5f5;
+  font-size: 0.9em;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
+}
+
+.subcategory-header {
+  margin: 0 0 12px 0;
+  padding: 12px 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
+}
+
+.subcategory-articles {
+  padding: 0 12px;
+  overflow: visible;
+}
+
+.article-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.85em;
+  color: #444;
+  transition: background-color 0.1s ease;
+  border-radius: 3px;
+  margin: 3px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  /* Add color to distinguish articles */
+  background-color: #f9f2e6; /* Light beige background for articles */
+}
+
+.article-item:hover {
+  background: #222;
+  color: #fff;
+}
+
+.article-item:active {
+  background: #333;
+  color: #fff;
+  transform: scale(0.98);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.combo-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 2px solid #222;
+  border-top: none;
+  z-index: 2147483647; /* Maximum z-index value to ensure dropdown appears on top */
+  max-height: 220px;
+  overflow-y: auto;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+  /* Fix to ensure the dropdown appears directly below the input */
+  margin-top: 0;
+}
+
+/* Adjust the search dropdown container for when showing full categories */
+.search-dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: 0; /* Changed from 50% to 0 to align with the left edge of the search input */
+  transform: none; /* Removed translateX(-50%) since we want left alignment */
+  background: #fff;
+  border: 3px solid #222;
+  z-index: 99999; /* Highest z-index to ensure it's always at the frontmost layer */
+  width: 90vw;
+  max-width: 1200px;
+  height: auto; /* Change from fixed 70vh height to auto */
+  max-height: 70vh; /* Use max-height instead to prevent it from being too large */
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.search-dropdown-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0;
+  padding: 0;
+  flex: 1;
+  overflow: visible;
+  position: relative;
+}
+
+.category-item {
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background: #fff;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  overflow: visible;
+}
+
+.category-item:hover {
+  background: #f8f8f8;
+}
+
+.category-item.expanded {
+  background: #f0f0f0;
+}
+
+.category-item:active {
+  background: #e8e8e8;
+  transform: scale(0.98);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+/* Touch hold feedback */
+.category-item.touch-holding {
+  background: #e0e0e0;
+  transform: scale(0.95);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.category-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.category-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #222;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.article-count {
+  font-size: 0.8em;
+  color: #666;
+  font-style: italic;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Updated styles for the subcategory panel to be semi-transparent */
+.subcategory-panel {
+  position: absolute;
+  overflow-y: auto;
+  z-index: 99999 !important; /* Increased from 100 to 10000 to ensure subcategories appear above everything else */
+  -webkit-overflow-scrolling: touch;
+  animation: slideIn 0.2s ease-out;
+  /* Default positioning - will be overridden by inline styles */
+  left: 20% !important;
+  top: 40px !important; /* Moved down by 20px from 0 */
+  max-height: calc(100% - 20px); /* Adjusted to account for the top offset */
+  max-width: 500px;
+  min-width: 350px;
+  /* Allow the panel to expand beyond parent bounds */
+  overflow: visible;
+  /* Only cover part of the parent categories */
+  width: 80%;
+  left: 60%; /* Position to show part of the parent */
+  padding-top: 0; /* Removed the padding-top since we've moved down by 20px */
+}
+
+/* Position variants for different screen edges */
+.subcategory-panel.position-left {
+  left: auto;
+  right: 100%;
+}
+
+.subcategory-panel.position-bottom {
+  top: auto;
+  bottom: 0;
+}
+
+.subcategory-panel.position-top {
+  bottom: auto;
+  top: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply different animations based on position */
+.subcategory-panel.position-left {
+  animation: slideInLeft 0.2s ease-out;
+}
+
+.subcategory-panel.position-bottom {
+  animation: slideInBottom 0.2s ease-out;
+}
+
+.articles-list {
+  padding: 12px 0;
+  overflow: visible;
+}
+
+.subcategories-list {
+  padding: 12px 0;
+  overflow: visible;
+}
+
+.subcategory-group {
+  margin-bottom: 20px;
+}
+
+.subcategory-group h4 {
+  margin: 0 0 12px 0;
+  padding: 12px 20px;
+  background: #f5f5f5;
+  font-size: 0.9em;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
+}
+
+.subcategory-header {
+  margin: 0 0 12px 0;
+  padding: 12px 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
+}
+
+.subcategory-articles {
+  padding: 0 12px;
+  overflow: visible;
+}
+
+.article-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.85em;
+  color: #444;
+  transition: background-color 0.1s ease;
+  border-radius: 3px;
+  margin: 3px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  /* Add color to distinguish articles */
+  background-color: #f9f2e6; /* Light beige background for articles */
+}
+
+.article-item:hover {
+  background: #222;
+  color: #fff;
+}
+
+.article-item:active {
+  background: #333;
+  color: #fff;
+  transform: scale(0.98);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.combo-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 2px solid #222;
+  border-top: none;
+  z-index: 2147483647; /* Maximum z-index value to ensure dropdown appears on top */
+  max-height: 220px;
+  overflow-y: auto;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+  /* Fix to ensure the dropdown appears directly below the input */
+  margin-top: 0;
+}
+
+/* Adjust the search dropdown container for when showing full categories */
+.search-dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: 0; /* Changed from 50% to 0 to align with the left edge of the search input */
+  transform: none; /* Removed translateX(-50%) since we want left alignment */
+  background: #fff;
+  border: 3px solid #222;
+  z-index: 99999; /* Highest z-index to ensure it's always at the frontmost layer */
+  width: 90vw;
+  max-width: 1200px;
+  height: auto; /* Change from fixed 70vh height to auto */
+  max-height: 70vh; /* Use max-height instead to prevent it from being too large */
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.search-dropdown-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0;
+  padding: 0;
+  flex: 1;
+  overflow: visible;
+  position: relative;
+}
+
+.category-item {
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background: #fff;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  overflow: visible;
+}
+
+.category-item:hover {
+  background: #f8f8f8;
+}
+
+.category-item.expanded {
+  background: #f0f0f0;
+}
+
+.category-item:active {
+  background: #e8e8e8;
+  transform: scale(0.98);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+/* Touch hold feedback */
+.category-item.touch-holding {
+  background: #e0e0e0;
+  transform: scale(0.95);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.category-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.category-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #222;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.article-count {
+  font-size: 0.8em;
+  color: #666;
+  font-style: italic;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Updated styles for the subcategory panel to be semi-transparent */
+.subcategory-panel {
+  position: absolute;
+  overflow-y: auto;
+  z-index: 99999 !important; /* Increased from 100 to 10000 to ensure subcategories appear above everything else */
+  -webkit-overflow-scrolling: touch;
+  animation: slideIn 0.2s ease-out;
+  /* Default positioning - will be overridden by inline styles */
+  left: 20% !important;
+  top: 40px !important; /* Moved down by 20px from 0 */
+  max-height: calc(100% - 20px); /* Adjusted to account for the top offset */
+  max-width: 500px;
+  min-width: 350px;
+  /* Allow the panel to expand beyond parent bounds */
+  overflow: visible;
+  /* Only cover part of the parent categories */
+  width: 80%;
+  left: 60%; /* Position to show part of the parent */
+  padding-top: 0; /* Removed the padding-top since we've moved down by 20px */
+}
+
+/* Position variants for different screen edges */
+.subcategory-panel.position-left {
+  left: auto;
+  right: 100%;
+}
+
+.subcategory-panel.position-bottom {
+  top: auto;
+  bottom: 0;
+}
+
+.subcategory-panel.position-top {
+  bottom: auto;
+  top: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply different animations based on position */
+.subcategory-panel.position-left {
+  animation: slideInLeft 0.2s ease-out;
+}
+
+.subcategory-panel.position-bottom {
+  animation: slideInBottom 0.2s ease-out;
+}
+
+.articles-list {
+  padding: 12px 0;
+  overflow: visible;
+}
+
+.subcategories-list {
+  padding: 12px 0;
+  overflow: visible;
+}
+
+.subcategory-group {
+  margin-bottom: 20px;
+}
+
+.subcategory-group h4 {
+  margin: 0 0 12px 0;
+  padding: 12px 20px;
+  background: #f5f5f5;
+  font-size: 0.9em;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
+}
+
+.subcategory-header {
+  margin: 0 0 12px 0;
+  padding: 12px 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
+}
+
+.subcategory-articles {
+  padding: 0 12px;
+  overflow: visible;
+}
+
+.article-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.85em;
+  color: #444;
+  transition: background-color 0.1s ease;
+  border-radius: 3px;
+  margin: 3px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  /* Add color to distinguish articles */
+  background-color: #f9f2e6; /* Light beige background for articles */
+}
+
+.article-item:hover {
+  background: #222;
+  color: #fff;
+}
+
+.article-item:active {
+  background: #333;
+  color: #fff;
+  transform: scale(0.98);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.combo-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 2px solid #222;
+  border-top: none;
+  z-index: 2147483647; /* Maximum z-index value to ensure dropdown appears on top */
+  max-height: 220px;
+  overflow-y: auto;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+  /* Fix to ensure the dropdown appears directly below the input */
+  margin-top: 0;
+}
+
+/* Adjust the search dropdown container for when showing full categories */
+.search-dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: 0; /* Changed from 50% to 0 to align with the left edge of the search input */
+  transform: none; /* Removed translateX(-50%) since we want left alignment */
+  background: #fff;
+  border: 3px solid #222;
+  z-index: 99999; /* Highest z-index to ensure it's always at the frontmost layer */
+  width: 90vw;
+  max-width: 1200px;
+  height: auto; /* Change from fixed 70vh height to auto */
+  max-height: 70vh; /* Use max-height instead to prevent it from being too large */
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.search-dropdown-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0;
+  padding: 0;
+  flex: 1;
+  overflow: visible;
+  position: relative;
+}
+
+.category-item {
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background: #fff;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  overflow: visible;
+}
+
+.category-item:hover {
+  background: #f8f8f8;
+}
+
+.category-item.expanded {
+  background: #f0f0f0;
+}
+
+.category-item:active {
+  background: #e8e8e8;
+  transform: scale(0.98);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+/* Touch hold feedback */
+.category-item.touch-holding {
+  background: #e0e0e0;
+  transform: scale(0.95);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.category-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.category-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #222;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.article-count {
+  font-size: 0.8em;
+  color: #666;
+  font-style: italic;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Updated styles for the subcategory panel to be semi-transparent */
+.subcategory-panel {
+  position: absolute;
+  overflow-y: auto;
+  z-index: 99999 !important; /* Increased from 100 to 10000 to ensure subcategories appear above everything else */
+  -webkit-overflow-scrolling: touch;
+  animation: slideIn 0.2s ease-out;
+  /* Default positioning - will be overridden by inline styles */
+  left: 20% !important;
+  top: 40px !important; /* Moved down by 20px from 0 */
+  max-height: calc(100% - 20px); /* Adjusted to account for the top offset */
+  max-width: 500px;
+  min-width: 350px;
+  /* Allow the panel to expand beyond parent bounds */
+  overflow: visible;
+  /* Only cover part of the parent categories */
+  width: 80%;
+  left: 60%; /* Position to show part of the parent */
+  padding-top: 0; /* Removed the padding-top since we've moved down by 20px */
+}
+
+/* Position variants for different screen edges */
+.subcategory-panel.position-left {
+  left: auto;
+  right: 100%;
+}
+
+.subcategory-panel.position-bottom {
+  top: auto;
+  bottom: 0;
+}
+
+.subcategory-panel.position-top {
+  bottom: auto;
+  top: 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply different animations based on position */
+.subcategory-panel.position-left {
+  animation: slideInLeft 0.2s ease-out;
+}
+
+.subcategory-panel.position-bottom {
+  animation: slideInBottom 0.2s ease-out;
+}
+
+.articles-list {
+  padding: 12px 0;
+  overflow: visible;
+}
+
+.subcategories-list {
+  padding: 12px 0;
+  overflow: visible;
+}
+
+.subcategory-group {
+  margin-bottom: 20px;
+}
+
+.subcategory-group h4 {
+  margin: 0 0 12px 0;
+  padding: 12px 20px;
+  background: #f5f5f5;
+  font-size: 0.9em;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
+}
+
+.subcategory-header {
+  margin: 0 0 12px 0;
+  padding: 12px 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Add color to make subcategories stand out */
+  background-color: #e0f0ff; /* Light blue background for subcategories */
+}
+
+.subcategory-articles {
+  padding: 0 12px;
+  overflow: visible;
+}
+
+.article-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.85em;
+  color: #444;
+  transition: background-color 0.1s ease;
+  border-radius: 3px;
+  margin: 3px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  /* Add color to distinguish articles */
+  background-color: #f9f2e6; /* Light beige background for articles */
+}
+
+.article-item:hover {
+  background: #222;
+  color: #fff;
+}
+
+.article-item:active {
+  background: #333;
+  color: #fff;
+  transform: scale(0.98);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}

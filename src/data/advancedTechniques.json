@@ -1,0 +1,31 @@
+{
+  "name": "Advanced Techniques",
+  "id": "advanced-techniques",
+  "articles": [
+    {
+      "id": "all-grain-brewing",
+      "title": "All-Grain Brewing",
+      "content": "# All-Grain Brewing\n\n## Introduction\nAll-grain brewing gives you complete control over your beer recipe and brewing process.\n\n## Equipment Needed\n* Mash tun with false bottom\n* Hot liquor tank\n* Wort chiller\n* Large brew kettle (8-10 gallons)\n* Thermometer\n* pH meter\n\n## The Mashing Process\n1. **Heat Strike Water** - Calculate water temperature based on grain temperature\n2. **Dough In** - Mix grains thoroughly with water to avoid clumps\n3. **Rest** - Maintain temperature (usually 148-158°F) for 60-90 minutes\n4. **Mashout** - Optional step to raise temperature to 170°F\n\n## Efficiency Optimization\nImprove your brewhouse efficiency by:\n* Fine crushing your grains\n* Proper water chemistry adjustments\n* Stirring the mash periodically\n* Proper sparge technique\n\n> *Remember:* Good brewing practices lead to consistently good beer!"
+    },
+    {
+      "id": "recipe-formulation",
+      "title": "Recipe Formulation",
+      "content": "# Recipe Formulation\n\n## The Art and Science of Creating Beer Recipes\n\nDesigning your own beer recipes combines creativity with technical knowledge.\n\n### Key Elements to Consider\n\n#### 1. Style Guidelines\nResearch established styles using the **BJCP Guidelines** to understand:\n* Target gravity ranges\n* Color expectations\n* Bitterness levels\n* Characteristic ingredients\n\n#### 2. Ingredient Selection\n\n**Malts & Fermentables:**\n* Base malts form 70-100% of the grist\n* Specialty malts add color and flavor complexity\n\n**Hops:**\n| Timing | Effect |\n| ------ | ------ |\n| Bittering (60 min) | Adds IBUs with minimal flavor |\n| Flavor (15-30 min) | Balanced bitterness and flavor |\n| Aroma (0-10 min) | Maximum aroma, minimal bitterness |\n| Dry Hop | Intense aroma, no bitterness |\n\n**Yeast:**\n* Consider attenuation, temperature range, and flavor profile\n\n#### 3. Calculations\n* Use brewing software to calculate IBUs, color, and gravity"
+    },
+    {
+      "id": "sour-beer-brewing",
+      "title": "Sour Beer Brewing",
+      "content": "# Sour Beer Brewing Techniques\n\nSour beers require special techniques and microorganisms to develop their characteristic flavors.\n\n## Methods\n\n### Kettle Souring\n* **Quick method** for creating moderately soured beers\n* Process:\n  1. Mash and lauter as normal\n  2. Bring wort to 180°F to pasteurize\n  3. Cool to 100-110°F \n  4. Add *Lactobacillus* culture\n  5. Hold temperature for 24-48 hours until desired pH is reached\n  6. Boil to kill bacteria and proceed with normal fermentation\n\n### Mixed Fermentation\n* Uses combination of:\n  * Saccharomyces (brewer's yeast)\n  * Brettanomyces (wild yeast)\n  * Lactic acid bacteria\n  * Pediococcus\n\n### Wild Fermentation\nAllows ambient microbes to ferment the beer, creating complex flavors.\n\n![Sour Beer Process](https://example.com/sourprocess.jpg)\n\n## Safety Considerations\n* Keep separate equipment for sour beer production\n* Practice impeccable sanitation to prevent cross-contamination"
+    },
+    {
+      "id": "barrel-aging",
+      "title": "Barrel Ageing Techniques",
+      "content": "# Barrel Ageing Techniques\n\n## Why Age Beer in Barrels?\n\nBarrel aging imparts unique flavors including:\n* Vanilla\n* Coconut\n* Tannins\n* Oak character\n* Previous barrel contents (whiskey, wine, etc.)\n\n## Barrel Selection\n\n### Wood Types\n* **American Oak**: Stronger vanilla and coconut notes\n* **French Oak**: More subtle, spicy characteristics\n* **Hungarian Oak**: Rich tannins and complexity\n\n### Previous Contents\n* Bourbon barrels - vanilla, caramel notes\n* Wine barrels - fruit and tannin characteristics\n* Rum barrels - tropical sweetness\n\n## Time Frame\n\n```\nTypical Aging Periods:\nImperial Stouts: 6-18 months\nBarleywines: 6-24 months\nWild/Sour Beers: 1-3+ years\n```\n\n## Maintenance\n\nRegular maintenance is critical:\n1. Top up barrels to account for evaporation (the \"angel's share\")\n2. Sample regularly to monitor development\n3. Check for unwanted microbiological activity\n4. Store at consistent temperature (55-65°F ideal)"
+    },
+    {
+      "id": "high-gravity-brewing",
+      "title": "High Gravity Brewing",
+      "content": "# High Gravity Brewing\n\n## Introduction\n\nHigh gravity brewing refers to making beers with high original gravity (OG), resulting in higher alcohol content.\n\n## Challenges & Solutions\n\n### 1. Fermentability Issues\n\nHigh sugar concentrations can stress yeast. To improve fermentability:\n* Use highly attenuative yeast strains\n* Create proper yeast starters\n* Consider step feeding sugars\n* Monitor yeast health\n\n### 2. Oxygen Requirements\n\nYeast needs more oxygen in high gravity environments:\n* Aerate/oxygenate wort thoroughly\n* Consider a second oxygen addition 12-18 hours into fermentation\n\n### 3. Temperature Control\n\nHigh gravity fermentations produce more heat:\n* Start at lower temperature than normal\n* Be prepared to actively cool fermentation\n* Gradually increase temperature near end to encourage complete fermentation\n\n### 4. Nutrient Requirements\n\nSupply additional nutrients:\n* Yeast nutrients with DAP, zinc, and B vitamins\n* Proper FAN (Free Amino Nitrogen) levels\n\n## Example High Gravity Styles\n\n* Imperial Stout\n* Barleywine\n* Belgian Tripel\n* Russian Imperial Stout\n* Wheatwine\n* Eisbock"
+    }
+  ]
+}

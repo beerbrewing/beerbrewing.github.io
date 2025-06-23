@@ -1,0 +1,200 @@
+.article {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* Added to provide positioning context */
+  z-index: 1; /* Base z-index for all articles */
+  transition: z-index 0.01s, opacity 0.3s, visibility 0.3s;
+  /* Hide all articles by default */
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
+.article.active {
+  z-index: 10; /* Higher z-index to ensure it appears on top */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly enhanced shadow for the active article */
+  opacity: 1;
+  visibility: visible;
+  display: block;
+}
+
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.back-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.back-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+.article-search-container {
+  flex-grow: 1;
+  max-width: 400px;
+}
+
+/* Make the search component more compact inside articles */
+.article .library-search-combo {
+  width: 100%;
+  max-width: 100%;
+}
+
+.article-back-button-container {
+  position: fixed; /* Changed from sticky to fixed for better browser support */
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+}
+
+.article-back-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.article-back-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.article-back-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+.article-controls {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  z-index: 1010; /* Higher than article z-index */
+}
+
+.article-close-button-container {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+}
+
+.article-close-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.article-close-button:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.article-close-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.3);
+}
+
+/* Adjust back button position to work with the control layout */
+.article-back-button-container {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+}
+
+/* Add space at the top for the controls */
+.article-title {
+  margin-top: 60px;
+}
+
+/* Make content area better for screen readers */
+.article-content {
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* Hide text meant only for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Ensure the back button doesn't get in the way on mobile */
+@media (max-width: 768px) {
+  .article-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .article-search-container {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 10px;
+  }
+
+  .article-back-button-container {
+    top: 5px;
+    left: 5px;
+  }
+
+  .article-back-button {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
