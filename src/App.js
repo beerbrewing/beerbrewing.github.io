@@ -76,7 +76,7 @@ const App = () => {
   const afterKevState = afterKev;
 
   return (
-    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <BrowserRouter basename="/beerbrewing" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
         <Route path="/about" element={<div>About Page</div>} />
         <Route path="/time" element={<Time />} />
