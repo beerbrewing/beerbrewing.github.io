@@ -1,0 +1,79 @@
+<!--
+ * Copyright (c) Pyrmont Brewery 2025
+ * Author: Kevin Staunton-Lambert
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+-->
+<html>
+<head>
+    <title>KASM test harness</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="kasm_WASM_rust.js"></script>
+
+</head>
+
+<body>
+    <h1>KASM test harness</h1>
+    <button id="runWasm1">Run kasm_WASM_rust(MIDI Note C4 (60), +5)</button>
+    <button id="runWasm2">Run kasm_midi_note_offset(MIDI Note C4 (60), -12)</button>
+    <button id="runWasm3">Run kasm_midi_note_octave_hit(MIDI Note C4 (60), +12)</button>
+    <div id="result"></div>
+</body>
+
+<script>
+    let inlet = 0;
+
+    function post(msg) {
+        console.log(`post: ${msg}`);
+    }
+
+    function outlet(index, msg) {
+        console.log(`outlet: ${index} ` + msg);
+    }
+
+    function run_test1() {
+        kasm_WASM_rust(60, 5).then(result => {
+            document.getElementById('result').textContent = "Result (C4 (60) offset up 5 semitones): " + result + " (should be 65)";
+        }).catch(err => {
+            document.getElementById('result').textContent = "Error: " + err;
+        });
+    }
+
+    function run_test2() {
+        inlet = 0; msg_int(60);
+        inlet = 1; msg_int(-12);
+        const result = kasm_rust.kasm_midi_note_offset(inlet_0, inlet_1);
+        document.getElementById('result').textContent = "Result (C4 (60) kasm_midi_note_offset down 1 octave): " + result + " (should be 48)";
+    }
+
+    function run_test3() {
+        inlet = 0; msg_int(60);
+        inlet = 1; msg_int(12);
+        const result = kasm_rust.kasm_midi_note_octave_hit(inlet_0, inlet_1);
+        document.getElementById('result').textContent = "Result (C4 (60) kasm_midi_note_octave_hit): " + result + " (should be 84)";
+    }
+
+    document.getElementById('runWasm1').addEventListener('click', run_test1);
+    document.getElementById('runWasm2').addEventListener('click', run_test2);
+    document.getElementById('runWasm3').addEventListener('click', run_test3);
+
+    loadbang();
+</script>
+</html>
