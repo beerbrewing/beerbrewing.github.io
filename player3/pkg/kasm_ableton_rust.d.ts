@@ -1,14 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Kasm filmscore 1 - Morse Code repeater
- */
-export function kasm_filmscore_1(note: number, offset: number, velocity: number, enc1_velocity_offset: number, enc2_intensity: number): number;
-/**
- * Main function that is called on v8 bang - this example randomly selects one of the available Kasm MIDI pattern generators
- */
-export function bang(inlet_0_note: number, inlet_1_semitone: number, inlet_2_velocity: number, inlet_3_enc1: number, inlet_4_enc2: number, inlet_5_filmscore_selector: number): number;
-/**
  * Initialize video processor with default settings
  */
 export function create_video_processor(): VideoProcessor;
@@ -20,6 +12,14 @@ export function time_to_frame(time_seconds: number, frame_rate: number): number;
  * Utility function to calculate time from frame number and frame rate
  */
 export function frame_to_time(frame_number: number, frame_rate: number): number;
+/**
+ * Kasm filmscore 1 - Morse Code repeater
+ */
+export function kasm_filmscore_1(note: number, offset: number, velocity: number, enc1_velocity_offset: number, enc2_intensity: number): number;
+/**
+ * Main function that is called on v8 bang - this example randomly selects one of the available Kasm MIDI pattern generators
+ */
+export function bang(inlet_0_note: number, inlet_1_semitone: number, inlet_2_velocity: number, inlet_3_enc1: number, inlet_4_enc2: number, inlet_5_filmscore_selector: number): number;
 /**
  * Video processor struct to handle MP4 playback and filtering
  */
@@ -71,8 +71,6 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly kasm_filmscore_1: (a: number, b: number, c: number, d: number, e: number) => number;
-  readonly bang: (a: number, b: number, c: number, d: number, e: number, f: number) => number;
   readonly __wbg_videoprocessor_free: (a: number, b: number) => void;
   readonly videoprocessor_load_video: (a: number, b: number, c: number) => [number, number];
   readonly videoprocessor_set_dimensions: (a: number, b: number, c: number) => void;
@@ -87,6 +85,8 @@ export interface InitOutput {
   readonly time_to_frame: (a: number, b: number) => number;
   readonly frame_to_time: (a: number, b: number) => number;
   readonly videoprocessor_new: () => number;
+  readonly kasm_filmscore_1: (a: number, b: number, c: number, d: number, e: number) => number;
+  readonly bang: (a: number, b: number, c: number, d: number, e: number, f: number) => number;
   readonly __wbindgen_exn_store: (a: number) => void;
   readonly __externref_table_alloc: () => number;
   readonly __wbindgen_export_2: WebAssembly.Table;

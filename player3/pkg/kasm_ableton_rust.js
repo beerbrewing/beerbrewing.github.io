@@ -68,34 +68,6 @@ function getClampedArrayU8FromWasm0(ptr, len) {
     ptr = ptr >>> 0;
     return getUint8ClampedArrayMemory0().subarray(ptr / 1, ptr / 1 + len);
 }
-/**
- * Kasm filmscore 1 - Morse Code repeater
- * @param {number} note
- * @param {number} offset
- * @param {number} velocity
- * @param {number} enc1_velocity_offset
- * @param {number} enc2_intensity
- * @returns {number}
- */
-export function kasm_filmscore_1(note, offset, velocity, enc1_velocity_offset, enc2_intensity) {
-    const ret = wasm.kasm_filmscore_1(note, offset, velocity, enc1_velocity_offset, enc2_intensity);
-    return ret;
-}
-
-/**
- * Main function that is called on v8 bang - this example randomly selects one of the available Kasm MIDI pattern generators
- * @param {number} inlet_0_note
- * @param {number} inlet_1_semitone
- * @param {number} inlet_2_velocity
- * @param {number} inlet_3_enc1
- * @param {number} inlet_4_enc2
- * @param {number} inlet_5_filmscore_selector
- * @returns {number}
- */
-export function bang(inlet_0_note, inlet_1_semitone, inlet_2_velocity, inlet_3_enc1, inlet_4_enc2, inlet_5_filmscore_selector) {
-    const ret = wasm.bang(inlet_0_note, inlet_1_semitone, inlet_2_velocity, inlet_3_enc1, inlet_4_enc2, inlet_5_filmscore_selector);
-    return ret;
-}
 
 const cachedTextEncoder = (typeof TextEncoder !== 'undefined' ? new TextEncoder('utf-8') : { encode: () => { throw Error('TextEncoder not available') } } );
 
@@ -184,6 +156,35 @@ export function time_to_frame(time_seconds, frame_rate) {
  */
 export function frame_to_time(frame_number, frame_rate) {
     const ret = wasm.frame_to_time(frame_number, frame_rate);
+    return ret;
+}
+
+/**
+ * Kasm filmscore 1 - Morse Code repeater
+ * @param {number} note
+ * @param {number} offset
+ * @param {number} velocity
+ * @param {number} enc1_velocity_offset
+ * @param {number} enc2_intensity
+ * @returns {number}
+ */
+export function kasm_filmscore_1(note, offset, velocity, enc1_velocity_offset, enc2_intensity) {
+    const ret = wasm.kasm_filmscore_1(note, offset, velocity, enc1_velocity_offset, enc2_intensity);
+    return ret;
+}
+
+/**
+ * Main function that is called on v8 bang - this example randomly selects one of the available Kasm MIDI pattern generators
+ * @param {number} inlet_0_note
+ * @param {number} inlet_1_semitone
+ * @param {number} inlet_2_velocity
+ * @param {number} inlet_3_enc1
+ * @param {number} inlet_4_enc2
+ * @param {number} inlet_5_filmscore_selector
+ * @returns {number}
+ */
+export function bang(inlet_0_note, inlet_1_semitone, inlet_2_velocity, inlet_3_enc1, inlet_4_enc2, inlet_5_filmscore_selector) {
+    const ret = wasm.bang(inlet_0_note, inlet_1_semitone, inlet_2_velocity, inlet_3_enc1, inlet_4_enc2, inlet_5_filmscore_selector);
     return ret;
 }
 

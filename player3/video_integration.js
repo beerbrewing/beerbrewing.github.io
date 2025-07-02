@@ -3,7 +3,7 @@
  * Author: Kevin Staunton-Lambert
  *
  * Video Integration for Kasm WASM Rust - Max4Live Jitter Interface
- * 
+ *
  * This file provides the JavaScript bridge between the Rust WASM video processor
  * and Max4Live Jitter objects for MP4 video playback with green tint filtering.
  */
@@ -154,12 +154,12 @@ window.getAbletonTransportTime = function() {
         if (abletonTransport && typeof abletonTransport.time !== 'undefined') {
             return abletonTransport.time;
         }
-        
+
         // Fallback: use system time or Max/MSP transport
         if (typeof gettime !== 'undefined') {
             return gettime() / 1000.0; // Convert ms to seconds
         }
-        
+
         // Last resort: use JavaScript Date
         return Date.now() / 1000.0;
     } catch (error) {
@@ -172,29 +172,29 @@ window.sendMatrixToJitter = function(width, height, data) {
     try {
         // This function interfaces with Max/MSP Jitter
         // The data parameter contains the processed video frame as Uint8ClampedArray
-        
+
         if (typeof outlet !== 'undefined') {
             // Send dimensions first
             outlet(0, "dim", width, height);
-            
+
             // Send matrix data
             // Note: This is a simplified example - actual implementation may vary
             // depending on how Max/MSP Jitter expects the data
             outlet(1, "matrix", Array.from(data));
         }
-        
+
         // Alternative: if using jit.matrix object directly
         if (jitterMatrix) {
             jitterMatrix.dim = [width, height];
             jitterMatrix.planecount = 4; // RGBA
             jitterMatrix.type = "char";
-            
+
             // Copy data to matrix
             for (let i = 0; i < data.length; i++) {
                 jitterMatrix.setcell2d(i % width, Math.floor(i / width), data[i]);
             }
         }
-        
+
     } catch (error) {
         post("Error sending matrix to Jitter: " + error.message);
     }
@@ -275,27 +275,27 @@ function loadVideo(videoPath) {
         post("Error: Video processor not initialized. Call initVideoProcessor() first.");
         return false;
     }
-    
+
     try {
         videoProcessor.load_video(videoPath);
-        
+
         // Set default dimensions (can be adjusted)
         videoProcessor.set_dimensions(640, 480);
-        
+
         // Get video info after loading
         setTimeout(() => {
             try {
                 const info = videoProcessor.get_video_info();
-                post("Video loaded - Width: " + info[0] + ", Height: " + info[1] + 
-                     ", Duration: " + info[2] + "s, Frame Rate: " + info[3] + "fps");
-                
+                post("Video loaded - Width: " + info[0] + ", Height: " + info[1] +
+                    ", Duration: " + info[2] + "s, Frame Rate: " + info[3] + "fps");
+
                 // Update processor dimensions based on actual video
                 videoProcessor.set_dimensions(info[0], info[1]);
             } catch (e) {
                 post("Could not get video info: " + e.message);
             }
         }, 1000);
-        
+
         return true;
     } catch (error) {
         post("Error loading video: " + error.message);
@@ -355,11 +355,11 @@ function startVideoProcessing(intervalMs = 33) { // ~30fps default
         post("Error: Video processor not initialized. Call initVideoProcessor() first.");
         return false;
     }
-    
+
     if (updateInterval) {
         clearInterval(updateInterval);
     }
-    
+
     updateInterval = setInterval(() => {
         try {
             videoProcessor.update();
@@ -367,7 +367,7 @@ function startVideoProcessing(intervalMs = 33) { // ~30fps default
             post("Error in video update: " + error.message);
         }
     }, intervalMs);
-    
+
     post("Video processing started with " + intervalMs + "ms interval");
     return true;
 }
@@ -449,29 +449,29 @@ function sendMatrixToJitter(width, height, data) {
     try {
         // This function should be implemented to interface with Max/MSP Jitter
         // The data parameter contains the processed video frame as Uint8ClampedArray
-        
+
         if (typeof outlet !== 'undefined') {
             // Send dimensions first
             outlet(0, "dim", width, height);
-            
+
             // Send matrix data
             // Note: This is a simplified example - actual implementation may vary
             // depending on how Max/MSP Jitter expects the data
             outlet(1, "matrix", Array.from(data));
         }
-        
+
         // Alternative: if using jit.matrix object directly
         if (jitterMatrix) {
             jitterMatrix.dim = [width, height];
             jitterMatrix.planecount = 4; // RGBA
             jitterMatrix.type = "char";
-            
+
             // Copy data to matrix
             for (let i = 0; i < data.length; i++) {
                 jitterMatrix.setcell2d(i % width, Math.floor(i / width), data[i]);
             }
         }
-        
+
     } catch (error) {
         post("Error sending matrix to Jitter: " + error.message);
     }
@@ -482,19 +482,19 @@ function getAbletonTransportTime() {
     try {
         // This should interface with Ableton Live's transport
         // Return time in seconds
-        
+
         if (abletonTransport && typeof abletonTransport.time !== 'undefined') {
             return abletonTransport.time;
         }
-        
+
         // Fallback: use system time or Max/MSP transport
         if (typeof gettime !== 'undefined') {
             return gettime() / 1000.0; // Convert ms to seconds
         }
-        
+
         // Last resort: use JavaScript Date
         return Date.now() / 1000.0;
-        
+
     } catch (error) {
         post("Error getting transport time: " + error.message);
         return 0.0;
