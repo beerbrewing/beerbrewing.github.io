@@ -13,48 +13,48 @@
             background-color: #1a1a1a;
             color: #ffffff;
         }
-        
+
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             margin-bottom: 20px;
         }
-        
+
         .controls {
             background-color: #2a2a2a;
             padding: 20px;
             border-radius: 8px;
         }
-        
+
         .video-display {
             background-color: #2a2a2a;
             padding: 20px;
             border-radius: 8px;
             text-align: center;
         }
-        
+
         canvas {
             border: 2px solid #00ff00;
             max-width: 100%;
             background-color: #000000;
         }
-        
+
         video {
             max-width: 100%;
             margin-bottom: 10px;
         }
-        
+
         .control-group {
             margin-bottom: 15px;
         }
-        
+
         label {
             display: block;
             margin-bottom: 5px;
             color: #cccccc;
         }
-        
+
         input, button, select {
             width: 100%;
             padding: 8px;
@@ -64,22 +64,22 @@
             background-color: #333;
             color: #fff;
         }
-        
+
         button {
             background-color: #00aa00;
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        
+
         button:hover {
             background-color: #00cc00;
         }
-        
+
         button:disabled {
             background-color: #666;
             cursor: not-allowed;
         }
-        
+
         .status {
             background-color: #333;
             padding: 10px;
@@ -88,14 +88,14 @@
             font-family: monospace;
             font-size: 12px;
         }
-        
+
         .info {
             background-color: #004400;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
         }
-        
+
         .warning {
             background-color: #444400;
             padding: 15px;
@@ -106,39 +106,39 @@
 </head>
 <body>
     <h1>🎬 Kasm Video Processing Test</h1>
-    
+
     <div class="info">
-        <strong>Note:</strong> This is a test interface for the Kasm WASM video processing system. 
+        <strong>Note:</strong> This is a test interface for the Kasm WASM video processing system.
         In a real Max4Live environment, the video processor would be integrated with Ableton Live's transport and Jitter objects.
     </div>
-    
+
     <div class="warning">
-        <strong>Browser Limitations:</strong> Due to browser security restrictions, you may need to serve this page from a local server 
+        <strong>Browser Limitations:</strong> Due to browser security restrictions, you may need to serve this page from a local server
         to load local video files. For testing, you can use online video URLs.
     </div>
-    
+
     <div class="container">
         <div class="controls">
             <h3>🎛️ Video Controls</h3>
-            
+
             <div class="control-group">
                 <label for="videoUrl">Video URL or Path:</label>
-                <input type="text" id="videoUrl" placeholder="https://example.com/video.mp4 or file:///path/to/video.mp4">
+                <input type="text" id="videoUrl" placeholder="https://github.com/beerbrewing/beerbrewing.github.io/raw/refs/heads/master/streams/kevs_frame_test_1080.mp4">
                 <button onclick="loadVideo()">Load Video</button>
             </div>
-            
+
             <div class="control-group">
                 <label for="frameRate">Frame Rate (fps):</label>
                 <input type="number" id="frameRate" value="25" min="1" max="60" step="0.1">
                 <button onclick="setFrameRate()">Set Frame Rate</button>
             </div>
-            
+
             <div class="control-group">
                 <label for="greenTint">Green Tint Intensity:</label>
                 <input type="range" id="greenTint" min="0" max="1" step="0.1" value="0.3" oninput="setGreenTint()">
                 <span id="greenTintValue">0.3</span>
             </div>
-            
+
             <div class="control-group">
                 <label for="dimensions">Video Dimensions:</label>
                 <select id="dimensions" onchange="setDimensions()">
@@ -148,23 +148,23 @@
                     <option value="1280,720">1280x720</option>
                 </select>
             </div>
-            
+
             <div class="control-group">
                 <label for="transportTime">Simulated Transport Time (seconds):</label>
                 <input type="number" id="transportTime" value="0" min="0" step="0.1" oninput="updateTransportTime()">
             </div>
-            
+
             <div class="control-group">
                 <button onclick="processFrame()">Process Single Frame</button>
                 <button onclick="toggleProcessing()" id="toggleBtn">Start Auto Processing</button>
                 <button onclick="getVideoInfo()">Get Video Info</button>
             </div>
-            
+
             <div class="status" id="status">
                 Ready to load video...
             </div>
         </div>
-        
+
         <div class="video-display">
             <h3>📺 Video Display</h3>
             <video id="originalVideo" controls style="display: none;"></video>
@@ -177,23 +177,23 @@
             </div>
         </div>
     </div>
-    
+
     <script type="module">
         // Import the WASM module
         import init, { create_video_processor, time_to_frame, frame_to_time } from './pkg/kasm_ableton_rust.js';
-        
+
         let videoProcessor = null;
         let processingInterval = null;
         let isProcessing = false;
         let simulatedTransportTime = 0;
-        
+
         // Initialize WASM module
         async function initWasm() {
             try {
                 await init();
                 videoProcessor = create_video_processor();
                 updateStatus("WASM module initialized successfully");
-                
+
                 // Make functions available globally for button onclick handlers
                 window.loadVideo = loadVideo;
                 window.setFrameRate = setFrameRate;
@@ -203,56 +203,56 @@
                 window.processFrame = processFrame;
                 window.toggleProcessing = toggleProcessing;
                 window.getVideoInfo = getVideoInfo;
-                
+
             } catch (error) {
                 updateStatus("Error initializing WASM: " + error.message);
                 console.error("WASM initialization error:", error);
             }
         }
-        
+
         // Mock functions for WASM integration
         window.getAbletonTransportTime = function() {
             return simulatedTransportTime;
         };
-        
+
         window.sendMatrixToJitter = function(width, height, data) {
             // In a real Max4Live environment, this would send data to Jitter
             updateStatus(`Sent ${width}x${height} frame to Jitter (${data.length} bytes)`);
         };
-        
+
         window.post = function(message) {
             console.log("WASM:", message);
             updateStatus("WASM: " + message);
         };
-        
+
         function updateStatus(message) {
             const status = document.getElementById('status');
             const timestamp = new Date().toLocaleTimeString();
             status.textContent = `[${timestamp}] ${message}`;
         }
-        
+
         function loadVideo() {
             if (!videoProcessor) {
                 updateStatus("Error: Video processor not initialized");
                 return;
             }
-            
+
             const url = document.getElementById('videoUrl').value;
             if (!url) {
                 updateStatus("Error: Please enter a video URL");
                 return;
             }
-            
+
             try {
                 videoProcessor.load_video(url);
-                
+
                 // Also load in the HTML video element for comparison
                 const video = document.getElementById('originalVideo');
                 video.src = url;
                 video.style.display = 'block';
-                
+
                 updateStatus(`Loading video: ${url}`);
-                
+
                 // Get video info after a delay
                 setTimeout(() => {
                     try {
@@ -261,61 +261,61 @@
                         updateStatus("Could not get video info: " + e.message);
                     }
                 }, 2000);
-                
+
             } catch (error) {
                 updateStatus("Error loading video: " + error.message);
             }
         }
-        
+
         function setFrameRate() {
             if (!videoProcessor) return;
-            
+
             const frameRate = parseFloat(document.getElementById('frameRate').value);
             videoProcessor.set_frame_rate(frameRate);
             updateStatus(`Frame rate set to ${frameRate} fps`);
         }
-        
+
         function setGreenTint() {
             if (!videoProcessor) return;
-            
+
             const intensity = parseFloat(document.getElementById('greenTint').value);
             videoProcessor.set_green_tint_intensity(intensity);
             document.getElementById('greenTintValue').textContent = intensity.toFixed(1);
             updateStatus(`Green tint intensity set to ${intensity}`);
         }
-        
+
         function setDimensions() {
             if (!videoProcessor) return;
-            
+
             const dimensions = document.getElementById('dimensions').value.split(',');
             const width = parseInt(dimensions[0]);
             const height = parseInt(dimensions[1]);
-            
+
             videoProcessor.set_dimensions(width, height);
-            
+
             // Update canvas size
             const canvas = document.getElementById('processedCanvas');
             canvas.width = width;
             canvas.height = height;
-            
+
             updateStatus(`Dimensions set to ${width}x${height}`);
         }
-        
+
         function updateTransportTime() {
             simulatedTransportTime = parseFloat(document.getElementById('transportTime').value);
-            
+
             if (videoProcessor) {
                 const frameNumber = videoProcessor.get_current_frame_from_transport();
                 updateStatus(`Transport time: ${simulatedTransportTime}s (frame ${frameNumber})`);
             }
         }
-        
+
         function processFrame() {
             if (!videoProcessor) {
                 updateStatus("Error: Video processor not initialized");
                 return;
             }
-            
+
             try {
                 videoProcessor.process_and_send_frame();
                 updateStatus("Frame processed successfully");
@@ -323,15 +323,15 @@
                 updateStatus("Error processing frame: " + error.message);
             }
         }
-        
+
         function toggleProcessing() {
             if (!videoProcessor) {
                 updateStatus("Error: Video processor not initialized");
                 return;
             }
-            
+
             const button = document.getElementById('toggleBtn');
-            
+
             if (isProcessing) {
                 // Stop processing
                 if (processingInterval) {
@@ -351,19 +351,19 @@
                         toggleProcessing(); // Stop on error
                     }
                 }, 33); // ~30fps
-                
+
                 isProcessing = true;
                 button.textContent = "Stop Auto Processing";
                 updateStatus("Auto processing started (30fps)");
             }
         }
-        
+
         function getVideoInfo() {
             if (!videoProcessor) {
                 updateStatus("Error: Video processor not initialized");
                 return;
             }
-            
+
             try {
                 const info = videoProcessor.get_video_info();
                 const infoText = `Video Info: ${info[0]}x${info[1]}, Duration: ${info[2].toFixed(2)}s, Frame Rate: ${info[3]}fps`;
@@ -373,10 +373,10 @@
                 updateStatus("Error getting video info: " + error.message);
             }
         }
-        
+
         // Initialize when page loads
         initWasm();
-        
+
         // Auto-update transport time for demo
         setInterval(() => {
             if (isProcessing) {
