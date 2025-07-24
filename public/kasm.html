@@ -4,124 +4,31 @@
     <meta charset="utf-8"/>
     <link rel="shortcut icon" href="/build/favicon.ico"/>
     <title>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</title>
-    <style>
-        @font-face {
-            font-family: 'pyrmont_brewery';
-            src: local('pyrmont_brewery'), url(pyrmont_brewery.woff2) format('woff2');
-        }
-        html {
-            font-family: 'pyrmont_brewery', sans-serif;
-        }
-    </style>
+    <link rel="stylesheet" href="pyrmontbrewery.css"/>
     <script src="kasm/kasm_WASM_rust_obs.js"></script>
 
 </head>
 <body>
+<div class="tvsimulator" aria-hidden="true"></div>
 <h1>Pyrmont Brewery Music Room! Kasm</h1>
 
 
 <h1>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</h1>
 <p><strong>Kasm</strong> is a modern SDK and source code tutorial for creating high-performance MIDI processing plugins for Ableton Live using Rust and WebAssembly. Build Max4Live devices with advanced MIDI and audio manipulation, leveraging Rust’s speed and safety, and deploy them in Ableton Live 12.2+ with the new V8 JavaScript engine.</p>
-<div style="background:#222; color:#fff; border-radius:8px; padding:16px; margin-bottom:24px; box-shadow:0 2px 16px rgba(0,0,0,0.2);">
+<div style="background:#222; color:#fff;">
     <h2>Get Kasm SDK</h2>
+    <p><a href="https://maxforlive.com/library/index.php?by=any&q=Kasm" style="color:#61dafb;">Try the Ableton Live 12.2 Max4Live device plugins for free here</a></p>
     <p>Buy the full SDK and source code tutorial:</p>
     <ul>
         <li><a href="https://gumroad.com/l/kasm-sdk" style="color:#61dafb;">Gumroad</a></li>
         <li><a href="https://buymeacoffee.com/kevleyski" style="color:#61dafb;">BuyMeACoffee</a></li>
     </ul>
-    <p><a href="https://maxforlive.com/library/device/12948/kasm-emanator" style="color:#61dafb;">Try the Emanator plugin for free</a></p>
 </div>
 
-<h2>Download Max4Live Device Plugins</h2>
-<ul>
-    <li><a href="kasm/Kasm Counterpoint.amxd" download>Kasm Counterpoint.amxd</a></li>
-    <li><a href="kasm/Kasm Emanator Generator.amxd" download>Kasm Emanator Generator.amxd</a></li>
-    <li><a href="kasm/Kasm Emanator Transformation.amxd" download>Kasm Emanator Transformation.amxd</a></li>
-    <li><a href="kasm/Kasm Emanator.amxd" download>Kasm Emanator.amxd</a></li>
-    <li><a href="kasm/Kasm Krumhansl.amxd" download>Kasm Krumhansl.amxd</a></li>
-    <li><a href="kasm/Kasm Rust WASM.amxd" download>Kasm Rust WASM.amxd</a></li>
-    <li><a href="kasm/Kasm Triggaz.amxd" download>Kasm Triggaz.amxd</a></li>
-</ul>
-
-<h2>What You’re Getting</h2>
-<ul>
-    <li>Rust-to-WASM compilation pipeline: Write high-performance MIDI algorithms in Rust, deploy as Max4Live devices</li>
-    <li>MIDI abstraction layer: Clean APIs for notes, velocity, CC messages, timing</li>
-    <li>Build tools & templates: Go from Rust code to working M4L device</li>
-    <li>Web browser WebMIDI test harness: Run and hear your Rust WebAssembly in Chrome/Firefox/Safari/Edge</li>
-    <li>Full example implementations: Emanator plugin with 15 algorithms</li>
-</ul>
-<h2>Example Devices & Features</h2>
-<ul>
-    <li>MIDI output version: Sends MIDI data to Max4Live midiout</li>
-    <li>Ableton MIDI Generator: Creates Note dictionary objects</li>
-    <li>MIDI Transformation: Adapts existing Note dictionary objects</li>
-    <li>Continual musical key & chord detection</li>
-    <li>Live note sequence detection for triggering scene changes, DMX lighting, etc.</li>
-    <li>Virtual tape loop buffering, replay, overlay harmony/counterpoint</li>
-</ul>
-<h2>Why You Want This</h2>
-<ul>
-    <li><strong>Performance:</strong> Rust’s memory safety and zero-cost abstractions</li>
-    <li><strong>Modern Development:</strong> Write complex MIDI algorithms in a systems language</li>
-    <li><strong>Scalability:</strong> Build anything from simple utilities to complex algorithmic composers</li>
-    <li><strong>Reference Implementation:</strong> Emanator Max4Live device source included</li>
-</ul>
-<h2>Included Plugins & Algorithms</h2>
-<ul>
-    <li>Ableton MIDI Generator, MIDI Transformation, MIDI rack/plugin examples</li>
-    <li>Mathematical algorithms: Markov chains, fractals, Fibonacci sequences</li>
-    <li>Complex velocity & pan modulation</li>
-    <li>Build scripts, compilation tools, device templates, integration code</li>
-    <li>Documentation for extending the framework</li>
-    <li>WebMIDI test harness</li>
-</ul>
-<h2>Who Is This For?</h2>
-<p>Developers who want to build professional MIDI tools without the limitations of traditional Max4Live development. Whether you’re creating commercial plugins or experimental instruments, Kasm handles the Rust-to-Live integration complexity so you can focus on your algorithms.</p>
-<h2>Requirements</h2>
-<ul>
-    <li>Ableton Live 12.2 (or later) and Max4Live (uses new V8 engine)</li>
-</ul>
-<h2>What You'll Learn</h2>
-<ul>
-    <li>Passing inlet parameters from JS to Rust</li>
-    <li>Rust code calling Max4Live outlet functions</li>
-    <li>Max console debug post() messages from Rust</li>
-    <li>Manipulating live notes on-the-fly with Rust/WebAssembly</li>
-</ul>
-<h2>How Does Kasm Work?</h2>
-<ol>
-    <li><strong>Rust Code Layer:</strong> MIDI/Audio DSP logic compiled as WebAssembly</li>
-    <li><strong>JavaScript Bridge Layer:</strong> Loads WASM bytecode, sets up parameter marshalling for Max4Live</li>
-    <li><strong>Max4Live Layer:</strong> V8 JavaScript engine with example .amxd device showing two-way communication with Rust</li>
-</ol>
-<ul>
-    <li>Base64 Decoding: Custom atob() for Max4Live</li>
-    <li>WASM Compilation: Direct compilation from decoded binary</li>
-    <li>Function Export: Caching mapped Rust functions for JS</li>
-    <li>getStringFromWasm: Convert WASM memory strings to JS strings</li>
-</ul>
-<h2>Easy Build & Update</h2>
-<ul>
-    <li>npm install</li>
-    <li>npm run build</li>
-    <li>Copy kasm_WASM_rust_obs.js into any 'v8' Max4Live object</li>
-</ul>
-<h2>Hear Kasm in Action</h2>
-<ul>
-    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-with-diva" style="color:#61dafb;">Emanator Algo #1 playing u-he Diva (HS Hippie Chimes patch)</a></li>
-    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-algorithm-2-with" style="color:#61dafb;">Emanator Algo #2 playing Kontak Stradivari “Vesuvius” Violin</a></li>
-    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-rust-algorithm-13-piano" style="color:#61dafb;">Emanator Algo #13 playing VSL Synchron Bösendorfer Imperial</a></li>
-</ul>
-<h2>Try Kasm for Free</h2>
-<p><a href="https://maxforlive.com/library/device/12948/kasm-emanator" style="color:#61dafb; font-weight:bold;">Download the free Emanator plugin</a></p>
-
-
-
-<h1>KASM WebMIDI test harness</h1>
+Connect Kasm to your MIDI device...
 <div style="margin: 20px 0;">
     <!-- WebMIDI Controls -->
-    <div style="margin: 10px 0; padding: 10px; border: 1px solid #333; border-radius: 4px; background: #f9f9f9;">
+    <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
         <div style="margin-bottom: 10px;">
             <label>
                 <select id="midiOutputSelect" style="padding: 3px; margin-left: 10px;">
@@ -157,7 +64,7 @@
                 ▶
             </button>
             <button id="stopMidi"
-                    style="padding: 5px 15px; background: #f44336; color: white; border: none; border-radius: 3px; cursor: pointer; margin-left: 10px;">
+                    style="padding: 5px 15px; background: #f44336; color: white; border: none; cursor: pointer; margin-left: 10px;">
                 ⏹
             </button>
             <span id="playbackStatus" style="margin-left: 15px; font-weight: bold;"></span>
@@ -246,7 +153,7 @@
                        onchange="updateDial('note', this.value); updateNoteDisplay(); autoTransform()"
                        oninput="updateDial('note', this.value); updateNoteDisplay(); autoTransform()">
                 <input type="text" id="noteName" value="C4"
-                       style="width: 45px; text-align: center; font-size: 12px; color: #666; border: 1px solid #ccc; padding: 2px;"
+                       style="width: 45px; text-align: center; font-size: 12px; color: #666; padding: 2px;"
                        onblur="updateNoteFromName()"
                        onkeydown="handleNoteNameKeydown(event)"
                        title="Type note name (e.g. C4, F#3, Bb5)">
@@ -369,7 +276,7 @@
     <div id="chordKeyDetection"></div>
     <div id="patternDetection"></div>
     <div id="loopDetection"></div>
-    <button id="transformTest">Refresh</button>
+    <button id="transformTest"></button>
 
     <!-- MIDI Clip Visualization -->
     <div style="margin-bottom: 20px;">
@@ -396,44 +303,44 @@
     <table style="border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 12px;">
         <tbody>
         <tr>
-            <td style="border: 1px solid #ccc; padding: 6px; font-weight: bold;">pitch</td>
-            <td style="border: 1px solid #ccc; padding: 6px;">The MIDI note number (e.g., 60 is Middle C, 90/100/103 are
+            <td style="padding: 6px; font-weight: bold;">pitch</td>
+            <td style="padding: 6px;">The MIDI note number (e.g., 60 is Middle C, 90/100/103 are
                 higher notes).
             </td>
         </tr>
         <tr style="background-color: #f9f9f9;">
-            <td style="border: 1px solid #ccc; padding: 6px; font-weight: bold;">start_time</td>
-            <td style="border: 1px solid #ccc; padding: 6px;">When the note begins, in beats (relative to the clip's
+            <td style="padding: 6px; font-weight: bold;">start_time</td>
+            <td style="padding: 6px;">When the note begins, in beats (relative to the clip's
                 start).
             </td>
         </tr>
         <tr>
-            <td style="border: 1px solid #ccc; padding: 6px; font-weight: bold;">duration</td>
-            <td style="border: 1px solid #ccc; padding: 6px;">How long the note lasts, in beats.</td>
+            <td style="padding: 6px; font-weight: bold;">duration</td>
+            <td style="padding: 6px;">How long the note lasts, in beats.</td>
         </tr>
         <tr style="background-color: #f9f9f9;">
-            <td style="border: 1px solid #ccc; padding: 6px; font-weight: bold;">velocity</td>
-            <td style="border: 1px solid #ccc; padding: 6px;">How hard the note is played (0–127): higher = louder.</td>
+            <td style="padding: 6px; font-weight: bold;">velocity</td>
+            <td style="padding: 6px;">How hard the note is played (0–127): higher = louder.</td>
         </tr>
         <tr>
-            <td style="border: 1px solid #ccc; padding: 6px; font-weight: bold;">mute</td>
-            <td style="border: 1px solid #ccc; padding: 6px;">1 = muted note, 0 = active note.</td>
+            <td style="padding: 6px; font-weight: bold;">mute</td>
+            <td style="padding: 6px;">1 = muted note, 0 = active note.</td>
         </tr>
         <tr style="background-color: #f9f9f9;">
-            <td style="border: 1px solid #ccc; padding: 6px; font-weight: bold;">probability</td>
-            <td style="border: 1px solid #ccc; padding: 6px;">A float between 0 and 1, showing the chance this note will
+            <td style="padding: 6px; font-weight: bold;">probability</td>
+            <td style="padding: 6px;">A float between 0 and 1, showing the chance this note will
                 play (1 = always, 0.5 = 50%).
             </td>
         </tr>
         <tr>
-            <td style="border: 1px solid #ccc; padding: 6px; font-weight: bold;">velocity_deviation</td>
-            <td style="border: 1px solid #ccc; padding: 6px;">Specifies variability in velocity for each triggering,
+            <td style="padding: 6px; font-weight: bold;">velocity_deviation</td>
+            <td style="padding: 6px;">Specifies variability in velocity for each triggering,
                 often 0 unless randomization used.
             </td>
         </tr>
         <tr style="background-color: #f9f9f9;">
-            <td style="border: 1px solid #ccc; padding: 6px; font-weight: bold;">release_velocity</td>
-            <td style="border: 1px solid #ccc; padding: 6px;">The velocity value sent when the note is released (key is
+            <td style="padding: 6px; font-weight: bold;">release_velocity</td>
+            <td style="padding: 6px;">The velocity value sent when the note is released (key is
                 lifted); often relevant for expressive playing.
             </td>
         </tr>
@@ -449,6 +356,91 @@
 <button id="runWasm2">Run kasm_midi_note_offset(MIDI Note C4 (60), -12)</button>
 <button id="runWasm3">Run kasm_midi_note_octave_hit(MIDI Note C4 (60), +12)</button>
 
+
+<h2>What You’re Getting</h2>
+<ul>
+    <li>Rust-to-WASM compilation pipeline: Write high-performance MIDI algorithms in Rust, deploy as Max4Live devices</li>
+    <li>MIDI abstraction layer: Clean APIs for notes, velocity, CC messages, timing</li>
+    <li>Build tools & templates: Go from Rust code to working M4L device</li>
+    <li>Web browser WebMIDI test harness: Run and hear your Rust WebAssembly in Chrome/Firefox/Safari/Edge</li>
+    <li>Full example implementations: Emanator plugin with 15 algorithms</li>
+</ul>
+<h2>Example Devices & Features</h2>
+<ul>
+    <li>MIDI output version: Sends MIDI data to Max4Live midiout</li>
+    <li>Ableton MIDI Generator: Creates Note dictionary objects</li>
+    <li>MIDI Transformation: Adapts existing Note dictionary objects</li>
+    <li>Continual musical key & chord detection</li>
+    <li>Live note sequence detection for triggering scene changes, DMX lighting, etc.</li>
+    <li>Virtual tape loop buffering, replay, overlay harmony/counterpoint</li>
+</ul>
+<h2>Why You Want This</h2>
+<ul>
+    <li><strong>Performance:</strong> Rust’s memory safety and zero-cost abstractions</li>
+    <li><strong>Modern Development:</strong> Write complex MIDI algorithms in a systems language</li>
+    <li><strong>Scalability:</strong> Build anything from simple utilities to complex algorithmic composers</li>
+    <li><strong>Reference Implementation:</strong> Emanator Max4Live device source included</li>
+</ul>
+<h2>Included Plugins & Algorithms</h2>
+<ul>
+    <li>Ableton MIDI Generator, MIDI Transformation, MIDI rack/plugin examples</li>
+    <li>Mathematical algorithms: Markov chains, fractals, Fibonacci sequences</li>
+    <li>Complex velocity & pan modulation</li>
+    <li>Build scripts, compilation tools, device templates, integration code</li>
+    <li>Documentation for extending the framework</li>
+    <li>WebMIDI test harness</li>
+</ul>
+<h2>Download Max4Live Device Plugins</h2>
+<ul>
+    <li><a href="kasm/Kasm Counterpoint.amxd" download>Kasm Counterpoint.amxd</a></li>
+    <li><a href="kasm/Kasm Emanator Generator.amxd" download>Kasm Emanator Generator.amxd</a></li>
+    <li><a href="kasm/Kasm Emanator Transformation.amxd" download>Kasm Emanator Transformation.amxd</a></li>
+    <li><a href="kasm/Kasm Emanator.amxd" download>Kasm Emanator.amxd</a></li>
+    <li><a href="kasm/Kasm Krumhansl.amxd" download>Kasm Krumhansl.amxd</a></li>
+    <li><a href="kasm/Kasm Rust WASM.amxd" download>Kasm Rust WASM.amxd</a></li>
+    <li><a href="kasm/Kasm Triggaz.amxd" download>Kasm Triggaz.amxd</a></li>
+</ul>
+
+
+<h2>Who Is This For?</h2>
+<p>Developers who want to build professional MIDI tools without the limitations of traditional Max4Live development. Whether you’re creating commercial plugins or experimental instruments, Kasm handles the Rust-to-Live integration complexity so you can focus on your algorithms.</p>
+<h2>Requirements</h2>
+<ul>
+    <li>Ableton Live 12.2 (or later) and Max4Live (uses new V8 engine)</li>
+</ul>
+<h2>What You'll Learn</h2>
+<ul>
+    <li>Passing inlet parameters from JS to Rust</li>
+    <li>Rust code calling Max4Live outlet functions</li>
+    <li>Max console debug post() messages from Rust</li>
+    <li>Manipulating live notes on-the-fly with Rust/WebAssembly</li>
+</ul>
+<h2>How Does Kasm Work?</h2>
+<ol>
+    <li><strong>Rust Code Layer:</strong> MIDI/Audio DSP logic compiled as WebAssembly</li>
+    <li><strong>JavaScript Bridge Layer:</strong> Loads WASM bytecode, sets up parameter marshalling for Max4Live</li>
+    <li><strong>Max4Live Layer:</strong> V8 JavaScript engine with example .amxd device showing two-way communication with Rust</li>
+</ol>
+<ul>
+    <li>Base64 Decoding: Custom atob() for Max4Live</li>
+    <li>WASM Compilation: Direct compilation from decoded binary</li>
+    <li>Function Export: Caching mapped Rust functions for JS</li>
+    <li>getStringFromWasm: Convert WASM memory strings to JS strings</li>
+</ul>
+<h2>Easy Build & Update</h2>
+<ul>
+    <li>npm install</li>
+    <li>npm run build</li>
+    <li>Copy kasm_WASM_rust_obs.js into any 'v8' Max4Live object</li>
+</ul>
+<h2>Hear Kasm in Action</h2>
+<ul>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-with-diva" style="color:#61dafb;">Emanator Algo #1 playing u-he Diva (HS Hippie Chimes patch)</a></li>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-algorithm-2-with" style="color:#61dafb;">Emanator Algo #2 playing Kontak Stradivari “Vesuvius” Violin</a></li>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-rust-algorithm-13-piano" style="color:#61dafb;">Emanator Algo #13 playing VSL Synchron Bösendorfer Imperial</a></li>
+</ul>
+<h2>Try Kasm for Free</h2>
+<p><a href="https://maxforlive.com/library/device/12948/kasm-emanator" style="color:#61dafb; font-weight:bold;">Download the free Emanator plugin</a></p>
 
 
 <p>KASM MIDI FX Plugins: <a href="https://github.com/PyrmontBrewery/kasm_ableton">GitHub</a></p>
@@ -484,11 +476,15 @@
 
 </table>
 
+<br/><br/>
+<br/><br/>
+&copy; 2007 Pyrmont Brewery
+<br/><br/>
+0 OK, 0:1
+<br/>
+
 </body>
 
-
-
-</body>
 
 <script>
     let inlet = 0;

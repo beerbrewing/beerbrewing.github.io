@@ -1,0 +1,247 @@
+/* ZX Spectrum 48K inspired, highly accessible, professional CSS */
+@font-face {
+    font-family: 'pyrmont_brewery';
+    src: url('pyrmont_brewery.woff2') format('woff2');
+    font-display: swap;
+}
+
+html, body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: 18px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    scroll-behavior: auto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #fff;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    box-sizing: border-box;
+    border: 100px solid cyan;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+header, nav, main, footer {
+    border: 4px solid #fff;
+    background: #222;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 8px;
+    margin: 8px 0;
+}
+
+div {
+    margin-bottom: 8px; /* 8px for ZX Spectrum 8x8 pixel spacing */
+}
+
+.tvsimulator {
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 9000px;
+    pointer-events: none;
+    background: repeating-linear-gradient(to top, transparent 0px, transparent 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0.9) 4px);
+    background-size: 100% 2px;
+}
+
+span, p, h1, h2, h3, h4, h5, h6 {
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    background: none;
+    color: #fff;
+    border-radius: 0;
+}
+
+p {
+    width: 90%;
+    margin: 0 auto 0px auto;
+    background: #222;
+    color: #fff;
+    border: none; /* Remove border for ZX Spectrum authenticity */
+    padding: 8px;
+    opacity: 1;
+    border-radius: 0;
+}
+
+ul, ol {
+    width: 90%;
+    margin: 0 auto 2px auto;
+    background: #222;
+    color: #fff;
+    border: none; /* Remove border for ZX Spectrum authenticity */
+    padding: 18px 24px; /* Reduce horizontal padding for tighter look */
+    border-radius: 0;
+    list-style-position: inside;
+    font-size: 1em; /* Match regular text size for ZX Spectrum style */
+}
+ul {
+    list-style-type: square;
+}
+ol {
+    list-style-type: decimal;
+}
+li {
+    margin-bottom: 6px;
+    padding: 2px 0;
+    border-bottom: none; /* Remove grid line for ZX Spectrum authenticity */
+    border-radius: 0;
+    font-size: 1em; /* Match regular text size for ZX Spectrum style */
+}
+ul li::marker {
+    font-size: 2em; /* Large marker for ZX Spectrum style */
+    color: #00ffff;
+    font-weight: bold;
+    content: "■ ";
+}
+
+/* ZX Spectrum list spacing */
+ul li, ol li {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Accessibility: high contrast focus, readable links, alt text for images */
+a {
+    color: #ff0;
+    background: #222;
+    border-width: 0 !important;
+    border-style: none !important;
+    padding: 2px 4px;
+    border-radius: 0;
+    font-weight: bold;
+    text-decoration: none !important;
+}
+a:focus, a:hover {
+    animation: zx-flash 1s steps(1, end) infinite;
+    outline: none !important;
+    background: #000;
+    color: #fff;
+}
+
+img {
+    border: 5px solid #fff; /* Ensure minimum 5px thickness */
+    background: #222;
+    border-radius: 0;
+    max-width: 100%;
+    height: auto;
+}
+
+button, input, select, textarea {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 18px;
+    background: #222;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 0;
+    padding: 6px 12px;
+    margin: 4px 0;
+}
+button:focus, input:focus, select:focus, textarea:focus {
+    outline: 3px solid #ff0;
+    background: #000;
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 16px;
+    background: #222;
+}
+::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 0;
+}
+
+/* Visually hidden for screen readers */
+.visually-hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* ZX Spectrum border effect */
+.spectrum-border {
+    border: 8px solid #ff0000;
+    box-shadow: 0 0 0 8px #00ff00, 0 0 0 16px #0000ff;
+}
+
+/* Headings with ZX Spectrum colors */
+h1, h2, h3 {
+    color: #ff0;
+    background: #222;
+    border-bottom: 14px solid #00f;
+    padding: 8px;
+    border-radius: 0;
+}
+
+/* Keyboard navigation help */
+.skip-link {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.skip-link:focus {
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    background: #ff0;
+    color: #000;
+    z-index: 1000;
+    padding: 8px;
+    border: 4px solid #000;
+}
+
+/* Remove all border-radius and box-shadow for ZX Spectrum authenticity */
+* {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Remove bounding boxes the ZX Spectrum can't render */
+header, nav, main, footer, p, ul, ol, li, a, img, button, input, select, textarea, .spectrum-border {
+    border-width: 0 !important;
+    border-style: none !important;
+}
+
+/* Flashing link effect for ZX Spectrum style - slowed down to match App.css */
+a:hover, a:focus {
+    animation: zx-flash 1s steps(1, end) infinite;
+    outline: 3px solid #ff0;
+    background: #000;
+    color: #fff;
+}
+
+@keyframes zx-flash {
+    0% { background: #000; color: #fff; }
+    50% { background: #ff0; color: #000; }
+    100% { background: #000; color: #fff; }
+}
+
+@media (prefers-color-scheme: dark) {
+    html, body {
+        background-color: #000;
+        color: #fff;
+    }
+}
+@media (prefers-color-scheme: light), screen {
+    html, body {
+        background-color: #fff;
+        color: #000;
+    }
+}
