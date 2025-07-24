@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="/build/favicon.ico"/>
+    <title>Pyrmont Brewery - Music Room</title>
+    <style>
+        @font-face {
+            font-family: 'pyrmont_brewery';
+            src: local('pyrmont_brewery'), url(pyrmont_brewery.woff2) format('woff2');
+        }
+
+        html {
+            font-family: 'pyrmont_brewery';
+        }
+    </style>
+<body>
+<h1>Pyrmont Brewery Music Room!</h1>
+
+<p>KASM MIDI FX Plugins: <a href="https://github.com/PyrmontBrewery/kasm_ableton">GitHub</a></p>
+<table>
+    <tr>
+        <td>Web MIDI</td>
+        <td><a href="https://www.w3.org/TR/webmidi/">W3C</a></td>
+    </tr>
+    <tr>
+        <td>Avid Pro Tools</td>
+        <td>AAX</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>Logic Pro</td>
+        <td>AUv3</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>Ableton 12 Live Suite</td>
+        <td>AMXD (Max4Live)<br/></td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>Cubase/Unify</td>
+        <td>VST3</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>WebXR VR MIDI Controller</td>
+        <td><a href="https://www.w3.org/TR/webxr">W3C</a></td>
+    </tr>
+
+</table>
+
+<h1>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</h1>
+<p><strong>Kasm</strong> is a modern SDK and source code tutorial for creating high-performance MIDI processing plugins for Ableton Live using Rust and WebAssembly. Build Max4Live devices with advanced MIDI and audio manipulation, leveraging Rust’s speed and safety, and deploy them in Ableton Live 12.2+ with the new V8 JavaScript engine.</p>
+<div style="background:#222; color:#fff; border-radius:8px; padding:16px; margin-bottom:24px; box-shadow:0 2px 16px rgba(0,0,0,0.2);">
+    <h2>Get Kasm SDK</h2>
+    <p>Buy the full SDK and source code tutorial:</p>
+    <ul>
+        <li><a href="https://gumroad.com/l/kasm-sdk" style="color:#61dafb;">Gumroad</a></li>
+        <li><a href="https://buymeacoffee.com/kevleyski" style="color:#61dafb;">BuyMeACoffee</a></li>
+    </ul>
+    <p><a href="https://maxforlive.com/library/device/12948/kasm-emanator" style="color:#61dafb;">Try the Emanator plugin for free</a></p>
+</div>
+<h2>What You’re Getting</h2>
+<ul>
+    <li>Rust-to-WASM compilation pipeline: Write high-performance MIDI algorithms in Rust, deploy as Max4Live devices</li>
+    <li>MIDI abstraction layer: Clean APIs for notes, velocity, CC messages, timing</li>
+    <li>Build tools & templates: Go from Rust code to working M4L device</li>
+    <li>Web browser WebMIDI test harness: Run and hear your Rust WebAssembly in Chrome/Firefox/Safari/Edge</li>
+    <li>Full example implementations: Emanator plugin with 15 algorithms</li>
+</ul>
+<h2>Example Devices & Features</h2>
+<ul>
+    <li>MIDI output version: Sends MIDI data to Max4Live midiout</li>
+    <li>Ableton MIDI Generator: Creates Note dictionary objects</li>
+    <li>MIDI Transformation: Adapts existing Note dictionary objects</li>
+    <li>Continual musical key & chord detection</li>
+    <li>Live note sequence detection for triggering scene changes, DMX lighting, etc.</li>
+    <li>Virtual tape loop buffering, replay, overlay harmony/counterpoint</li>
+</ul>
+<h2>Why You Want This</h2>
+<ul>
+    <li><strong>Performance:</strong> Rust’s memory safety and zero-cost abstractions</li>
+    <li><strong>Modern Development:</strong> Write complex MIDI algorithms in a systems language</li>
+    <li><strong>Scalability:</strong> Build anything from simple utilities to complex algorithmic composers</li>
+    <li><strong>Reference Implementation:</strong> Emanator Max4Live device source included</li>
+</ul>
+<h2>Included Plugins & Algorithms</h2>
+<ul>
+    <li>Ableton MIDI Generator, MIDI Transformation, MIDI rack/plugin examples</li>
+    <li>Mathematical algorithms: Markov chains, fractals, Fibonacci sequences</li>
+    <li>Complex velocity & pan modulation</li>
+    <li>Build scripts, compilation tools, device templates, integration code</li>
+    <li>Documentation for extending the framework</li>
+    <li>WebMIDI test harness</li>
+</ul>
+<h2>Who Is This For?</h2>
+<p>Developers who want to build professional MIDI tools without the limitations of traditional Max4Live development. Whether you’re creating commercial plugins or experimental instruments, Kasm handles the Rust-to-Live integration complexity so you can focus on your algorithms.</p>
+<h2>Requirements</h2>
+<ul>
+    <li>Ableton Live 12.2 (or later) and Max4Live (uses new V8 engine)</li>
+</ul>
+<h2>What You'll Learn</h2>
+<ul>
+    <li>Passing inlet parameters from JS to Rust</li>
+    <li>Rust code calling Max4Live outlet functions</li>
+    <li>Max console debug post() messages from Rust</li>
+    <li>Manipulating live notes on-the-fly with Rust/WebAssembly</li>
+</ul>
+<h2>How Does Kasm Work?</h2>
+<ol>
+    <li><strong>Rust Code Layer:</strong> MIDI/Audio DSP logic compiled as WebAssembly</li>
+    <li><strong>JavaScript Bridge Layer:</strong> Loads WASM bytecode, sets up parameter marshalling for Max4Live</li>
+    <li><strong>Max4Live Layer:</strong> V8 JavaScript engine with example .amxd device showing two-way communication with Rust</li>
+</ol>
+<ul>
+    <li>Base64 Decoding: Custom atob() for Max4Live</li>
+    <li>WASM Compilation: Direct compilation from decoded binary</li>
+    <li>Function Export: Caching mapped Rust functions for JS</li>
+    <li>getStringFromWasm: Convert WASM memory strings to JS strings</li>
+</ul>
+<h2>Easy Build & Update</h2>
+<ul>
+    <li>npm install</li>
+    <li>npm run build</li>
+    <li>Copy kasm_WASM_rust.js into any 'v8' Max4Live object</li>
+</ul>
+<h2>Hear Kasm in Action</h2>
+<ul>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-with-diva" style="color:#61dafb;">Emanator Algo #1 playing u-he Diva (HS Hippie Chimes patch)</a></li>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-algorithm-2-with" style="color:#61dafb;">Emanator Algo #2 playing Kontak Stradivari “Vesuvius” Violin</a></li>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-rust-algorithm-13-piano" style="color:#61dafb;">Emanator Algo #13 playing VSL Synchron Bösendorfer Imperial</a></li>
+</ul>
+<h2>Try Kasm for Free</h2>
+<p><a href="https://maxforlive.com/library/device/12948/kasm-emanator" style="color:#61dafb; font-weight:bold;">Download the free Emanator plugin</a></p>
+</body>
+</html>
