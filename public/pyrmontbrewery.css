@@ -260,3 +260,18 @@ a:hover, a:focus {
         color: #000;
     }
 }
+
+a, .App-link, .App-link2, .App-link3, .Beer-link, .YourBeer-link {
+    display: inline-block;
+    min-height: 1em;
+    line-height: calc(1em + 2px);
+    vertical-align: middle;
+    height: calc(1em + 2px);
+}
+
+a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, .YourBeer-link:hover {
+    height: calc(1em + 2px);
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
