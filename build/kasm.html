@@ -1,0 +1,3190 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="/build/favicon.ico"/>
+    <title>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</title>
+    <link rel="stylesheet" href="pyrmontbrewery.css"/>
+    <script src="kasm/kasm_WASM_rust_obs.js"></script>
+
+</head>
+<body>
+<div class="tvsimulator" aria-hidden="true"></div>
+<a href="/" class="back">&lt;-</a>
+
+<br/>
+<br/>
+<h1>Pyrmont Brewery Music Room! Kasm</h1>
+
+<img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" />
+
+<h1>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</h1>
+<p><strong>Kasm</strong> is a modern SDK and source code tutorial for creating high-performance MIDI processing plugins for Ableton Live using Rust and WebAssembly. Build Max4Live devices with advanced MIDI and audio manipulation, leveraging Rust’s speed and safety, and deploy them in Ableton Live 12.2+ with the new V8 JavaScript engine.</p>
+<div style="background:#222; color:#fff;">
+    <h2>Get Kasm SDK</h2>
+    <p><a href="https://maxforlive.com/library/index.php?by=any&q=Kasm" style="color:#61dafb;">Try the Ableton Live 12.2 Max4Live device plugins for free here</a></p>
+    <p>Buy the full SDK and source code tutorial:</p>
+    <ul>
+        <li><a href="https://gumroad.com/l/kasm-sdk" style="color:#61dafb;">Gumroad</a></li>
+        <li><a href="https://buymeacoffee.com/kevleyski" style="color:#61dafb;">BuyMeACoffee</a></li>
+    </ul>
+</div>
+
+Connect Kasm to your MIDI device...
+<div style="margin: 20px 0;">
+    <!-- WebMIDI Controls -->
+    <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
+        <div style="margin-bottom: 10px;">
+            <label>
+                <select id="midiOutputSelect" style="padding: 3px; margin-left: 10px;">
+                    <option value="">Select MIDI Device...</option>
+                </select>
+            </label>
+            <button id="refreshMidiDevices" style="margin-left: 10px; padding: 3px 8px;">Refresh</button>
+            <label>MIDI Channel:
+                <select id="midiChannel" style="padding: 3px; margin-left: 10px;">
+                    <option value="0">1</option>
+                    <option value="1">2</option>
+                    <option value="2">3</option>
+                    <option value="3">4</option>
+                    <option value="4">5</option>
+                    <option value="5">6</option>
+                    <option value="6">7</option>
+                    <option value="7">8</option>
+                    <option value="8">9</option>
+                    <option value="9">10</option>
+                    <option value="10">11</option>
+                    <option value="11">12</option>
+                    <option value="12">13</option>
+                    <option value="13">14</option>
+                    <option value="14">15</option>
+                    <option value="15">16</option>
+                </select>
+            </label>
+            <label style="margin-left: 20px;">Tempo (BPM):
+                <input type="number" id="tempo" value="120" min="60" max="200" style="width: 60px; margin-left: 10px;">
+            </label>
+            <button id="playMidi"
+                    style="padding: 5px 15px; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                ▶
+            </button>
+            <button id="stopMidi"
+                    style="padding: 5px 15px; background: #f44336; color: white; border: none; cursor: pointer; margin-left: 10px;">
+                ⏹
+            </button>
+            <span id="playbackStatus" style="margin-left: 15px; font-weight: bold;"></span>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <select id="exampleSelect" style="padding: 5px; margin-right: 10px;" onchange="loadSelectedExample()">
+            <option value="singleNote">Single Note</option>
+            <option value="send2notes">Two Notes</option>
+            <option value="send3notes">Three Notes</option>
+            <option value="twinkle_twinkle">Twinkle Twinkle</option>
+            <option value="three_blind_mice">Three Blind Mice</option>
+            <option value="ferer_jaques">Frère Jacques</option>
+            <option value="mary_little_lamb">Mary Had A Little Lamb</option>
+            <option value="happy_birthday">Happy Birthday</option>
+            <option value="happy_birthday_legatto">Happy Birthday (legatto)</option>
+            <option value="baa_baa">Baa Baa Sheep</option>
+            <option value="chord">Major Chord</option>
+            <option value="arpeggio">Arpeggio Sequence</option>
+            <option value="rhythmPattern">Rhythm Pattern</option>
+            <option value="pentatonicScale">Pentatonic Scale (5 notes)</option>
+            <option value="complexChord">Complex Chord (7 notes)</option>
+            <option value="bassline">Bassline Pattern (8 notes)</option>
+            <option value="melodicSequence">Melodic Sequence (10 notes)</option>
+            <option value="polyrhythm">Polyrhythm Pattern (12 notes)</option>
+            <option value="chromatic">Chromatic Run (12 notes)</option>
+            <option value="jazzChordProgression">Jazz Chord Progression (16 notes)</option>
+            <option value="complexArpeggio">Complex Arpeggio (20 notes)</option>
+            <option value="minimalistPattern">Minimalist Pattern (24 notes)</option>
+            <option value="orchestralStab">Orchestral Stab (32 notes)</option>
+        </select>
+        <textarea id="inputJson" rows="4" cols="80" style="font-family: monospace; font-size: 12px;"
+                  oninput="loadSelectedExample(); autoTransform()"></textarea>
+    </div>
+
+    <label>Emanator (inlet_5):
+        <select id="emanator" onchange="autoTransform()" style="padding: 3px;">
+            <option value="0">0 Random</option>
+            <option value="1">1 kasm_emanator_1</option>
+            <option value="2">2 kasm_emanator_2</option>
+            <option value="3">3 kasm_emanator_3</option>
+            <option value="4">4 kasm_emanator_4</option>
+            <option value="5">5 kasm_emanator_5</option>
+            <option value="6">6 kasm_emanator_6</option>
+            <option value="7">7 kasm_emanator_7</option>
+            <option value="8">8 kasm_emanator_8</option>
+            <option value="9">9 kasm_emanator_9</option>
+            <option value="10">10 kasm_emanator_10</option>
+            <option value="11">11 kasm_emanator_11</option>
+            <option value="12">12 kasm_emanator_12</option>
+            <option value="13">13 kasm_emanator_13</option>
+            <option value="14">14 kasm_emanator_14</option>
+            <option value="15">15 kasm_emanator_15</option>
+            <option value="16">16 kasm_emanator_16</option>
+            <option value="17">17 kasm_emanator_17</option>
+            <option value="18">18 kasm_emanator_18</option>
+            <option value="19">19 kasm_emanator_19</option>
+            <option value="20">20 kasm_emanator_20</option>
+            <option value="21">21 kasm_krumhansl arp</option>
+            <option value="22">22 kasm_looper</option>
+        </select>
+    </label>
+
+    <div style="margin: 10px 0;">
+        <!-- Root Note input with MIDI name and dial -->
+        <div style="display: inline-block; margin: 10px; text-align: center;">
+            <label>Root Note<br/>(inlet_0):</label><br>
+            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                <svg width="60" height="60" class="dial-svg">
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                            stroke-dasharray="157" stroke-dashoffset="157" id="note-progress"
+                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="note-pointer"
+                          transform="rotate(0 30 30)"/>
+                </svg>
+                <input type="range" id="note-dial" min="0" max="127" value="60"
+                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                       onchange="updateDial('note', this.value); updateNoteDisplay(); autoTransform()"
+                       oninput="updateDial('note', this.value); updateNoteDisplay(); autoTransform()">
+            </div>
+            <div style="margin: 5px auto; width: 120px;">
+                <input type="number" id="note" value="60" min="0" max="127"
+                       style="width: 60px; margin-right: 5px;"
+                       onchange="updateDial('note', this.value); updateNoteDisplay(); autoTransform()"
+                       oninput="updateDial('note', this.value); updateNoteDisplay(); autoTransform()">
+                <input type="text" id="noteName" value="C4"
+                       style="width: 45px; text-align: center; font-size: 12px; color: #666; padding: 2px;"
+                       onblur="updateNoteFromName()"
+                       onkeydown="handleNoteNameKeydown(event)"
+                       title="Type note name (e.g. C4, F#3, Bb5)">
+            </div>
+        </div>
+
+        <!-- Semitone with dial and number input -->
+        <div style="display: inline-block; margin: 10px; text-align: center;">
+            <label>Semitone offset<br/>(inlet_1)</label><br>
+            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                <svg width="60" height="60" class="dial-svg">
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                            stroke-dasharray="157" stroke-dashoffset="157" id="semitone-progress"
+                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="semitone-pointer"
+                          transform="rotate(0 30 30)"/>
+                </svg>
+                <input type="range" id="semitone-dial" min="-127" max="127" value="0"
+                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                       onchange="updateDial('semitone', this.value); autoTransform()"
+                       oninput="updateDial('semitone', this.value); autoTransform()">
+            </div>
+            <input type="number" id="semitone" value="0" min="-127" max="127" style="width: 60px; text-align: center;"
+                   onchange="updateDial('semitone', this.value); autoTransform()"
+                   oninput="updateDial('semitone', this.value); autoTransform()">
+        </div>
+
+        <!-- Velocity with dial and number input -->
+        <div style="display: inline-block; margin: 10px; text-align: center;">
+            <label>Velocity<br/>(inlet_2)</label><br>
+            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                <svg width="60" height="60" class="dial-svg">
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                            stroke-dasharray="157" stroke-dashoffset="157" id="velocity-progress"
+                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="velocity-pointer"
+                          transform="rotate(0 30 30)"/>
+                </svg>
+                <input type="range" id="velocity-dial" min="0" max="127" value="100"
+                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                       onchange="updateDial('velocity', this.value); autoTransform()"
+                       oninput="updateDial('velocity', this.value); autoTransform()">
+            </div>
+            <input type="number" id="velocity" value="100" min="0" max="127" style="width: 60px; text-align: center;"
+                   onchange="updateDial('velocity', this.value); autoTransform()"
+                   oninput="updateDial('velocity', this.value); autoTransform()">
+        </div>
+
+        <!-- Enc1 with dial and number input -->
+        <div style="display: inline-block; margin: 10px; text-align: center;">
+            <label>Enc1<br/>(inlet_3)</label><br>
+            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                <svg width="60" height="60" class="dial-svg">
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                            stroke-dasharray="157" stroke-dashoffset="157" id="enc1-progress"
+                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="enc1-pointer"
+                          transform="rotate(0 30 30)"/>
+                </svg>
+                <input type="range" id="enc1-dial" min="0" max="127" value="100"
+                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                       onchange="updateDial('enc1', this.value); autoTransform()"
+                       oninput="updateDial('enc1', this.value); autoTransform()">
+            </div>
+            <input type="number" id="enc1" value="80" min="0" max="127" style="width: 60px; text-align: center;"
+                   onchange="updateDial('enc1', this.value); autoTransform()"
+                   oninput="updateDial('enc1', this.value); autoTransform()">
+        </div>
+
+        <!-- Enc2 with dial and number input -->
+        <div style="display: inline-block; margin: 10px; text-align: center;">
+            <label>Enc2<br/>(inlet_4)</label><br>
+            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                <svg width="60" height="60" class="dial-svg">
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                            stroke-dasharray="157" stroke-dashoffset="157" id="enc2-progress"
+                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="enc2-pointer"
+                          transform="rotate(0 30 30)"/>
+                </svg>
+                <input type="range" id="enc2-dial" min="0" max="127" value="50"
+                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                       onchange="updateDial('enc2', this.value); autoTransform()"
+                       oninput="updateDial('enc2', this.value); autoTransform()">
+            </div>
+            <input type="number" id="enc2" value="50" min="0" max="127" style="width: 60px; text-align: center;"
+                   onchange="updateDial('enc2', this.value); autoTransform()"
+                   oninput="updateDial('enc2', this.value); autoTransform()">
+
+
+        </div>
+
+        <!-- Rate with dial and number input -->
+        <div style="display: inline-block; margin: 10px; text-align: center;">
+            <label>Rate<br/>(ms)</label><br>
+            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                <svg width="60" height="60" class="dial-svg">
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                            stroke-dasharray="157" stroke-dashoffset="157" id="rate-progress"
+                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="rate-pointer"
+                          transform="rotate(0 30 30)"/>
+                </svg>
+                <input type="range" id="rate-dial" min="50" max="10000" value="250"
+                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                       onchange="updateDial('rate', this.value); autoTransform()"
+                       oninput="updateDial('rate', this.value); autoTransform()">
+            </div>
+            <input type="number" id="rateMs" value="250" min="50" max="10000" style="width: 60px; text-align: center;"
+                   onchange="updateDial('rate', this.value); autoTransform()"
+                   oninput="updateDial('rate', this.value); autoTransform()">
+        </div>
+    </div>
+
+    <div id="chordKeyDetection"></div>
+    <div id="patternDetection"></div>
+    <div id="loopDetection"></div>
+    <button id="transformTest"></button>
+
+    <!-- MIDI Clip Visualization -->
+    <div style="margin-bottom: 20px;">
+        <div id="midiClipView" style="
+                border: 2px solid #333;
+                background: #1a1a1a;
+                height: 600px;
+                width: 100%;
+                position: relative;
+                overflow-y: auto;
+                overflow-x: hidden;
+                border-radius: 4px;
+            ">
+            <canvas id="midiCanvas" width="1600" height="1200" style="
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                "></canvas>
+        </div>
+    </div>
+
+    <textarea id="outputJson" rows="40" cols="80" style="font-family: monospace; font-size: 12px;" readonly></textarea>
+
+    <table style="border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 12px;">
+        <tbody>
+        <tr>
+            <td style="padding: 6px; font-weight: bold;">pitch</td>
+            <td style="padding: 6px;">The MIDI note number (e.g., 60 is Middle C, 90/100/103 are
+                higher notes).
+            </td>
+        </tr>
+        <tr style="background-color: #f9f9f9;">
+            <td style="padding: 6px; font-weight: bold;">start_time</td>
+            <td style="padding: 6px;">When the note begins, in beats (relative to the clip's
+                start).
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 6px; font-weight: bold;">duration</td>
+            <td style="padding: 6px;">How long the note lasts, in beats.</td>
+        </tr>
+        <tr style="background-color: #f9f9f9;">
+            <td style="padding: 6px; font-weight: bold;">velocity</td>
+            <td style="padding: 6px;">How hard the note is played (0–127): higher = louder.</td>
+        </tr>
+        <tr>
+            <td style="padding: 6px; font-weight: bold;">mute</td>
+            <td style="padding: 6px;">1 = muted note, 0 = active note.</td>
+        </tr>
+        <tr style="background-color: #f9f9f9;">
+            <td style="padding: 6px; font-weight: bold;">probability</td>
+            <td style="padding: 6px;">A float between 0 and 1, showing the chance this note will
+                play (1 = always, 0.5 = 50%).
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 6px; font-weight: bold;">velocity_deviation</td>
+            <td style="padding: 6px;">Specifies variability in velocity for each triggering,
+                often 0 unless randomization used.
+            </td>
+        </tr>
+        <tr style="background-color: #f9f9f9;">
+            <td style="padding: 6px; font-weight: bold;">release_velocity</td>
+            <td style="padding: 6px;">The velocity value sent when the note is released (key is
+                lifted); often relevant for expressive playing.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div id="result"></div>
+
+<h2>Other tests...</h2>
+<button id="runWasm1">Run kasm_midi_note_offset(MIDI Note C4 (60), +1)</button>
+<button id="runWasm2">Run kasm_midi_note_offset(MIDI Note C4 (60), -12)</button>
+<button id="runWasm3">Run kasm_midi_note_octave_hit(MIDI Note C4 (60), +12)</button>
+
+
+<h2>What You’re Getting</h2>
+<ul>
+    <li>Rust-to-WASM compilation pipeline: Write high-performance MIDI algorithms in Rust, deploy as Max4Live devices</li>
+    <li>MIDI abstraction layer: Clean APIs for notes, velocity, CC messages, timing</li>
+    <li>Build tools & templates: Go from Rust code to working M4L device</li>
+    <li>Web browser WebMIDI test harness: Run and hear your Rust WebAssembly in Chrome/Firefox/Safari/Edge</li>
+    <li>Full example implementations: Emanator plugin with 15 algorithms</li>
+</ul>
+<h2>Example Devices & Features</h2>
+<ul>
+    <li>MIDI output version: Sends MIDI data to Max4Live midiout</li>
+    <li>Ableton MIDI Generator: Creates Note dictionary objects</li>
+    <li>MIDI Transformation: Adapts existing Note dictionary objects</li>
+    <li>Continual musical key & chord detection</li>
+    <li>Live note sequence detection for triggering scene changes, DMX lighting, etc.</li>
+    <li>Virtual tape loop buffering, replay, overlay harmony/counterpoint</li>
+</ul>
+<h2>Why You Want This</h2>
+<ul>
+    <li><strong>Performance:</strong> Rust’s memory safety and zero-cost abstractions</li>
+    <li><strong>Modern Development:</strong> Write complex MIDI algorithms in a systems language</li>
+    <li><strong>Scalability:</strong> Build anything from simple utilities to complex algorithmic composers</li>
+    <li><strong>Reference Implementation:</strong> Emanator Max4Live device source included</li>
+</ul>
+<h2>Included Plugins & Algorithms</h2>
+<ul>
+    <li>Ableton MIDI Generator, MIDI Transformation, MIDI rack/plugin examples</li>
+    <li>Mathematical algorithms: Markov chains, fractals, Fibonacci sequences</li>
+    <li>Complex velocity & pan modulation</li>
+    <li>Build scripts, compilation tools, device templates, integration code</li>
+    <li>Documentation for extending the framework</li>
+    <li>WebMIDI test harness</li>
+</ul>
+<h2>Download Max4Live Device Plugins</h2>
+<ul>
+    <li><a href="kasm/Kasm Counterpoint.amxd" download>Kasm Counterpoint.amxd</a></li>
+    <li><a href="kasm/Kasm Emanator Generator.amxd" download>Kasm Emanator Generator.amxd</a></li>
+    <li><a href="kasm/Kasm Emanator Transformation.amxd" download>Kasm Emanator Transformation.amxd</a></li>
+    <li><a href="kasm/Kasm Emanator.amxd" download>Kasm Emanator.amxd</a></li>
+    <li><a href="kasm/Kasm Krumhansl.amxd" download>Kasm Krumhansl.amxd</a></li>
+    <li><a href="kasm/Kasm Rust WASM.amxd" download>Kasm Rust WASM.amxd</a></li>
+    <li><a href="kasm/Kasm Triggaz.amxd" download>Kasm Triggaz.amxd</a></li>
+</ul>
+
+
+<h2>Who Is This For?</h2>
+<p>Developers who want to build professional MIDI tools without the limitations of traditional Max4Live development. Whether you’re creating commercial plugins or experimental instruments, Kasm handles the Rust-to-Live integration complexity so you can focus on your algorithms.</p>
+<h2>Requirements</h2>
+<ul>
+    <li>Ableton Live 12.2 (or later) and Max4Live (uses new V8 engine)</li>
+</ul>
+<h2>What You'll Learn</h2>
+<ul>
+    <li>Passing inlet parameters from JS to Rust</li>
+    <li>Rust code calling Max4Live outlet functions</li>
+    <li>Max console debug post() messages from Rust</li>
+    <li>Manipulating live notes on-the-fly with Rust/WebAssembly</li>
+</ul>
+<h2>How Does Kasm Work?</h2>
+<ol>
+    <li><strong>Rust Code Layer:</strong> MIDI/Audio DSP logic compiled as WebAssembly</li>
+    <li><strong>JavaScript Bridge Layer:</strong> Loads WASM bytecode, sets up parameter marshalling for Max4Live</li>
+    <li><strong>Max4Live Layer:</strong> V8 JavaScript engine with example .amxd device showing two-way communication with Rust</li>
+</ol>
+<ul>
+    <li>Base64 Decoding: Custom atob() for Max4Live</li>
+    <li>WASM Compilation: Direct compilation from decoded binary</li>
+    <li>Function Export: Caching mapped Rust functions for JS</li>
+    <li>getStringFromWasm: Convert WASM memory strings to JS strings</li>
+</ul>
+<h2>Easy Build & Update</h2>
+<ul>
+    <li>npm install</li>
+    <li>npm run build</li>
+    <li>Copy kasm_WASM_rust_obs.js into any 'v8' Max4Live object</li>
+</ul>
+<h2>Hear Kasm in Action</h2>
+<ul>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-with-diva" style="color:#61dafb;">Emanator Algo #1 playing u-he Diva (HS Hippie Chimes patch)</a></li>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-algorithm-2-with" style="color:#61dafb;">Emanator Algo #2 playing Kontak Stradivari “Vesuvius” Violin</a></li>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-rust-algorithm-13-piano" style="color:#61dafb;">Emanator Algo #13 playing VSL Synchron Bösendorfer Imperial</a></li>
+</ul>
+<h2>Try Kasm for Free</h2>
+<p><a href="https://maxforlive.com/library/device/12948/kasm-emanator" style="color:#61dafb; font-weight:bold;">Download the free Emanator plugin</a></p>
+
+
+<p>KASM MIDI FX Plugins: <a href="https://github.com/PyrmontBrewery/kasm_ableton">GitHub</a></p>
+<table>
+    <tr>
+        <td>Web MIDI</td>
+        <td><a href="https://www.w3.org/TR/webmidi/">W3C</a></td>
+    </tr>
+    <tr>
+        <td>Avid Pro Tools</td>
+        <td>AAX</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>Logic Pro</td>
+        <td>AUv3</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>Ableton 12 Live Suite</td>
+        <td>AMXD (Max4Live)<br/></td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>Cubase/Unify</td>
+        <td>VST3</td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>WebXR VR MIDI Controller</td>
+        <td><a href="https://www.w3.org/TR/webxr">W3C</a></td>
+    </tr>
+
+</table>
+
+<br/><br/>
+<br/><br/>
+&copy; 2007 Pyrmont Brewery
+<br/><br/>
+0 OK, 0:1
+<br/>
+
+</body>
+
+
+<script>
+    let inlet = 0;
+
+    // Global timeout variables for debouncing
+    let autoTransformTimeout;
+    let autoPlayTimeout;
+
+    function post(msg) {
+        console.log(`post: ${msg}`);
+    }
+
+    function outlet(index, msg) {
+        console.log(`outlet: ${index} ` + msg);
+
+        if (index === 3) {
+            const chordKeyDisplay = document.getElementById('chordKeyDetection');
+            if (chordKeyDisplay) {
+                chordKeyDisplay.innerHTML = `${msg}`;
+            }
+        }
+        if (index === 4) {
+            const patternDisplay = document.getElementById('patternDetection');
+            if (patternDisplay) {
+                patternDisplay.innerHTML = `${msg}`;
+            }
+        }
+        if (index === 5) {
+            const looperDisplay = document.getElementById('loopDetection');
+            if (looperDisplay) {
+                looperDisplay.innerHTML = `${msg}`;
+            }
+
+            updateMidiClipView(msg);
+        }
+    }
+
+    function run_test1() {
+        inlet = 0;
+        msg_int(60);
+        inlet = 1;
+        msg_int(1);
+        const result = kasm_rust.kasm_midi_note_offset(inlet_0, inlet_1);
+        document.getElementById('result').textContent = "Result (C4 (60) kasm_midi_note_offset up 1 semitone): " + result + " (should be 61)";
+    }
+
+    function run_test2() {
+        inlet = 0;
+        msg_int(60);
+        inlet = 1;
+        msg_int(-12);
+        const result = kasm_rust.kasm_midi_note_offset(inlet_0, inlet_1);
+        document.getElementById('result').textContent = "Result (C4 (60) kasm_midi_note_offset down 1 octave): " + result + " (should be 48)";
+    }
+
+    function run_test3() {
+        inlet = 0;
+        msg_int(60);
+        inlet = 1;
+        msg_int(12);
+        const result = kasm_rust.kasm_midi_note_octave_hit(inlet_0, inlet_1);
+        document.getElementById('result').textContent = "Result (C4 (60) kasm_midi_note_octave_hit): " + result + " (should be 84)";
+    }
+
+    document.getElementById('runWasm1').addEventListener('click', run_test1);
+    document.getElementById('runWasm2').addEventListener('click', run_test2);
+    document.getElementById('runWasm3').addEventListener('click', run_test3);
+
+    let midikeys_note = 60; // Default to C4 range 0-127
+    let midikeys_semitone = 0; // Default to middle octave -120 to +120
+    let midikeys_velocity = 100; // Default velocity range 0-127
+    let activeKeys = new Set(); // Track currently pressed keys to avoid repeat
+    let encodersChanged = true;
+
+    // Keyboard mapping: key -> MIDI note offset from C (60)
+    const keyboardMapping = {
+        'a': 0,   // C
+        'w': 1,   // C#
+        's': 2,   // D
+        'e': 3,   // D#
+        'd': 4,   // E
+        'f': 5,   // F
+        't': 6,   // F#
+        'g': 7,   // G
+        'y': 8,   // G#
+        'h': 9,   // A
+        'u': 10,  // A#
+        'j': 11,  // B
+        'k': 12,  // C + 12
+        'o': 13,  // C# + 12
+        'l': 14,  // D + 12
+        'p': 15,  // D# + 12
+        ';': 16,  // E
+        '\'': 17  // F
+    };
+
+    function run_test_keyboard() {
+        inlet = 0;
+        msg_int(midikeys_note);
+        inlet = 2;
+        msg_int(midikeys_velocity);
+        if (encodersChanged) {
+            encodersChanged = false;
+            inlet = 1;
+            msg_int(midikeys_semitone);
+            inlet = 3;
+            msg_int(document.getElementById('enc1').value);
+            inlet = 4;
+            msg_int(document.getElementById('enc2').value);
+            inlet = 5;
+            msg_int(document.getElementById('emanator').value);
+        }
+    }
+
+    // Keyboard event handlers
+    function handleKeyDown(event) {
+        const key = event.key.toLowerCase();
+
+        // Prevent repeat events when key is held down
+        if (activeKeys.has(key)) {
+            return;
+        }
+        activeKeys.add(key);
+
+        // Handle note keys (a-j with some letters for chromatic scale)
+        if (keyboardMapping.hasOwnProperty(key)) {
+            midikeys_note = 60 + keyboardMapping[key] + midikeys_semitone;
+            midikeys_note = Math.max(0, Math.min(127, midikeys_note)); // Clamp to MIDI range
+
+            // Send note with current velocity
+            midikeys_velocity = Math.max(1, parseInt(document.getElementById('velocity').value) || 100);
+            processNoteEvent(midikeys_note, midikeys_velocity);
+
+            // Also send MIDI if device is connected
+            if (currentMidiOutput) {
+                const channel = parseInt(document.getElementById('midiChannel').value) || 0;
+                sendNoteOn(midikeys_note, midikeys_velocity, channel);
+            }
+
+            console.log(`Key ${key} pressed: MIDI note ${midikeys_note} (velocity ${midikeys_velocity})`);
+            return;
+        }
+
+        // Handle octave changes (z = down, x = up)
+        if (key === 'z') {
+            encodersChanged = true;
+            midikeys_semitone = Math.max(-120, midikeys_semitone - 12);
+            document.getElementById('semitone').value = midikeys_semitone;
+            updateDial('semitone', midikeys_semitone);
+            console.log(`Octave down: semitone offset = ${midikeys_semitone}`);
+            return;
+        }
+
+        if (key === 'x') {
+            encodersChanged = true;
+            midikeys_semitone = Math.min(120, midikeys_semitone + 12);
+            document.getElementById('semitone').value = midikeys_semitone;
+            updateDial('semitone', midikeys_semitone);
+            console.log(`Octave up: semitone offset = ${midikeys_semitone}`);
+            return;
+        }
+
+        // Handle velocity changes (c = down, v = up)
+        if (key === 'c') {
+            encodersChanged = true;
+            let currentVelocity = parseInt(document.getElementById('velocity').value) || 100;
+            currentVelocity = Math.max(1, currentVelocity - 10);
+            document.getElementById('velocity').value = currentVelocity;
+            updateDial('velocity', currentVelocity);
+            console.log(`Velocity down: ${currentVelocity}`);
+            return;
+        }
+
+        if (key === 'v') {
+            encodersChanged = true;
+            let currentVelocity = parseInt(document.getElementById('velocity').value) || 100;
+            currentVelocity = Math.min(127, currentVelocity + 10);
+            document.getElementById('velocity').value = currentVelocity;
+            updateDial('velocity', currentVelocity);
+            console.log(`Velocity up: ${currentVelocity}`);
+            return;
+        }
+    }
+
+    function handleKeyUp(event) {
+        const key = event.key.toLowerCase();
+
+        // Remove from active keys set
+        activeKeys.delete(key);
+
+        // Handle note keys - send note off
+        if (keyboardMapping.hasOwnProperty(key)) {
+            const noteToStop = 60 + keyboardMapping[key] + midikeys_semitone;
+            const clampedNote = Math.max(0, Math.min(127, noteToStop));
+
+            // Send note off with velocity 0
+            midikeys_velocity = 0;
+            midikeys_note = clampedNote;
+            run_test_keyboard();
+
+            // Also send MIDI note off if device is connected
+            if (currentMidiOutput) {
+                const channel = parseInt(document.getElementById('midiChannel').value) || 0;
+                sendNoteOff(clampedNote, channel);
+            }
+
+            console.log(`Key ${key} released: MIDI note ${clampedNote} off`);
+        }
+    }
+
+    // Add keyboard event listeners
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
+
+    // Prevent default browser behavior for our mapped keys
+    document.addEventListener('keydown', function (event) {
+        const key = event.key.toLowerCase();
+        if (keyboardMapping.hasOwnProperty(key) || ['z', 'x', 'c', 'v'].includes(key)) {
+            event.preventDefault();
+        }
+    });
+
+    // Add visual feedback for keyboard mapping
+    function displayKeyboardHelp() {
+        const helpText = `
+Keyboard Controls:
+Notes: A=C, W=C#, S=D, E=D#, D=E, F=F, T=F#, G=G, Y=G#, H=A, U=A#, J=B
+Octave: Z=down (-12), X=up (+12)
+Velocity: C=down (-10), V=up (+10)
+        `;
+        console.log(helpText);
+    }
+
+    // Display help on page load
+    displayKeyboardHelp();
+
+    // Dynamic kasm_transform_notes Tester
+    document.getElementById('transformTest').addEventListener('click', function () {
+        const inputJson = document.getElementById('inputJson').value;
+        const rateMs = parseInt(document.getElementById('rateMs').value);
+        const note = parseInt(document.getElementById('note').value);
+        const semitone = parseInt(document.getElementById('semitone').value);
+        const velocity = parseInt(document.getElementById('velocity').value);
+        const enc1 = parseInt(document.getElementById('enc1').value);
+        const enc2 = parseInt(document.getElementById('enc2').value);
+        const emanator = parseInt(document.getElementById('emanator').value);
+
+        let inputNotes;
+        try {
+            inputNotes = JSON.parse(inputJson);
+        } catch (e) {
+            document.getElementById('outputJson').value = "Invalid JSON input: " + e.message;
+            return;
+        }
+
+        try {
+            // kasm_transform_notes is synchronous, not async
+            const result = kasm_rust.kasm_transform_notes(inputNotes, rateMs, note, semitone, velocity, enc1, enc2, emanator);
+            document.getElementById('outputJson').value = JSON.stringify(result, null, 2);
+
+            // Update MIDI clip visualization
+            drawMidiClip(result);
+        } catch (err) {
+            document.getElementById('outputJson').value = "Error: " + err.message;
+            clearMidiClip();
+        }
+    });
+
+    // Load example JSONs into the input textarea based on selection and auto-transform
+    function loadSelectedExample() {
+        // If this is being called from textarea input, don't overwrite the content
+        if (event && event.target && event.target.id === 'inputJson') {
+            // Just trigger auto-transform when textarea is edited
+            return;
+        }
+
+        const selectedExample = document.getElementById('exampleSelect').value;
+        let exampleJson;
+
+        switch (selectedExample) {
+            case 'singleNote':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 60,
+                            start_time: 0.0,
+                            duration: 1.0,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'send2notes':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 64,
+                            start_time: 0.25,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 69,
+                            start_time: 0.75,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'send3notes':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 64,
+                            start_time: 0.25,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 69,
+                            start_time: 0.75,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 65,
+                            start_time: 1.25,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'twinkle_twinkle':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            "note_id": 1,
+                            "pitch": 72,
+                            "start_time": 0,
+                            "duration": 0.845624947968698,
+                            "velocity": 53,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 89
+                        }, {
+                            "note_id": 2,
+                            "pitch": 72,
+                            "start_time": 0.996750124875125,
+                            "duration": 0.855124823093573,
+                            "velocity": 62,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 72
+                        }, {
+                            "note_id": 3,
+                            "pitch": 79,
+                            "start_time": 1.846999875124875,
+                            "duration": 0.691458541458541,
+                            "velocity": 52,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 87
+                        }, {
+                            "note_id": 4,
+                            "pitch": 79,
+                            "start_time": 2.858000072843823,
+                            "duration": 0.682874937562438,
+                            "velocity": 52,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 80
+                        }, {
+                            "note_id": 5,
+                            "pitch": 81,
+                            "start_time": 3.863874927156177,
+                            "duration": 0.732875197718948,
+                            "velocity": 53,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 76
+                        }, {
+                            "note_id": 6,
+                            "pitch": 81,
+                            "start_time": 4.815291739510489,
+                            "duration": 0.682749802281052,
+                            "velocity": 75,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 83
+                        }, {
+                            "note_id": 7,
+                            "pitch": 79,
+                            "start_time": 5.866833426989677,
+                            "duration": 1.967291562604063,
+                            "velocity": 73,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 87
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'three_blind_mice':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {"note_id":1,"pitch":76,"start_time":0.320916583416583,"duration":0.938000020812521,"velocity":81,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":87},{"note_id":2,"pitch":74,"start_time":1.423166677072927,"duration":0.682833312520812,"velocity":74,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":84},{"note_id":3,"pitch":72,"start_time":2.457874937562437,"duration":1.515250114468864,"velocity":73,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":91},{"note_id":4,"pitch":76,"start_time":4.64375,"duration":0.665999885531136,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":89},{"note_id":5,"pitch":74,"start_time":5.741249895937396,"duration":0.783500093656344,"velocity":88,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":69},{"note_id":6,"pitch":72,"start_time":6.772291770729271,"duration":1.326958198051948,"velocity":78,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":84}
+                    ]
+                }, null, 2);
+                break;
+            case 'ferer_jaques':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {"note_id":1,"pitch":72,"start_time":0,"duration":1.082708437395937,"velocity":90,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":88},{"note_id":2,"pitch":74,"start_time":0.972999916749917,"duration":0.973208302114552,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":82},{"note_id":3,"pitch":76,"start_time":1.861999979187479,"duration":1.056750020812521,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":76},{"note_id":4,"pitch":72,"start_time":2.876208426989677,"duration":0.201124916749917,"velocity":82,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":97},{"note_id":5,"pitch":72,"start_time":3.936749968781219,"duration":1.022375020812521,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":79},{"note_id":6,"pitch":74,"start_time":4.886833218864469,"duration":1.003166885198135,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":90},{"note_id":7,"pitch":76,"start_time":5.826374927156177,"duration":1.05641676032301,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":86},{"note_id":8,"pitch":72,"start_time":6.848583447802198,"duration":0.318874875124875,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":90}
+                    ]
+                }, null, 2);
+                break;
+            case 'mary_little_lamb':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {"note_id":1,"pitch":52,"start_time":1.154499927156177,"duration":0.616875052031302,"velocity":97,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":91},{"note_id":2,"pitch":50,"start_time":1.744833291708292,"duration":0.588624916749917,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":83},{"note_id":3,"pitch":48,"start_time":2.303499885531135,"duration":0.566958562271062,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":77},{"note_id":4,"pitch":50,"start_time":2.836458333333333,"duration":0.561458333333333,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":78},{"note_id":5,"pitch":52,"start_time":3.407791687479187,"duration":0.260041520979021,"velocity":94,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":83},{"note_id":6,"pitch":52,"start_time":3.907208416583416,"duration":0.23099998959374,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":91},{"note_id":7,"pitch":52,"start_time":4.440250114468864,"duration":0.419208135614386,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":96}
+                    ]
+                }, null, 2);
+                break;
+            case 'happy_birthday':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {"note_id":1,"pitch":60,"start_time":1.223791573010323,"duration":0.24974998959374,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":2,"pitch":60,"start_time":1.940333364552115,"duration":0.24095826048951,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":3,"pitch":62,"start_time":2.727333343739594,"duration":0.204833447802198,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":4,"pitch":60,"start_time":3.998291552197802,"duration":0.270333572677323,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":5,"pitch":65,"start_time":5.151583312520812,"duration":0.302916614635365,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":6,"pitch":64,"start_time":6.423999958374958,"duration":0.202416593822844,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64}
+                    ]
+                }, null, 2);
+                break;
+            case 'happy_birthday_legatto':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {"notes":[{"note_id":7,"pitch":96,"start_time":0,"duration":0.347999916749917,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":80},{"note_id":8,"pitch":96,"start_time":0.549499979187479,"duration":0.846833374958375,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":83},{"note_id":9,"pitch":98,"start_time":1.286291573010323,"duration":1.032208416583417,"velocity":119,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":82},{"note_id":10,"pitch":96,"start_time":2.279999947968698,"duration":0.81241674991675,"velocity":111,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":46},{"note_id":11,"pitch":101,"start_time":3.207124906343656,"duration":0.674666739510489,"velocity":121,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":87},{"note_id":12,"pitch":100,"start_time":4.183500353812854,"duration":1.005083198051948,"velocity":127,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":93}]}
+                    ]
+                }, null, 2);
+                break;
+            case 'baa_baa':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {"note_id":1,"pitch":72,"start_time":0.08470826048951,"duration":0.812625135281385,"velocity":82,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":94},{"note_id":2,"pitch":72,"start_time":1.053083374958375,"duration":0.733583343739594,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":83},{"note_id":3,"pitch":79,"start_time":1.773208302114552,"duration":0.905791604229104,"velocity":74,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":4,"pitch":79,"start_time":2.678999906343656,"duration":0.922208520646021,"velocity":48,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":81},{"note_id":5,"pitch":81,"start_time":3.5625,"duration":0.613916552197802,"velocity":111,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":67},{"note_id":6,"pitch":83,"start_time":3.945791708291708,"duration":0.61283326048951,"velocity":94,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":79},{"note_id":7,"pitch":84,"start_time":4.457708437395937,"duration":0.373374802281052,"velocity":107,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":94},{"note_id":8,"pitch":81,"start_time":4.836166697885448,"duration":0.524583229270729,"velocity":107,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":92},{"note_id":9,"pitch":79,"start_time":5.29695825008325,"duration":1.15583348942724,"velocity":103,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":87},{"note_id":10,"pitch":77,"start_time":7.110875062437563,"duration":0.582541677072927,"velocity":102,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":92},{"note_id":11,"pitch":77,"start_time":7.966208270895771,"duration":0.670208437395937,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":87},{"note_id":12,"pitch":76,"start_time":8.804499927156177,"duration":0.561708343739594,"velocity":97,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":85},{"note_id":13,"pitch":76,"start_time":9.584333374958375,"duration":0.674416729104229,"velocity":87,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":81},{"note_id":14,"pitch":74,"start_time":10.426791697885449,"duration":0.76233323967699,"velocity":82,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":90},{"note_id":15,"pitch":74,"start_time":11.374125093656344,"duration":0.716499906343656,"velocity":83,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":87},{"note_id":16,"pitch":72,"start_time":12.383958229270728,"duration":1.711958354145854,"velocity":75,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":93}
+                    ]
+                }, null, 2);
+                break;
+            case 'chord':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 60,
+                            start_time: 0.0,
+                            duration: 1.0,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 64,
+                            start_time: 0.0,
+                            duration: 1.0,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 67,
+                            start_time: 0.0,
+                            duration: 1.0,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'arpeggio':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 60,
+                            start_time: 0.0,
+                            duration: 0.5,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 64,
+                            start_time: 0.5,
+                            duration: 0.5,
+                            velocity: 90,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 67,
+                            start_time: 1.0,
+                            duration: 0.5,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 4,
+                            pitch: 72,
+                            start_time: 1.5,
+                            duration: 0.5,
+                            velocity: 110,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'rhythmPattern':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 60,
+                            start_time: 0.0,
+                            duration: 0.25,
+                            velocity: 120,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 60,
+                            start_time: 0.5,
+                            duration: 0.125,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 0.8,
+                            velocity_deviation: 10,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 60,
+                            start_time: 0.75,
+                            duration: 0.125,
+                            velocity: 60,
+                            mute: 0,
+                            probability: 0.6,
+                            velocity_deviation: 5,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 4,
+                            pitch: 60,
+                            start_time: 1.0,
+                            duration: 0.5,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'pentatonicScale':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 60,
+                            start_time: 0.0,
+                            duration: 0.5,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 62,
+                            start_time: 0.5,
+                            duration: 0.5,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 64,
+                            start_time: 1.0,
+                            duration: 0.5,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 4,
+                            pitch: 67,
+                            start_time: 1.5,
+                            duration: 0.5,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 5,
+                            pitch: 69,
+                            start_time: 2.0,
+                            duration: 0.5,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'complexChord':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 60,
+                            start_time: 0.0,
+                            duration: 2.0,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 64,
+                            start_time: 0.0,
+                            duration: 2.0,
+                            velocity: 95,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 67,
+                            start_time: 0.0,
+                            duration: 2.0,
+                            velocity: 90,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 4,
+                            pitch: 71,
+                            start_time: 0.0,
+                            duration: 2.0,
+                            velocity: 85,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 5,
+                            pitch: 74,
+                            start_time: 0.0,
+                            duration: 2.0,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 6,
+                            pitch: 78,
+                            start_time: 0.0,
+                            duration: 2.0,
+                            velocity: 75,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 7,
+                            pitch: 81,
+                            start_time: 0.0,
+                            duration: 2.0,
+                            velocity: 70,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'bassline':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 48,
+                            start_time: 0.0,
+                            duration: 0.5,
+                            velocity: 110,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 50,
+                            start_time: 0.5,
+                            duration: 0.5,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 53,
+                            start_time: 1.0,
+                            duration: 0.5,
+                            velocity: 105,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 4,
+                            pitch: 55,
+                            start_time: 1.5,
+                            duration: 0.5,
+                            velocity: 95,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 5,
+                            pitch: 58,
+                            start_time: 2.0,
+                            duration: 0.5,
+                            velocity: 110,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 6,
+                            pitch: 60,
+                            start_time: 2.5,
+                            duration: 0.5,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 7,
+                            pitch: 63,
+                            start_time: 3.0,
+                            duration: 0.5,
+                            velocity: 105,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 8,
+                            pitch: 65,
+                            start_time: 3.5,
+                            duration: 0.5,
+                            velocity: 95,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'melodicSequence':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 60,
+                            start_time: 0.0,
+                            duration: 0.4,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 62,
+                            start_time: 0.4,
+                            duration: 0.4,
+                            velocity: 105,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 64,
+                            start_time: 0.8,
+                            duration: 0.4,
+                            velocity: 110,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 4,
+                            pitch: 65,
+                            start_time: 1.2,
+                            duration: 0.4,
+                            velocity: 115,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 5,
+                            pitch: 67,
+                            start_time: 1.6,
+                            duration: 0.4,
+                            velocity: 120,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 6,
+                            pitch: 69,
+                            start_time: 2.0,
+                            duration: 0.4,
+                            velocity: 115,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 7,
+                            pitch: 71,
+                            start_time: 2.4,
+                            duration: 0.4,
+                            velocity: 110,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 8,
+                            pitch: 72,
+                            start_time: 2.8,
+                            duration: 0.4,
+                            velocity: 105,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 9,
+                            pitch: 74,
+                            start_time: 3.2,
+                            duration: 0.4,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 10,
+                            pitch: 76,
+                            start_time: 3.6,
+                            duration: 0.4,
+                            velocity: 95,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'polyrhythm':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 60,
+                            start_time: 0.0,
+                            duration: 0.33,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 67,
+                            start_time: 0.0,
+                            duration: 0.5,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 60,
+                            start_time: 0.33,
+                            duration: 0.33,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 4,
+                            pitch: 67,
+                            start_time: 0.5,
+                            duration: 0.5,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 5,
+                            pitch: 60,
+                            start_time: 0.66,
+                            duration: 0.33,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 6,
+                            pitch: 67,
+                            start_time: 1.0,
+                            duration: 0.5,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 7,
+                            pitch: 60,
+                            start_time: 1.0,
+                            duration: 0.33,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 8,
+                            pitch: 60,
+                            start_time: 1.33,
+                            duration: 0.33,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 9,
+                            pitch: 67,
+                            start_time: 1.5,
+                            duration: 0.5,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 10,
+                            pitch: 60,
+                            start_time: 1.66,
+                            duration: 0.33,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 11,
+                            pitch: 67,
+                            start_time: 2.0,
+                            duration: 0.5,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 12,
+                            pitch: 60,
+                            start_time: 2.0,
+                            duration: 0.33,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'chromatic':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 60,
+                            start_time: 0.0,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 61,
+                            start_time: 0.25,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 62,
+                            start_time: 0.5,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 4,
+                            pitch: 63,
+                            start_time: 0.75,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 5,
+                            pitch: 64,
+                            start_time: 1.0,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 5,
+                            pitch: 65,
+                            start_time: 1.25,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 7,
+                            pitch: 66,
+                            start_time: 1.5,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 8,
+                            pitch: 67,
+                            start_time: 1.75,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 9,
+                            pitch: 68,
+                            start_time: 2.0,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 10,
+                            pitch: 69,
+                            start_time: 2.25,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 11,
+                            pitch: 70,
+                            start_time: 2.5,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 12,
+                            pitch: 71,
+                            start_time: 2.75,
+                            duration: 0.25,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'jazzChordProgression':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 60,
+                            start_time: 0.0,
+                            duration: 1.0,
+                            velocity: 90,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 64,
+                            start_time: 0.0,
+                            duration: 1.0,
+                            velocity: 85,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 67,
+                            start_time: 0.0,
+                            duration: 1.0,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 4,
+                            pitch: 70,
+                            start_time: 0.0,
+                            duration: 1.0,
+                            velocity: 75,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 5,
+                            pitch: 65,
+                            start_time: 1.0,
+                            duration: 1.0,
+                            velocity: 90,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 6,
+                            pitch: 69,
+                            start_time: 1.0,
+                            duration: 1.0,
+                            velocity: 85,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 7,
+                            pitch: 72,
+                            start_time: 1.0,
+                            duration: 1.0,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 8,
+                            pitch: 75,
+                            start_time: 1.0,
+                            duration: 1.0,
+                            velocity: 75,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 9,
+                            pitch: 62,
+                            start_time: 2.0,
+                            duration: 1.0,
+                            velocity: 90,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 10,
+                            pitch: 66,
+                            start_time: 2.0,
+                            duration: 1.0,
+                            velocity: 85,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 11,
+                            pitch: 69,
+                            start_time: 2.0,
+                            duration: 1.0,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 12,
+                            pitch: 73,
+                            start_time: 2.0,
+                            duration: 1.0,
+                            velocity: 75,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 13,
+                            pitch: 67,
+                            start_time: 3.0,
+                            duration: 1.0,
+                            velocity: 90,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 14,
+                            pitch: 71,
+                            start_time: 3.0,
+                            duration: 1.0,
+                            velocity: 85,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 15,
+                            pitch: 74,
+                            start_time: 3.0,
+                            duration: 1.0,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 16,
+                            pitch: 77,
+                            start_time: 3.0,
+                            duration: 1.0,
+                            velocity: 75,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            case 'complexArpeggio':
+                exampleJson = JSON.stringify({
+                    notes: [
+                        {
+                            note_id: 1,
+                            pitch: 48,
+                            start_time: 0.0,
+                            duration: 0.125,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 2,
+                            pitch: 52,
+                            start_time: 0.125,
+                            duration: 0.125,
+                            velocity: 95,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 3,
+                            pitch: 55,
+                            start_time: 0.25,
+                            duration: 0.125,
+                            velocity: 90,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 4,
+                            pitch: 60,
+                            start_time: 0.375,
+                            duration: 0.125,
+                            velocity: 85,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 5,
+                            pitch: 64,
+                            start_time: 0.5,
+                            duration: 0.125,
+                            velocity: 80,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 6,
+                            pitch: 67,
+                            start_time: 0.625,
+                            duration: 0.125,
+                            velocity: 85,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 7,
+                            pitch: 72,
+                            start_time: 0.75,
+                            duration: 0.125,
+                            velocity: 90,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 8,
+                            pitch: 76,
+                            start_time: 0.875,
+                            duration: 0.125,
+                            velocity: 95,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 9,
+                            pitch: 79,
+                            start_time: 1.0,
+                            duration: 0.125,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 10,
+                            pitch: 84,
+                            start_time: 1.125,
+                            duration: 0.125,
+                            velocity: 105,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 11,
+                            pitch: 88,
+                            start_time: 1.25,
+                            duration: 0.125,
+                            velocity: 110,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 12,
+                            pitch: 91,
+                            start_time: 1.375,
+                            duration: 0.125,
+                            velocity: 115,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 13,
+                            pitch: 96,
+                            start_time: 1.5,
+                            duration: 0.125,
+                            velocity: 120,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 14,
+                            pitch: 91,
+                            start_time: 1.625,
+                            duration: 0.125,
+                            velocity: 115,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 15,
+                            pitch: 88,
+                            start_time: 1.75,
+                            duration: 0.125,
+                            velocity: 110,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 16,
+                            pitch: 84,
+                            start_time: 1.875,
+                            duration: 0.125,
+                            velocity: 105,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 17,
+                            pitch: 79,
+                            start_time: 2.0,
+                            duration: 0.125,
+                            velocity: 100,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 18,
+                            pitch: 76,
+                            start_time: 2.125,
+                            duration: 0.125,
+                            velocity: 95,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 19,
+                            pitch: 72,
+                            start_time: 2.25,
+                            duration: 0.125,
+                            velocity: 90,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        },
+                        {
+                            note_id: 20,
+                            pitch: 67,
+                            start_time: 2.375,
+                            duration: 0.125,
+                            velocity: 85,
+                            mute: 0,
+                            probability: 1,
+                            velocity_deviation: 0,
+                            release_velocity: 64
+                        }
+                    ]
+                }, null, 2);
+                break;
+            default:
+                exampleJson = '';
+        }
+
+        document.getElementById('inputJson').value = exampleJson;
+
+        // Auto-transform after loading the example
+        autoTransform();
+    }
+
+    // Load the default "Send 3 Notes" example when the page loads
+    function loadDefaultExample() {
+        const defaultJson = JSON.stringify({
+            "notes": [
+                {
+                    "note_id": 1,
+                    "pitch": 64,
+                    "start_time": 0.25,
+                    "duration": 0.25,
+                    "velocity": 100,
+                    "mute": 0,
+                    "probability": 1,
+                    "velocity_deviation": 0,
+                    "release_velocity": 64
+                }
+            ]
+        }, null, 2);
+        document.getElementById('inputJson').value = defaultJson;
+    }
+
+    // Initialize application with saved settings or defaults
+    function initializeApplication() {
+        // Try to load saved settings first
+        const settingsLoaded = loadSettings();
+
+        // If no saved settings, load default example
+        if (!settingsLoaded) {
+            loadDefaultExample();
+        }
+
+        // Initialize other components
+        loadbang();
+        autoTransform();
+        initializeDials();
+        initializeNoteDisplay();
+    }
+
+    // Initialize application when page loads
+    initializeApplication();
+
+    // MIDI Clip Visualization Functions
+    function drawMidiClip(notesData) {
+        const canvas = document.getElementById('midiCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Canvas dimensions
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Get notes array
+        const notes = notesData.notes || [];
+
+        // If no notes, show empty state
+        if (notes.length === 0) {
+            clearMidiClip();
+            return;
+        }
+
+        // Auto-zoom: Calculate actual note range from the data
+        let minNoteInData = 127;
+        let maxNoteInData = 0;
+        let maxTime = 0;
+
+        notes.forEach(note => {
+            if (note.pitch < minNoteInData) minNoteInData = note.pitch;
+            if (note.pitch > maxNoteInData) maxNoteInData = note.pitch;
+
+            const endTime = note.start_time + note.duration;
+            if (endTime > maxTime) maxTime = endTime;
+        });
+
+        // Add padding around the note range for better visibility
+        const notePadding = Math.max(6, Math.ceil((maxNoteInData - minNoteInData) * 0.1)); // 10% padding or minimum 6 semitones
+        const minNote = Math.max(0, minNoteInData - notePadding);
+        const maxNote = Math.min(127, maxNoteInData + notePadding);
+        const noteRange = maxNote - minNote;
+
+        // Add some padding to the time range
+        maxTime = Math.max(maxTime, 2.0);
+        const timePadding = maxTime * 0.1; // 10% padding
+        maxTime += timePadding;
+
+        // Draw grid lines
+        drawGrid(ctx, width, height, maxTime, minNote, maxNote);
+
+        // Draw notes
+        notes.forEach(note => {
+            drawNote(ctx, note, width, height, maxTime, minNote, noteRange);
+        });
+
+        // Draw labels
+        drawLabels(ctx, width, height, maxTime, minNote, maxNote);
+
+        // Display zoom info
+        drawZoomInfo(ctx, width, height, minNote, maxNote, minNoteInData, maxNoteInData);
+    }
+
+    function drawGrid(ctx, width, height, maxTime, minNote, maxNote) {
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 1;
+
+        // Vertical grid lines (time)
+        const timeStep = 0.25; // Quarter second intervals
+        for (let t = 0; t <= maxTime; t += timeStep) {
+            const x = (t / maxTime) * width;
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+        }
+
+        // Horizontal grid lines (notes)
+        const noteStep = 12; // Octave intervals
+        for (let note = minNote; note <= maxNote; note += noteStep) {
+            const y = height - ((note - minNote) / (maxNote - minNote)) * height;
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+        }
+    }
+
+    function drawNote(ctx, note, width, height, maxTime, minNote, noteRange) {
+        // Calculate position and size
+        const x = (note.start_time / maxTime) * width;
+        const noteWidth = (note.duration / maxTime) * width;
+        const y = height - ((note.pitch - minNote) / noteRange) * height;
+        const noteHeight = height / noteRange * 0.8; // Make notes slightly smaller than full height
+
+        // Color based on velocity - full spectrum from dark blue (0) to red (127)
+        const intensity = note.velocity / 127;
+        const hue = 240 - (intensity * 240); // Dark blue (240°) to red (0°) based on velocity
+        const saturation = 20 + (intensity);
+        const lightness = 10 + (intensity * 50); // Darker for low velocity, brighter for high velocity
+
+        ctx.fillStyle = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+
+        // Draw note rectangle
+        ctx.fillRect(x, y - noteHeight / 2, Math.max(noteWidth, 2), noteHeight);
+
+        // Add border
+        ctx.strokeStyle = `hsl(${hue}, ${saturation}%, ${lightness + 20}%)`;
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x, y - noteHeight / 2, Math.max(noteWidth, 2), noteHeight);
+
+        // Add note info text for longer notes
+        if (noteWidth > 2) {
+            // Helper function to convert MIDI number to note name
+            const getMidiNoteName = (midiNumber) => {
+                const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+                const octave = Math.floor(midiNumber / 12) - 1;
+                const noteIndex = midiNumber % 12;
+                return noteNames[noteIndex] + octave;
+            };
+
+            const noteName = getMidiNoteName(note.pitch);
+
+            ctx.fillStyle = '#fff';
+            ctx.font = '18px Arial';
+
+            // Display note name and MIDI number on first line
+            ctx.fillText(`${noteName} (${note.pitch}) @${note.velocity}`, x + 8, y + 4);
+        }
+    }
+
+    function drawLabels(ctx, width, height, maxTime, minNote, maxNote) {
+        ctx.fillStyle = '#888';
+        ctx.font = '9px Arial';
+
+        // Time labels at bottom
+        const timeStep = 0.5;
+        for (let t = 0; t <= maxTime; t += timeStep) {
+            const x = (t / maxTime) * width;
+            ctx.fillText(`${t.toFixed(1)}s`, x + 2, height - 5);
+        }
+
+        // Enhanced note labels on left - show every octave (C notes) with note name and MIDI number
+        const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+        // Draw octave markers (every 12 notes starting from C)
+        for (let note = 0; note <= maxNote; note += 12) {
+            const y = height - ((note - minNote) / (maxNote - minNote)) * height;
+            const octave = Math.floor(note / 12) - 1;
+            const noteName = noteNames[note % 12];
+
+            // Draw main octave labels
+            ctx.fillStyle = '#aaa';
+            ctx.font = 'bold 10px Arial';
+            ctx.fillText(`${noteName}${octave} (${note})`, 5, y + 4);
+        }
+
+        // Draw additional note markers for better reference (every semitone in visible range)
+        ctx.fillStyle = '#666';
+        ctx.font = '8px Arial';
+
+        // Only show individual note labels if the canvas is tall enough to avoid clutter
+        const noteHeight = height / (maxNote - minNote);
+        if (noteHeight > 8) { // Only show if there's enough space
+            for (let note = minNote; note <= maxNote; note++) {
+                // Skip notes that are already labeled as octave markers
+                if (note % 12 !== 0) {
+                    const y = height - ((note - minNote) / (maxNote - minNote)) * height;
+                    const octave = Math.floor(note / 12) - 1;
+                    const noteName = noteNames[note % 12];
+
+                    // Only show labels for white keys and some important black keys to avoid clutter
+                    const whiteKeys = [0, 2, 4, 5, 7, 9, 11]; // C, D, E, F, G, A, B
+                    const importantBlackKeys = [1, 3, 6, 8, 10]; // C#, D#, F#, G#, A#
+
+                    if (whiteKeys.includes(note % 12)) {
+                        ctx.fillText(`${noteName}${octave} (${note})`, 65, y + 3);
+                    } else if (importantBlackKeys.includes(note % 12) && noteHeight > 12) {
+                        ctx.fillStyle = '#555';
+                        ctx.fillText(`${noteName}${octave} (${note})`, 65, y + 3);
+                        ctx.fillStyle = '#666';
+                    }
+                }
+            }
+        }
+    }
+
+    function clearMidiClip() {
+        const canvas = document.getElementById('midiCanvas');
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw empty state
+        ctx.fillStyle = '#555';
+        ctx.font = '16px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('No notes to display', canvas.width / 2, canvas.height / 2);
+        ctx.textAlign = 'left';
+    }
+
+    function drawZoomInfo(ctx, width, height, minNote, maxNote, minNoteInData, maxNoteInData) {
+        // Display zoom information in the top-right corner
+        ctx.fillStyle = '#999';
+        ctx.font = '11px Arial';
+        ctx.textAlign = 'right';
+
+        const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+        function getMidiNoteName(midiNumber) {
+            const octave = Math.floor(midiNumber / 12) - 1;
+            const noteIndex = midiNumber % 12;
+            return noteNames[noteIndex] + octave;
+        }
+
+        const minNoteName = getMidiNoteName(minNote);
+        const maxNoteName = getMidiNoteName(maxNote);
+        const minDataNoteName = getMidiNoteName(minNoteInData);
+        const maxDataNoteName = getMidiNoteName(maxNoteInData);
+
+        ctx.textAlign = 'left'; // Reset text alignment
+    }
+
+    // Auto-transform function with debouncing
+    function autoTransform() {
+        // Clear any existing timeout to debounce rapid changes
+        clearTimeout(autoTransformTimeout);
+        clearTimeout(autoPlayTimeout);
+
+        // Set a small delay to avoid excessive processing during rapid input changes
+        autoTransformTimeout = setTimeout(() => {
+            const inputJson = document.getElementById('inputJson').value;
+            const rateMs = parseInt(document.getElementById('rateMs').value);
+            const note = parseInt(document.getElementById('note').value);
+            const semitone = parseInt(document.getElementById('semitone').value);
+            const velocity = parseInt(document.getElementById('velocity').value);
+            const enc1 = parseInt(document.getElementById('enc1').value);
+            const enc2 = parseInt(document.getElementById('enc2').value);
+            const emanator = parseInt(document.getElementById('emanator').value);
+
+            let inputNotes;
+            try {
+                inputNotes = JSON.parse(inputJson);
+            } catch (e) {
+                document.getElementById('outputJson').value = "Invalid JSON input: " + e.message;
+                clearMidiClip();
+                return;
+            }
+
+            try {
+                // kasm_transform_notes is synchronous, not async
+                const result = kasm_rust.kasm_transform_notes(inputNotes, rateMs, note, semitone, velocity, enc1, enc2, emanator);
+                document.getElementById('outputJson').value = JSON.stringify(result, null, 2);
+
+                // Update MIDI clip visualization
+                drawMidiClip(result);
+
+                // Auto-play MIDI after half second of no changes
+                autoPlayTimeout = setTimeout(() => {
+                    // Only auto-play if we have a MIDI device selected and valid notes
+                    if (currentMidiOutput && result.notes && result.notes.length > 0) {
+                        playMidiClip();
+                    }
+                }, 500); // 500ms delay
+            } catch (err) {
+                document.getElementById('outputJson').value = "Error: " + err.message;
+                clearMidiClip();
+            }
+        }, 5); // 5ms debounce delay
+    }
+
+    // Update dial visual appearance
+    function updateDial(encId, value) {
+        const numValue = parseInt(value);
+        let percentage, angle, maxValue, minValue;
+
+        // Update note display if this is the note dial
+        if (encId === 'note') {
+            updateNoteDisplay();
+        }
+
+        // Handle different ranges for different controls
+        if (encId === 'rate') {
+            minValue = 50;
+            maxValue = 10000;
+            percentage = (numValue - minValue) / (maxValue - minValue);
+        } else if (encId === 'semitone') {
+            minValue = -127;
+            maxValue = 127;
+            percentage = (numValue - minValue) / (maxValue - minValue);
+        } else {
+            // Default for enc1, enc2, velocity (0-127)
+            minValue = 0;
+            maxValue = 127;
+            percentage = numValue / maxValue;
+        }
+
+        angle = percentage * 270 - 135; // 270 degree range, starting from -135
+        const circumference = 2 * Math.PI * 25; // radius = 25
+        const dashOffset = circumference - (percentage * circumference);
+
+        // Update progress circle
+        const progressCircle = document.getElementById(encId + '-progress');
+        if (progressCircle) {
+            progressCircle.style.strokeDashoffset = dashOffset;
+        }
+
+        // Update pointer rotation
+        const pointer = document.getElementById(encId + '-pointer');
+        if (pointer) {
+            pointer.setAttribute('transform', `rotate(${angle} 30 30)`);
+        }
+
+        // Update number input if it's different
+        let numberInputId = encId;
+        if (encId === 'rate') numberInputId = 'rateMs';
+
+        const numberInput = document.getElementById(numberInputId);
+        if (numberInput && numberInput.value != numValue) {
+            numberInput.value = numValue;
+        }
+
+        // Update range input if it's different
+        const rangeInput = document.getElementById(encId + '-dial');
+        if (rangeInput && rangeInput.value != numValue) {
+            rangeInput.value = numValue;
+        }
+    }
+
+    // Enhanced dial interaction handlers
+    let isDragging = false;
+    let dragStartY = 0;
+    let dragStartValue = 0;
+    let currentDragDial = null;
+
+    function setupDialInteraction(encId) {
+        const dialContainer = document.querySelector(`#${encId}-dial`).parentElement;
+
+        // Determine the correct input element ID and value ranges
+        let inputId = encId;
+        let minValue = 0, maxValue = 127;
+
+        if (encId === 'rate') {
+            inputId = 'rateMs';
+            minValue = 50;
+            maxValue = 10000;
+        } else if (encId === 'semitone') {
+            minValue = -127;
+            maxValue = 127;
+        }
+
+        const numberInput = document.getElementById(inputId);
+
+        // Mouse/touch events for dragging
+        dialContainer.addEventListener('mousedown', (e) => startDrag(e, encId));
+        dialContainer.addEventListener('touchstart', (e) => startDrag(e.touches[0], encId));
+
+        // Mousewheel events
+        dialContainer.addEventListener('wheel', (e) => {
+            encodersChanged = true;
+            e.preventDefault();
+            const currentValue = parseInt(numberInput.value);
+            const delta = e.deltaY > 0 ? -1 : 1; // Invert for natural scroll direction
+
+            // Different sensitivities for different controls
+            let sensitivity = e.shiftKey ? 0.1 : 1;
+            if (encId === 'rate') {
+                sensitivity = e.shiftKey ? 5 : 25; // Larger steps for rate
+            }
+
+            const newValue = Math.max(minValue, Math.min(maxValue, currentValue + (delta * sensitivity)));
+            updateDial(encId, newValue);
+
+            autoTransform();
+        });
+
+        // Prevent context menu on right click
+        dialContainer.addEventListener('contextmenu', (e) => e.preventDefault());
+    }
+
+    function startDrag(e, encId) {
+        encodersChanged = true;
+        isDragging = true;
+        currentDragDial = encId;
+        dragStartY = e.clientY;
+        dragStartValue = parseInt(document.getElementById(encId).value);
+
+        // Add global event listeners for drag and release
+        document.addEventListener('mousemove', handleDrag);
+        document.addEventListener('mouseup', endDrag);
+        document.addEventListener('touchmove', handleTouchDrag);
+        document.addEventListener('touchend', endDrag);
+
+        // Prevent text selection during drag
+        document.body.style.userSelect = 'none';
+        e.preventDefault();
+    }
+
+    function handleDrag(e) {
+        if (!isDragging || !currentDragDial) return;
+
+        // Get the correct min/max values for the current dial
+        let minValue = 0, maxValue = 127;
+        if (currentDragDial === 'rate') {
+            minValue = 50;
+            maxValue = 10000;
+        } else if (currentDragDial === 'semitone') {
+            minValue = -127;
+            maxValue = 127;
+        }
+
+        const deltaY = dragStartY - e.clientY; // Invert Y for natural direction
+        const sensitivity = e.shiftKey ? 0.2 : 0.5; // Fine control with shift
+        const newValue = Math.max(minValue, Math.min(maxValue, dragStartValue + (deltaY * sensitivity)));
+
+        updateDial(currentDragDial, Math.round(newValue));
+        autoTransform();
+    }
+
+    function handleTouchDrag(e) {
+        if (!isDragging || !currentDragDial) return;
+        e.preventDefault();
+
+        // Get the correct min/max values for the current dial
+        let minValue = 0, maxValue = 127;
+        if (currentDragDial === 'rate') {
+            minValue = 50;
+            maxValue = 10000;
+        } else if (currentDragDial === 'semitone') {
+            minValue = -127;
+            maxValue = 127;
+        }
+
+        const touch = e.touches[0];
+        const deltaY = dragStartY - touch.clientY;
+        const sensitivity = 0.5;
+        const newValue = Math.max(minValue, Math.min(maxValue, dragStartValue + (deltaY * sensitivity)));
+
+        updateDial(currentDragDial, Math.round(newValue));
+        autoTransform();
+    }
+
+    function endDrag() {
+        if (!isDragging) return;
+
+        isDragging = false;
+        currentDragDial = null;
+
+        // Remove global event listeners
+        document.removeEventListener('mousemove', handleDrag);
+        document.removeEventListener('mouseup', endDrag);
+        document.removeEventListener('touchmove', handleTouchDrag);
+        document.removeEventListener('touchend', endDrag);
+
+        // Restore text selection
+        document.body.style.userSelect = '';
+    }
+
+    // Initialize dials on page load
+    function initializeDials() {
+        // Initialize all dial controls with their default values
+        updateDial('rate', 250);
+        updateDial('note', 60);
+        updateDial('semitone', 0);
+        updateDial('velocity', 100);
+        updateDial('enc1', 100);
+        updateDial('enc2', 80);
+
+        // Setup enhanced interaction for all dials
+        setupDialInteraction('rate');
+        setupDialInteraction('note');
+        setupDialInteraction('semitone');
+        setupDialInteraction('velocity');
+        setupDialInteraction('enc1');
+        setupDialInteraction('enc2');
+    }
+
+    // MIDI Note Name Functions
+    function midiToNoteName(midiNumber) {
+        const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const octave = Math.floor(midiNumber / 12) - 1;
+        const noteIndex = midiNumber % 12;
+        return noteNames[noteIndex] + octave;
+    }
+
+    function noteNameToMidi(noteName) {
+        // Parse note name like "C4", "F#3", "Bb5", etc.
+        const noteMap = {
+            'C': 0, 'C#': 1, 'Db': 1,
+            'D': 2, 'D#': 3, 'Eb': 3,
+            'E': 4,
+            'F': 5, 'F#': 6, 'Gb': 6,
+            'G': 7, 'G#': 8, 'Ab': 8,
+            'A': 9, 'A#': 10, 'Bb': 10,
+            'B': 11
+        };
+
+        // Clean input and make uppercase
+        const cleaned = noteName.trim().toUpperCase();
+
+        // Extract note and octave
+        let note, octave;
+        if (cleaned.length === 2) {
+            // Single character note like "C4"
+            note = cleaned[0];
+            octave = parseInt(cleaned[1]);
+        } else if (cleaned.length === 3) {
+            // Two character note like "C#4" or "BB5"
+            note = cleaned.substring(0, 2);
+            octave = parseInt(cleaned[2]);
+        } else {
+            return null; // Invalid format
+        }
+
+        // Validate octave
+        if (isNaN(octave) || octave < -1 || octave > 9) {
+            return null;
+        }
+
+        // Get note value
+        const noteValue = noteMap[note];
+        if (noteValue === undefined) {
+            return null;
+        }
+
+        // Calculate MIDI number
+        const midiNumber = (octave + 1) * 12 + noteValue;
+
+        // Validate range
+        if (midiNumber < 0 || midiNumber > 127) {
+            return null;
+        }
+
+        return midiNumber;
+    }
+
+    function updateNoteDisplay() {
+        const midiNumber = parseInt(document.getElementById('note').value);
+        if (!isNaN(midiNumber) && midiNumber >= 0 && midiNumber <= 127) {
+            const noteName = midiToNoteName(midiNumber);
+            document.getElementById('noteName').value = noteName;
+        }
+    }
+
+    function updateNoteFromName() {
+        const noteName = document.getElementById('noteName').value;
+        const midiNumber = noteNameToMidi(noteName);
+
+        if (midiNumber !== null) {
+            document.getElementById('note').value = midiNumber;
+            autoTransform();
+        } else {
+            // If invalid, revert to current MIDI number's name
+            updateNoteDisplay();
+        }
+    }
+
+    function handleNoteNameKeydown(event) {
+        // Allow only valid MIDI note name characters: A-G, a-g, #, b, and octave numbers 0-9
+        const validChars = /^[A-Ga-g#b09]$/;
+        const key = event.key;
+
+        if (!validChars.test(key) && key !== 'Backspace' && key !== 'Tab' && key !== 'Enter') {
+            event.preventDefault();
+        }
+    }
+
+    // Initialize note display on page load
+    function initializeNoteDisplay() {
+        updateNoteDisplay();
+    }
+
+    // WebMIDI Support
+    let midiAccess = null;
+    let midiOutputs = [];
+    let currentMidiOutput = null;
+    let playbackTimeouts = [];
+    let isPlaying = false;
+
+    // Initialize WebMIDI
+    async function initializeMIDI() {
+        try {
+            if (navigator.requestMIDIAccess) {
+                midiAccess = await navigator.requestMIDIAccess();
+                console.log('WebMIDI access granted');
+                updateMidiDeviceList();
+
+                // Listen for device changes
+                midiAccess.onstatechange = updateMidiDeviceList;
+            } else {
+                console.warn('WebMIDI not supported in this browser');
+                document.getElementById('playbackStatus').textContent = 'WebMIDI not supported';
+            }
+        } catch (err) {
+            console.error('Failed to initialize WebMIDI:', err);
+            document.getElementById('playbackStatus').textContent = 'MIDI access denied';
+        }
+    }
+
+    // Update MIDI device list
+    function updateMidiDeviceList() {
+        const select = document.getElementById('midiOutputSelect');
+        const currentValue = select.value;
+
+        // Clear existing options except the first one
+        select.innerHTML = '<option value="">Select MIDI Device...</option>';
+
+        if (midiAccess) {
+            midiOutputs = Array.from(midiAccess.outputs.values());
+
+            midiOutputs.forEach((output, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = `${output.name} (${output.manufacturer || 'Unknown'})`;
+                select.appendChild(option);
+            });
+
+            // Restore previous selection if still available, or from saved settings
+            const targetValue = currentValue || window.savedMidiDeviceIndex;
+            if (targetValue && midiOutputs[targetValue]) {
+                select.value = targetValue;
+                currentMidiOutput = midiOutputs[targetValue];
+                selectMidiDevice(); // Update the status display
+                // Clear the saved index since we've used it
+                window.savedMidiDeviceIndex = null;
+            }
+
+            document.getElementById('playbackStatus').textContent =
+                midiOutputs.length > 0 ? `sel` : 'No MIDI devices found';
+        }
+    }
+
+    // Handle MIDI device selection
+    function selectMidiDevice() {
+        const select = document.getElementById('midiOutputSelect');
+        const selectedIndex = select.value;
+
+        if (selectedIndex !== '' && midiOutputs[selectedIndex]) {
+            currentMidiOutput = midiOutputs[selectedIndex];
+            document.getElementById('playbackStatus').textContent =
+                `ok`;
+        } else {
+            currentMidiOutput = null;
+            document.getElementById('playbackStatus').textContent = 'No device selected';
+        }
+    }
+
+    // Send MIDI note on
+    function sendNoteOn(pitch, velocity, channel = 0) {
+        if (!currentMidiOutput) return;
+
+        const noteOnMsg = [0x90 + channel, pitch, velocity];
+        currentMidiOutput.send(noteOnMsg);
+
+        console.log("KJSL: inlet_0=" + inlet_0 + " inlet_1=" + inlet_1 + " inlet_2=" + inlet_2 + " inlet_3=" + inlet_3 + " inlet_4=" + inlet_4 + " inlet_5=" + inlet_5);
+        try {
+            const result = kasm_rust.bang(inlet_0, inlet_1, inlet_2, inlet_3, inlet_4, inlet_5);
+            document.getElementById('result').textContent = "Keyboard test result: " + result;
+        } catch (err) {
+            console.error('Error in run_test_keyboard:', err);
+            document.getElementById('result').textContent = "Error: " + err.message;
+        }
+
+    }
+
+    // Send MIDI note off
+    function sendNoteOff(pitch, channel = 0, velocity = 64) {
+        if (!currentMidiOutput) return;
+
+        const noteOffMsg = [0x80 + channel, pitch, velocity];
+        currentMidiOutput.send(noteOffMsg);
+
+
+        try {
+            const result = kasm_rust.bang(inlet_0, inlet_1, 0, inlet_3, inlet_4, inlet_5);
+            document.getElementById('result').textContent = "Keyboard test result: " + result;
+        } catch (err) {
+            console.error('Error in run_test_keyboard:', err);
+            document.getElementById('result').textContent = "Error: " + err.message;
+        }
+
+    }
+
+    // Send all notes off (panic)
+    function sendAllNotesOff(channel = 0) {
+        if (!currentMidiOutput) return;
+
+        // Send All Notes Off CC message
+        const allNotesOffMsg = [0xB0 + channel, 123, 0];
+        currentMidiOutput.send(allNotesOffMsg);
+
+        // Also send individual note offs for all possible notes as backup
+        for (let note = 0; note <= 127; note++) {
+            sendNoteOff(note, channel);
+        }
+    }
+
+    // Process note event for detection and UI update
+    function processNoteEvent(pitch, velocity) {
+        // Set globals for detection logic
+        midikeys_note = pitch;
+        midikeys_velocity = velocity;
+        run_test_keyboard();
+    }
+
+    // Play MIDI clip
+    function playMidiClip() {
+        if (!currentMidiOutput) {
+            document.getElementById('playbackStatus').textContent = 'No MIDI device selected';
+            return;
+        }
+
+        // Stop any existing playback
+        stopMidiPlayback();
+
+        try {
+            // Get current output JSON data
+            const outputJson = document.getElementById('outputJson').value;
+            const notesData = JSON.parse(outputJson);
+            const notes = notesData.notes || [];
+
+            if (notes.length === 0) {
+                document.getElementById('playbackStatus').textContent = 'No notes to play';
+                return;
+            }
+
+            // Get playback settings
+            const tempo = parseInt(document.getElementById('tempo').value) || 120;
+            const channel = parseInt(document.getElementById('midiChannel').value) || 0;
+
+            // Calculate beat duration in milliseconds
+            const beatDuration = (60 / tempo) * 1000; // milliseconds per beat
+
+            isPlaying = true;
+            document.getElementById('playbackStatus').textContent = '...';
+            document.getElementById('playMidi').disabled = true;
+
+            // Schedule all notes
+            notes.forEach(note => {
+                if (note.mute === 1) return; // Skip muted notes
+
+                // Apply probability
+                if (note.probability < 1 && Math.random() > note.probability) return;
+
+                const startTime = note.start_time * beatDuration;
+                const duration = note.duration * beatDuration;
+
+                // Apply velocity deviation
+                let finalVelocity = note.velocity;
+                if (note.velocity_deviation > 0) {
+                    const deviation = (Math.random() * 2 - 1) * note.velocity_deviation;
+                    finalVelocity = Math.max(1, Math.min(127, Math.round(note.velocity + deviation)));
+                }
+
+                // Schedule note on
+                const noteOnTimeout = setTimeout(() => {
+                    if (isPlaying) {
+                        sendNoteOn(note.pitch, finalVelocity, channel);
+                        processNoteEvent(note.pitch, note.velocity); // Ensure detection/UI update
+                    }
+                }, startTime);
+                playbackTimeouts.push(noteOnTimeout);
+
+                // Schedule note off
+                const noteOffTimeout = setTimeout(() => {
+                    if (isPlaying) {
+                        sendNoteOff(note.pitch, channel, note.release_velocity || 64);
+                    }
+                }, startTime + duration);
+                playbackTimeouts.push(noteOffTimeout);
+            });
+
+            // Calculate total clip duration and schedule cleanup
+            const maxEndTime = Math.max(...notes.map(note => note.start_time + note.duration));
+            const totalDuration = maxEndTime * beatDuration + 1000; // Add 1 second buffer
+
+            const cleanupTimeout = setTimeout(() => {
+                stopMidiPlayback();
+                document.getElementById('playbackStatus').textContent = '';
+            }, totalDuration);
+            playbackTimeouts.push(cleanupTimeout);
+
+        } catch (err) {
+            console.error('Error playing MIDI clip:', err);
+            document.getElementById('playbackStatus').textContent = 'Error playing clip';
+            stopMidiPlayback();
+        }
+    }
+
+    // Stop MIDI playback
+    function stopMidiPlayback() {
+        isPlaying = false;
+
+        // Clear all scheduled timeouts
+        playbackTimeouts.forEach(timeout => clearTimeout(timeout));
+        playbackTimeouts = [];
+
+        // Send all notes off to stop any hanging notes
+        const channel = parseInt(document.getElementById('midiChannel').value) || 0;
+        sendAllNotesOff(channel);
+
+        // Re-enable play button
+        document.getElementById('playMidi').disabled = false;
+
+        if (document.getElementById('playbackStatus').textContent === 'Playing...') {
+            document.getElementById('playbackStatus').textContent = 'Stopped';
+        }
+    }
+
+    // Event listeners for WebMIDI controls
+    document.getElementById('midiOutputSelect').addEventListener('change', () => {
+        selectMidiDevice();
+        autoSaveSettings();
+    });
+    document.getElementById('midiChannel').addEventListener('change', autoSaveSettings);
+    document.getElementById('tempo').addEventListener('change', autoSaveSettings);
+    document.getElementById('refreshMidiDevices').addEventListener('click', updateMidiDeviceList);
+    document.getElementById('playMidi').addEventListener('click', playMidiClip);
+    document.getElementById('stopMidi').addEventListener('click', stopMidiPlayback);
+
+    // Event listeners for all input controls to auto-save settings
+    document.getElementById('inputJson').addEventListener('input', autoSaveSettings);
+    document.getElementById('emanator').addEventListener('change', autoSaveSettings);
+    document.getElementById('exampleSelect').addEventListener('change', autoSaveSettings);
+    document.getElementById('note').addEventListener('input', autoSaveSettings);
+    document.getElementById('semitone').addEventListener('input', autoSaveSettings);
+    document.getElementById('velocity').addEventListener('input', autoSaveSettings);
+    document.getElementById('enc1').addEventListener('input', autoSaveSettings);
+    document.getElementById('enc2').addEventListener('input', autoSaveSettings);
+    document.getElementById('rateMs').addEventListener('input', autoSaveSettings);
+    document.getElementById('noteName').addEventListener('input', autoSaveSettings);
+
+    // Initialize WebMIDI on page load
+    initializeMIDI();
+
+    // LocalStorage functions for saving/loading settings
+    function saveSettings() {
+        const settings = {
+            inputJson: document.getElementById('inputJson').value,
+            emanator: document.getElementById('emanator').value,
+            midiOutputSelect: document.getElementById('midiOutputSelect').value,
+            midiChannel: document.getElementById('midiChannel').value,
+            tempo: document.getElementById('tempo').value,
+            note: document.getElementById('note').value,
+            semitone: document.getElementById('semitone').value,
+            velocity: document.getElementById('velocity').value,
+            enc1: document.getElementById('enc1').value,
+            enc2: document.getElementById('enc2').value,
+            rateMs: document.getElementById('rateMs').value,
+            exampleSelect: document.getElementById('exampleSelect').value
+        };
+
+        try {
+            localStorage.setItem('kasmSettings', JSON.stringify(settings));
+            console.log('Settings saved to localStorage');
+        } catch (err) {
+            console.warn('Failed to save settings to localStorage:', err);
+        }
+    }
+
+    function loadSettings() {
+        try {
+            const savedSettings = localStorage.getItem('kasmSettings');
+            if (!savedSettings) return false;
+
+            const settings = JSON.parse(savedSettings);
+            console.log('Loading settings from localStorage:', settings);
+
+            // Restore all form values
+            if (settings.inputJson) document.getElementById('inputJson').value = settings.inputJson;
+            if (settings.emanator) document.getElementById('emanator').value = settings.emanator;
+            if (settings.midiChannel) document.getElementById('midiChannel').value = settings.midiChannel;
+            if (settings.tempo) document.getElementById('tempo').value = settings.tempo;
+            if (settings.note) document.getElementById('note').value = settings.note;
+            if (settings.semitone) document.getElementById('semitone').value = settings.semitone;
+            if (settings.velocity) document.getElementById('velocity').value = settings.velocity;
+            if (settings.enc1) document.getElementById('enc1').value = settings.enc1;
+            if (settings.enc2) document.getElementById('enc2').value = settings.enc2;
+            if (settings.rateMs) document.getElementById('rateMs').value = settings.rateMs;
+            if (settings.exampleSelect) document.getElementById('exampleSelect').value = settings.exampleSelect;
+
+            // Update all dials to match restored values
+            updateDial('note', settings.note || 60);
+            updateDial('semitone', settings.semitone || 0);
+            updateDial('velocity', settings.velocity || 100);
+            updateDial('enc1', settings.enc1 || 100);
+            updateDial('enc2', settings.enc2 || 80);
+            updateDial('rate', settings.rateMs || 250);
+
+            // Update note display
+            updateNoteDisplay();
+
+            // Restore MIDI device selection (will be applied when devices are available)
+            if (settings.midiOutputSelect) {
+                // Store for later when MIDI devices are loaded
+                window.savedMidiDeviceIndex = settings.midiOutputSelect;
+            }
+
+            return true;
+        } catch (err) {
+            console.warn('Failed to load settings from localStorage:', err);
+            return false;
+        }
+    }
+
+    function clearSettings() {
+        try {
+            localStorage.removeItem('kasmSettings');
+            console.log('Settings cleared from localStorage');
+        } catch (err) {
+            console.warn('Failed to clear settings from localStorage:', err);
+        }
+    }
+
+    // Auto-save settings whenever any input changes
+    function autoSaveSettings() {
+        // Debounce saving to avoid excessive localStorage writes
+        clearTimeout(window.saveSettingsTimeout);
+        window.saveSettingsTimeout = setTimeout(saveSettings, 100);
+    }
+
+    // Update MIDI clip view with looper data
+    function updateMidiClipView(msg) {
+        // Parse looper messages and convert to MIDI clip format
+        try {
+            // Handle different types of looper messages
+            if (msg.includes('Loop recorded:') || msg.includes('Playing loop:')) {
+                // Try to get the recorded notes from the looper
+                if (typeof kasm_rust !== 'undefined' && kasm_rust.kasm_looper_get_recorded_notes) {
+                    const recordedNotesJson = kasm_rust.kasm_looper_get_recorded_notes();
+                    const recordedNotes = JSON.parse(recordedNotesJson);
+
+                    // Convert looper notes format to MIDI clip format
+                    const midiClipData = convertLooperNotesToMidiClip(recordedNotes);
+
+                    // Update the visualization
+                    drawMidiClip(midiClipData);
+
+                    // Also update the output JSON textarea to show the looper data
+                    document.getElementById('outputJson').value = JSON.stringify(midiClipData, null, 2);
+
+                    console.log('Updated MIDI clip view with looper data:', midiClipData);
+                }
+            } else if (msg.includes('Pattern')) {
+                // Handle pattern-based looper messages
+                console.log('Pattern looper message:', msg);
+                // Pattern data might be handled differently - for now just log it
+            } else {
+                // For other looper messages, just log them
+                console.log('Looper status:', msg);
+            }
+        } catch (err) {
+            console.warn('Error updating MIDI clip view:', err);
+            // Don't break the UI if there's an error
+        }
+    }
+
+    // Convert looper notes format to MIDI clip format
+    function convertLooperNotesToMidiClip(looperNotes) {
+        if (!Array.isArray(looperNotes) || looperNotes.length === 0) {
+            return { notes: [] };
+        }
+
+        const midiNotes = looperNotes.map((looperNote, index) => {
+            // Looper format: {note, time, vel, dur}
+            // MIDI clip format: {note_id, pitch, start_time, duration, velocity, mute, probability, velocity_deviation, release_velocity}
+
+            return {
+                note_id: index + 1,
+                pitch: looperNote.note || 60,
+                start_time: (looperNote.time || 0) / 1000.0, // Convert ms to beats (assuming 1 beat = 1 second for simplicity)
+                duration: (looperNote.dur || 500) / 1000.0, // Convert ms to beats
+                velocity: looperNote.vel || 100,
+                mute: 0,
+                probability: 1,
+                velocity_deviation: 0,
+                release_velocity: 64
+            };
+        });
+
+        return { notes: midiNotes };
+    }
+
+    // Periodically call msg_int every 500ms
+setInterval(function() {
+    if (typeof msg_int === 'function') {
+        inlet = 6;
+        msg_int();
+    }
+}, 500);
+</script>
+</html>
