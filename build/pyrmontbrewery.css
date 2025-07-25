@@ -5,26 +5,25 @@
     font-display: swap;
 }
 
-html, body {
-    background-color: #000;
-    color: #fff;
+html {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
     font-size: 18px;
     line-height: 1.5;
     overflow-x: hidden;
     scroll-behavior: auto;
+    background-image: url('pyrmontbwy.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 body {
-    margin: 0;
+    margin-left: 9.7vw;
+    margin-top: 0;
     padding: 0;
-    background: #000;
-    color: #fff;
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
     box-sizing: border-box;
-    border: 100px solid cyan;
-    min-height: 100vh;
-    width: 100vw;
+    width: calc(79.6vw);
 }
 
 header, nav, main, footer {
@@ -47,16 +46,16 @@ div {
     bottom: 0px;
     left: 0px;
     right: 0px;
-    height: 9000px;
+    height: 200000px;
     pointer-events: none;
     background: repeating-linear-gradient(to top, transparent 0px, transparent 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0.9) 4px);
     background-size: 100% 2px;
+    opacity: 0.5;
 }
 
 span, p, h1, h2, h3, h4, h5, h6 {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
     background: none;
-    color: #fff;
     border-radius: 0;
 }
 
@@ -120,12 +119,15 @@ a {
     border-radius: 0;
     font-weight: bold;
     text-decoration: none !important;
+    height: calc(1em + 3px); /* Make non-flashing links taller by 3px */
+    display: inline-block;
 }
 a:focus, a:hover {
     animation: zx-flash 1s steps(1, end) infinite;
-    outline: none !important;
-    background: #000;
+    outline: 3px solid #0f0;
     color: #fff;
+    height: calc(1em + 3px); /* Make flashing links taller by 3px */
+    display: inline-block;
 }
 
 img {
@@ -179,7 +181,7 @@ button:focus, input:focus, select:focus, textarea:focus {
 
 /* Headings with ZX Spectrum colors */
 h1, h2, h3 {
-    color: #ff0;
+    color: #0f0;
     background: #222;
     border-bottom: 14px solid #00f;
     padding: 8px;
@@ -200,7 +202,7 @@ h1, h2, h3 {
     top: 0;
     width: auto;
     height: auto;
-    background: #ff0;
+    background: #0f0;
     color: #000;
     z-index: 1000;
     padding: 8px;
@@ -222,14 +224,27 @@ header, nav, main, footer, p, ul, ol, li, a, img, button, input, select, textare
 /* Flashing link effect for ZX Spectrum style - slowed down to match App.css */
 a:hover, a:focus {
     animation: zx-flash 1s steps(1, end) infinite;
-    outline: 3px solid #ff0;
-    background: #000;
+    outline: 3px solid #0f0;
     color: #fff;
+    height: calc(1em + 3px); /* Make flashing links taller by 3px */
+    display: inline-block;
+}
+
+/* ZX Spectrum video background */
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    object-fit: cover;
+    pointer-events: none;
 }
 
 @keyframes zx-flash {
     0% { background: #000; color: #fff; }
-    50% { background: #ff0; color: #000; }
+    50% { background: #0f0; color: #000; }
     100% { background: #000; color: #fff; }
 }
 
@@ -241,7 +256,7 @@ a:hover, a:focus {
 }
 @media (prefers-color-scheme: light), screen {
     html, body {
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.8);
         color: #000;
     }
 }
