@@ -6,7 +6,6 @@
     <title>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</title>
     <link rel="stylesheet" href="pyrmontbrewery.css"/>
     <script src="kasm/kasm_WASM_rust_obs.js"></script>
-
 </head>
 <body>
 <div class="tvsimulator" aria-hidden="true"></div>
@@ -18,7 +17,8 @@
 
 <!-- <img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" /> -->
 
-Welcome to the brewery music room connect into your MIDI device...
+Connect Kasm to your MIDI device...
+Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 <div style="margin: 20px 0;">
     <!-- WebMIDI Controls -->
     <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
@@ -28,7 +28,7 @@ Welcome to the brewery music room connect into your MIDI device...
                     <option value="">Select MIDI Device...</option>
                 </select>
             </label>
-            <button id="refreshMidiDevices" style="margin-left: 10px; padding: 3px 8px;">Refresh</button>
+            <button id="refreshMidiDevices" style="margin-left: 10px; padding: 3px 8px;">&lt;</button>
             <label>MIDI Channel:
                 <select id="midiChannel" style="padding: 3px; margin-left: 10px;">
                     <option value="0">1</option>
@@ -64,7 +64,8 @@ Welcome to the brewery music room connect into your MIDI device...
         </div>
     </div>
 
-    <div style="margin-bottom: 10px;">
+    <label>Play you own or choose a sequence Ableton note JSON dictionary:
+        <div style="margin-bottom: 10px;">
         <select id="exampleSelect" style="padding: 5px; margin-right: 10px;" onchange="loadSelectedExample()">
             <option value="singleNote">Single Note</option>
             <option value="send2notes">Two Notes</option>
@@ -90,11 +91,12 @@ Welcome to the brewery music room connect into your MIDI device...
             <option value="minimalistPattern">Minimalist Pattern (24 notes)</option>
             <option value="orchestralStab">Orchestral Stab (32 notes)</option>
         </select>
+            <br/>
         <textarea id="inputJson" rows="4" cols="80" style="font-family: monospace; font-size: 12px;"
                   oninput="loadSelectedExample(); autoTransform()"></textarea>
     </div>
 
-    <label>Emanator (inlet_5):
+    <label>Choose an Emanator (inlet_5):<br/>
         <select id="emanator" onchange="autoTransform()" style="padding: 3px;">
             <option value="0">0 Random</option>
             <option value="1">1 kasm_emanator_1</option>
@@ -470,10 +472,6 @@ Welcome to the brewery music room connect into your MIDI device...
         const result = kasm_rust.kasm_midi_note_octave_hit(inlet_0, inlet_1);
         document.getElementById('result').textContent = "Result (C4 (60) kasm_midi_note_octave_hit): " + result + " (should be 84)";
     }
-
-    document.getElementById('runWasm1').addEventListener('click', run_test1);
-    document.getElementById('runWasm2').addEventListener('click', run_test2);
-    document.getElementById('runWasm3').addEventListener('click', run_test3);
 
     let midikeys_note = 60; // Default to C4 range 0-127
     let midikeys_semitone = 0; // Default to middle octave -120 to +120

@@ -6,7 +6,6 @@
     <title>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</title>
     <link rel="stylesheet" href="pyrmontbrewery.css"/>
     <script src="kasm/kasm_WASM_rust_obs.js"></script>
-
 </head>
 <body>
 <div class="tvsimulator" aria-hidden="true"></div>
@@ -19,18 +18,14 @@
 <!-- <img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" /> -->
 
 <h1>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</h1>
-<p><strong>Kasm</strong> is a modern SDK and source code tutorial for creating high-performance MIDI processing plugins for Ableton Live using Rust and WebAssembly. Build Max4Live devices with advanced MIDI and audio manipulation, leveraging Rust’s speed and safety, and deploy them in Ableton Live 12.2+ with the new V8 JavaScript engine.</p>
-<div style="background:#222; color:#fff;">
-    <h2>Get Kasm SDK</h2>
-    <p><a href="https://maxforlive.com/library/index.php?by=any&q=Kasm" style="color:#61dafb;">Try the Ableton Live 12.2 Max4Live device plugins for free here</a></p>
-    <p>Buy the full SDK and source code tutorial:</p>
-    <ul>
-        <li><a href="https://gumroad.com/l/kasm-sdk" style="color:#61dafb;">Gumroad</a></li>
-        <li><a href="https://buymeacoffee.com/kevleyski" style="color:#61dafb;">BuyMeACoffee</a></li>
-    </ul>
-</div>
-
+<p><strong>Kasm</strong> is a modern SDK and source code tutorial for creating high-performance MIDI processing plugins for Ableton Live using Rust and WebAssembly. Build Max4Live devices with advanced MIDI and audio manipulation, leveraging Rust’s speed and safety, and deploy them in Ableton Live 12.2+ with the new V8 JavaScript engine.
+<p><a href="https://maxforlive.com/library/index.php?by=any&q=Kasm" style="color:#61dafb;">Try the free Ableton Live 12.2 Max4Live device plugins</a></p>
+<p>Buy the full Rust SDK: <a href="https://gumroad.com/l/kasm-sdk" style="color:#61dafb;">Gumroad</a> or <a href="https://buymeacoffee.com/kevleyski" style="color:#61dafb;">BuyMeACoffee</a>
+</p>
+</p>
+<br/>
 Connect Kasm to your MIDI device...
+Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 <div style="margin: 20px 0;">
     <!-- WebMIDI Controls -->
     <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
@@ -40,7 +35,7 @@ Connect Kasm to your MIDI device...
                     <option value="">Select MIDI Device...</option>
                 </select>
             </label>
-            <button id="refreshMidiDevices" style="margin-left: 10px; padding: 3px 8px;">Refresh</button>
+            <button id="refreshMidiDevices" style="margin-left: 10px; padding: 3px 8px;">&lt;</button>
             <label>MIDI Channel:
                 <select id="midiChannel" style="padding: 3px; margin-left: 10px;">
                     <option value="0">1</option>
@@ -76,7 +71,8 @@ Connect Kasm to your MIDI device...
         </div>
     </div>
 
-    <div style="margin-bottom: 10px;">
+    <label>Play you own or choose a sequence Ableton note JSON dictionary:
+        <div style="margin-bottom: 10px;">
         <select id="exampleSelect" style="padding: 5px; margin-right: 10px;" onchange="loadSelectedExample()">
             <option value="singleNote">Single Note</option>
             <option value="send2notes">Two Notes</option>
@@ -102,11 +98,12 @@ Connect Kasm to your MIDI device...
             <option value="minimalistPattern">Minimalist Pattern (24 notes)</option>
             <option value="orchestralStab">Orchestral Stab (32 notes)</option>
         </select>
+            <br/>
         <textarea id="inputJson" rows="4" cols="80" style="font-family: monospace; font-size: 12px;"
                   oninput="loadSelectedExample(); autoTransform()"></textarea>
     </div>
 
-    <label>Emanator (inlet_5):
+    <label>Choose an Emanator (inlet_5):<br/>
         <select id="emanator" onchange="autoTransform()" style="padding: 3px;">
             <option value="0">0 Random</option>
             <option value="1">1 kasm_emanator_1</option>
@@ -356,10 +353,6 @@ Connect Kasm to your MIDI device...
 
 <div id="result"></div>
 
-<h2>Other tests...</h2>
-<button id="runWasm1">Run kasm_midi_note_offset(MIDI Note C4 (60), +1)</button>
-<button id="runWasm2">Run kasm_midi_note_offset(MIDI Note C4 (60), -12)</button>
-<button id="runWasm3">Run kasm_midi_note_octave_hit(MIDI Note C4 (60), +12)</button>
 
 
 <h2>What You’re Getting</h2>
@@ -553,10 +546,6 @@ Connect Kasm to your MIDI device...
         const result = kasm_rust.kasm_midi_note_octave_hit(inlet_0, inlet_1);
         document.getElementById('result').textContent = "Result (C4 (60) kasm_midi_note_octave_hit): " + result + " (should be 84)";
     }
-
-    document.getElementById('runWasm1').addEventListener('click', run_test1);
-    document.getElementById('runWasm2').addEventListener('click', run_test2);
-    document.getElementById('runWasm3').addEventListener('click', run_test3);
 
     let midikeys_note = 60; // Default to C4 range 0-127
     let midikeys_semitone = 0; // Default to middle octave -120 to +120
