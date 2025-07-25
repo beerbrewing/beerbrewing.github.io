@@ -11,7 +11,6 @@ html {
     line-height: 1.5;
     overflow-x: hidden;
     scroll-behavior: auto;
-    background-image: url('pyrmontbwy.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -250,13 +249,13 @@ a:hover, a:focus {
 
 @media (prefers-color-scheme: dark) {
     html, body {
-        background-color: #000;
+        background-color: #303030;
         color: #fff;
     }
 }
 @media (prefers-color-scheme: light), screen {
     html, body {
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: #dfdfdf;
         color: #000;
     }
 }

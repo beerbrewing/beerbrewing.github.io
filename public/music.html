@@ -16,7 +16,7 @@
 <br/>
 <h1>Pyrmont Brewery Music Room!</h1>
 
-<img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" />
+<!-- <img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" /> -->
 
 Welcome to the brewery music room connect into your MIDI device...
 <div style="margin: 20px 0;">
@@ -2486,6 +2486,19 @@ Velocity: C=down (-10), V=up (+10)
             const newValue = Math.max(minValue, Math.min(maxValue, currentValue + (delta * sensitivity)));
             updateDial(encId, newValue);
 
+            autoTransform();
+        });
+
+        // Add double-click to reset dial value
+        dialContainer.addEventListener('dblclick', function () {
+            let resetValue = 0;
+            if (encId === 'rate') resetValue = 250;
+            else if (encId === 'note') resetValue = 60;
+            else if (encId === 'semitone') resetValue = 0;
+            else if (encId === 'velocity') resetValue = 100;
+            else if (encId === 'enc1') resetValue = 100;
+            else if (encId === 'enc2') resetValue = 80;
+            updateDial(encId, resetValue);
             autoTransform();
         });
 

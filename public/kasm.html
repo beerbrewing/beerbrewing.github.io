@@ -16,7 +16,7 @@
 <br/>
 <h1>Pyrmont Brewery Music Room! Kasm</h1>
 
-<img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" />
+<!-- <img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" /> -->
 
 <h1>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</h1>
 <p><strong>Kasm</strong> is a modern SDK and source code tutorial for creating high-performance MIDI processing plugins for Ableton Live using Rust and WebAssembly. Build Max4Live devices with advanced MIDI and audio manipulation, leveraging Rust’s speed and safety, and deploy them in Ableton Live 12.2+ with the new V8 JavaScript engine.</p>
@@ -2572,6 +2572,19 @@ Velocity: C=down (-10), V=up (+10)
             autoTransform();
         });
 
+        // Add double-click to reset dial value
+        dialContainer.addEventListener('dblclick', function () {
+            let resetValue = 0;
+            if (encId === 'rate') resetValue = 250;
+            else if (encId === 'note') resetValue = 60;
+            else if (encId === 'semitone') resetValue = 0;
+            else if (encId === 'velocity') resetValue = 100;
+            else if (encId === 'enc1') resetValue = 100;
+            else if (encId === 'enc2') resetValue = 80;
+            updateDial(encId, resetValue);
+            autoTransform();
+        });
+
         // Prevent context menu on right click
         dialContainer.addEventListener('contextmenu', (e) => e.preventDefault());
     }
@@ -3180,11 +3193,11 @@ Velocity: C=down (-10), V=up (+10)
     }
 
     // Periodically call msg_int every 500ms
-setInterval(function() {
-    if (typeof msg_int === 'function') {
-        inlet = 6;
-        msg_int();
-    }
-}, 500);
+    setInterval(function() {
+        if (typeof msg_int === 'function') {
+            inlet = 6;
+            msg_int();
+        }
+    }, 500);
 </script>
 </html>
