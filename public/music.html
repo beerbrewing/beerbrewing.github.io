@@ -96,7 +96,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                   oninput="loadSelectedExample(); autoTransform()"></textarea>
     </div>
 
-    <label>Choose an Emanator (inlet_5):<br/>
+    <label>Choose an Emanator algorithm (inlet_5):<br/>
         <select id="emanator" onchange="autoTransform()" style="padding: 3px;">
             <option value="0">0 Random</option>
             <option value="1">1 kasm_emanator_1</option>
@@ -119,8 +119,24 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
             <option value="18">18 kasm_emanator_18</option>
             <option value="19">19 kasm_emanator_19</option>
             <option value="20">20 kasm_emanator_20</option>
-            <option value="21">21 kasm_krumhansl arp</option>
-            <option value="22">22 kasm_looper</option>
+            <option value="21">21 Krumhansl_arp</option>
+            <option value="22">22 Krumhansl_chords</option>
+            <option value="23">23 Tape_Loop</option>
+            <option value="24">24 kasm_emanator_fibonacci_harmony</option>
+            <option value="25">25 kasm_emanator_markov_harmony</option>
+            <option value="26">26 kasm_emanator_fractal_harmony</option>
+            <option value="27">27 kasm_emanator_prime_harmony</option>
+            <option value="28">28 kasm_emanator_golden_ratio_harmony</option>
+            <option value="29">29 kasm_emanator_chaos_game_harmony</option>
+            <option value="30">30 kasm_emanator_modular_harmony</option>
+            <option value="31">31 kasm_emanator_cellular_automata_harmony</option>
+            <option value="32">32 kasm_emanator_spectral_harmony</option>
+            <option value="33">33 kasm_emanator_lsystem_harmony</option>
+            <option value="34">34 kasm_emanator_markov_matrix_harmony</option>
+            <option value="35">35 kasm_emanator_quasicrystal_harmony</option>
+            <option value="36">36 kasm_emanator_fractal_brownian_harmony</option>
+            <option value="37">37 kasm_emanator_hyperbolic_harmony</option>
+            <option value="38">38 kasm_emanator_prime_spiral_harmony</option>
         </select>
     </label>
 
@@ -412,6 +428,8 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
 <script>
     let inlet = 0;
+    let currentMidiOutput = null;
+    let harmonyMode = false;
 
     // Global timeout variables for debouncing
     let autoTransformTimeout;
@@ -421,8 +439,30 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         console.log(`post: ${msg}`);
     }
 
-    function outlet(index, msg) {
+    function outlet(index, msg, data) {
         console.log(`outlet: ${index} ` + msg);
+
+        if (index === 0) {
+            // Send note to WebMIDI
+            // Expect msg to be an object: {pitch, velocity, channel, type}
+            if (currentMidiOutput && harmonyMode) {
+                const pitch = msg;
+                const velocity = data;
+                const channel = parseInt(document.getElementById('midiChannel').value) || 0;
+                if (data && velocity > 20) {
+                    const noteOnMsg = [0x90 + channel, pitch, velocity];
+                    currentMidiOutput.send(noteOnMsg);
+                    setTimeout(() => {
+                        // Automatically send a note off after 500ms
+                        const noteOffMsg = [0x80 + channel, pitch, 0];
+                        currentMidiOutput.send(noteOffMsg);
+                    }, 10);
+                } else {
+                    const noteOffMsg = [0x80 + channel, pitch, 0];
+                    currentMidiOutput.send(noteOffMsg);
+                }
+            }
+        }
 
         if (index === 3) {
             const chordKeyDisplay = document.getElementById('chordKeyDetection');
@@ -2699,7 +2739,6 @@ Velocity: C=down (-10), V=up (+10)
     // WebMIDI Support
     let midiAccess = null;
     let midiOutputs = [];
-    let currentMidiOutput = null;
     let playbackTimeouts = [];
     let isPlaying = false;
 
@@ -3107,12 +3146,17 @@ Velocity: C=down (-10), V=up (+10)
         return { notes: midiNotes };
     }
 
-    // Periodically call msg_int every 500ms
+    // "metro 10" Periodically call msg_int every 10ms
     setInterval(function() {
-        if (typeof msg_int === 'function') {
-            inlet = 6;
-            msg_int();
+        // tape/counterpoint emanators require feedback loop
+        harmonyMode = document.getElementById('emanator').value >= 20;
+
+        if (harmonyMode) {
+            if (typeof msg_int === 'function') {
+                inlet = 6;
+                msg_int();
+            }
         }
-    }, 500);
+    }, 10);
 </script>
 </html>
