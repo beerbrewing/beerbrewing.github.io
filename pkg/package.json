@@ -1,0 +1,20 @@
+{
+  "name": "kasm_ableton_rust",
+  "type": "module",
+  "collaborators": [
+    "Kevin Staunton-Lambert"
+  ],
+  "description": "A WebAssembly module for MIDI processing in Ableton Live using Rust",
+  "version": "0.1.0",
+  "license": "MIT",
+  "files": [
+    "kasm_ableton_rust_bg.wasm",
+    "kasm_ableton_rust.js",
+    "kasm_ableton_rust.d.ts"
+  ],
+  "main": "kasm_ableton_rust.js",
+  "types": "kasm_ableton_rust.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
