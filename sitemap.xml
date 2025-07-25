@@ -6,6 +6,50 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
         <loc>https://pyrmontbrewery.com/</loc>
-        <lastmod>2019-12-30T21:23:59+00:00</lastmod>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://pyrmontbrewery.com/about.html</loc>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://pyrmontbrewery.com/ai.html</loc>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://pyrmontbrewery.com/privacy.html</loc>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://pyrmontbrewery.com/resume.html</loc>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://pyrmontbrewery.com/kasm.html</loc>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://pyrmontbrewery.com/beercoin.html</loc>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://pyrmontbrewery.com/music.html</loc>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://pyrmontbrewery.com/raspberrypi.html</loc>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://pyrmontbrewery.com/streams.html</loc>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://pyrmontbrewery.com/time.html</loc>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://pyrmontbrewery.com/xr.html</loc>
+        <lastmod>2025-07-25T00:00:00+00:00</lastmod>
     </url>
 </urlset>

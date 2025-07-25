@@ -94,7 +94,7 @@ const App = () => {
               <header className="App-header-notspeccy">
                 <p><a href="/" className={classLink2}>&lt;-</a></p>
                 <p className="not_speccy">
-                  <!-- <LibrarySearch /> -->
+                  {/* <LibrarySearch /> */}
                   <h1>Commercial Brewery Automation</h1>
                   Pyrmont Brewery can provide consultancy into production automation and optimisation using the very latest
                   in computer
@@ -211,7 +211,7 @@ const App = () => {
                   <div className="tvsimulator"></div>
                   <div className="pyrmont_brewery">
                     <br/>
-                    <!-- <LibrarySearch /> -->
+                    {/* <LibrarySearch /> */}
 
                     <br/>
                     <div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>
