@@ -29,14 +29,18 @@
     <title>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</title>
     <link rel="stylesheet" href="pyrmontbrewery.css"/>
     <script src="kasm/kasm_WASM_rust_obs.js"></script>
-    <meta name="description" content="Pyrmont Brewery Music Room explores WebXR AR for augmented music production and tools to control musical plugins. Featuring an Ableton Live SDK for creating Rust-based Max4Live devices to manipulate live MIDI using hand gestures." />
-    <meta name="keywords" content="Pyrmont Brewery, Music Room, WebXR, AR, Augmented Reality, Music Production, Ableton Live, Max4Live, Rust, MIDI, Hand Gestures, Plugin Control, SDK, Live Coding, Audio Technology" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Pyrmont Brewery Music Room: WebXR AR for Music Production & Rust Max4Live MIDI SDK" />
-    <meta property="og:description" content="Enable AR music production with WebXR and control Ableton Live plugins using hand gestures. Build Max4Live devices in Rust for live MIDI manipulation." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://pyrmontbrewery.com/build/music.html" />
-    <meta property="og:image" content="https://pyrmontbrewery.com/build/pyrmontbrewery_logo_1024x1024.png" />
+    <meta name="description"
+          content="Pyrmont Brewery Music Room explores WebXR AR for augmented music production and tools to control musical plugins. Featuring an Ableton Live SDK for creating Rust-based Max4Live devices to manipulate live MIDI using hand gestures."/>
+    <meta name="keywords"
+          content="Pyrmont Brewery, Music Room, WebXR, AR, Augmented Reality, Music Production, Ableton Live, Max4Live, Rust, MIDI, Hand Gestures, Plugin Control, SDK, Live Coding, Audio Technology"/>
+    <meta name="robots" content="index, follow"/>
+    <meta property="og:title"
+          content="Pyrmont Brewery Music Room: WebXR AR for Music Production & Rust Max4Live MIDI SDK"/>
+    <meta property="og:description"
+          content="Enable AR music production with WebXR and control Ableton Live plugins using hand gestures. Build Max4Live devices in Rust for live MIDI manipulation."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://pyrmontbrewery.com/build/music.html"/>
+    <meta property="og:image" content="https://pyrmontbrewery.com/build/pyrmontbrewery_logo_1024x1024.png"/>
 </head>
 <body>
 <div class="tvsimulator" aria-hidden="true"></div>
@@ -53,6 +57,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 <div style="margin: 20px 0;">
     <!-- WebMIDI Controls -->
     <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
+        Connect to your MIDI device... (you might need a network loop)
         <div style="margin-bottom: 10px;">
             <label>
                 <select id="midiOutputSelect" style="padding: 3px; margin-left: 10px;">
@@ -95,314 +100,357 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         </div>
     </div>
 
-        <label>Choose an Emanator algorithm (inlet_5):<br/>
-        <div style="margin-bottom: 10px;">
-            <label><input type="radio" name="emanatorQuick" value="50" onclick="document.getElementById('inlet_5_emanator').value=95; autoTransform(); document.getElementById('inlet_5_emanator').value=104; autoTransform();"> Drums</label>
-            <label><input type="radio" name="emanatorQuick" value="10" onclick="document.getElementById('inlet_5_emanator').value=2; autoTransform();"> Strummer</label>
-            <label><input type="radio" name="emanatorQuick" value="20" onclick="document.getElementById('inlet_5_emanator').value=63; autoTransform();"> Looper</label>
-            <label><input type="radio" name="emanatorQuick" value="30" onclick="document.getElementById('inlet_5_emanator').value=11; autoTransform();"> Taps</label>
-            <label><input type="radio" name="emanatorQuick" value="40" onclick="document.getElementById('inlet_5_emanator').value=75; autoTransform();"> Counterpoint</label>
-            <label><input type="radio" name="emanatorQuick" value="60" onclick="document.getElementById('inlet_5_emanator').value=46; autoTransform();"> Chaos!</label>
+    <div style="margin: 20px 0;">
+        <!-- WebMIDI Controls -->
+        <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
+
+            <label>Choose an Emanator algorithm (inlet_5):<br/>
+                <div style="margin-bottom: 10px;">
+                    <label><input type="radio" name="emanatorQuick" value="10"
+                                  onclick="document.getElementById('inlet_5_emanator').value=0; autoTransform();">
+                        Reset</label>
+
+                    <label><input type="radio" name="emanatorQuick" value="10"
+                                  onclick="document.getElementById('inlet_5_emanator').value=2; autoTransform();">
+                        Emanator</label>
+                    <label><input type="radio" name="emanatorQuick" value="50"
+                                  onclick="document.getElementById('inlet_5_emanator').value=95; autoTransform(); document.getElementById('inlet_5_emanator').value=104; autoTransform();">
+                        Bangaz</label>
+                    <label><input type="radio" name="emanatorQuick" value="20"
+                                  onclick="document.getElementById('inlet_5_emanator').value=63; autoTransform();">
+                        Looper</label>
+                    <label><input type="radio" name="emanatorQuick" value="30"
+                                  onclick="document.getElementById('inlet_5_emanator').value=11; autoTransform();"> Taps</label>
+                    <label><input type="radio" name="emanatorQuick" value="40"
+                                  onclick="document.getElementById('inlet_5_emanator').value=75; autoTransform();">
+                        Counterpoint</label>
+                    <label><input type="radio" name="emanatorQuick" value="60"
+                                  onclick="document.getElementById('inlet_5_emanator').value=46; autoTransform();">
+                        Chaos!</label>
+                </div>
+                <select id="inlet_5_emanator" onchange="autoTransform()" style="padding: 3px;">
+                    <option value="0">Random</option>
+                    <option value="1">mldy:Phone Ringtone</option>
+                    <option value="2">mldy:Strummed Cascade</option>
+                    <option value="3">mldy:Elaborate Panning</option>
+                    <option value="4">mldy:Advanced Rhythmic</option>
+                    <option value="5">hmny:Chord Progression</option>
+                    <option value="6">hmny:Simple Chord</option>
+                    <option value="7">hmny:Extended Inversions</option>
+                    <option value="8">hmny:Complex Extensions</option>
+                    <option value="9">rhym:Morse Code</option>
+                    <option value="10">rhym:Markov Chain</option>
+                    <option value="11">rhym:Wave Interference</option>
+                    <option value="12">rhym:Complex Reflection</option>
+                    <option value="13">rhym:Balkan 7/8</option>
+                    <option value="14">rhym:West African Bell</option>
+                    <option value="15">rhym:Indian Tintal</option>
+                    <option value="16">rhym:Latin son clave</option>
+                    <option value="17">rhym:Jazz Swing 8ths</option>
+                    <option value="18">rhym:Fibonacci rhythm</option>
+                    <option value="19">rhym:Golden ratio pulse</option>
+                    <option value="20">rhym:Prime number rhythm</option>
+                    <option value="21">rhym:Balkan 11/8 (3+2+3+3)</option>
+                    <option value="22">rhym:Contemporary tuplets (5:4)</option>
+                    <option value="23">rhym:Afro-Cuban 6/8 bell</option>
+                    <option value="24">prog:Circle of Fifths</option>
+                    <option value="25">prog:Stepwise Progression</option>
+                    <option value="26">prog:Plagal Cadence</option>
+                    <option value="27">prog:Deceptive Cadence</option>
+                    <option value="28">prog:Modal Mixture</option>
+                    <option value="29">prog:Descending Fifths</option>
+                    <option value="30">prog:Jazz Turnaround</option>
+                    <option value="31">prog:Chromatic Mediant</option>
+                    <option value="32">prog:Neapolitan Chord</option>
+                    <option value="33">prog:Augmented Sixth</option>
+                    <option value="34">chnt:Chant Dorian Call-Response</option>
+                    <option value="35">chnt:Chant Psalm Tone</option>
+                    <option value="36">chnt:Chant Ornamented Response</option>
+                    <option value="37">chnt:Chant with Drone</option>
+                    <option value="38">chnt:Chant Antiphonal</option>
+                    <option value="39">spat:Harmonic Resonance</option>
+                    <option value="40">spat:Swarm Movement</option>
+                    <option value="41">spat:Circular Panning</option>
+                    <option value="42">spat:3D Positioning</option>
+                    <option value="43">sums:Fibonacci Spiral</option>
+                    <option value="44">sums:Fractal Cascade</option>
+                    <option value="45">sums:Swarming Spirals</option>
+                    <option value="46">sums:Fractal Chaos</option>
+                    <option value="47">expr:Multidimensional Markov</option>
+                    <option value="48">expr:Second Order Markov</option>
+                    <option value="49">expr:Chaos Game Harmony</option>
+                    <option value="50">expr:Complex Drums</option>
+                    <option value="51">expr:Cellular Automaton</option>
+                    <option value="52">expr:Euclidean Rhythm</option>
+                    <option value="53">expr:L-System</option>
+                    <option value="54">expr:Microtonal 24-TET</option>
+                    <option value="55">expr:Brownian Walk</option>
+                    <option value="56">expr:Spectral Texture</option>
+                    <option value="57">expr:Recursive Pattern</option>
+                    <option value="58">expr:Parameter Morphing</option>
+                    <option value="59">expr:Polymetric (3:4)</option>
+                    <option value="60">expr:Polytempo Engine</option>
+                    <option value="61">Krumhansl Arpeggiator</option>
+                    <option value="62">Krumhansl Chords</option>
+                    <option value="63">Tape Looping Example</option>
+                    <option value="64">loop:Chaos Game Harmony</option>
+                    <option value="65">loop:Modular Arithmetic Harmony</option>
+                    <option value="66">loop:Cellular Automata Harmony</option>
+                    <option value="67">loop:Spectral Harmony</option>
+                    <option value="68">loop:L-System Harmony</option>
+                    <option value="69">loop:Markov Matrix Harmony</option>
+                    <option value="70">loop:Quasi-Crystal Harmony</option>
+                    <option value="71">loop:Fractal Brownian Harmony</option>
+                    <option value="72">loop:Hyperbolic Geometry Harmony</option>
+                    <option value="73">loop:Prime Spiral Harmony</option>
+                    <option value="74">loop:Fibonacci Harmony</option>
+                    <option value="75">loop:Markov Harmony</option>
+                    <option value="76">loop:Fractal Harmony</option>
+                    <option value="77">loop:Prime Harmony</option>
+                    <option value="78">loop:Golden Ratio Harmony</option>
+                    <option value="79">Clear All Drum Assignments</option>
+                    <option value="80">Reset Default Drum Assignments</option>
+                    <option value="81">Reassign Kick (drum)</option>
+                    <option value="82">Reassign Snare (drum)</option>
+                    <option value="83">Reassign HHClose</option>
+                    <option value="84">Reassign HHOpen</option>
+                    <option value="85">Reassign LowTom (drum)</option>
+                    <option value="86">Reassign MidTom (drum)</option>
+                    <option value="87">Reassign HiTom (drum)</option>
+                    <option value="88">Reassign Clap</option>
+                    <option value="89">Reassign CowBell</option>
+                    <option value="90">drum:Bangaz 1</option>
+                    <option value="91">drum:Bangaz 2</option>
+                    <option value="92">drum:Bangaz 3</option>
+                    <option value="93">drum:Bangaz 4</option>
+                    <option value="94">drum:Bangaz 5</option>
+                    <option value="95">drum:Bangaz 6</option>
+                    <option value="96">drum:Bangaz 7</option>
+                    <option value="97">drum:Bangaz 8</option>
+                    <option value="98">drum:Bangaz 9</option>
+                    <option value="99">drum:Bangaz 10</option>
+                    <option value="100">drum:Bangaz 11</option>
+                    <option value="101">drum:Bangaz 12</option>
+                    <option value="102">drum:Bangaz 13</option>
+                    <option value="103">drum:Bangaz 14</option>
+                    <option value="104">drum:Bangaz 15</option>
+                    <option value="105">drum:Bangaz 16</option>
+                    <option value="106">drum:Bangaz 17</option>
+                    <option value="107">drum:Bangaz 18</option>
+                    <option value="108">drum:Bangaz 19</option>
+                    <option value="109">drum:Bangaz 20</option>
+                    <option value="110">drum:Bangaz 21</option>
+                    <option value="111">drum:Bangaz 22</option>
+                    <option value="112">drum:Bangaz 23</option>
+                    <option value="113">drum:Bangaz 24</option>
+                    <option value="114">drum:Bangaz 25</option>
+                    <option value="115">drum:Bangaz 26</option>
+                    <option value="116">drum:Bangaz 27</option>
+                    <option value="117">drum:Bangaz 28</option>
+                    <option value="118">drum:Bangaz 29</option>
+                </select>
+            </label>
         </div>
-        <select id="inlet_5_emanator" onchange="autoTransform()" style="padding: 3px;">
-            <option value="0">0 Random</option>
-            <option value="1">mldy:Phone Ringtone</option>
-            <option value="2">mldy:Strummed Cascade</option>
-            <option value="3">mldy:Elaborate Panning</option>
-            <option value="4">mldy:Advanced Rhythmic</option>
-            <option value="5">hmny:Chord Progression</option>
-            <option value="6">hmny:Simple Chord</option>
-            <option value="7">hmny:Extended Inversions</option>
-            <option value="8">hmny:Complex Extensions</option>
-            <option value="9">rhym:Morse Code</option>
-            <option value="10">rhym:Markov Chain</option>
-            <option value="11">rhym:Wave Interference</option>
-            <option value="12">rhym:Complex Reflection</option>
-            <option value="13">rhym:Balkan 7/8</option>
-            <option value="14">rhym:West African Bell</option>
-            <option value="15">rhym:Indian Tintal</option>
-            <option value="16">rhym:Latin son clave</option>
-            <option value="17">rhym:Jazz Swing 8ths</option>
-            <option value="18">rhym:Fibonacci rhythm</option>
-            <option value="19">rhym:Golden ratio pulse</option>
-            <option value="20">rhym:Prime number rhythm</option>
-            <option value="21">rhym:Balkan 11/8 (3+2+3+3)</option>
-            <option value="22">rhym:Contemporary tuplets (5:4)</option>
-            <option value="23">rhym:Afro-Cuban 6/8 bell</option>
-            <option value="24">prog:Circle of Fifths</option>
-            <option value="25">prog:Stepwise Progression</option>
-            <option value="26">prog:Plagal Cadence</option>
-            <option value="27">prog:Deceptive Cadence</option>
-            <option value="28">prog:Modal Mixture</option>
-            <option value="29">prog:Descending Fifths</option>
-            <option value="30">prog:Jazz Turnaround</option>
-            <option value="31">prog:Chromatic Mediant</option>
-            <option value="32">prog:Neapolitan Chord</option>
-            <option value="33">prog:Augmented Sixth</option>
-            <option value="34">chnt:Chant Dorian Call-Response</option>
-            <option value="35">chnt:Chant Psalm Tone</option>
-            <option value="36">chnt:Chant Ornamented Response</option>
-            <option value="37">chnt:Chant with Drone</option>
-            <option value="38">chnt:Chant Antiphonal</option>
-            <option value="39">spat:Harmonic Resonance</option>
-            <option value="40">spat:Swarm Movement</option>
-            <option value="41">spat:Circular Panning</option>
-            <option value="42">spat:3D Positioning</option>
-            <option value="43">sums:Fibonacci Spiral</option>
-            <option value="44">sums:Fractal Cascade</option>
-            <option value="45">sums:Swarming Spirals</option>
-            <option value="46">sums:Fractal Chaos</option>
-            <option value="47">expr:Multidimensional Markov</option>
-            <option value="48">expr:Second Order Markov</option>
-            <option value="49">expr:Chaos Game Harmony</option>
-            <option value="50">expr:Complex Drums</option>
-            <option value="51">expr:Cellular Automaton</option>
-            <option value="52">expr:Euclidean Rhythm</option>
-            <option value="53">expr:L-System</option>
-            <option value="54">expr:Microtonal 24-TET</option>
-            <option value="55">expr:Brownian Walk</option>
-            <option value="56">expr:Spectral Texture</option>
-            <option value="57">expr:Recursive Pattern</option>
-            <option value="58">expr:Parameter Morphing</option>
-            <option value="59">expr:Polymetric (3:4)</option>
-            <option value="60">expr:Polytempo Engine</option>
-            <option value="61">Krumhansl Arpeggiator</option>
-            <option value="62">Krumhansl Chords</option>
-            <option value="63">Tape Looping Example</option>
-            <option value="64">loop:Chaos Game Harmony</option>
-            <option value="65">loop:Modular Arithmetic Harmony</option>
-            <option value="66">loop:Cellular Automata Harmony</option>
-            <option value="67">loop:Spectral Harmony</option>
-            <option value="68">loop:L-System Harmony</option>
-            <option value="69">loop:Markov Matrix Harmony</option>
-            <option value="70">loop:Quasi-Crystal Harmony</option>
-            <option value="71">loop:Fractal Brownian Harmony</option>
-            <option value="72">loop:Hyperbolic Geometry Harmony</option>
-            <option value="73">loop:Prime Spiral Harmony</option>
-            <option value="74">loop:Fibonacci Harmony</option>
-            <option value="75">loop:Markov Harmony</option>
-            <option value="76">loop:Fractal Harmony</option>
-            <option value="77">loop:Prime Harmony</option>
-            <option value="78">loop:Golden Ratio Harmony</option>
-            <option value="79">Clear All Drum Assignments</option>
-            <option value="80">Reset Default Drum Assignments</option>
-            <option value="81">Reassign Kick (drum)</option>
-            <option value="82">Reassign Snare (drum)</option>
-            <option value="83">Reassign HHClose</option>
-            <option value="84">Reassign HHOpen</option>
-            <option value="85">Reassign LowTom (drum)</option>
-            <option value="86">Reassign MidTom (drum)</option>
-            <option value="87">Reassign HiTom (drum)</option>
-            <option value="88">Reassign Clap</option>
-            <option value="89">Reassign CowBell</option>
-            <option value="90">drum:Bangaz 1</option>
-            <option value="91">drum:Bangaz 2</option>
-            <option value="92">drum:Bangaz 3</option>
-            <option value="93">drum:Bangaz 4</option>
-            <option value="94">drum:Bangaz 5</option>
-            <option value="95">drum:Bangaz 6</option>
-            <option value="96">drum:Bangaz 7</option>
-            <option value="97">drum:Bangaz 8</option>
-            <option value="98">drum:Bangaz 9</option>
-            <option value="99">drum:Bangaz 10</option>
-            <option value="100">drum:Bangaz 11</option>
-            <option value="101">drum:Bangaz 12</option>
-            <option value="102">drum:Bangaz 13</option>
-            <option value="103">drum:Bangaz 14</option>
-            <option value="104">drum:Bangaz 15</option>
-            <option value="105">drum:Bangaz 16</option>
-            <option value="106">drum:Bangaz 17</option>
-            <option value="107">drum:Bangaz 18</option>
-            <option value="108">drum:Bangaz 19</option>
-            <option value="109">drum:Bangaz 20</option>
-            <option value="110">drum:Bangaz 21</option>
-            <option value="111">drum:Bangaz 22</option>
-            <option value="112">drum:Bangaz 23</option>
-            <option value="113">drum:Bangaz 24</option>
-            <option value="114">drum:Bangaz 25</option>
-            <option value="115">drum:Bangaz 26</option>
-            <option value="116">drum:Bangaz 27</option>
-            <option value="117">drum:Bangaz 28</option>
-            <option value="118">drum:Bangaz 29</option>
-        </select>
-    </label>
-
-    <br/>
-    <label>Play some notes 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
-        or choose a sequence Ableton Notes dictionary (JSON)
-        <div style="margin-bottom: 10px;">
-            <select id="exampleSelect" style="padding: 5px; margin-right: 10px;" onchange="loadSelectedExample()">
-                <option value="singleNote">Single Note</option>
-                <option value="send2notes">Two Notes</option>
-                <option value="send3notes">Three Notes</option>
-                <option value="twinkle_twinkle">Twinkle Twinkle</option>
-                <option value="three_blind_mice">Three Blind Mice</option>
-                <option value="ferer_jaques">Frère Jacques</option>
-                <option value="mary_little_lamb">Mary Had A Little Lamb</option>
-                <option value="happy_birthday">Happy Birthday</option>
-                <option value="happy_birthday_legatto">Happy Birthday (legatto)</option>
-                <option value="baa_baa">Baa Baa Sheep</option>
-                <option value="chord">Major Chord</option>
-                <option value="arpeggio">Arpeggio Sequence</option>
-                <option value="rhythmPattern">Rhythm Pattern</option>
-                <option value="pentatonicScale">Pentatonic Scale (5 notes)</option>
-                <option value="complexChord">Complex Chord (7 notes)</option>
-                <option value="bassline">Bassline Pattern (8 notes)</option>
-                <option value="melodicSequence">Melodic Sequence (10 notes)</option>
-                <option value="polyrhythm">Polyrhythm Pattern (12 notes)</option>
-                <option value="chromatic">Chromatic Run (12 notes)</option>
-                <option value="jazzChordProgression">Jazz Chord Progression (16 notes)</option>
-                <option value="complexArpeggio">Complex Arpeggio (20 notes)</option>
-                <option value="minimalistPattern">Minimalist Pattern (24 notes)</option>
-                <option value="orchestralStab">Orchestral Stab (32 notes)</option>
-            </select>
-            <br/>
-            <textarea id="inputJson" rows="4" cols="80" style="font-family: monospace; font-size: 12px;"
-                      oninput="loadSelectedExample(); autoTransform()"></textarea>
+    </div>
+    <div style="margin: 20px 0;">
+        <!-- WebMIDI Controls -->
+        <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
+            <label>Play some notes 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
+                or choose a sequence Ableton Notes dictionary (JSON)
+                <div style="margin-bottom: 10px;">
+                    <select id="exampleSelect" style="padding: 5px; margin-right: 10px;"
+                            onchange="loadSelectedExample()">
+                        <option value="singleNote">Single Note</option>
+                        <option value="send2notes">Two Notes</option>
+                        <option value="send3notes">Three Notes</option>
+                        <option value="twinkle_twinkle">Twinkle Twinkle</option>
+                        <option value="three_blind_mice">Three Blind Mice</option>
+                        <option value="ferer_jaques">Frère Jacques</option>
+                        <option value="mary_little_lamb">Mary Had A Little Lamb</option>
+                        <option value="happy_birthday">Happy Birthday</option>
+                        <option value="happy_birthday_legatto">Happy Birthday (legatto)</option>
+                        <option value="baa_baa">Baa Baa Sheep</option>
+                        <option value="chord">Major Chord</option>
+                        <option value="arpeggio">Arpeggio Sequence</option>
+                        <option value="rhythmPattern">Rhythm Pattern</option>
+                        <option value="pentatonicScale">Pentatonic Scale (5 notes)</option>
+                        <option value="complexChord">Complex Chord (7 notes)</option>
+                        <option value="bassline">Bassline Pattern (8 notes)</option>
+                        <option value="melodicSequence">Melodic Sequence (10 notes)</option>
+                        <option value="polyrhythm">Polyrhythm Pattern (12 notes)</option>
+                        <option value="chromatic">Chromatic Run (12 notes)</option>
+                        <option value="jazzChordProgression">Jazz Chord Progression (16 notes)</option>
+                        <option value="complexArpeggio">Complex Arpeggio (20 notes)</option>
+                        <option value="minimalistPattern">Minimalist Pattern (24 notes)</option>
+                        <option value="orchestralStab">Orchestral Stab (32 notes)</option>
+                    </select>
+                    <br/>
+                    <textarea id="inputJson" rows="4" cols="80" style="font-family: monospace; font-size: 12px;"
+                              oninput="loadSelectedExample(); autoTransform()"></textarea>
+                </div>
         </div>
+    </div>
+
+    <div style="margin: 20px 0;">
+        <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
+            Twiddle some encoders
+
+            <div style="margin: 10px 0;">
+                <!-- Root Note input with MIDI name and dial -->
+                <div style="display: inline-block; margin: 10px; text-align: center;">
+                    <label>Root Note<br/>(inlet_0):</label><br>
+                    <div class="dial-container"
+                         style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                        <svg width="60" height="60" class="dial-svg">
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                                    stroke-dasharray="157" stroke-dashoffset="157" id="note-progress"
+                                    transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="note-pointer"
+                                  transform="rotate(0 30 30)"/>
+                        </svg>
+                        <input type="range" id="note-dial" min="0" max="127" value="60"
+                               style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                               onchange="updateDial('note', this.value); updateNoteDisplay(); autoTransform()"
+                               oninput="updateDial('note', this.value); updateNoteDisplay(); autoTransform()">
+                    </div>
+                    <div style="margin: 5px auto; width: 120px;">
+                        <input type="number" id="note" value="60" min="0" max="127"
+                               style="width: 60px; margin-right: 5px;"
+                               onchange="updateDial('note', this.value); updateNoteDisplay(); autoTransform()"
+                               oninput="updateDial('note', this.value); updateNoteDisplay(); autoTransform()">
+                        <input type="text" id="noteName" value="C4"
+                               style="width: 45px; text-align: center; font-size: 12px; color: #666; padding: 2px;"
+                               onblur="updateNoteFromName()"
+                               onkeydown="handleNoteNameKeydown(event)"
+                               title="Type note name (e.g. C4, F#3, Bb5)">
+                    </div>
+                </div>
+
+                <!-- Semitone with dial and number input -->
+                <div style="display: inline-block; margin: 10px; text-align: center;">
+                    <label>Semitone offset<br/>(inlet_1)</label><br>
+                    <div class="dial-container"
+                         style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                        <svg width="60" height="60" class="dial-svg">
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                                    stroke-dasharray="157" stroke-dashoffset="157" id="semitone-progress"
+                                    transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2"
+                                  id="semitone-pointer"
+                                  transform="rotate(0 30 30)"/>
+                        </svg>
+                        <input type="range" id="semitone-dial" min="-127" max="127" value="0"
+                               style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                               onchange="updateDial('semitone', this.value); autoTransform()"
+                               oninput="updateDial('semitone', this.value); autoTransform()">
+                    </div>
+                    <input type="number" id="semitone" value="0" min="-127" max="127"
+                           style="width: 60px; text-align: center;"
+                           onchange="updateDial('semitone', this.value); autoTransform()"
+                           oninput="updateDial('semitone', this.value); autoTransform()">
+                </div>
+
+                <!-- Velocity with dial and number input -->
+                <div style="display: inline-block; margin: 10px; text-align: center;">
+                    <label>Velocity<br/>(inlet_2)</label><br>
+                    <div class="dial-container"
+                         style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                        <svg width="60" height="60" class="dial-svg">
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                                    stroke-dasharray="157" stroke-dashoffset="157" id="velocity-progress"
+                                    transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2"
+                                  id="velocity-pointer"
+                                  transform="rotate(0 30 30)"/>
+                        </svg>
+                        <input type="range" id="velocity-dial" min="0" max="127" value="100"
+                               style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                               onchange="updateDial('velocity', this.value); autoTransform()"
+                               oninput="updateDial('velocity', this.value); autoTransform()">
+                    </div>
+                    <input type="number" id="velocity" value="100" min="0" max="127"
+                           style="width: 60px; text-align: center;"
+                           onchange="updateDial('velocity', this.value); autoTransform()"
+                           oninput="updateDial('velocity', this.value); autoTransform()">
+                </div>
+
+                <!-- Enc1 with dial and number input -->
+                <div style="display: inline-block; margin: 10px; text-align: center;">
+                    <label>Enc1<br/>(inlet_3)</label><br>
+                    <div class="dial-container"
+                         style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                        <svg width="60" height="60" class="dial-svg">
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                                    stroke-dasharray="157" stroke-dashoffset="157" id="enc1-progress"
+                                    transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="enc1-pointer"
+                                  transform="rotate(0 30 30)"/>
+                        </svg>
+                        <input type="range" id="enc1-dial" min="0" max="127" value="100"
+                               style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                               onchange="updateDial('enc1', this.value); autoTransform()"
+                               oninput="updateDial('enc1', this.value); autoTransform()">
+                    </div>
+                    <input type="number" id="enc1" value="80" min="0" max="127"
+                           style="width: 60px; text-align: center;"
+                           onchange="updateDial('enc1', this.value); autoTransform()"
+                           oninput="updateDial('enc1', this.value); autoTransform()">
+                </div>
+
+                <!-- Enc2 with dial and number input -->
+                <div style="display: inline-block; margin: 10px; text-align: center;">
+                    <label>Enc2<br/>(inlet_4)</label><br>
+                    <div class="dial-container"
+                         style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                        <svg width="60" height="60" class="dial-svg">
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                                    stroke-dasharray="157" stroke-dashoffset="157" id="enc2-progress"
+                                    transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="enc2-pointer"
+                                  transform="rotate(0 30 30)"/>
+                        </svg>
+                        <input type="range" id="enc2-dial" min="0" max="127" value="50"
+                               style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                               onchange="updateDial('enc2', this.value); autoTransform()"
+                               oninput="updateDial('enc2', this.value); autoTransform()">
+                    </div>
+                    <input type="number" id="enc2" value="50" min="0" max="127"
+                           style="width: 60px; text-align: center;"
+                           onchange="updateDial('enc2', this.value); autoTransform()"
+                           oninput="updateDial('enc2', this.value); autoTransform()">
 
 
-        <div style="margin: 10px 0;">
-        <!-- Root Note input with MIDI name and dial -->
-        <div style="display: inline-block; margin: 10px; text-align: center;">
-            <label>Root Note<br/>(inlet_0):</label><br>
-            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
-                <svg width="60" height="60" class="dial-svg">
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
-                            stroke-dasharray="157" stroke-dashoffset="157" id="note-progress"
-                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="note-pointer"
-                          transform="rotate(0 30 30)"/>
-                </svg>
-                <input type="range" id="note-dial" min="0" max="127" value="60"
-                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
-                       onchange="updateDial('note', this.value); updateNoteDisplay(); autoTransform()"
-                       oninput="updateDial('note', this.value); updateNoteDisplay(); autoTransform()">
+                </div>
+
+                <!-- Rate with dial and number input -->
+                <div style="display: inline-block; margin: 10px; text-align: center;">
+                    <label>Rate<br/>(ms)</label><br>
+                    <div class="dial-container"
+                         style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
+                        <svg width="60" height="60" class="dial-svg">
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
+                                    stroke-dasharray="157" stroke-dashoffset="157" id="rate-progress"
+                                    transform="rotate(-90 30 30)" stroke-linecap="round"/>
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="rate-pointer"
+                                  transform="rotate(0 30 30)"/>
+                        </svg>
+                        <input type="range" id="rate-dial" min="50" max="10000" value="250"
+                               style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
+                               onchange="updateDial('rate', this.value); autoTransform()"
+                               oninput="updateDial('rate', this.value); autoTransform()">
+                    </div>
+                    <input type="number" id="rateMs" value="250" min="50" max="10000"
+                           style="width: 60px; text-align: center;"
+                           onchange="updateDial('rate', this.value); autoTransform()"
+                           oninput="updateDial('rate', this.value); autoTransform()">
+                </div>
             </div>
-            <div style="margin: 5px auto; width: 120px;">
-                <input type="number" id="note" value="60" min="0" max="127"
-                       style="width: 60px; margin-right: 5px;"
-                       onchange="updateDial('note', this.value); updateNoteDisplay(); autoTransform()"
-                       oninput="updateDial('note', this.value); updateNoteDisplay(); autoTransform()">
-                <input type="text" id="noteName" value="C4"
-                       style="width: 45px; text-align: center; font-size: 12px; color: #666; padding: 2px;"
-                       onblur="updateNoteFromName()"
-                       onkeydown="handleNoteNameKeydown(event)"
-                       title="Type note name (e.g. C4, F#3, Bb5)">
-            </div>
-        </div>
-
-        <!-- Semitone with dial and number input -->
-        <div style="display: inline-block; margin: 10px; text-align: center;">
-            <label>Semitone offset<br/>(inlet_1)</label><br>
-            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
-                <svg width="60" height="60" class="dial-svg">
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
-                            stroke-dasharray="157" stroke-dashoffset="157" id="semitone-progress"
-                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="semitone-pointer"
-                          transform="rotate(0 30 30)"/>
-                </svg>
-                <input type="range" id="semitone-dial" min="-127" max="127" value="0"
-                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
-                       onchange="updateDial('semitone', this.value); autoTransform()"
-                       oninput="updateDial('semitone', this.value); autoTransform()">
-            </div>
-            <input type="number" id="semitone" value="0" min="-127" max="127" style="width: 60px; text-align: center;"
-                   onchange="updateDial('semitone', this.value); autoTransform()"
-                   oninput="updateDial('semitone', this.value); autoTransform()">
-        </div>
-
-        <!-- Velocity with dial and number input -->
-        <div style="display: inline-block; margin: 10px; text-align: center;">
-            <label>Velocity<br/>(inlet_2)</label><br>
-            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
-                <svg width="60" height="60" class="dial-svg">
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
-                            stroke-dasharray="157" stroke-dashoffset="157" id="velocity-progress"
-                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="velocity-pointer"
-                          transform="rotate(0 30 30)"/>
-                </svg>
-                <input type="range" id="velocity-dial" min="0" max="127" value="100"
-                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
-                       onchange="updateDial('velocity', this.value); autoTransform()"
-                       oninput="updateDial('velocity', this.value); autoTransform()">
-            </div>
-            <input type="number" id="velocity" value="100" min="0" max="127" style="width: 60px; text-align: center;"
-                   onchange="updateDial('velocity', this.value); autoTransform()"
-                   oninput="updateDial('velocity', this.value); autoTransform()">
-        </div>
-
-        <!-- Enc1 with dial and number input -->
-        <div style="display: inline-block; margin: 10px; text-align: center;">
-            <label>Enc1<br/>(inlet_3)</label><br>
-            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
-                <svg width="60" height="60" class="dial-svg">
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
-                            stroke-dasharray="157" stroke-dashoffset="157" id="enc1-progress"
-                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="enc1-pointer"
-                          transform="rotate(0 30 30)"/>
-                </svg>
-                <input type="range" id="enc1-dial" min="0" max="127" value="100"
-                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
-                       onchange="updateDial('enc1', this.value); autoTransform()"
-                       oninput="updateDial('enc1', this.value); autoTransform()">
-            </div>
-            <input type="number" id="enc1" value="80" min="0" max="127" style="width: 60px; text-align: center;"
-                   onchange="updateDial('enc1', this.value); autoTransform()"
-                   oninput="updateDial('enc1', this.value); autoTransform()">
-        </div>
-
-        <!-- Enc2 with dial and number input -->
-        <div style="display: inline-block; margin: 10px; text-align: center;">
-            <label>Enc2<br/>(inlet_4)</label><br>
-            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
-                <svg width="60" height="60" class="dial-svg">
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
-                            stroke-dasharray="157" stroke-dashoffset="157" id="enc2-progress"
-                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="enc2-pointer"
-                          transform="rotate(0 30 30)"/>
-                </svg>
-                <input type="range" id="enc2-dial" min="0" max="127" value="50"
-                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
-                       onchange="updateDial('enc2', this.value); autoTransform()"
-                       oninput="updateDial('enc2', this.value); autoTransform()">
-            </div>
-            <input type="number" id="enc2" value="50" min="0" max="127" style="width: 60px; text-align: center;"
-                   onchange="updateDial('enc2', this.value); autoTransform()"
-                   oninput="updateDial('enc2', this.value); autoTransform()">
-
-
-        </div>
-
-        <!-- Rate with dial and number input -->
-        <div style="display: inline-block; margin: 10px; text-align: center;">
-            <label>Rate<br/>(ms)</label><br>
-            <div class="dial-container" style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
-                <svg width="60" height="60" class="dial-svg">
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#333" stroke-width="2"/>
-                    <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
-                            stroke-dasharray="157" stroke-dashoffset="157" id="rate-progress"
-                            transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                    <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="rate-pointer"
-                          transform="rotate(0 30 30)"/>
-                </svg>
-                <input type="range" id="rate-dial" min="50" max="10000" value="250"
-                       style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
-                       onchange="updateDial('rate', this.value); autoTransform()"
-                       oninput="updateDial('rate', this.value); autoTransform()">
-            </div>
-            <input type="number" id="rateMs" value="250" min="50" max="10000" style="width: 60px; text-align: center;"
-                   onchange="updateDial('rate', this.value); autoTransform()"
-                   oninput="updateDial('rate', this.value); autoTransform()">
         </div>
     </div>
 
@@ -431,7 +479,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         </div>
     </div>
 
-        More things to play with...
+    More things to play with...
     <br/>Banagaz: use the drop down and select to reassign some drums to MIDI notes instead of drums!
     <br/>Triggaz: will also detect twinkle twinkle little star and three blind mice
 
@@ -492,22 +540,30 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 <ul>
     <li><a href="kasm/Kasm Bangaz.amxd" download>Kasm Bangaz.amxd - drum sequencer/arpeggiator</a></li>
     <li><a href="kasm/Kasm Counterpoint.amxd" download>Kasm Counterpoint.amxd - looper/harmoniser</a></li>
-    <li><a href="kasm/Kasm Emanator Generator.amxd" download>Kasm Emanator Generator.amxd - Ableton Clip Generator</a></li>
-    <li><a href="kasm/Kasm Emanator Transformation.amxd" download>Kasm Emanator Transformation.amxd - Ableton Clip Transformation</a></li>
+    <li><a href="kasm/Kasm Emanator Generator.amxd" download>Kasm Emanator Generator.amxd - Ableton Clip Generator</a>
+    </li>
+    <li><a href="kasm/Kasm Emanator Transformation.amxd" download>Kasm Emanator Transformation.amxd - Ableton Clip
+        Transformation</a></li>
     <li><a href="kasm/Kasm Emanator.amxd" download>Kasm Emanator.amxd - algorithmic MIDI generator</a></li>
     <li><a href="kasm/Kasm Krumhansl.amxd" download>Kasm Krumhansl.amxd - played key and chord detection</a></li>
-    <li><a href="kasm/Kasm Rust WASM.amxd" download>Kasm Rust WASM.amxd - simple example of Rust/WebAssembly in Ableton Live 12.2</a></li>
-    <li><a href="kasm/Kasm Triggaz.amxd" download>Kasm Triggaz.amxd - detect MIDI patterns and trigger scene changes, etc</a></li>
+    <li><a href="kasm/Kasm Rust WASM.amxd" download>Kasm Rust WASM.amxd - simple example of Rust/WebAssembly in Ableton
+        Live 12.2</a></li>
+    <li><a href="kasm/Kasm Triggaz.amxd" download>Kasm Triggaz.amxd - detect MIDI patterns and trigger scene changes,
+        etc</a></li>
 </ul>
 
 <h2>Hear Kasm in Action</h2>
 <ul>
-    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-with-diva" style="color:#61dafb;">Emanator Algo #1 playing u-he Diva (HS Hippie Chimes patch)</a></li>
-    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-algorithm-2-with" style="color:#61dafb;">Emanator Algo #2 playing Kontak Stradivari “Vesuvius” Violin</a></li>
-    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-rust-algorithm-13-piano" style="color:#61dafb;">Emanator Algo #13 playing VSL Synchron Bösendorfer Imperial</a></li>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-with-diva" style="color:#61dafb;">Emanator Algo #1
+        playing u-he Diva (HS Hippie Chimes patch)</a></li>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-algorithm-2-with" style="color:#61dafb;">Emanator Algo
+        #2 playing Kontak Stradivari “Vesuvius” Violin</a></li>
+    <li><a href="https://soundcloud.com/kevleyski/kasm-emanator-rust-algorithm-13-piano" style="color:#61dafb;">Emanator
+        Algo #13 playing VSL Synchron Bösendorfer Imperial</a></li>
 </ul>
 <h2>Try Kasm for Free</h2>
-<p><a href="https://maxforlive.com/library/device/12948/kasm-emanator" style="color:#61dafb; font-weight:bold;">Download the free Emanator plugin</a></p>
+<p><a href="https://maxforlive.com/library/device/12948/kasm-emanator" style="color:#61dafb; font-weight:bold;">Download
+    the free Emanator plugin</a></p>
 
 
 <p>KASM MIDI FX Plugins: <a href="https://github.com/PyrmontBrewery/kasm_ableton">GitHub</a></p>
@@ -1030,42 +1086,534 @@ Velocity: C=down (-10), V=up (+10)
             case 'three_blind_mice':
                 exampleJson = JSON.stringify({
                     notes: [
-                        {"note_id":1,"pitch":76,"start_time":0.320916583416583,"duration":0.938000020812521,"velocity":81,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":87},{"note_id":2,"pitch":74,"start_time":1.423166677072927,"duration":0.682833312520812,"velocity":74,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":84},{"note_id":3,"pitch":72,"start_time":2.457874937562437,"duration":1.515250114468864,"velocity":73,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":91},{"note_id":4,"pitch":76,"start_time":4.64375,"duration":0.665999885531136,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":89},{"note_id":5,"pitch":74,"start_time":5.741249895937396,"duration":0.783500093656344,"velocity":88,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":69},{"note_id":6,"pitch":72,"start_time":6.772291770729271,"duration":1.326958198051948,"velocity":78,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":84}
+                        {
+                            "note_id": 1,
+                            "pitch": 76,
+                            "start_time": 0.320916583416583,
+                            "duration": 0.938000020812521,
+                            "velocity": 81,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 87
+                        }, {
+                            "note_id": 2,
+                            "pitch": 74,
+                            "start_time": 1.423166677072927,
+                            "duration": 0.682833312520812,
+                            "velocity": 74,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 84
+                        }, {
+                            "note_id": 3,
+                            "pitch": 72,
+                            "start_time": 2.457874937562437,
+                            "duration": 1.515250114468864,
+                            "velocity": 73,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 91
+                        }, {
+                            "note_id": 4,
+                            "pitch": 76,
+                            "start_time": 4.64375,
+                            "duration": 0.665999885531136,
+                            "velocity": 92,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 89
+                        }, {
+                            "note_id": 5,
+                            "pitch": 74,
+                            "start_time": 5.741249895937396,
+                            "duration": 0.783500093656344,
+                            "velocity": 88,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 69
+                        }, {
+                            "note_id": 6,
+                            "pitch": 72,
+                            "start_time": 6.772291770729271,
+                            "duration": 1.326958198051948,
+                            "velocity": 78,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 84
+                        }
                     ]
                 }, null, 2);
                 break;
             case 'ferer_jaques':
                 exampleJson = JSON.stringify({
                     notes: [
-                        {"note_id":1,"pitch":72,"start_time":0,"duration":1.082708437395937,"velocity":90,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":88},{"note_id":2,"pitch":74,"start_time":0.972999916749917,"duration":0.973208302114552,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":82},{"note_id":3,"pitch":76,"start_time":1.861999979187479,"duration":1.056750020812521,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":76},{"note_id":4,"pitch":72,"start_time":2.876208426989677,"duration":0.201124916749917,"velocity":82,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":97},{"note_id":5,"pitch":72,"start_time":3.936749968781219,"duration":1.022375020812521,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":79},{"note_id":6,"pitch":74,"start_time":4.886833218864469,"duration":1.003166885198135,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":90},{"note_id":7,"pitch":76,"start_time":5.826374927156177,"duration":1.05641676032301,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":86},{"note_id":8,"pitch":72,"start_time":6.848583447802198,"duration":0.318874875124875,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":90}
+                        {
+                            "note_id": 1,
+                            "pitch": 72,
+                            "start_time": 0,
+                            "duration": 1.082708437395937,
+                            "velocity": 90,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 88
+                        }, {
+                            "note_id": 2,
+                            "pitch": 74,
+                            "start_time": 0.972999916749917,
+                            "duration": 0.973208302114552,
+                            "velocity": 89,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 82
+                        }, {
+                            "note_id": 3,
+                            "pitch": 76,
+                            "start_time": 1.861999979187479,
+                            "duration": 1.056750020812521,
+                            "velocity": 92,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 76
+                        }, {
+                            "note_id": 4,
+                            "pitch": 72,
+                            "start_time": 2.876208426989677,
+                            "duration": 0.201124916749917,
+                            "velocity": 82,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 97
+                        }, {
+                            "note_id": 5,
+                            "pitch": 72,
+                            "start_time": 3.936749968781219,
+                            "duration": 1.022375020812521,
+                            "velocity": 92,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 79
+                        }, {
+                            "note_id": 6,
+                            "pitch": 74,
+                            "start_time": 4.886833218864469,
+                            "duration": 1.003166885198135,
+                            "velocity": 92,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 90
+                        }, {
+                            "note_id": 7,
+                            "pitch": 76,
+                            "start_time": 5.826374927156177,
+                            "duration": 1.05641676032301,
+                            "velocity": 89,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 86
+                        }, {
+                            "note_id": 8,
+                            "pitch": 72,
+                            "start_time": 6.848583447802198,
+                            "duration": 0.318874875124875,
+                            "velocity": 89,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 90
+                        }
                     ]
                 }, null, 2);
                 break;
             case 'mary_little_lamb':
                 exampleJson = JSON.stringify({
                     notes: [
-                        {"note_id":1,"pitch":52,"start_time":1.154499927156177,"duration":0.616875052031302,"velocity":97,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":91},{"note_id":2,"pitch":50,"start_time":1.744833291708292,"duration":0.588624916749917,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":83},{"note_id":3,"pitch":48,"start_time":2.303499885531135,"duration":0.566958562271062,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":77},{"note_id":4,"pitch":50,"start_time":2.836458333333333,"duration":0.561458333333333,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":78},{"note_id":5,"pitch":52,"start_time":3.407791687479187,"duration":0.260041520979021,"velocity":94,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":83},{"note_id":6,"pitch":52,"start_time":3.907208416583416,"duration":0.23099998959374,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":91},{"note_id":7,"pitch":52,"start_time":4.440250114468864,"duration":0.419208135614386,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":96}
+                        {
+                            "note_id": 1,
+                            "pitch": 52,
+                            "start_time": 1.154499927156177,
+                            "duration": 0.616875052031302,
+                            "velocity": 97,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 91
+                        }, {
+                            "note_id": 2,
+                            "pitch": 50,
+                            "start_time": 1.744833291708292,
+                            "duration": 0.588624916749917,
+                            "velocity": 92,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 83
+                        }, {
+                            "note_id": 3,
+                            "pitch": 48,
+                            "start_time": 2.303499885531135,
+                            "duration": 0.566958562271062,
+                            "velocity": 89,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 77
+                        }, {
+                            "note_id": 4,
+                            "pitch": 50,
+                            "start_time": 2.836458333333333,
+                            "duration": 0.561458333333333,
+                            "velocity": 89,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 78
+                        }, {
+                            "note_id": 5,
+                            "pitch": 52,
+                            "start_time": 3.407791687479187,
+                            "duration": 0.260041520979021,
+                            "velocity": 94,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 83
+                        }, {
+                            "note_id": 6,
+                            "pitch": 52,
+                            "start_time": 3.907208416583416,
+                            "duration": 0.23099998959374,
+                            "velocity": 92,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 91
+                        }, {
+                            "note_id": 7,
+                            "pitch": 52,
+                            "start_time": 4.440250114468864,
+                            "duration": 0.419208135614386,
+                            "velocity": 92,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 96
+                        }
                     ]
                 }, null, 2);
                 break;
             case 'happy_birthday':
                 exampleJson = JSON.stringify({
                     notes: [
-                        {"note_id":1,"pitch":60,"start_time":1.223791573010323,"duration":0.24974998959374,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":2,"pitch":60,"start_time":1.940333364552115,"duration":0.24095826048951,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":3,"pitch":62,"start_time":2.727333343739594,"duration":0.204833447802198,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":4,"pitch":60,"start_time":3.998291552197802,"duration":0.270333572677323,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":5,"pitch":65,"start_time":5.151583312520812,"duration":0.302916614635365,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":6,"pitch":64,"start_time":6.423999958374958,"duration":0.202416593822844,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64}
+                        {
+                            "note_id": 1,
+                            "pitch": 60,
+                            "start_time": 1.223791573010323,
+                            "duration": 0.24974998959374,
+                            "velocity": 100,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 64
+                        }, {
+                            "note_id": 2,
+                            "pitch": 60,
+                            "start_time": 1.940333364552115,
+                            "duration": 0.24095826048951,
+                            "velocity": 100,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 64
+                        }, {
+                            "note_id": 3,
+                            "pitch": 62,
+                            "start_time": 2.727333343739594,
+                            "duration": 0.204833447802198,
+                            "velocity": 100,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 64
+                        }, {
+                            "note_id": 4,
+                            "pitch": 60,
+                            "start_time": 3.998291552197802,
+                            "duration": 0.270333572677323,
+                            "velocity": 100,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 64
+                        }, {
+                            "note_id": 5,
+                            "pitch": 65,
+                            "start_time": 5.151583312520812,
+                            "duration": 0.302916614635365,
+                            "velocity": 100,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 64
+                        }, {
+                            "note_id": 6,
+                            "pitch": 64,
+                            "start_time": 6.423999958374958,
+                            "duration": 0.202416593822844,
+                            "velocity": 100,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 64
+                        }
                     ]
                 }, null, 2);
                 break;
             case 'happy_birthday_legatto':
                 exampleJson = JSON.stringify({
                     notes: [
-                        {"notes":[{"note_id":7,"pitch":96,"start_time":0,"duration":0.347999916749917,"velocity":100,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":80},{"note_id":8,"pitch":96,"start_time":0.549499979187479,"duration":0.846833374958375,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":83},{"note_id":9,"pitch":98,"start_time":1.286291573010323,"duration":1.032208416583417,"velocity":119,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":82},{"note_id":10,"pitch":96,"start_time":2.279999947968698,"duration":0.81241674991675,"velocity":111,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":46},{"note_id":11,"pitch":101,"start_time":3.207124906343656,"duration":0.674666739510489,"velocity":121,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":87},{"note_id":12,"pitch":100,"start_time":4.183500353812854,"duration":1.005083198051948,"velocity":127,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":93}]}
+                        {
+                            "notes": [{
+                                "note_id": 7,
+                                "pitch": 96,
+                                "start_time": 0,
+                                "duration": 0.347999916749917,
+                                "velocity": 100,
+                                "mute": 0,
+                                "probability": 1,
+                                "velocity_deviation": 0,
+                                "release_velocity": 80
+                            }, {
+                                "note_id": 8,
+                                "pitch": 96,
+                                "start_time": 0.549499979187479,
+                                "duration": 0.846833374958375,
+                                "velocity": 92,
+                                "mute": 0,
+                                "probability": 1,
+                                "velocity_deviation": 0,
+                                "release_velocity": 83
+                            }, {
+                                "note_id": 9,
+                                "pitch": 98,
+                                "start_time": 1.286291573010323,
+                                "duration": 1.032208416583417,
+                                "velocity": 119,
+                                "mute": 0,
+                                "probability": 1,
+                                "velocity_deviation": 0,
+                                "release_velocity": 82
+                            }, {
+                                "note_id": 10,
+                                "pitch": 96,
+                                "start_time": 2.279999947968698,
+                                "duration": 0.81241674991675,
+                                "velocity": 111,
+                                "mute": 0,
+                                "probability": 1,
+                                "velocity_deviation": 0,
+                                "release_velocity": 46
+                            }, {
+                                "note_id": 11,
+                                "pitch": 101,
+                                "start_time": 3.207124906343656,
+                                "duration": 0.674666739510489,
+                                "velocity": 121,
+                                "mute": 0,
+                                "probability": 1,
+                                "velocity_deviation": 0,
+                                "release_velocity": 87
+                            }, {
+                                "note_id": 12,
+                                "pitch": 100,
+                                "start_time": 4.183500353812854,
+                                "duration": 1.005083198051948,
+                                "velocity": 127,
+                                "mute": 0,
+                                "probability": 1,
+                                "velocity_deviation": 0,
+                                "release_velocity": 93
+                            }]
+                        }
                     ]
                 }, null, 2);
                 break;
             case 'baa_baa':
                 exampleJson = JSON.stringify({
                     notes: [
-                        {"note_id":1,"pitch":72,"start_time":0.08470826048951,"duration":0.812625135281385,"velocity":82,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":94},{"note_id":2,"pitch":72,"start_time":1.053083374958375,"duration":0.733583343739594,"velocity":89,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":83},{"note_id":3,"pitch":79,"start_time":1.773208302114552,"duration":0.905791604229104,"velocity":74,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":64},{"note_id":4,"pitch":79,"start_time":2.678999906343656,"duration":0.922208520646021,"velocity":48,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":81},{"note_id":5,"pitch":81,"start_time":3.5625,"duration":0.613916552197802,"velocity":111,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":67},{"note_id":6,"pitch":83,"start_time":3.945791708291708,"duration":0.61283326048951,"velocity":94,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":79},{"note_id":7,"pitch":84,"start_time":4.457708437395937,"duration":0.373374802281052,"velocity":107,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":94},{"note_id":8,"pitch":81,"start_time":4.836166697885448,"duration":0.524583229270729,"velocity":107,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":92},{"note_id":9,"pitch":79,"start_time":5.29695825008325,"duration":1.15583348942724,"velocity":103,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":87},{"note_id":10,"pitch":77,"start_time":7.110875062437563,"duration":0.582541677072927,"velocity":102,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":92},{"note_id":11,"pitch":77,"start_time":7.966208270895771,"duration":0.670208437395937,"velocity":92,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":87},{"note_id":12,"pitch":76,"start_time":8.804499927156177,"duration":0.561708343739594,"velocity":97,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":85},{"note_id":13,"pitch":76,"start_time":9.584333374958375,"duration":0.674416729104229,"velocity":87,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":81},{"note_id":14,"pitch":74,"start_time":10.426791697885449,"duration":0.76233323967699,"velocity":82,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":90},{"note_id":15,"pitch":74,"start_time":11.374125093656344,"duration":0.716499906343656,"velocity":83,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":87},{"note_id":16,"pitch":72,"start_time":12.383958229270728,"duration":1.711958354145854,"velocity":75,"mute":0,"probability":1,"velocity_deviation":0,"release_velocity":93}
+                        {
+                            "note_id": 1,
+                            "pitch": 72,
+                            "start_time": 0.08470826048951,
+                            "duration": 0.812625135281385,
+                            "velocity": 82,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 94
+                        }, {
+                            "note_id": 2,
+                            "pitch": 72,
+                            "start_time": 1.053083374958375,
+                            "duration": 0.733583343739594,
+                            "velocity": 89,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 83
+                        }, {
+                            "note_id": 3,
+                            "pitch": 79,
+                            "start_time": 1.773208302114552,
+                            "duration": 0.905791604229104,
+                            "velocity": 74,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 64
+                        }, {
+                            "note_id": 4,
+                            "pitch": 79,
+                            "start_time": 2.678999906343656,
+                            "duration": 0.922208520646021,
+                            "velocity": 48,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 81
+                        }, {
+                            "note_id": 5,
+                            "pitch": 81,
+                            "start_time": 3.5625,
+                            "duration": 0.613916552197802,
+                            "velocity": 111,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 67
+                        }, {
+                            "note_id": 6,
+                            "pitch": 83,
+                            "start_time": 3.945791708291708,
+                            "duration": 0.61283326048951,
+                            "velocity": 94,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 79
+                        }, {
+                            "note_id": 7,
+                            "pitch": 84,
+                            "start_time": 4.457708437395937,
+                            "duration": 0.373374802281052,
+                            "velocity": 107,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 94
+                        }, {
+                            "note_id": 8,
+                            "pitch": 81,
+                            "start_time": 4.836166697885448,
+                            "duration": 0.524583229270729,
+                            "velocity": 107,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 92
+                        }, {
+                            "note_id": 9,
+                            "pitch": 79,
+                            "start_time": 5.29695825008325,
+                            "duration": 1.15583348942724,
+                            "velocity": 103,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 87
+                        }, {
+                            "note_id": 10,
+                            "pitch": 77,
+                            "start_time": 7.110875062437563,
+                            "duration": 0.582541677072927,
+                            "velocity": 102,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 92
+                        }, {
+                            "note_id": 11,
+                            "pitch": 77,
+                            "start_time": 7.966208270895771,
+                            "duration": 0.670208437395937,
+                            "velocity": 92,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 87
+                        }, {
+                            "note_id": 12,
+                            "pitch": 76,
+                            "start_time": 8.804499927156177,
+                            "duration": 0.561708343739594,
+                            "velocity": 97,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 85
+                        }, {
+                            "note_id": 13,
+                            "pitch": 76,
+                            "start_time": 9.584333374958375,
+                            "duration": 0.674416729104229,
+                            "velocity": 87,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 81
+                        }, {
+                            "note_id": 14,
+                            "pitch": 74,
+                            "start_time": 10.426791697885449,
+                            "duration": 0.76233323967699,
+                            "velocity": 82,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 90
+                        }, {
+                            "note_id": 15,
+                            "pitch": 74,
+                            "start_time": 11.374125093656344,
+                            "duration": 0.716499906343656,
+                            "velocity": 83,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 87
+                        }, {
+                            "note_id": 16,
+                            "pitch": 72,
+                            "start_time": 12.383958229270728,
+                            "duration": 1.711958354145854,
+                            "velocity": 75,
+                            "mute": 0,
+                            "probability": 1,
+                            "velocity_deviation": 0,
+                            "release_velocity": 93
+                        }
                     ]
                 }, null, 2);
                 break;
@@ -3236,6 +3784,8 @@ Velocity: C=down (-10), V=up (+10)
         const bangUp = new KeyboardEvent('keyup', {key: 'a', code: 'KeyA', keyCode: 65, bubbles: true});
         document.dispatchEvent(bangDown);
         document.dispatchEvent(bangUp);
+
+        harmonyMode = document.getElementById('inlet_5_emanator').value >= 63;
     }
 
     // Auto-save settings whenever any input changes
@@ -3284,7 +3834,7 @@ Velocity: C=down (-10), V=up (+10)
     // Convert looper notes format to MIDI clip format
     function convertLooperNotesToMidiClip(looperNotes) {
         if (!Array.isArray(looperNotes) || looperNotes.length === 0) {
-            return { notes: [] };
+            return {notes: []};
         }
 
         const midiNotes = looperNotes.map((looperNote, index) => {
@@ -3304,13 +3854,13 @@ Velocity: C=down (-10), V=up (+10)
             };
         });
 
-        return { notes: midiNotes };
+        return {notes: midiNotes};
     }
 
     // "metro 10" Periodically call msg_int every 10ms
-    setInterval(function() {
+    setInterval(function () {
         // tape/counterpoint emanators require feedback loop
-        harmonyMode = document.getElementById('inlet_5_emanator').value >= 20;
+        harmonyMode = document.getElementById('inlet_5_emanator').value >= 63;
 
         if (harmonyMode) {
             if (typeof msg_int === 'function') {
