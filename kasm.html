@@ -1,3 +1,26 @@
+<!--
+ * Copyright (c) Pyrmont Brewery 2025
+ * Author: Kevin Staunton-Lambert
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+-->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,7 +29,6 @@
     <title>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</title>
     <link rel="stylesheet" href="pyrmontbrewery.css"/>
     <script src="kasm/kasm_WASM_rust_obs.js"></script>
-
 </head>
 <body>
 <div class="tvsimulator" aria-hidden="true"></div>
@@ -16,21 +38,17 @@
 <br/>
 <h1>Pyrmont Brewery Music Room! Kasm</h1>
 
-<img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" />
+<!-- <img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" /> -->
 
 <h1>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</h1>
-<p><strong>Kasm</strong> is a modern SDK and source code tutorial for creating high-performance MIDI processing plugins for Ableton Live using Rust and WebAssembly. Build Max4Live devices with advanced MIDI and audio manipulation, leveraging Rust’s speed and safety, and deploy them in Ableton Live 12.2+ with the new V8 JavaScript engine.</p>
-<div style="background:#222; color:#fff;">
-    <h2>Get Kasm SDK</h2>
-    <p><a href="https://maxforlive.com/library/index.php?by=any&q=Kasm" style="color:#61dafb;">Try the Ableton Live 12.2 Max4Live device plugins for free here</a></p>
-    <p>Buy the full SDK and source code tutorial:</p>
-    <ul>
-        <li><a href="https://gumroad.com/l/kasm-sdk" style="color:#61dafb;">Gumroad</a></li>
-        <li><a href="https://buymeacoffee.com/kevleyski" style="color:#61dafb;">BuyMeACoffee</a></li>
-    </ul>
-</div>
-
+<p><strong>Kasm</strong> is a modern SDK and source code tutorial for creating high-performance MIDI processing plugins for Ableton Live using Rust and WebAssembly. Build Max4Live devices with advanced MIDI and audio manipulation, leveraging Rust’s speed and safety, and deploy them in Ableton Live 12.2+ with the new V8 JavaScript engine.
+<p><a href="https://maxforlive.com/library/index.php?by=any&q=Kasm" style="color:#61dafb;">Try the free Ableton Live 12.2 Max4Live device plugins</a></p>
+<p>Buy the full Rust SDK: <a href="https://kevleyski.gumroad.com/l/kasm_ableton_wasm_rust" style="color:#61dafb;">Gumroad</a> or <a href="https://buymeacoffee.com/kasm/e/426168" style="color:#61dafb;">BuyMeACoffee</a>
+</p>
+</p>
+<br/>
 Connect Kasm to your MIDI device...
+Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 <div style="margin: 20px 0;">
     <!-- WebMIDI Controls -->
     <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
@@ -40,7 +58,7 @@ Connect Kasm to your MIDI device...
                     <option value="">Select MIDI Device...</option>
                 </select>
             </label>
-            <button id="refreshMidiDevices" style="margin-left: 10px; padding: 3px 8px;">Refresh</button>
+            <button id="refreshMidiDevices" style="margin-left: 10px; padding: 3px 8px;">&lt;</button>
             <label>MIDI Channel:
                 <select id="midiChannel" style="padding: 3px; margin-left: 10px;">
                     <option value="0">1</option>
@@ -76,7 +94,8 @@ Connect Kasm to your MIDI device...
         </div>
     </div>
 
-    <div style="margin-bottom: 10px;">
+    <label>Play you own or choose a sequence Ableton note JSON dictionary:
+        <div style="margin-bottom: 10px;">
         <select id="exampleSelect" style="padding: 5px; margin-right: 10px;" onchange="loadSelectedExample()">
             <option value="singleNote">Single Note</option>
             <option value="send2notes">Two Notes</option>
@@ -102,35 +121,140 @@ Connect Kasm to your MIDI device...
             <option value="minimalistPattern">Minimalist Pattern (24 notes)</option>
             <option value="orchestralStab">Orchestral Stab (32 notes)</option>
         </select>
+            <br/>
         <textarea id="inputJson" rows="4" cols="80" style="font-family: monospace; font-size: 12px;"
                   oninput="loadSelectedExample(); autoTransform()"></textarea>
     </div>
 
-    <label>Emanator (inlet_5):
-        <select id="emanator" onchange="autoTransform()" style="padding: 3px;">
+        <label>Choose an Emanator algorithm (inlet_5):<br/>
+        <div style="margin-bottom: 10px;">
+            <label><input type="radio" name="emanatorQuick" value="10" onclick="document.getElementById('inlet_5_emanator').value=2; autoTransform();"> Strum</label>
+            <label><input type="radio" name="emanatorQuick" value="20" onclick="document.getElementById('inlet_5_emanator').value=63; autoTransform();"> Looping</label>
+            <label><input type="radio" name="emanatorQuick" value="30" onclick="document.getElementById('inlet_5_emanator').value=9; autoTransform();"> Taps</label>
+            <label><input type="radio" name="emanatorQuick" value="40" onclick="document.getElementById('inlet_5_emanator').value=75; autoTransform();"> Counterpoint</label>
+            <label><input type="radio" name="emanatorQuick" value="50" onclick="document.getElementById('inlet_5_emanator').value=90; autoTransform();"> Drum Pat</label>
+            <label><input type="radio" name="emanatorQuick" value="60" onclick="document.getElementById('inlet_5_emanator').value=46; autoTransform();"> Chaos</label>
+        </div>
+        <select id="inlet_5_emanator" onchange="autoTransform()" style="padding: 3px;">
             <option value="0">0 Random</option>
-            <option value="1">1 kasm_emanator_1</option>
-            <option value="2">2 kasm_emanator_2</option>
-            <option value="3">3 kasm_emanator_3</option>
-            <option value="4">4 kasm_emanator_4</option>
-            <option value="5">5 kasm_emanator_5</option>
-            <option value="6">6 kasm_emanator_6</option>
-            <option value="7">7 kasm_emanator_7</option>
-            <option value="8">8 kasm_emanator_8</option>
-            <option value="9">9 kasm_emanator_9</option>
-            <option value="10">10 kasm_emanator_10</option>
-            <option value="11">11 kasm_emanator_11</option>
-            <option value="12">12 kasm_emanator_12</option>
-            <option value="13">13 kasm_emanator_13</option>
-            <option value="14">14 kasm_emanator_14</option>
-            <option value="15">15 kasm_emanator_15</option>
-            <option value="16">16 kasm_emanator_16</option>
-            <option value="17">17 kasm_emanator_17</option>
-            <option value="18">18 kasm_emanator_18</option>
-            <option value="19">19 kasm_emanator_19</option>
-            <option value="20">20 kasm_emanator_20</option>
-            <option value="21">21 kasm_krumhansl arp</option>
-            <option value="22">22 kasm_looper</option>
+            <option value="1">mldy:Phone Ringtone</option>
+            <option value="2">mldy:Strummed Cascade</option>
+            <option value="3">mldy:Elaborate Panning</option>
+            <option value="4">mldy:Advanced Rhythmic</option>
+            <option value="5">hmny:Chord Progression</option>
+            <option value="6">hmny:Simple Chord</option>
+            <option value="7">hmny:Extended Inversions</option>
+            <option value="8">hmny:Complex Extensions</option>
+            <option value="9">rhym:Morse Code</option>
+            <option value="10">rhym:Markov Chain</option>
+            <option value="11">rhym:Wave Interference</option>
+            <option value="12">rhym:Complex Reflection</option>
+            <option value="13">rhym:Balkan 7/8</option>
+            <option value="14">rhym:West African Bell</option>
+            <option value="15">rhym:Indian Tintal</option>
+            <option value="16">rhym:Latin son clave</option>
+            <option value="17">rhym:Jazz Swing 8ths</option>
+            <option value="18">rhym:Fibonacci rhythm</option>
+            <option value="19">rhym:Golden ratio pulse</option>
+            <option value="20">rhym:Prime number rhythm</option>
+            <option value="21">rhym:Balkan 11/8 (3+2+3+3)</option>
+            <option value="22">rhym:Contemporary tuplets (5:4)</option>
+            <option value="23">rhym:Afro-Cuban 6/8 bell</option>
+            <option value="24">prog:Circle of Fifths</option>
+            <option value="25">prog:Stepwise Progression</option>
+            <option value="26">prog:Plagal Cadence</option>
+            <option value="27">prog:Deceptive Cadence</option>
+            <option value="28">prog:Modal Mixture</option>
+            <option value="29">prog:Descending Fifths</option>
+            <option value="30">prog:Jazz Turnaround</option>
+            <option value="31">prog:Chromatic Mediant</option>
+            <option value="32">prog:Neapolitan Chord</option>
+            <option value="33">prog:Augmented Sixth</option>
+            <option value="34">chnt:Chant Dorian Call-Response</option>
+            <option value="35">chnt:Chant Psalm Tone</option>
+            <option value="36">chnt:Chant Ornamented Response</option>
+            <option value="37">chnt:Chant with Drone</option>
+            <option value="38">chnt:Chant Antiphonal</option>
+            <option value="39">spat:Harmonic Resonance</option>
+            <option value="40">spat:Swarm Movement</option>
+            <option value="41">spat:Circular Panning</option>
+            <option value="42">spat:3D Positioning</option>
+            <option value="43">sums:Fibonacci Spiral</option>
+            <option value="44">sums:Fractal Cascade</option>
+            <option value="45">sums:Swarming Spirals</option>
+            <option value="46">sums:Fractal Chaos</option>
+            <option value="47">expr:Multidimensional Markov</option>
+            <option value="48">expr:Second Order Markov</option>
+            <option value="49">expr:Chaos Game Harmony</option>
+            <option value="50">expr:Complex Drums</option>
+            <option value="51">expr:Cellular Automaton</option>
+            <option value="52">expr:Euclidean Rhythm</option>
+            <option value="53">expr:L-System</option>
+            <option value="54">expr:Microtonal 24-TET</option>
+            <option value="55">expr:Brownian Walk</option>
+            <option value="56">expr:Spectral Texture</option>
+            <option value="57">expr:Recursive Pattern</option>
+            <option value="58">expr:Parameter Morphing</option>
+            <option value="59">expr:Polymetric (3:4)</option>
+            <option value="60">expr:Polytempo Engine</option>
+            <option value="61">Krumhansl Arpeggiator</option>
+            <option value="62">Krumhansl Chords</option>
+            <option value="63">Tape Looping Example</option>
+            <option value="64">loop:Chaos Game Harmony</option>
+            <option value="65">loop:Modular Arithmetic Harmony</option>
+            <option value="66">loop:Cellular Automata Harmony</option>
+            <option value="67">loop:Spectral Harmony</option>
+            <option value="68">loop:L-System Harmony</option>
+            <option value="69">loop:Markov Matrix Harmony</option>
+            <option value="70">loop:Quasi-Crystal Harmony</option>
+            <option value="71">loop:Fractal Brownian Harmony</option>
+            <option value="72">loop:Hyperbolic Geometry Harmony</option>
+            <option value="73">loop:Prime Spiral Harmony</option>
+            <option value="74">loop:Fibonacci Harmony</option>
+            <option value="75">loop:Markov Harmony</option>
+            <option value="76">loop:Fractal Harmony</option>
+            <option value="77">loop:Prime Harmony</option>
+            <option value="78">loop:Golden Ratio Harmony</option>
+            <option value="79">Clear All Drum Assignments</option>
+            <option value="80">Reset Default Drum Assignments</option>
+            <option value="81">Reassign Kick (drum)</option>
+            <option value="82">Reassign Snare (drum)</option>
+            <option value="83">Reassign HHClose</option>
+            <option value="84">Reassign HHOpen</option>
+            <option value="85">Reassign LowTom (drum)</option>
+            <option value="86">Reassign MidTom (drum)</option>
+            <option value="87">Reassign HiTom (drum)</option>
+            <option value="88">Reassign Clap</option>
+            <option value="89">Reassign CowBell</option>
+            <option value="90">drum:Bangaz 1</option>
+            <option value="91">drum:Bangaz 2</option>
+            <option value="92">drum:Bangaz 3</option>
+            <option value="93">drum:Bangaz 4</option>
+            <option value="94">drum:Bangaz 5</option>
+            <option value="95">drum:Bangaz 6</option>
+            <option value="96">drum:Bangaz 7</option>
+            <option value="97">drum:Bangaz 8</option>
+            <option value="98">drum:Bangaz 9</option>
+            <option value="99">drum:Bangaz 10</option>
+            <option value="100">drum:Bangaz 11</option>
+            <option value="101">drum:Bangaz 12</option>
+            <option value="102">drum:Bangaz 13</option>
+            <option value="103">drum:Bangaz 14</option>
+            <option value="104">drum:Bangaz 15</option>
+            <option value="105">drum:Bangaz 16</option>
+            <option value="106">drum:Bangaz 17</option>
+            <option value="107">drum:Bangaz 18</option>
+            <option value="108">drum:Bangaz 19</option>
+            <option value="109">drum:Bangaz 20</option>
+            <option value="110">drum:Bangaz 21</option>
+            <option value="111">drum:Bangaz 22</option>
+            <option value="112">drum:Bangaz 23</option>
+            <option value="113">drum:Bangaz 24</option>
+            <option value="114">drum:Bangaz 25</option>
+            <option value="115">drum:Bangaz 26</option>
+            <option value="116">drum:Bangaz 27</option>
+            <option value="117">drum:Bangaz 28</option>
+            <option value="118">drum:Bangaz 29</option>
         </select>
     </label>
 
@@ -356,10 +480,6 @@ Connect Kasm to your MIDI device...
 
 <div id="result"></div>
 
-<h2>Other tests...</h2>
-<button id="runWasm1">Run kasm_midi_note_offset(MIDI Note C4 (60), +1)</button>
-<button id="runWasm2">Run kasm_midi_note_offset(MIDI Note C4 (60), -12)</button>
-<button id="runWasm3">Run kasm_midi_note_octave_hit(MIDI Note C4 (60), +12)</button>
 
 
 <h2>What You’re Getting</h2>
@@ -397,13 +517,14 @@ Connect Kasm to your MIDI device...
 </ul>
 <h2>Download Max4Live Device Plugins</h2>
 <ul>
-    <li><a href="kasm/Kasm Counterpoint.amxd" download>Kasm Counterpoint.amxd</a></li>
-    <li><a href="kasm/Kasm Emanator Generator.amxd" download>Kasm Emanator Generator.amxd</a></li>
-    <li><a href="kasm/Kasm Emanator Transformation.amxd" download>Kasm Emanator Transformation.amxd</a></li>
-    <li><a href="kasm/Kasm Emanator.amxd" download>Kasm Emanator.amxd</a></li>
-    <li><a href="kasm/Kasm Krumhansl.amxd" download>Kasm Krumhansl.amxd</a></li>
-    <li><a href="kasm/Kasm Rust WASM.amxd" download>Kasm Rust WASM.amxd</a></li>
-    <li><a href="kasm/Kasm Triggaz.amxd" download>Kasm Triggaz.amxd</a></li>
+    <li><a href="kasm/Kasm Bangaz.amxd" download>Kasm Bangaz.amxd - drum sequencer/arpeggiator</a></li>
+    <li><a href="kasm/Kasm Counterpoint.amxd" download>Kasm Counterpoint.amxd - looper/harmoniser</a></li>
+    <li><a href="kasm/Kasm Emanator Generator.amxd" download>Kasm Emanator Generator.amxd - Ableton Clip Generator</a></li>
+    <li><a href="kasm/Kasm Emanator Transformation.amxd" download>Kasm Emanator Transformation.amxd - Ableton Clip Transformation</a></li>
+    <li><a href="kasm/Kasm Emanator.amxd" download>Kasm Emanator.amxd - algorithmic MIDI generator</a></li>
+    <li><a href="kasm/Kasm Krumhansl.amxd" download>Kasm Krumhansl.amxd - played key and chord detection</a></li>
+    <li><a href="kasm/Kasm Rust WASM.amxd" download>Kasm Rust WASM.amxd - simple example of Rust/WebAssembly in Ableton Live 12.2</a></li>
+    <li><a href="kasm/Kasm Triggaz.amxd" download>Kasm Triggaz.amxd - detect MIDI patterns and trigger scene changes, etc</a></li>
 </ul>
 
 
@@ -493,6 +614,8 @@ Connect Kasm to your MIDI device...
 
 <script>
     let inlet = 0;
+    let currentMidiOutput = null;
+    let harmonyMode = false;
 
     // Global timeout variables for debouncing
     let autoTransformTimeout;
@@ -502,8 +625,44 @@ Connect Kasm to your MIDI device...
         console.log(`post: ${msg}`);
     }
 
-    function outlet(index, msg) {
-        console.log(`outlet: ${index} ` + msg);
+    function outlet(index, msg, data) {
+        //console.log(`outlet: ${index} ` + msg);
+
+        // Send note to WebMIDI
+        if (index === 0) {
+            // Expect msg to be an object: {pitch, velocity, channel, type}
+            if (currentMidiOutput && harmonyMode) {
+                const pitch = msg;
+                const velocity = data;
+                const channel = parseInt(document.getElementById('midiChannel').value) || 0;
+                if (data && velocity > 20) {
+                    const noteOnMsg = [0x90 + channel, pitch, velocity];
+                    currentMidiOutput.send(noteOnMsg);
+                    setTimeout(() => {
+                        // Automatically send a note off after 500ms
+                        const noteOffMsg = [0x80 + channel, pitch, 0];
+                        currentMidiOutput.send(noteOffMsg);
+                    }, 10);
+                } else {
+                    const noteOffMsg = [0x80 + channel, pitch, 0];
+                    currentMidiOutput.send(noteOffMsg);
+                }
+            }
+        }
+
+        // Send CC change to WebMIDI
+        if (index === 1) {
+            // Send MIDI CC change
+            if (currentMidiOutput) {
+                const ccNumber = msg; // assuming msg is the CC number
+                const ccValue = data; // assuming data is the CC value
+                const channel = parseInt(document.getElementById('midiChannel').value) || 0;
+                if (typeof ccNumber === 'number' && typeof ccValue === 'number') {
+                    const ccMsg = [0xB0 + channel, ccNumber, ccValue];
+                    currentMidiOutput.send(ccMsg);
+                }
+            }
+        }
 
         if (index === 3) {
             const chordKeyDisplay = document.getElementById('chordKeyDetection');
@@ -554,10 +713,6 @@ Connect Kasm to your MIDI device...
         document.getElementById('result').textContent = "Result (C4 (60) kasm_midi_note_octave_hit): " + result + " (should be 84)";
     }
 
-    document.getElementById('runWasm1').addEventListener('click', run_test1);
-    document.getElementById('runWasm2').addEventListener('click', run_test2);
-    document.getElementById('runWasm3').addEventListener('click', run_test3);
-
     let midikeys_note = 60; // Default to C4 range 0-127
     let midikeys_semitone = 0; // Default to middle octave -120 to +120
     let midikeys_velocity = 100; // Default velocity range 0-127
@@ -600,7 +755,7 @@ Connect Kasm to your MIDI device...
             inlet = 4;
             msg_int(document.getElementById('enc2').value);
             inlet = 5;
-            msg_int(document.getElementById('emanator').value);
+            msg_int(document.getElementById('inlet_5_emanator').value);
         }
     }
 
@@ -629,7 +784,7 @@ Connect Kasm to your MIDI device...
                 sendNoteOn(midikeys_note, midikeys_velocity, channel);
             }
 
-            console.log(`Key ${key} pressed: MIDI note ${midikeys_note} (velocity ${midikeys_velocity})`);
+            //console.log(`Key ${key} pressed: MIDI note ${midikeys_note} (velocity ${midikeys_velocity})`);
             return;
         }
 
@@ -696,7 +851,7 @@ Connect Kasm to your MIDI device...
                 sendNoteOff(clampedNote, channel);
             }
 
-            console.log(`Key ${key} released: MIDI note ${clampedNote} off`);
+            //console.log(`Key ${key} released: MIDI note ${clampedNote} off`);
         }
     }
 
@@ -735,7 +890,7 @@ Velocity: C=down (-10), V=up (+10)
         const velocity = parseInt(document.getElementById('velocity').value);
         const enc1 = parseInt(document.getElementById('enc1').value);
         const enc2 = parseInt(document.getElementById('enc2').value);
-        const emanator = parseInt(document.getElementById('emanator').value);
+        const emanator = parseInt(document.getElementById('inlet_5_emanator').value);
 
         let inputNotes;
         try {
@@ -2434,7 +2589,7 @@ Velocity: C=down (-10), V=up (+10)
             const velocity = parseInt(document.getElementById('velocity').value);
             const enc1 = parseInt(document.getElementById('enc1').value);
             const enc2 = parseInt(document.getElementById('enc2').value);
-            const emanator = parseInt(document.getElementById('emanator').value);
+            const emanator = parseInt(document.getElementById('inlet_5_emanator').value);
 
             let inputNotes;
             try {
@@ -2569,6 +2724,19 @@ Velocity: C=down (-10), V=up (+10)
             const newValue = Math.max(minValue, Math.min(maxValue, currentValue + (delta * sensitivity)));
             updateDial(encId, newValue);
 
+            autoTransform();
+        });
+
+        // Add double-click to reset dial value
+        dialContainer.addEventListener('dblclick', function () {
+            let resetValue = 0;
+            if (encId === 'rate') resetValue = 250;
+            else if (encId === 'note') resetValue = 60;
+            else if (encId === 'semitone') resetValue = 0;
+            else if (encId === 'velocity') resetValue = 100;
+            else if (encId === 'enc1') resetValue = 100;
+            else if (encId === 'enc2') resetValue = 80;
+            updateDial(encId, resetValue);
             autoTransform();
         });
 
@@ -2771,7 +2939,6 @@ Velocity: C=down (-10), V=up (+10)
     // WebMIDI Support
     let midiAccess = null;
     let midiOutputs = [];
-    let currentMidiOutput = null;
     let playbackTimeouts = [];
     let isPlaying = false;
 
@@ -2850,7 +3017,6 @@ Velocity: C=down (-10), V=up (+10)
         const noteOnMsg = [0x90 + channel, pitch, velocity];
         currentMidiOutput.send(noteOnMsg);
 
-        console.log("KJSL: inlet_0=" + inlet_0 + " inlet_1=" + inlet_1 + " inlet_2=" + inlet_2 + " inlet_3=" + inlet_3 + " inlet_4=" + inlet_4 + " inlet_5=" + inlet_5);
         try {
             const result = kasm_rust.bang(inlet_0, inlet_1, inlet_2, inlet_3, inlet_4, inlet_5);
             document.getElementById('result').textContent = "Keyboard test result: " + result;
@@ -3018,7 +3184,7 @@ Velocity: C=down (-10), V=up (+10)
 
     // Event listeners for all input controls to auto-save settings
     document.getElementById('inputJson').addEventListener('input', autoSaveSettings);
-    document.getElementById('emanator').addEventListener('change', autoSaveSettings);
+    document.getElementById('inlet_5_emanator').addEventListener('change', autoSaveSettings);
     document.getElementById('exampleSelect').addEventListener('change', autoSaveSettings);
     document.getElementById('note').addEventListener('input', autoSaveSettings);
     document.getElementById('semitone').addEventListener('input', autoSaveSettings);
@@ -3028,6 +3194,9 @@ Velocity: C=down (-10), V=up (+10)
     document.getElementById('rateMs').addEventListener('input', autoSaveSettings);
     document.getElementById('noteName').addEventListener('input', autoSaveSettings);
 
+    // simulate Max4Live bangs
+    document.getElementById('inlet_5_emanator').addEventListener('change', updateBang);
+
     // Initialize WebMIDI on page load
     initializeMIDI();
 
@@ -3035,7 +3204,7 @@ Velocity: C=down (-10), V=up (+10)
     function saveSettings() {
         const settings = {
             inputJson: document.getElementById('inputJson').value,
-            emanator: document.getElementById('emanator').value,
+            emanator: document.getElementById('inlet_5_emanator').value,
             midiOutputSelect: document.getElementById('midiOutputSelect').value,
             midiChannel: document.getElementById('midiChannel').value,
             tempo: document.getElementById('tempo').value,
@@ -3066,7 +3235,7 @@ Velocity: C=down (-10), V=up (+10)
 
             // Restore all form values
             if (settings.inputJson) document.getElementById('inputJson').value = settings.inputJson;
-            if (settings.emanator) document.getElementById('emanator').value = settings.emanator;
+            if (settings.emanator) document.getElementById('inlet_5_emanator').value = settings.emanator;
             if (settings.midiChannel) document.getElementById('midiChannel').value = settings.midiChannel;
             if (settings.tempo) document.getElementById('tempo').value = settings.tempo;
             if (settings.note) document.getElementById('note').value = settings.note;
@@ -3109,6 +3278,12 @@ Velocity: C=down (-10), V=up (+10)
             console.warn('Failed to clear settings from localStorage:', err);
         }
     }
+
+    function updateBang() {
+        encodersChanged = true;
+        run_test_keyboard();
+    }
+
 
     // Auto-save settings whenever any input changes
     function autoSaveSettings() {
@@ -3179,12 +3354,17 @@ Velocity: C=down (-10), V=up (+10)
         return { notes: midiNotes };
     }
 
-    // Periodically call msg_int every 500ms
-setInterval(function() {
-    if (typeof msg_int === 'function') {
-        inlet = 6;
-        msg_int();
-    }
-}, 500);
+    // "metro 10" Periodically call msg_int every 10ms
+    setInterval(function() {
+        // tape/counterpoint emanators require feedback loop
+        harmonyMode = document.getElementById('inlet_5_emanator').value >= 20;
+
+        if (harmonyMode) {
+            if (typeof msg_int === 'function') {
+                inlet = 6;
+                msg_int();
+            }
+        }
+    }, 10);
 </script>
 </html>

@@ -11,7 +11,6 @@ html {
     line-height: 1.5;
     overflow-x: hidden;
     scroll-behavior: auto;
-    background-image: url('pyrmontbwy.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -250,13 +249,28 @@ a:hover, a:focus {
 
 @media (prefers-color-scheme: dark) {
     html, body {
-        background-color: #000;
+        background-color: #303030;
         color: #fff;
     }
 }
 @media (prefers-color-scheme: light), screen {
     html, body {
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: #dfdfdf;
         color: #000;
     }
+}
+
+a, .App-link, .App-link2, .App-link3, .Beer-link, .YourBeer-link {
+    display: inline-block;
+    min-height: 1em;
+    line-height: calc(1em + 2px);
+    vertical-align: middle;
+    height: calc(1em + 2px);
+}
+
+a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, .YourBeer-link:hover {
+    height: calc(1em + 2px);
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
