@@ -1,3 +1,26 @@
+<!--
+ * Copyright (c) Pyrmont Brewery 2025
+ * Author: Kevin Staunton-Lambert
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+-->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,6 +29,14 @@
     <title>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</title>
     <link rel="stylesheet" href="pyrmontbrewery.css"/>
     <script src="kasm/kasm_WASM_rust_obs.js"></script>
+    <meta name="description" content="Pyrmont Brewery Music Room explores WebXR AR for augmented music production and tools to control musical plugins. Featuring an Ableton Live SDK for creating Rust-based Max4Live devices to manipulate live MIDI using hand gestures." />
+    <meta name="keywords" content="Pyrmont Brewery, Music Room, WebXR, AR, Augmented Reality, Music Production, Ableton Live, Max4Live, Rust, MIDI, Hand Gestures, Plugin Control, SDK, Live Coding, Audio Technology" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Pyrmont Brewery Music Room: WebXR AR for Music Production & Rust Max4Live MIDI SDK" />
+    <meta property="og:description" content="Enable AR music production with WebXR and control Ableton Live plugins using hand gestures. Build Max4Live devices in Rust for live MIDI manipulation." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pyrmontbrewery.com/build/music.html" />
+    <meta property="og:image" content="https://pyrmontbrewery.com/build/pyrmontbrewery_logo_1024x1024.png" />
 </head>
 <body>
 <div class="tvsimulator" aria-hidden="true"></div>
@@ -64,46 +95,14 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         </div>
     </div>
 
-    <label>Play you own or choose a sequence Ableton note JSON dictionary:
-        <div style="margin-bottom: 10px;">
-        <select id="exampleSelect" style="padding: 5px; margin-right: 10px;" onchange="loadSelectedExample()">
-            <option value="singleNote">Single Note</option>
-            <option value="send2notes">Two Notes</option>
-            <option value="send3notes">Three Notes</option>
-            <option value="twinkle_twinkle">Twinkle Twinkle</option>
-            <option value="three_blind_mice">Three Blind Mice</option>
-            <option value="ferer_jaques">Frère Jacques</option>
-            <option value="mary_little_lamb">Mary Had A Little Lamb</option>
-            <option value="happy_birthday">Happy Birthday</option>
-            <option value="happy_birthday_legatto">Happy Birthday (legatto)</option>
-            <option value="baa_baa">Baa Baa Sheep</option>
-            <option value="chord">Major Chord</option>
-            <option value="arpeggio">Arpeggio Sequence</option>
-            <option value="rhythmPattern">Rhythm Pattern</option>
-            <option value="pentatonicScale">Pentatonic Scale (5 notes)</option>
-            <option value="complexChord">Complex Chord (7 notes)</option>
-            <option value="bassline">Bassline Pattern (8 notes)</option>
-            <option value="melodicSequence">Melodic Sequence (10 notes)</option>
-            <option value="polyrhythm">Polyrhythm Pattern (12 notes)</option>
-            <option value="chromatic">Chromatic Run (12 notes)</option>
-            <option value="jazzChordProgression">Jazz Chord Progression (16 notes)</option>
-            <option value="complexArpeggio">Complex Arpeggio (20 notes)</option>
-            <option value="minimalistPattern">Minimalist Pattern (24 notes)</option>
-            <option value="orchestralStab">Orchestral Stab (32 notes)</option>
-        </select>
-            <br/>
-        <textarea id="inputJson" rows="4" cols="80" style="font-family: monospace; font-size: 12px;"
-                  oninput="loadSelectedExample(); autoTransform()"></textarea>
-    </div>
-
         <label>Choose an Emanator algorithm (inlet_5):<br/>
         <div style="margin-bottom: 10px;">
-            <label><input type="radio" name="emanatorQuick" value="10" onclick="document.getElementById('inlet_5_emanator').value=2; autoTransform();"> Strum</label>
-            <label><input type="radio" name="emanatorQuick" value="20" onclick="document.getElementById('inlet_5_emanator').value=63; autoTransform();"> Looping</label>
-            <label><input type="radio" name="emanatorQuick" value="30" onclick="document.getElementById('inlet_5_emanator').value=9; autoTransform();"> Taps</label>
+            <label><input type="radio" name="emanatorQuick" value="50" onclick="document.getElementById('inlet_5_emanator').value=95; autoTransform(); document.getElementById('inlet_5_emanator').value=104; autoTransform();"> Drums</label>
+            <label><input type="radio" name="emanatorQuick" value="10" onclick="document.getElementById('inlet_5_emanator').value=2; autoTransform();"> Strummer</label>
+            <label><input type="radio" name="emanatorQuick" value="20" onclick="document.getElementById('inlet_5_emanator').value=63; autoTransform();"> Looper</label>
+            <label><input type="radio" name="emanatorQuick" value="30" onclick="document.getElementById('inlet_5_emanator').value=11; autoTransform();"> Taps</label>
             <label><input type="radio" name="emanatorQuick" value="40" onclick="document.getElementById('inlet_5_emanator').value=75; autoTransform();"> Counterpoint</label>
-            <label><input type="radio" name="emanatorQuick" value="50" onclick="document.getElementById('inlet_5_emanator').value=90; autoTransform();"> Drum Pat</label>
-            <label><input type="radio" name="emanatorQuick" value="60" onclick="document.getElementById('inlet_5_emanator').value=46; autoTransform();"> Chaos</label>
+            <label><input type="radio" name="emanatorQuick" value="60" onclick="document.getElementById('inlet_5_emanator').value=46; autoTransform();"> Chaos!</label>
         </div>
         <select id="inlet_5_emanator" onchange="autoTransform()" style="padding: 3px;">
             <option value="0">0 Random</option>
@@ -228,7 +227,42 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         </select>
     </label>
 
-    <div style="margin: 10px 0;">
+    <br/>
+    <label>Play some notes 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
+        or choose a sequence Ableton Notes dictionary (JSON)
+        <div style="margin-bottom: 10px;">
+            <select id="exampleSelect" style="padding: 5px; margin-right: 10px;" onchange="loadSelectedExample()">
+                <option value="singleNote">Single Note</option>
+                <option value="send2notes">Two Notes</option>
+                <option value="send3notes">Three Notes</option>
+                <option value="twinkle_twinkle">Twinkle Twinkle</option>
+                <option value="three_blind_mice">Three Blind Mice</option>
+                <option value="ferer_jaques">Frère Jacques</option>
+                <option value="mary_little_lamb">Mary Had A Little Lamb</option>
+                <option value="happy_birthday">Happy Birthday</option>
+                <option value="happy_birthday_legatto">Happy Birthday (legatto)</option>
+                <option value="baa_baa">Baa Baa Sheep</option>
+                <option value="chord">Major Chord</option>
+                <option value="arpeggio">Arpeggio Sequence</option>
+                <option value="rhythmPattern">Rhythm Pattern</option>
+                <option value="pentatonicScale">Pentatonic Scale (5 notes)</option>
+                <option value="complexChord">Complex Chord (7 notes)</option>
+                <option value="bassline">Bassline Pattern (8 notes)</option>
+                <option value="melodicSequence">Melodic Sequence (10 notes)</option>
+                <option value="polyrhythm">Polyrhythm Pattern (12 notes)</option>
+                <option value="chromatic">Chromatic Run (12 notes)</option>
+                <option value="jazzChordProgression">Jazz Chord Progression (16 notes)</option>
+                <option value="complexArpeggio">Complex Arpeggio (20 notes)</option>
+                <option value="minimalistPattern">Minimalist Pattern (24 notes)</option>
+                <option value="orchestralStab">Orchestral Stab (32 notes)</option>
+            </select>
+            <br/>
+            <textarea id="inputJson" rows="4" cols="80" style="font-family: monospace; font-size: 12px;"
+                      oninput="loadSelectedExample(); autoTransform()"></textarea>
+        </div>
+
+
+        <div style="margin: 10px 0;">
         <!-- Root Note input with MIDI name and dial -->
         <div style="display: inline-block; margin: 10px; text-align: center;">
             <label>Root Note<br/>(inlet_0):</label><br>
@@ -396,6 +430,10 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                 "></canvas>
         </div>
     </div>
+
+        More things to play with...
+    <br/>Banagaz: use the drop down and select to reassign some drums to MIDI notes instead of drums!
+    <br/>Triggaz: will also detect twinkle twinkle little star and three blind mice
 
     <textarea id="outputJson" rows="40" cols="80" style="font-family: monospace; font-size: 12px;" readonly></textarea>
 
@@ -2253,6 +2291,8 @@ Velocity: C=down (-10), V=up (+10)
         autoTransform();
         initializeDials();
         initializeNoteDisplay();
+
+        setTimeout(updateBang, 300);
     }
 
     // Initialize application when page loads
@@ -3126,6 +3166,8 @@ Velocity: C=down (-10), V=up (+10)
         } catch (err) {
             console.warn('Failed to save settings to localStorage:', err);
         }
+
+        updateBang();
     }
 
     function loadSettings() {
@@ -3183,10 +3225,18 @@ Velocity: C=down (-10), V=up (+10)
     }
 
     function updateBang() {
+        console.log('updateBang');
+        midikeys_note = 60;
+        midikeys_velocity = 100;
         encodersChanged = true;
         run_test_keyboard();
-    }
 
+        // Simulate pressing and releasing the 'a' key
+        const bangDown = new KeyboardEvent('keydown', {key: 'a', code: 'KeyA', keyCode: 65, bubbles: true});
+        const bangUp = new KeyboardEvent('keyup', {key: 'a', code: 'KeyA', keyCode: 65, bubbles: true});
+        document.dispatchEvent(bangDown);
+        document.dispatchEvent(bangUp);
+    }
 
     // Auto-save settings whenever any input changes
     function autoSaveSettings() {
