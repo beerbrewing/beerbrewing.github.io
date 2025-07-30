@@ -117,7 +117,7 @@
             <label>Choose an Emanator algorithm (inlet_5):<br/>
                 <div style="margin-bottom: 10px;">
                     <label><input type="radio" name="emanatorQuick" value="10"
-                                  onclick="document.getElementById('inlet_5_emanator').value=0; autoTransform();">
+                                  onclick="document.getElementById('inlet_5_emanator').value=0; autoTransform(); window.location.reload();">
                         Reset</label>
 
                     <label><input type="radio" name="emanatorQuick" value="10"
@@ -3118,12 +3118,27 @@ Velocity: C=down (-10), V=up (+10)
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw empty state
-        ctx.fillStyle = '#555';
-        ctx.font = '16px Arial';
+        // Draw step sequence pattern as placeholder
+        const width = canvas.width;
+        const height = canvas.height;
+        const steps = 16; // 16-step sequence
+        const stepWidth = width / steps;
+        const baseY = height / 2;
+        const stepHeight = 40;
+        ctx.fillStyle = '#222';
+        ctx.fillRect(0, baseY - stepHeight / 2, width, stepHeight);
+        for (let i = 0; i < steps; i++) {
+            ctx.fillStyle = i % 4 === 0 ? '#4CAF50' : '#888'; // Accent every 4th step
+            ctx.fillRect(i * stepWidth + 2, baseY - stepHeight / 2 + 2, stepWidth - 4, stepHeight - 4);
+            ctx.fillStyle = '#fff';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(`${i + 1}`, i * stepWidth + stepWidth / 2, baseY + 5);
+        }
         ctx.textAlign = 'center';
-        ctx.fillText('No notes to display', canvas.width / 2, canvas.height / 2);
-        ctx.textAlign = 'left';
+        ctx.fillStyle = '#fff';
+        ctx.font = '16px Arial';
+        ctx.fillText('Step Sequence Pattern', width / 2, baseY - stepHeight);
     }
 
     function drawZoomInfo(ctx, width, height, minNote, maxNote, minNoteInData, maxNoteInData) {
@@ -3883,27 +3898,56 @@ Velocity: C=down (-10), V=up (+10)
         // Parse looper messages and convert to MIDI clip format
         try {
             // Handle different types of looper messages
-            if (msg.includes('Loop recorded:') || msg.includes('Playing loop:')) {
+            if (msg.includes('Loop recorded:') || msg.includes('Playing loop:') || msg.includes('Bangaz') || msg.includes('loop:')) {
                 // Try to get the recorded notes from the looper
                 if (typeof kasm_rust !== 'undefined' && kasm_rust.kasm_looper_get_recorded_notes) {
                     const recordedNotesJson = kasm_rust.kasm_looper_get_recorded_notes();
-                    const recordedNotes = JSON.parse(recordedNotesJson);
-
+                    let recordedNotes;
+                    try {
+                        recordedNotes = JSON.parse(recordedNotesJson);
+                    } catch (e) {
+                        recordedNotes = recordedNotesJson;
+                    }
                     // Convert looper notes format to MIDI clip format
                     const midiClipData = convertLooperNotesToMidiClip(recordedNotes);
-
+                    // If no notes, try to get pattern from kasm_rust.kasm_pattern_get_notes
+                    if (!midiClipData.notes || midiClipData.notes.length === 0) {
+                        if (typeof kasm_rust.kasm_pattern_get_notes === 'function') {
+                            const patternNotesJson = kasm_rust.kasm_pattern_get_notes();
+                            let patternNotes;
+                            try {
+                                patternNotes = JSON.parse(patternNotesJson);
+                            } catch (e) {
+                                patternNotes = patternNotesJson;
+                            }
+                            const midiPatternData = convertLooperNotesToMidiClip(patternNotes);
+                            drawMidiClip(midiPatternData);
+                            document.getElementById('outputJson').value = JSON.stringify(midiPatternData, null, 2);
+                            return;
+                        }
+                    }
                     // Update the visualization
                     drawMidiClip(midiClipData);
-
                     // Also update the output JSON textarea to show the looper data
                     document.getElementById('outputJson').value = JSON.stringify(midiClipData, null, 2);
-
                     console.log('Updated MIDI clip view with looper data:', midiClipData);
                 }
             } else if (msg.includes('Pattern')) {
                 // Handle pattern-based looper messages
+                if (typeof kasm_rust.kasm_pattern_get_notes === 'function') {
+                    const patternNotesJson = kasm_rust.kasm_pattern_get_notes();
+                    let patternNotes;
+                    try {
+                        patternNotes = JSON.parse(patternNotesJson);
+                    } catch (e) {
+                        patternNotes = patternNotesJson;
+                    }
+                    const midiPatternData = convertLooperNotesToMidiClip(patternNotes);
+                    drawMidiClip(midiPatternData);
+                    document.getElementById('outputJson').value = JSON.stringify(midiPatternData, null, 2);
+                    return;
+                }
                 console.log('Pattern looper message:', msg);
-                // Pattern data might be handled differently - for now just log it
             } else {
                 // For other looper messages, just log them
                 console.log('Looper status:', msg);
@@ -3917,7 +3961,7 @@ Velocity: C=down (-10), V=up (+10)
     // Convert looper notes format to MIDI clip format
     function convertLooperNotesToMidiClip(looperNotes) {
         if (!Array.isArray(looperNotes) || looperNotes.length === 0) {
-            return {notes: []};
+            return { notes: [] };
         }
 
         const midiNotes = looperNotes.map((looperNote, index) => {
@@ -3937,11 +3981,11 @@ Velocity: C=down (-10), V=up (+10)
             };
         });
 
-        return {notes: midiNotes};
+        return { notes: midiNotes };
     }
 
     // "metro 10" Periodically call msg_int every 10ms
-    setInterval(function () {
+    setInterval(function() {
         // tape/counterpoint emanators require feedback loop
         harmonyMode = document.getElementById('inlet_5_emanator').value >= 63;
 
@@ -3952,5 +3996,12 @@ Velocity: C=down (-10), V=up (+10)
             }
         }
     }, 10);
+
+    document.getElementById('inlet_5_emanator').addEventListener('change', function() {
+        // Deselect all radio buttons for emanatorQuick
+        const radios = document.getElementsByName('emanatorQuick');
+        radios.forEach(radio => radio.checked = false);
+        updateBang();
+    });
 </script>
 </html>
