@@ -117,7 +117,7 @@
             <label>Choose an Emanator algorithm (inlet_5):<br/>
                 <div style="margin-bottom: 10px;">
                     <label><input type="radio" name="emanatorQuick" value="10"
-                                  onclick="document.getElementById('inlet_5_emanator').value=0; autoTransform(); window.location.reload();">
+                                  onclick="document.getElementById('inlet_5_emanator').value=0; document.getElementById('exampleSelect').value='Single Note'; loadDefaultExample(); autoTransform();">
                         Reset</label>
 
                     <label><input type="radio" name="emanatorQuick" value="10"
@@ -464,14 +464,13 @@
         </div>
     </div>
 
-    <div id="chordKeyDetection"></div>
-    <div id="patternDetection"></div>
-    <div id="loopDetection"></div>
+    <div id="chordKeyDetection" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
+    <div id="patternDetection" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
+    <div id="loopDetection" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
     <button id="transformTest"></button>
 
     <!-- SVG MIDI Keyboard -->
     <div style="margin-bottom: 20px;">
-        <h3>MIDI Keyboard (Click or use laptop keys: a-l for notes, z/x for octave, c/v for velocity)</h3>
         <div id="midiKeyboard" style="
                 border: 2px solid #333;
                 background: #f0f0f0;
@@ -485,55 +484,55 @@
                 <!-- White keys -->
                 <g id="whiteKeys">
                     <!-- C -->
-                    <rect x="0" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1" 
+                    <rect x="0" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="0" data-key="a" class="piano-key white-key" rx="0" ry="0"/>
                     <text x="30" y="110" text-anchor="middle" font-size="12" fill="#666">C</text>
                     <text x="30" y="100" text-anchor="middle" font-size="10" fill="#999">a</text>
-                    
+
                     <!-- D -->
-                    <rect x="60" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1" 
+                    <rect x="60" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="2" data-key="s" class="piano-key white-key" rx="0" ry="0"/>
                     <text x="90" y="110" text-anchor="middle" font-size="12" fill="#666">D</text>
                     <text x="90" y="100" text-anchor="middle" font-size="10" fill="#999">s</text>
-                    
+
                     <!-- E -->
-                    <rect x="120" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1" 
+                    <rect x="120" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="4" data-key="d" class="piano-key white-key" rx="0" ry="0"/>
                     <text x="150" y="110" text-anchor="middle" font-size="12" fill="#666">E</text>
                     <text x="150" y="100" text-anchor="middle" font-size="10" fill="#999">d</text>
-                    
+
                     <!-- F -->
-                    <rect x="180" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1" 
+                    <rect x="180" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="5" data-key="f" class="piano-key white-key" rx="0" ry="0"/>
                     <text x="210" y="110" text-anchor="middle" font-size="12" fill="#666">F</text>
                     <text x="210" y="100" text-anchor="middle" font-size="10" fill="#999">f</text>
-                    
+
                     <!-- G -->
-                    <rect x="240" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1" 
+                    <rect x="240" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="7" data-key="g" class="piano-key white-key" rx="0" ry="0"/>
                     <text x="270" y="110" text-anchor="middle" font-size="12" fill="#666">G</text>
                     <text x="270" y="100" text-anchor="middle" font-size="10" fill="#999">g</text>
-                    
+
                     <!-- A -->
-                    <rect x="300" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1" 
+                    <rect x="300" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="9" data-key="h" class="piano-key white-key" rx="0" ry="0"/>
                     <text x="330" y="110" text-anchor="middle" font-size="12" fill="#666">A</text>
                     <text x="330" y="100" text-anchor="middle" font-size="10" fill="#999">h</text>
-                    
+
                     <!-- B -->
-                    <rect x="360" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1" 
+                    <rect x="360" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="11" data-key="j" class="piano-key white-key" rx="0" ry="0"/>
                     <text x="390" y="110" text-anchor="middle" font-size="12" fill="#666">B</text>
                     <text x="390" y="100" text-anchor="middle" font-size="10" fill="#999">j</text>
-                    
+
                     <!-- C (next octave) -->
-                    <rect x="420" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1" 
+                    <rect x="420" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="12" data-key="k" class="piano-key white-key" rx="0" ry="0"/>
                     <text x="450" y="110" text-anchor="middle" font-size="12" fill="#666">C</text>
                     <text x="450" y="100" text-anchor="middle" font-size="10" fill="#999">k</text>
-                    
+
                     <!-- D (next octave) -->
-                    <rect x="480" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1" 
+                    <rect x="480" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="14" data-key="l" class="piano-key white-key" rx="0" ry="0"/>
                     <text x="510" y="110" text-anchor="middle" font-size="12" fill="#666">D</text>
                     <text x="510" y="100" text-anchor="middle" font-size="10" fill="#999">l</text>
@@ -548,59 +547,63 @@
                     <text x="630" y="110" text-anchor="middle" font-size="12" fill="#666">F</text>
                     <text x="630" y="100" text-anchor="middle" font-size="10" fill="#999">'</text>
                 </g>
-                
+
                 <!-- Black keys -->
                 <g id="blackKeys">
                     <!-- C# -->
-                    <rect x="40" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1" 
+                    <rect x="40" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="1" data-key="w" class="piano-key black-key" rx="0" ry="0"/>
                     <text x="60" y="70" text-anchor="middle" font-size="10" fill="white">C#</text>
-                    <text x="60" y="60" text-anchor="middle" font-size="8" fill="#ccc">w</text>
-                    
-                    <!-- D# -->
-                    <rect x="100" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1" 
+                    <text x="60" y="60" text-anchor="middle" font-size="10" fill="#ccc">w</text>
+
+                    <!-- Db -->
+                    <rect x="100" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="3" data-key="e" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="120" y="70" text-anchor="middle" font-size="10" fill="white">D#</text>
-                    <text x="120" y="60" text-anchor="middle" font-size="8" fill="#ccc">e</text>
-                    
+                    <text x="120" y="70" text-anchor="middle" font-size="10" fill="white">Db</text>
+                    <text x="120" y="60" text-anchor="middle" font-size="10" fill="#ccc">e</text>
+
                     <!-- F# -->
-                    <rect x="220" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1" 
+                    <rect x="220" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="6" data-key="t" class="piano-key black-key" rx="0" ry="0"/>
                     <text x="240" y="70" text-anchor="middle" font-size="10" fill="white">F#</text>
-                    <text x="240" y="60" text-anchor="middle" font-size="8" fill="#ccc">t</text>
-                    
+                    <text x="240" y="60" text-anchor="middle" font-size="10" fill="#ccc">t</text>
+
                     <!-- G# -->
-                    <rect x="280" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1" 
+                    <rect x="280" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="8" data-key="y" class="piano-key black-key" rx="0" ry="0"/>
                     <text x="300" y="70" text-anchor="middle" font-size="10" fill="white">G#</text>
-                    <text x="300" y="60" text-anchor="middle" font-size="8" fill="#ccc">y</text>
-                    
-                    <!-- A# -->
-                    <rect x="340" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1" 
+                    <text x="300" y="60" text-anchor="middle" font-size="10" fill="#ccc">y</text>
+
+                    <!-- Bb -->
+                    <rect x="340" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="10" data-key="u" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="360" y="70" text-anchor="middle" font-size="10" fill="white">A#</text>
-                    <text x="360" y="60" text-anchor="middle" font-size="8" fill="#ccc">u</text>
-                    
+                    <text x="360" y="70" text-anchor="middle" font-size="10" fill="white">Bb</text>
+                    <text x="360" y="60" text-anchor="middle" font-size="10" fill="#ccc">u</text>
+
                     <!-- C# (next octave) -->
-                    <rect x="460" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1" 
+                    <rect x="460" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="13" data-key="o" class="piano-key black-key" rx="0" ry="0"/>
                     <text x="480" y="70" text-anchor="middle" font-size="10" fill="white">C#</text>
-                    <text x="480" y="60" text-anchor="middle" font-size="8" fill="#ccc">o</text>
+                    <text x="480" y="60" text-anchor="middle" font-size="10" fill="#ccc">o</text>
+
+                    <!-- Db (next octave) -->
+                    <rect x="520" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
+                          data-note="15" data-key="p" class="piano-key black-key" rx="0" ry="0"/>
+                    <text x="540" y="70" text-anchor="middle" font-size="10" fill="white">Db</text>
+                    <text x="540" y="60" text-anchor="middle" font-size="10" fill="#ccc">p</text>
+
                     <!-- F# (next octave) -->
-                    <rect x="580" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
-                          data-note="18" data-key="]" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="600" y="70" text-anchor="middle" font-size="10" fill="white">F#</text>
-                    <text x="600" y="60" text-anchor="middle" font-size="8" fill="#ccc">]</text>
+                    <rect x="640" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
+                          data-note="20" data-key="]" class="piano-key black-key" rx="0" ry="0"/>
+                    <text x="660" y="70" text-anchor="middle" font-size="10" fill="white">F#</text>
+                    <text x="660" y="60" text-anchor="middle" font-size="10" fill="#ccc">]</text>
                 </g>
             </svg>
         </div>
         <div style="margin-top: 10px; font-size: 12px; color: #666;">
-            <strong>Keyboard Controls:</strong> 
-            Notes: a-l (white keys), w,e,t,y,u,o (black keys) | 
-            Octave: z=down, x=up | 
-            Velocity: c=down, v=up |
-            Current Octave: <span id="currentOctave">4</span> | 
-            Current Velocity: <span id="currentVelocity">100</span>
+            Notes: a-' keys |
+            Octave: z=down, x=up |
+            Velocity: c=down, v=up
         </div>
     </div>
 
@@ -939,22 +942,23 @@
         'a': 0,   // C
         'w': 1,   // C#
         's': 2,   // D
-        'e': 3,   // D#
+        'e': 3,   // Db
         'd': 4,   // E
         'f': 5,   // F
         't': 6,   // F#
         'g': 7,   // G
         'y': 8,   // G#
         'h': 9,   // A
-        'u': 10,  // A#
+        'u': 10,  // Bb
         'j': 11,  // B
         'k': 12,  // C + 12
         'o': 13,  // C# + 12
         'l': 14,  // D + 12
-        'p': 15,  // D# + 12
+        'p': 15,  // Db + 12
         ';': 16,  // E + 12
         "'": 17, // F + 12
-        ']': 18   // F# + 12
+        ']': 18,  // F# + 12
+        '\\': 20  // G# + 12
     };
 
     function run_test_keyboard() {
@@ -978,6 +982,17 @@
     // Keyboard event handlers
     function handleKeyDown(event) {
         const key = event.key.toLowerCase();
+
+        const activeElement = document.activeElement;
+        // Only block MIDI keys if NOT focused on textarea/input AND not using modifier keys
+        if (activeElement && (activeElement.tagName === 'TEXTAREA' || activeElement.tagName === 'INPUT')) {
+            // Allow all keys and shortcuts (typing, copy, paste, etc.)
+            return
+        }
+        // Ignore if Ctrl, Alt, Meta, or Shift is pressed (for shortcuts)
+        if (event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) {
+            return;
+        }
 
         // Prevent repeat events when key is held down
         if (activeKeys.has(key)) {
@@ -1077,6 +1092,17 @@
 
     // Prevent default browser behavior for our mapped keys
     document.addEventListener('keydown', function (event) {
+        const activeElement = document.activeElement;
+        // Only block MIDI keys if NOT focused on textarea/input AND not using modifier keys
+        if (activeElement && (activeElement.tagName === 'TEXTAREA' || activeElement.tagName === 'INPUT')) {
+            // Allow all keys and shortcuts (typing, copy, paste, etc.)
+            return
+        }
+        // Ignore if Ctrl, Alt, Meta, or Shift is pressed (for shortcuts)
+        if (event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) {
+            return;
+        }
+
         const key = event.key.toLowerCase();
         if (keyboardMapping.hasOwnProperty(key) || ['z', 'x', 'c', 'v'].includes(key)) {
             event.preventDefault();
@@ -1087,7 +1113,7 @@
     function displayKeyboardHelp() {
         const helpText = `
 Keyboard Controls:
-Notes: A=C, W=C#, S=D, E=D#, D=E, F=F, T=F#, G=G, Y=G#, H=A, U=A#, J=B
+Notes: A=C, W=C#, S=D, E=Db, D=E, F=F, T=F#, G=G, Y=G#, H=A, U=Bb, J=B
 Octave: Z=down (-12), X=up (+12)
 Velocity: C=down (-10), V=up (+10)
         `;
@@ -3177,7 +3203,7 @@ Velocity: C=down (-10), V=up (+10)
         if (noteWidth > 2) {
             // Helper function to convert MIDI number to note name
             const getMidiNoteName = (midiNumber) => {
-                const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+                const noteNames = ['C', 'C#', 'D', 'Db', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
                 const octave = Math.floor(midiNumber / 12) - 1;
                 const noteIndex = midiNumber % 12;
                 return noteNames[noteIndex] + octave;
@@ -3205,7 +3231,7 @@ Velocity: C=down (-10), V=up (+10)
         }
 
         // Enhanced note labels on left - show every octave (C notes) with note name and MIDI number
-        const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const noteNames = ['C', 'C#', 'D', 'Db', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
 
         // Draw octave markers (every 12 notes starting from C)
         for (let note = 0; note <= maxNote; note += 12) {
@@ -3235,7 +3261,7 @@ Velocity: C=down (-10), V=up (+10)
 
                     // Only show labels for white keys and some important black keys to avoid clutter
                     const whiteKeys = [0, 2, 4, 5, 7, 9, 11]; // C, D, E, F, G, A, B
-                    const importantBlackKeys = [1, 3, 6, 8, 10]; // C#, D#, F#, G#, A#
+                    const importantBlackKeys = [1, 3, 6, 8, 10]; // C#, Db, F#, G#, Bb
 
                     if (whiteKeys.includes(note % 12)) {
                         ctx.fillText(`${noteName}${octave} (${note})`, 65, y + 3);
@@ -3283,7 +3309,7 @@ Velocity: C=down (-10), V=up (+10)
         ctx.font = '11px Arial';
         ctx.textAlign = 'right';
 
-        const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const noteNames = ['C', 'C#', 'D', 'Db', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
 
         function getMidiNoteName(midiNumber) {
             const octave = Math.floor(midiNumber / 12) - 1;
@@ -3568,7 +3594,7 @@ Velocity: C=down (-10), V=up (+10)
 
     // MIDI Note Name Functions
     function midiToNoteName(midiNumber) {
-        const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const noteNames = ['C', 'C#', 'D', 'Db', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
         const octave = Math.floor(midiNumber / 12) - 1;
         const noteIndex = midiNumber % 12;
         return noteNames[noteIndex] + octave;
@@ -3578,11 +3604,11 @@ Velocity: C=down (-10), V=up (+10)
         // Parse note name like "C4", "F#3", "Bb5", etc.
         const noteMap = {
             'C': 0, 'C#': 1, 'Db': 1,
-            'D': 2, 'D#': 3, 'Eb': 3,
+            'D': 2, 'Db': 3, 'Eb': 3,
             'E': 4,
             'F': 5, 'F#': 6, 'Gb': 6,
             'G': 7, 'G#': 8, 'Ab': 8,
-            'A': 9, 'A#': 10, 'Bb': 10,
+            'A': 9, 'Bb': 10, 'Bb': 10,
             'B': 11
         };
 
@@ -3742,6 +3768,20 @@ Velocity: C=down (-10), V=up (+10)
         const noteOnMsg = [0x90 + channel, pitch, velocity];
         currentMidiOutput.send(noteOnMsg);
 
+        // Invert SVG piano key color
+        const keyChar = Object.keys(keyboardMapping).find(k => 60 + keyboardMapping[k] + midikeys_semitone === pitch);
+        if (keyChar) {
+            const pianoKey = document.querySelector(`[data-key="${keyChar}"]`);
+            if (pianoKey) {
+                // Invert color: white-key to black, black-key to white
+                if (pianoKey.classList.contains('white-key')) {
+                    pianoKey.setAttribute('fill', '#0f0');
+                } else {
+                    pianoKey.setAttribute('fill', '#0f0');
+                }
+            }
+        }
+
         try {
             const result = kasm_rust.bang(inlet_0, inlet_1, inlet_2, inlet_3, inlet_4, inlet_5);
             document.getElementById('result').textContent = "Keyboard test result: " + result;
@@ -3759,6 +3799,18 @@ Velocity: C=down (-10), V=up (+10)
         const noteOffMsg = [0x80 + channel, pitch, velocity];
         currentMidiOutput.send(noteOffMsg);
 
+        // Restore SVG piano key color
+        const keyChar = Object.keys(keyboardMapping).find(k => 60 + keyboardMapping[k] + midikeys_semitone === pitch);
+        if (keyChar) {
+            const pianoKey = document.querySelector(`[data-key="${keyChar}"]`);
+            if (pianoKey) {
+                if (pianoKey.classList.contains('white-key')) {
+                    pianoKey.setAttribute('fill', 'white');
+                } else {
+                    pianoKey.setAttribute('fill', '#333');
+                }
+            }
+        }
 
         try {
             const result = kasm_rust.bang(inlet_0, inlet_1, 0, inlet_3, inlet_4, inlet_5);
@@ -4138,7 +4190,7 @@ Velocity: C=down (-10), V=up (+10)
         const radios = document.getElementsByName('emanatorQuick');
         radios.forEach(radio => radio.checked = false);
         updateBang();
-        
+
         // Show drum/loop pattern when drum: or loop: is selected
         showPatternPreview();
     });
@@ -4146,33 +4198,33 @@ Velocity: C=down (-10), V=up (+10)
     // SVG Piano Keyboard Interaction
     function initializePianoKeyboard() {
         const pianoKeys = document.querySelectorAll('.piano-key');
-        
+
         pianoKeys.forEach(key => {
             const noteOffset = parseInt(key.getAttribute('data-note'));
             const keyChar = key.getAttribute('data-key');
-            
+
             // Mouse events
             key.addEventListener('mousedown', (e) => {
                 e.preventDefault();
                 playPianoKey(noteOffset, keyChar);
             });
-            
+
             key.addEventListener('mouseup', (e) => {
                 e.preventDefault();
                 stopPianoKey(noteOffset, keyChar);
             });
-            
+
             // Touch events for mobile
             key.addEventListener('touchstart', (e) => {
                 e.preventDefault();
                 playPianoKey(noteOffset, keyChar);
             });
-            
+
             key.addEventListener('touchend', (e) => {
                 e.preventDefault();
                 stopPianoKey(noteOffset, keyChar);
             });
-            
+
             // Visual feedback on hover
             key.addEventListener('mouseenter', () => {
                 if (key.classList.contains('white-key')) {
@@ -4181,7 +4233,7 @@ Velocity: C=down (-10), V=up (+10)
                     key.setAttribute('fill', '#555');
                 }
             });
-            
+
             key.addEventListener('mouseleave', () => {
                 if (key.classList.contains('white-key')) {
                     key.setAttribute('fill', 'white');
@@ -4190,17 +4242,17 @@ Velocity: C=down (-10), V=up (+10)
                 }
             });
         });
-        
+
         // Update octave and velocity displays
         updateKeyboardDisplay();
     }
-    
+
     function playPianoKey(noteOffset, keyChar) {
         const baseNote = 60; // Middle C
         const currentOctave = Math.floor(midikeys_semitone / 12);
         const finalNote = baseNote + noteOffset + midikeys_semitone;
         const clampedNote = Math.max(0, Math.min(127, finalNote));
-        
+
         // Visual feedback
         const key = document.querySelector(`[data-key="${keyChar}"]`);
         if (key) {
@@ -4210,24 +4262,24 @@ Velocity: C=down (-10), V=up (+10)
                 key.setAttribute('fill', '#666');
             }
         }
-        
+
         // Play the note
         midikeys_note = clampedNote;
         midikeys_velocity = parseInt(document.getElementById('velocity').value) || 100;
         processNoteEvent(midikeys_note, midikeys_velocity);
-        
+
         // Also send MIDI if device is connected
         if (currentMidiOutput) {
             const channel = parseInt(document.getElementById('midiChannel').value) || 0;
             sendNoteOn(midikeys_note, midikeys_velocity, channel);
         }
     }
-    
+
     function stopPianoKey(noteOffset, keyChar) {
         const baseNote = 60;
         const finalNote = baseNote + noteOffset + midikeys_semitone;
         const clampedNote = Math.max(0, Math.min(127, finalNote));
-        
+
         // Visual feedback
         const key = document.querySelector(`[data-key="${keyChar}"]`);
         if (key) {
@@ -4237,36 +4289,37 @@ Velocity: C=down (-10), V=up (+10)
                 key.setAttribute('fill', '#333');
             }
         }
-        
+
         // Stop the note
         midikeys_note = clampedNote;
         midikeys_velocity = 0;
         run_test_keyboard();
-        
+
         // Also send MIDI note off if device is connected
         if (currentMidiOutput) {
             const channel = parseInt(document.getElementById('midiChannel').value) || 0;
             sendNoteOff(clampedNote, channel);
         }
     }
-    
+
     function updateKeyboardDisplay() {
         const currentOctave = 4 + Math.floor(midikeys_semitone / 12);
         const currentVelocity = parseInt(document.getElementById('velocity').value) || 100;
-        
+
         document.getElementById('currentOctave').textContent = currentOctave;
         document.getElementById('currentVelocity').textContent = currentVelocity;
     }
-    
+
     // Enhanced keyboard event handlers to update display
     const originalHandleKeyDown = handleKeyDown;
     const originalHandleKeyUp = handleKeyUp;
-    
+
     handleKeyDown = function(event) {
         const key = event.key.toLowerCase();
-        
         // Highlight corresponding piano key
-        const pianoKey = document.querySelector(`[data-key="${key}"]`);
+        let highlightKey = key;
+        if (key === '\\') highlightKey = 'y'; // Map backslash to G# key visually
+        const pianoKey = document.querySelector(`[data-key="${highlightKey}"]`);
         if (pianoKey && !activeKeys.has(key)) {
             if (pianoKey.classList.contains('white-key')) {
                 pianoKey.setAttribute('fill', '#ddd');
@@ -4274,19 +4327,16 @@ Velocity: C=down (-10), V=up (+10)
                 pianoKey.setAttribute('fill', '#666');
             }
         }
-        
         // Call original handler
         originalHandleKeyDown(event);
-        
         // Update display
         updateKeyboardDisplay();
     };
-    
     handleKeyUp = function(event) {
         const key = event.key.toLowerCase();
-        
-        // Remove highlight from piano key
-        const pianoKey = document.querySelector(`[data-key="${key}"]`);
+        let highlightKey = key;
+        if (key === '\\') highlightKey = 'y'; // Map backslash to G# key visually
+        const pianoKey = document.querySelector(`[data-key="${highlightKey}"]`);
         if (pianoKey) {
             if (pianoKey.classList.contains('white-key')) {
                 pianoKey.setAttribute('fill', 'white');
@@ -4294,36 +4344,34 @@ Velocity: C=down (-10), V=up (+10)
                 pianoKey.setAttribute('fill', '#333');
             }
         }
-        
         // Call original handler
         originalHandleKeyUp(event);
-        
         // Update display
         updateKeyboardDisplay();
     };
-    
+
     // Show pattern preview for drum: and loop: selections
     function showPatternPreview() {
         const emanatorValue = parseInt(document.getElementById('inlet_5_emanator').value);
         const emanatorText = document.getElementById('inlet_5_emanator').options[document.getElementById('inlet_5_emanator').selectedIndex].text;
-        
+
         // Check if this is a drum: or loop: selection
         if (emanatorText.startsWith('drum:') || emanatorText.startsWith('loop:')) {
             console.log('Showing pattern preview for:', emanatorText);
-            
+
             // Try to get pattern from kasm_pattern_get_notes
             if (typeof kasm_rust !== 'undefined' && typeof kasm_rust.kasm_pattern_get_notes === 'function') {
                 try {
                     const steps = 16; // Default 16 steps
                     const velocity = parseInt(document.getElementById('velocity').value) || 100;
-                    
+
                     const patternResult = kasm_rust.kasm_pattern_get_notes(emanatorValue, steps, velocity);
-                    
+
                     if (patternResult) {
                         // Update the output JSON and visualization
                         document.getElementById('outputJson').value = JSON.stringify(patternResult, null, 2);
                         drawMidiClip(patternResult);
-                        
+
                         console.log('Pattern preview updated for:', emanatorText);
                     }
                 } catch (err) {
@@ -4332,12 +4380,12 @@ Velocity: C=down (-10), V=up (+10)
             }
         }
     }
-    
+
     // Initialize piano keyboard when page loads
     document.addEventListener('DOMContentLoaded', function() {
         initializePianoKeyboard();
     });
-    
+
     // Also initialize if DOM is already loaded
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initializePianoKeyboard);
