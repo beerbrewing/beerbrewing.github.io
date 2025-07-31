@@ -460,6 +460,12 @@
                            onchange="updateDial('rate', this.value); autoTransform()"
                            oninput="updateDial('rate', this.value); autoTransform()">
                 </div>
+
+                <div style="margin-top: 10px; display: flex; align-items: center;">
+                    <label for="modwheel">Modwheel CC#1</label>
+                    <input type="range" id="modwheel" min="0" max="127" value="0" style="width: 120px; margin-right: 10px;">
+                    <input type="number" id="modwheel-value" min="0" max="127" value="0" style="width: 50px; text-align: center;">
+                </div>
             </div>
         </div>
     </div>
@@ -486,66 +492,66 @@
                     <!-- C -->
                     <rect x="0" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="0" data-key="a" class="piano-key white-key" rx="0" ry="0"/>
-                    <text x="30" y="110" text-anchor="middle" font-size="12" fill="#666">C</text>
-                    <text x="30" y="100" text-anchor="middle" font-size="10" fill="#999">a</text>
+                    <text x="30" y="110" text-anchor="middle" font-size="12" fill="#666" pointer-events="none">C</text>
+                    <text x="30" y="100" text-anchor="middle" font-size="10" fill="#999" pointer-events="none">a</text>
 
                     <!-- D -->
                     <rect x="60" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="2" data-key="s" class="piano-key white-key" rx="0" ry="0"/>
-                    <text x="90" y="110" text-anchor="middle" font-size="12" fill="#666">D</text>
-                    <text x="90" y="100" text-anchor="middle" font-size="10" fill="#999">s</text>
+                    <text x="90" y="110" text-anchor="middle" font-size="12" fill="#666" pointer-events="none">D</text>
+                    <text x="90" y="100" text-anchor="middle" font-size="10" fill="#999" pointer-events="none">s</text>
 
                     <!-- E -->
                     <rect x="120" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="4" data-key="d" class="piano-key white-key" rx="0" ry="0"/>
-                    <text x="150" y="110" text-anchor="middle" font-size="12" fill="#666">E</text>
-                    <text x="150" y="100" text-anchor="middle" font-size="10" fill="#999">d</text>
+                    <text x="150" y="110" text-anchor="middle" font-size="12" fill="#666" pointer-events="none">E</text>
+                    <text x="150" y="100" text-anchor="middle" font-size="10" fill="#999" pointer-events="none">d</text>
 
                     <!-- F -->
                     <rect x="180" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="5" data-key="f" class="piano-key white-key" rx="0" ry="0"/>
-                    <text x="210" y="110" text-anchor="middle" font-size="12" fill="#666">F</text>
-                    <text x="210" y="100" text-anchor="middle" font-size="10" fill="#999">f</text>
+                    <text x="210" y="110" text-anchor="middle" font-size="12" fill="#666" pointer-events="none">F</text>
+                    <text x="210" y="100" text-anchor="middle" font-size="10" fill="#999" pointer-events="none">f</text>
 
                     <!-- G -->
                     <rect x="240" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="7" data-key="g" class="piano-key white-key" rx="0" ry="0"/>
-                    <text x="270" y="110" text-anchor="middle" font-size="12" fill="#666">G</text>
-                    <text x="270" y="100" text-anchor="middle" font-size="10" fill="#999">g</text>
+                    <text x="270" y="110" text-anchor="middle" font-size="12" fill="#666" pointer-events="none">G</text>
+                    <text x="270" y="100" text-anchor="middle" font-size="10" fill="#999" pointer-events="none">g</text>
 
                     <!-- A -->
                     <rect x="300" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="9" data-key="h" class="piano-key white-key" rx="0" ry="0"/>
-                    <text x="330" y="110" text-anchor="middle" font-size="12" fill="#666">A</text>
-                    <text x="330" y="100" text-anchor="middle" font-size="10" fill="#999">h</text>
+                    <text x="330" y="110" text-anchor="middle" font-size="12" fill="#666" pointer-events="none">A</text>
+                    <text x="330" y="100" text-anchor="middle" font-size="10" fill="#999" pointer-events="none">h</text>
 
                     <!-- B -->
                     <rect x="360" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="11" data-key="j" class="piano-key white-key" rx="0" ry="0"/>
-                    <text x="390" y="110" text-anchor="middle" font-size="12" fill="#666">B</text>
-                    <text x="390" y="100" text-anchor="middle" font-size="10" fill="#999">j</text>
+                    <text x="390" y="110" text-anchor="middle" font-size="12" fill="#666" pointer-events="none">B</text>
+                    <text x="390" y="100" text-anchor="middle" font-size="10" fill="#999" pointer-events="none">j</text>
 
                     <!-- C (next octave) -->
                     <rect x="420" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="12" data-key="k" class="piano-key white-key" rx="0" ry="0"/>
-                    <text x="450" y="110" text-anchor="middle" font-size="12" fill="#666">C</text>
-                    <text x="450" y="100" text-anchor="middle" font-size="10" fill="#999">k</text>
+                    <text x="450" y="110" text-anchor="middle" font-size="12" fill="#666" pointer-events="none">C</text>
+                    <text x="450" y="100" text-anchor="middle" font-size="10" fill="#999" pointer-events="none">k</text>
 
                     <!-- D (next octave) -->
                     <rect x="480" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="14" data-key="l" class="piano-key white-key" rx="0" ry="0"/>
-                    <text x="510" y="110" text-anchor="middle" font-size="12" fill="#666">D</text>
-                    <text x="510" y="100" text-anchor="middle" font-size="10" fill="#999">l</text>
+                    <text x="510" y="110" text-anchor="middle" font-size="12" fill="#666" pointer-events="none">D</text>
+                    <text x="510" y="100" text-anchor="middle" font-size="10" fill="#999" pointer-events="none">l</text>
                     <!-- E (next octave) -->
                     <rect x="540" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="16" data-key=";" class="piano-key white-key" rx="0" ry="0"/>
-                    <text x="570" y="110" text-anchor="middle" font-size="12" fill="#666">E</text>
-                    <text x="570" y="100" text-anchor="middle" font-size="10" fill="#999">;</text>
+                    <text x="570" y="110" text-anchor="middle" font-size="12" fill="#666" pointer-events="none">E</text>
+                    <text x="570" y="100" text-anchor="middle" font-size="10" fill="#999" pointer-events="none">;</text>
                     <!-- F (next octave) -->
                     <rect x="600" y="0" width="60" height="120" fill="white" stroke="#333" stroke-width="1"
                           data-note="17" data-key="'" class="piano-key white-key" rx="0" ry="0"/>
-                    <text x="630" y="110" text-anchor="middle" font-size="12" fill="#666">F</text>
-                    <text x="630" y="100" text-anchor="middle" font-size="10" fill="#999">'</text>
+                    <text x="630" y="110" text-anchor="middle" font-size="12" fill="#666" pointer-events="none">F</text>
+                    <text x="630" y="100" text-anchor="middle" font-size="10" fill="#999" pointer-events="none">'</text>
                 </g>
 
                 <!-- Black keys -->
@@ -553,50 +559,50 @@
                     <!-- C# -->
                     <rect x="40" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="1" data-key="w" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="60" y="70" text-anchor="middle" font-size="10" fill="white">C#</text>
-                    <text x="60" y="60" text-anchor="middle" font-size="10" fill="#ccc">w</text>
+                    <text x="60" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">C#</text>
+                    <text x="60" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">w</text>
 
                     <!-- Db -->
                     <rect x="100" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="3" data-key="e" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="120" y="70" text-anchor="middle" font-size="10" fill="white">Db</text>
-                    <text x="120" y="60" text-anchor="middle" font-size="10" fill="#ccc">e</text>
+                    <text x="120" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">Db</text>
+                    <text x="120" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">e</text>
 
                     <!-- F# -->
                     <rect x="220" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="6" data-key="t" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="240" y="70" text-anchor="middle" font-size="10" fill="white">F#</text>
-                    <text x="240" y="60" text-anchor="middle" font-size="10" fill="#ccc">t</text>
+                    <text x="240" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">F#</text>
+                    <text x="240" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">t</text>
 
                     <!-- G# -->
                     <rect x="280" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="8" data-key="y" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="300" y="70" text-anchor="middle" font-size="10" fill="white">G#</text>
-                    <text x="300" y="60" text-anchor="middle" font-size="10" fill="#ccc">y</text>
+                    <text x="300" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">G#</text>
+                    <text x="300" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">y</text>
 
                     <!-- Bb -->
                     <rect x="340" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="10" data-key="u" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="360" y="70" text-anchor="middle" font-size="10" fill="white">Bb</text>
-                    <text x="360" y="60" text-anchor="middle" font-size="10" fill="#ccc">u</text>
+                    <text x="360" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">Bb</text>
+                    <text x="360" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">u</text>
 
                     <!-- C# (next octave) -->
                     <rect x="460" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="13" data-key="o" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="480" y="70" text-anchor="middle" font-size="10" fill="white">C#</text>
-                    <text x="480" y="60" text-anchor="middle" font-size="10" fill="#ccc">o</text>
+                    <text x="480" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">C#</text>
+                    <text x="480" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">o</text>
 
                     <!-- Db (next octave) -->
                     <rect x="520" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="15" data-key="p" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="540" y="70" text-anchor="middle" font-size="10" fill="white">Db</text>
-                    <text x="540" y="60" text-anchor="middle" font-size="10" fill="#ccc">p</text>
+                    <text x="540" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">Db</text>
+                    <text x="540" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">p</text>
 
                     <!-- F# (next octave) -->
                     <rect x="640" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="20" data-key="]" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="660" y="70" text-anchor="middle" font-size="10" fill="white">F#</text>
-                    <text x="660" y="60" text-anchor="middle" font-size="10" fill="#ccc">]</text>
+                    <text x="660" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">F#</text>
+                    <text x="660" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">]</text>
                 </g>
             </svg>
         </div>
@@ -3083,8 +3089,6 @@ Velocity: C=down (-10), V=up (+10)
         autoTransform();
         initializeDials();
         initializeNoteDisplay();
-
-        setTimeout(updateBang, 300);
     }
 
     // Initialize application when page loads
@@ -3993,8 +3997,6 @@ Velocity: C=down (-10), V=up (+10)
         } catch (err) {
             console.warn('Failed to save settings to localStorage:', err);
         }
-
-        updateBang();
     }
 
     function loadSettings() {
@@ -4176,10 +4178,34 @@ Velocity: C=down (-10), V=up (+10)
         const radios = document.getElementsByName('emanatorQuick');
         radios.forEach(radio => radio.checked = false);
         updateBang();
-        
+
         // Show drum/loop pattern when drum: or loop: is selected
         showPatternPreview();
     });
+
+    // Modwheel slider event listeners and MIDI CC sending
+    const modwheelSlider = document.getElementById('modwheel');
+    const modwheelValueBox = document.getElementById('modwheel-value');
+    if (modwheelSlider && modwheelValueBox) {
+        // Sync slider and number box
+        modwheelSlider.addEventListener('input', function() {
+            modwheelValueBox.value = modwheelSlider.value;
+            sendModwheelCC(parseInt(modwheelSlider.value));
+        });
+        modwheelValueBox.addEventListener('input', function() {
+            let val = Math.max(0, Math.min(127, parseInt(modwheelValueBox.value) || 0));
+            modwheelSlider.value = val;
+            sendModwheelCC(val);
+        });
+    }
+    function sendModwheelCC(value) {
+        // CC #1 is modwheel
+        if (currentMidiOutput) {
+            const channel = parseInt(document.getElementById('midiChannel').value) || 0;
+            const ccMsg = [0xB0 + channel, 1, value];
+            currentMidiOutput.send(ccMsg);
+        }
+    }
 
     // SVG Piano Keyboard Interaction
     function initializePianoKeyboard() {
