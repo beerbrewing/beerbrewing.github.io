@@ -4093,6 +4093,7 @@ Velocity: C=down (-10), V=up (+10)
         // Debounce saving to avoid excessive localStorage writes
         clearTimeout(window.saveSettingsTimeout);
         window.saveSettingsTimeout = setTimeout(saveSettings, 100);
+        updateBang();
     }
 
     // Update MIDI clip view with looper data
@@ -4253,33 +4254,33 @@ Velocity: C=down (-10), V=up (+10)
     // SVG Piano Keyboard Interaction
     function initializePianoKeyboard() {
         const pianoKeys = document.querySelectorAll('.piano-key');
-        
+
         pianoKeys.forEach(key => {
             const noteOffset = parseInt(key.getAttribute('data-note'));
             const keyChar = key.getAttribute('data-key');
-            
+
             // Mouse events
             key.addEventListener('mousedown', (e) => {
                 e.preventDefault();
                 playPianoKey(noteOffset, keyChar);
             });
-            
+
             key.addEventListener('mouseup', (e) => {
                 e.preventDefault();
                 stopPianoKey(noteOffset, keyChar);
             });
-            
+
             // Touch events for mobile
             key.addEventListener('touchstart', (e) => {
                 e.preventDefault();
                 playPianoKey(noteOffset, keyChar);
             });
-            
+
             key.addEventListener('touchend', (e) => {
                 e.preventDefault();
                 stopPianoKey(noteOffset, keyChar);
             });
-            
+
             // Visual feedback on hover
             key.addEventListener('mouseenter', () => {
                 if (key.classList.contains('white-key')) {
@@ -4288,7 +4289,7 @@ Velocity: C=down (-10), V=up (+10)
                     key.setAttribute('fill', '#555');
                 }
             });
-            
+
             key.addEventListener('mouseleave', () => {
                 if (key.classList.contains('white-key')) {
                     key.setAttribute('fill', 'white');
@@ -4298,13 +4299,13 @@ Velocity: C=down (-10), V=up (+10)
             });
         });
     }
-    
+
     function playPianoKey(noteOffset, keyChar) {
         const baseNote = 60; // Middle C
         const currentOctave = Math.floor(midikeys_semitone / 12);
         const finalNote = baseNote + noteOffset + midikeys_semitone;
         const clampedNote = Math.max(0, Math.min(127, finalNote));
-        
+
         // Visual feedback
         const key = document.querySelector(`[data-key="${keyChar}"]`);
         if (key) {
@@ -4314,24 +4315,24 @@ Velocity: C=down (-10), V=up (+10)
                 key.setAttribute('fill', '#666');
             }
         }
-        
+
         // Play the note
         midikeys_note = clampedNote;
         midikeys_velocity = parseInt(document.getElementById('velocity').value) || 100;
         processNoteEvent(midikeys_note, midikeys_velocity);
-        
+
         // Also send MIDI if device is connected
         if (currentMidiOutput) {
             const channel = parseInt(document.getElementById('midiChannel').value) || 0;
             sendNoteOn(midikeys_note, midikeys_velocity, channel);
         }
     }
-    
+
     function stopPianoKey(noteOffset, keyChar) {
         const baseNote = 60;
         const finalNote = baseNote + noteOffset + midikeys_semitone;
         const clampedNote = Math.max(0, Math.min(127, finalNote));
-        
+
         // Visual feedback
         const key = document.querySelector(`[data-key="${keyChar}"]`);
         if (key) {
@@ -4341,12 +4342,12 @@ Velocity: C=down (-10), V=up (+10)
                 key.setAttribute('fill', '#333');
             }
         }
-        
+
         // Stop the note
         midikeys_note = clampedNote;
         midikeys_velocity = 0;
         run_test_keyboard();
-        
+
         // Also send MIDI note off if device is connected
         if (currentMidiOutput) {
             const channel = parseInt(document.getElementById('midiChannel').value) || 0;
@@ -4357,7 +4358,7 @@ Velocity: C=down (-10), V=up (+10)
     // Enhanced keyboard event handlers to update display
     const originalHandleKeyDown = handleKeyDown;
     const originalHandleKeyUp = handleKeyUp;
-    
+
     handleKeyDown = function(event) {
         const key = event.key.toLowerCase();
         // Highlight corresponding piano key
@@ -4389,29 +4390,29 @@ Velocity: C=down (-10), V=up (+10)
         // Call original handler
         originalHandleKeyUp(event);
     };
-    
+
     // Show pattern preview for drum: and loop: selections
     function showPatternPreview() {
         const emanatorValue = parseInt(document.getElementById('inlet_5_emanator').value);
         const emanatorText = document.getElementById('inlet_5_emanator').options[document.getElementById('inlet_5_emanator').selectedIndex].text;
-        
+
         // Check if this is a drum: or loop: selection
         if (emanatorText.startsWith('drum:') || emanatorText.startsWith('loop:')) {
             console.log('Showing pattern preview for:', emanatorText);
-            
+
             // Try to get pattern from kasm_pattern_get_notes
             if (typeof kasm_rust !== 'undefined' && typeof kasm_rust.kasm_pattern_get_notes === 'function') {
                 try {
                     const steps = 16; // Default 16 steps
                     const velocity = parseInt(document.getElementById('velocity').value) || 100;
-                    
+
                     const patternResult = kasm_rust.kasm_pattern_get_notes(emanatorValue, steps, velocity);
-                    
+
                     if (patternResult) {
                         // Update the output JSON and visualization
                         document.getElementById('outputJson').value = JSON.stringify(patternResult, null, 2);
                         drawMidiClip(patternResult);
-                        
+
                         console.log('Pattern preview updated for:', emanatorText);
                     }
                 } catch (err) {
@@ -4420,12 +4421,12 @@ Velocity: C=down (-10), V=up (+10)
             }
         }
     }
-    
+
     // Initialize piano keyboard when page loads
     document.addEventListener('DOMContentLoaded', function() {
         initializePianoKeyboard();
     });
-    
+
     // Also initialize if DOM is already loaded
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initializePianoKeyboard);

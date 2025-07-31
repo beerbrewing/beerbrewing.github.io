@@ -4012,6 +4012,7 @@ Velocity: C=down (-10), V=up (+10)
         // Debounce saving to avoid excessive localStorage writes
         clearTimeout(window.saveSettingsTimeout);
         window.saveSettingsTimeout = setTimeout(saveSettings, 100);
+        updateBang();
     }
 
     // Update MIDI clip view with looper data
