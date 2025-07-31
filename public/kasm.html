@@ -3394,6 +3394,8 @@ Velocity: C=down (-10), V=up (+10)
             const enc2 = parseInt(document.getElementById('enc2').value);
             const emanator = parseInt(document.getElementById('inlet_5_emanator').value);
 
+            // TODO: changing rateMs affects object 'tempo' bpm and chaning bpm affects object 'rateMs'
+
             let inputNotes;
             try {
                 inputNotes = JSON.parse(inputJson);
@@ -4544,7 +4546,7 @@ Velocity: C=down (-10), V=up (+10)
     setInterval(function() {
         if (typeof msg_int === 'function') {
             inlet = 6;
-            msg_int();
+            msg_float(document.getElementById('tempo').value);
         }
     }, 10);
 
