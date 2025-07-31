@@ -454,7 +454,10 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                 <div style="margin-top: 10px; display: flex; align-items: center;">
                     <label for="modwheel">Modwheel CC#1</label>
                     <input type="range" id="modwheel" min="0" max="127" value="0" style="width: 120px; margin-right: 10px;">
-                    <input type="number" id="modwheel-value" min="0" max="127" value="0" style="width: 50px; text-align: center;">
+                    <input type="number" id="modwheel-value" min="0" max="127" value="0" style="width: 50px; text-align: center; margin-right: 20px;">
+                    <label for="pan">Pan CC#10</label>
+                    <input type="range" id="pan" min="0" max="127" value="64" style="width: 120px; margin-right: 10px;">
+                    <input type="number" id="pan-value" min="0" max="127" value="64" style="width: 50px; text-align: center;">
                 </div>
             </div>
         </div>
@@ -802,6 +805,24 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                 if (typeof ccNumber === 'number' && typeof ccValue === 'number') {
                     const ccMsg = [0xB0 + channel, ccNumber, ccValue];
                     currentMidiOutput.send(ccMsg);
+                    // Update panSlider if CC == 10
+                    if (ccNumber === 10) {
+                        const panSlider = document.getElementById('pan');
+                        const panValueBox = document.getElementById('pan-value');
+                        if (panSlider && panValueBox) {
+                            panSlider.value = ccValue;
+                            panValueBox.value = ccValue;
+                        }
+                    }
+                    // Update modwheelSlider if CC == 1
+                    if (ccNumber === 1) {
+                        const modwheelSlider = document.getElementById('modwheel');
+                        const modwheelValueBox = document.getElementById('modwheel-value');
+                        if (modwheelSlider && modwheelValueBox) {
+                            modwheelSlider.value = ccValue;
+                            modwheelValueBox.value = ccValue;
+                        }
+                    }
                 }
             }
         }
@@ -909,7 +930,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
         const activeElement = document.activeElement;
         // Only block MIDI keys if NOT focused on textarea/input AND not using modifier keys
-        if (activeElement && (activeElement.tagName === 'TEXTAREA' || activeElement.tagName === 'INPUT')) {
+        if (activeElement && (activeElement.tagName === 'TEXTAREA')) {
             // Allow all keys and shortcuts (typing, copy, paste, etc.)
             return
         }
@@ -4122,6 +4143,28 @@ Velocity: C=down (-10), V=up (+10)
         if (currentMidiOutput) {
             const channel = parseInt(document.getElementById('midiChannel').value) || 0;
             const ccMsg = [0xB0 + channel, 1, value];
+            currentMidiOutput.send(ccMsg);
+        }
+    }
+    // Pan slider event listeners and MIDI CC sending
+    const panSlider = document.getElementById('pan');
+    const panValueBox = document.getElementById('pan-value');
+    if (panSlider && panValueBox) {
+        panSlider.addEventListener('input', function() {
+            panValueBox.value = panSlider.value;
+            sendPanCC(parseInt(panSlider.value));
+        });
+        panValueBox.addEventListener('input', function() {
+            let val = Math.max(0, Math.min(127, parseInt(panValueBox.value) || 64));
+            panSlider.value = val;
+            sendPanCC(val);
+        });
+    }
+    function sendPanCC(value) {
+        // CC #10 is pan
+        if (currentMidiOutput) {
+            const channel = parseInt(document.getElementById('midiChannel').value) || 0;
+            const ccMsg = [0xB0 + channel, 10, value];
             currentMidiOutput.send(ccMsg);
         }
     }
