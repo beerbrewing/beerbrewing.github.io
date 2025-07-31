@@ -767,11 +767,11 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
     let autoPlayTimeout;
 
     function post(msg) {
-        console.log(`post: ${msg}`);
+        console.log(`kasm: post: ${msg}`);
     }
 
     function outlet(index, msg, data) {
-        //console.log(`outlet: ${index} ` + msg);
+        //console.log(`kasm: outlet: ${index} ` + msg);
 
         // Send note to WebMIDI
         if (index === 0) {
@@ -3638,26 +3638,291 @@ Velocity: C=down (-10), V=up (+10)
 
     // Initialize WebMIDI
     async function initializeMIDI() {
-        try {
-            if (navigator.requestMIDIAccess) {
-                midiAccess = await navigator.requestMIDIAccess();
-                console.log('WebMIDI access granted');
-                updateMidiDeviceList();
+        console.log('kasm: Initializing WebMIDI support...');
+        
+        if (!navigator.requestMIDIAccess) {
+            console.warn('WebMIDI API not supported in this browser');
+            document.getElementById('playbackStatus').textContent = 'WebMIDI not supported';
+            return;
+        }
 
-                // Listen for device changes
-                midiAccess.onstatechange = updateMidiDeviceList;
-            } else {
-                console.warn('WebMIDI not supported in this browser');
-                document.getElementById('playbackStatus').textContent = 'WebMIDI not supported';
-            }
+        try {
+            console.log('kasm: Requesting MIDI access with sysex: false...');
+            midiAccess = await navigator.requestMIDIAccess({ sysex: false });
+            console.log('kasm: MIDI access granted successfully');
+            
+            // Log available MIDI devices with detailed information
+            logMIDIDevices(midiAccess);
+            
+            // Update device list in UI
+            updateMidiDeviceList();
+
+            // Set up device state change monitoring with enhanced logging
+            midiAccess.onstatechange = onMIDIStateChange;
+            
+            console.log('kasm: MIDI system initialized successfully');
+            document.getElementById('playbackStatus').textContent = 'MIDI ready';
         } catch (err) {
-            console.error('Failed to initialize WebMIDI:', err);
-            document.getElementById('playbackStatus').textContent = 'MIDI access denied';
+            console.error('kasm: Failed to initialize WebMIDI:', err);
+            
+            let errorMessage = 'MIDI access failed';
+            if (err.name === 'SecurityError') {
+                errorMessage = 'MIDI access blocked by security policy';
+                console.error('kasm: Security Error: MIDI access was blocked. This may be due to browser security settings or HTTPS requirements.');
+            } else if (err.name === 'NotSupportedError') {
+                errorMessage = 'MIDI not supported on this system';
+                console.error('kasm: Not Supported Error: MIDI is not supported on this system or browser.');
+            } else if (err.name === 'InvalidStateError') {
+                errorMessage = 'MIDI system in invalid state';
+                console.error('kasm: Invalid State Error: MIDI system is in an invalid state.');
+            } else if (err.name === 'AbortError') {
+                errorMessage = 'MIDI access request was aborted';
+                console.error('kasm: Abort Error: MIDI access request was aborted by user or system.');
+            }
+            
+            document.getElementById('playbackStatus').textContent = errorMessage;
         }
     }
 
-    // Update MIDI device list
+    // Enhanced MIDI device logging with input/output indication
+    function logMIDIDevices(midiAccess) {
+        console.log('kasm: Scanning for MIDI devices...');
+        
+        const inputs = Array.from(midiAccess.inputs.values());
+        const outputs = Array.from(midiAccess.outputs.values());
+        
+        console.log(`kasm: Found ${inputs.length} MIDI INPUT device(s):`);
+        inputs.forEach((input, index) => {
+            console.log(`kasm:   ${index + 1}. INPUT: "${input.name}" (${input.manufacturer || 'Unknown Manufacturer'})`);
+            console.log(`kasm:      - ID: ${input.id}`);
+            console.log(`kasm:      - State: ${input.state}`);
+            console.log(`kasm:      - Connection: ${input.connection}`);
+            console.log(`kasm:      - Type: ${input.type}`);
+            console.log(`kasm:      - Version: ${input.version || 'Unknown'}`);
+        });
+        
+        console.log(`kasm: Found ${outputs.length} MIDI OUTPUT device(s):`);
+        outputs.forEach((output, index) => {
+            console.log(`kasm:   ${index + 1}. OUTPUT: "${output.name}" (${output.manufacturer || 'Unknown Manufacturer'})`);
+            console.log(`kasm:      - ID: ${output.id}`);
+            console.log(`kasm:      - State: ${output.state}`);
+            console.log(`kasm:      - Connection: ${output.connection}`);
+            console.log(`kasm:      - Type: ${output.type}`);
+            console.log(`kasm:      - Version: ${output.version || 'Unknown'}`);
+        });
+        
+        if (inputs.length === 0 && outputs.length === 0) {
+            console.warn('No MIDI devices found. Please connect a MIDI device and refresh the page.');
+            console.log('kasm: Troubleshooting tips:');
+            console.log('kasm:    - Ensure MIDI device is connected and powered on');
+            console.log('kasm:    - Try refreshing the page after connecting device');
+            console.log('kasm:    - Check if device drivers are installed');
+            console.log('kasm:    - Some devices may require specific browser permissions');
+        } else {
+            console.log(`kasm: Total MIDI devices found: ${inputs.length + outputs.length} (${inputs.length} inputs, ${outputs.length} outputs)`);
+        }
+    }
+
+    // Enhanced MIDI state change handler with detailed logging
+    function onMIDIStateChange(event) {
+        const port = event.port;
+        const isInput = port.type === 'input';
+        const deviceType = isInput ? 'INPUT' : 'OUTPUT';
+        
+        console.log(`kasm: MIDI device state change detected:`);
+        console.log(`kasm:    Device: ${deviceType} "${port.name}" (${port.manufacturer || 'Unknown'})`);
+        console.log(`kasm:    State: ${port.state}`);
+        console.log(`kasm:    Connection: ${port.connection}`);
+        console.log(`kasm:    ID: ${port.id}`);
+        
+        if (port.state === 'connected') {
+            console.log(`kasm: MIDI ${deviceType} device connected: "${port.name}"`);
+            
+            if (isInput) {
+                console.log(`kasm: Setting up message handler for input device: "${port.name}"`);
+                setupInputMessageHandler(port);
+            } else {
+                console.log(`kasm: MIDI output device "${port.name}" is now available for playback`);
+            }
+            
+            // Update device list when new device connects
+            updateMidiDeviceList();
+            
+        } else if (port.state === 'disconnected') {
+            console.log(`kasm: MIDI ${deviceType} device disconnected: "${port.name}"`);
+            
+            // Update device list when device disconnects
+            updateMidiDeviceList();
+            
+            // If the disconnected device was our current output, clear it
+            if (!isInput && currentMidiOutput && currentMidiOutput.id === port.id) {
+                console.log(`kasm: Current MIDI output device was disconnected, clearing selection`);
+                currentMidiOutput = null;
+                document.getElementById('playbackStatus').textContent = 'Output device disconnected';
+            }
+        }
+        
+        // Re-log all devices after state change for current status
+        if (midiAccess) {
+            console.log('kasm: Current MIDI device status after state change:');
+            logMIDIDevices(midiAccess);
+        }
+    }
+
+    // Setup message handler for MIDI input devices
+    function setupInputMessageHandler(inputPort) {
+        inputPort.onmidimessage = function(message) {
+            handleMIDIMessage(message, inputPort.name, inputPort.type);
+        };
+        
+        console.log(`kasm: Message handler connected to INPUT device: "${inputPort.name}"`);
+    }
+
+    // Enhanced MIDI message handler with comprehensive logging
+    function handleMIDIMessage(message, deviceName, deviceType) {
+        const [status, data1, data2] = message.data;
+        const channel = (status & 0x0F) + 1; // Extract MIDI channel (1-16)
+        const messageType = status & 0xF0; // Extract message type
+        
+        // Log detailed MIDI message info
+        console.log(`kasm: MIDI message from ${deviceType.toUpperCase()} "${deviceName}":`);
+        console.log(`kasm:    Raw data: [${status}, ${data1}, ${data2}] (0x${status.toString(16)}, 0x${data1.toString(16)}, 0x${data2.toString(16)})`);
+        console.log(`kasm:    Channel: ${channel}`);
+        console.log(`kasm:    Message type: 0x${messageType.toString(16)}`);
+        
+        // Handle different message types with detailed logging
+        if (messageType === 0x90 && data2 > 0) {
+            // Note On
+            const noteName = getNoteName(data1);
+            console.log(`kasm: Note ON: ${noteName} (MIDI ${data1}) - Velocity: ${data2} - Channel: ${channel}`);
+            
+            // Trigger WASM function and UI updates
+            processNoteEvent(data1, data2);
+            
+            // Send to current MIDI output if connected
+            if (currentMidiOutput) {
+                console.log(`kasm: Forwarding note to output device: "${currentMidiOutput.name}"`);
+            }
+            
+        } else if (messageType === 0x80 || (messageType === 0x90 && data2 === 0)) {
+            // Note Off
+            const noteName = getNoteName(data1);
+            console.log(`kasm: Note OFF: ${noteName} (MIDI ${data1}) - Channel: ${channel}`);
+            
+            // Process note off event
+            processNoteEvent(data1, 0);
+            
+        } else if (messageType === 0xB0) {
+            // Control Change
+            console.log(`kasm: Control Change: CC${data1} = ${data2} - Channel: ${channel}`);
+            console.log(`kasm:    CC Name: ${getCCName(data1)}`);
+            
+            // Handle specific CC messages
+            if (data1 === 1) {
+                console.log(`kasm: 🌊 Modwheel: ${data2}`);
+                updateModwheelUI(data2);
+            } else if (data1 === 10) {
+                console.log(`kasm: Pan: ${data2}`);
+                updatePanUI(data2);
+            } else if (data1 === 64) {
+                console.log(`kasm: 🦶 Sustain Pedal: ${data2 >= 64 ? 'ON' : 'OFF'}`);
+            }
+            
+        } else if (messageType === 0xC0) {
+            // Program Change
+            console.log(`kasm: 🎼 Program Change: ${data1} - Channel: ${channel}`);
+            
+        } else if (messageType === 0xE0) {
+            // Pitch Bend
+            const pitchBend = (data2 << 7) | data1;
+            const pitchBendCentered = pitchBend - 8192; // Center around 0
+            console.log(`kasm: Pitch Bend: ${pitchBend} (${pitchBendCentered > 0 ? '+' : ''}${pitchBendCentered}) - Channel: ${channel}`);
+            
+        } else if (messageType === 0xF0) {
+            // System messages
+            console.log(`kasm: System message: 0x${status.toString(16)}`);
+            
+        } else {
+            // Other message types
+            console.log(`kasm: Other MIDI message: Type=0x${messageType.toString(16)}, Data1=${data1}, Data2=${data2} - Channel: ${channel}`);
+        }
+    }
+
+    // Helper function to get note name from MIDI number
+    function getNoteName(noteNumber) {
+        const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const octave = Math.floor(noteNumber / 12) - 1;
+        const noteName = noteNames[noteNumber % 12];
+        return `${noteName}${octave}`;
+    }
+
+    // Helper function to get CC name from CC number
+    function getCCName(ccNumber) {
+        const ccNames = {
+            0: 'Bank Select MSB',
+            1: 'Modulation Wheel',
+            2: 'Breath Controller',
+            4: 'Foot Controller',
+            5: 'Portamento Time',
+            6: 'Data Entry MSB',
+            7: 'Channel Volume',
+            8: 'Balance',
+            10: 'Pan',
+            11: 'Expression Controller',
+            12: 'Effect Control 1',
+            13: 'Effect Control 2',
+            32: 'Bank Select LSB',
+            64: 'Sustain Pedal',
+            65: 'Portamento On/Off',
+            66: 'Sostenuto',
+            67: 'Soft Pedal',
+            68: 'Legato Footswitch',
+            69: 'Hold 2',
+            70: 'Sound Controller 1',
+            71: 'Sound Controller 2',
+            72: 'Sound Controller 3',
+            73: 'Sound Controller 4',
+            74: 'Sound Controller 5',
+            75: 'Sound Controller 6',
+            76: 'Sound Controller 7',
+            77: 'Sound Controller 8',
+            78: 'Sound Controller 9',
+            79: 'Sound Controller 10',
+            120: 'All Sound Off',
+            121: 'Reset All Controllers',
+            122: 'Local Control On/Off',
+            123: 'All Notes Off',
+            124: 'Omni Mode Off',
+            125: 'Omni Mode On',
+            126: 'Mono Mode On',
+            127: 'Poly Mode On'
+        };
+        return ccNames[ccNumber] || `CC ${ccNumber}`;
+    }
+
+    // Update modwheel UI from MIDI input
+    function updateModwheelUI(value) {
+        const modwheelSlider = document.getElementById('modwheel');
+        const modwheelValueBox = document.getElementById('modwheel-value');
+        if (modwheelSlider && modwheelValueBox) {
+            modwheelSlider.value = value;
+            modwheelValueBox.value = value;
+        }
+    }
+
+    // Update pan UI from MIDI input
+    function updatePanUI(value) {
+        const panSlider = document.getElementById('pan');
+        const panValueBox = document.getElementById('pan-value');
+        if (panSlider && panValueBox) {
+            panSlider.value = value;
+            panValueBox.value = value;
+        }
+    }
+
+    // Update MIDI device list - Enhanced with device type indication
     function updateMidiDeviceList() {
+        console.log('kasm: Updating MIDI device list in UI...');
         const select = document.getElementById('midiOutputSelect');
         const currentValue = select.value;
 
@@ -3665,27 +3930,77 @@ Velocity: C=down (-10), V=up (+10)
         select.innerHTML = '<option value="">Select MIDI Device...</option>';
 
         if (midiAccess) {
+            const inputs = Array.from(midiAccess.inputs.values());
             midiOutputs = Array.from(midiAccess.outputs.values());
 
+            console.log(`kasm: Populating device list: ${inputs.length} inputs, ${midiOutputs.length} outputs`);
+
+            // Add input devices (for information only - they can't be selected for output)
+            inputs.forEach((input, index) => {
+                const option = document.createElement('option');
+                option.value = `input-${index}`;
+                option.disabled = true; // Can't select input devices for output
+                option.style.color = '#666';
+                option.style.fontStyle = 'italic';
+                const statusIcon = input.state === 'connected' ? '🟢' : '🔴';
+                option.textContent = `${statusIcon} INPUT: ${input.name} (${input.manufacturer || 'Unknown'}) - ${input.state}`;
+                select.appendChild(option);
+            });
+
+            // Add separator if we have both inputs and outputs
+            if (inputs.length > 0 && midiOutputs.length > 0) {
+                const separator = document.createElement('option');
+                separator.disabled = true;
+                separator.textContent = '────────────────────────────';
+                select.appendChild(separator);
+            }
+
+            // Add output devices (selectable)
             midiOutputs.forEach((output, index) => {
                 const option = document.createElement('option');
                 option.value = index;
-                option.textContent = `${output.name} (${output.manufacturer || 'Unknown'})`;
+                const statusIcon = output.state === 'connected' ? '🟢' : '🔴';
+                const connectionIcon = output.connection === 'open' ? '🔗' : '🔌';
+                option.textContent = `${statusIcon}${connectionIcon} OUTPUT: ${output.name} (${output.manufacturer || 'Unknown'}) - ${output.state}`;
+                
+                // Style based on device state
+                if (output.state === 'connected') {
+                    option.style.color = '#2e7d32'; // Green for connected
+                    option.style.fontWeight = 'bold';
+                } else {
+                    option.style.color = '#d32f2f'; // Red for disconnected
+                }
+                
                 select.appendChild(option);
+                console.log(`kasm: Added OUTPUT device to list: "${output.name}" (index: ${index}, state: ${output.state})`);
             });
 
             // Restore previous selection if still available, or from saved settings
             const targetValue = currentValue || window.savedMidiDeviceIndex;
-            if (targetValue && midiOutputs[targetValue]) {
+            if (targetValue && targetValue !== '' && midiOutputs[targetValue]) {
                 select.value = targetValue;
                 currentMidiOutput = midiOutputs[targetValue];
                 selectMidiDevice(); // Update the status display
+                console.log(`kasm: Restored previous device selection: "${currentMidiOutput.name}"`);
                 // Clear the saved index since we've used it
                 window.savedMidiDeviceIndex = null;
             }
 
-            document.getElementById('playbackStatus').textContent =
-                midiOutputs.length > 0 ? `sel` : 'No MIDI devices found';
+            // Update status message
+            const totalDevices = inputs.length + midiOutputs.length;
+            if (totalDevices === 0) {
+                document.getElementById('playbackStatus').textContent = 'No MIDI devices found';
+                console.log('kasm: No MIDI devices available');
+            } else if (midiOutputs.length === 0) {
+                document.getElementById('playbackStatus').textContent = `${inputs.length} input(s) found, no outputs`;
+                console.log(`kasm: Found ${inputs.length} input device(s) but no output devices`);
+            } else {
+                document.getElementById('playbackStatus').textContent = `${midiOutputs.length} output(s) available`;
+                console.log(`kasm: Device list updated: ${totalDevices} total devices (${inputs.length} inputs, ${midiOutputs.length} outputs)`);
+            }
+        } else {
+            document.getElementById('playbackStatus').textContent = 'MIDI not initialized';
+            console.log('kasm: MIDI access not available for device list update');
         }
     }
 
@@ -3723,7 +4038,7 @@ Velocity: C=down (-10), V=up (+10)
             const result = kasm_rust.bang(inlet_0, inlet_1, inlet_2, inlet_3, inlet_4, inlet_5);
             document.getElementById('result').textContent = "Keyboard test result: " + result;
         } catch (err) {
-            console.error('Error in run_test_keyboard:', err);
+            console.error('kasm: Error in run_test_keyboard:', err);
             document.getElementById('result').textContent = "Error: " + err.message;
         }
 
@@ -3753,7 +4068,7 @@ Velocity: C=down (-10), V=up (+10)
             const result = kasm_rust.bang(inlet_0, inlet_1, 0, inlet_3, inlet_4, inlet_5);
             document.getElementById('result').textContent = "Keyboard test result: " + result;
         } catch (err) {
-            console.error('Error in run_test_keyboard:', err);
+            console.error('kasm: Error in run_test_keyboard:', err);
             document.getElementById('result').textContent = "Error: " + err.message;
         }
 
@@ -3859,7 +4174,7 @@ Velocity: C=down (-10), V=up (+10)
             playbackTimeouts.push(cleanupTimeout);
 
         } catch (err) {
-            console.error('Error playing MIDI clip:', err);
+            console.error('kasm: Error playing MIDI clip:', err);
             document.getElementById('playbackStatus').textContent = 'Error playing clip';
             stopMidiPlayback();
         }
@@ -3933,7 +4248,7 @@ Velocity: C=down (-10), V=up (+10)
 
         try {
             localStorage.setItem('kasmSettings', JSON.stringify(settings));
-            console.log('Settings saved to localStorage');
+            console.log('kasm: Settings saved to localStorage');
         } catch (err) {
             console.warn('Failed to save settings to localStorage:', err);
         }
@@ -3945,7 +4260,7 @@ Velocity: C=down (-10), V=up (+10)
             if (!savedSettings) return false;
 
             const settings = JSON.parse(savedSettings);
-            console.log('Loading settings from localStorage:', settings);
+            console.log('kasm: Loading settings from localStorage:', settings);
 
             // Restore all form values
             if (settings.inputJson) document.getElementById('inputJson').value = settings.inputJson;
@@ -3987,14 +4302,14 @@ Velocity: C=down (-10), V=up (+10)
     function clearSettings() {
         try {
             localStorage.removeItem('kasmSettings');
-            console.log('Settings cleared from localStorage');
+            console.log('kasm: Settings cleared from localStorage');
         } catch (err) {
             console.warn('Failed to clear settings from localStorage:', err);
         }
     }
 
     function updateBang() {
-        console.log('updateBang');
+        console.log('kasm: updateBang');
         midikeys_note = 60;
         midikeys_velocity = 100;
         encodersChanged = true;
@@ -4052,7 +4367,7 @@ Velocity: C=down (-10), V=up (+10)
                     drawMidiClip(midiClipData);
                     // Also update the output JSON textarea to show the looper data
                     document.getElementById('outputJson').value = JSON.stringify(midiClipData, null, 2);
-                    console.log('Updated MIDI clip view with looper data:', midiClipData);
+                    console.log('kasm: Updated MIDI clip view with looper data:', midiClipData);
                 }
             } else if (msg.includes('Pattern')) {
                 // Handle pattern-based looper messages
@@ -4069,10 +4384,10 @@ Velocity: C=down (-10), V=up (+10)
                     document.getElementById('outputJson').value = JSON.stringify(midiPatternData, null, 2);
                     return;
                 }
-                console.log('Pattern looper message:', msg);
+                console.log('kasm: Pattern looper message:', msg);
             } else {
                 // For other looper messages, just log them
-                console.log('Looper status:', msg);
+                console.log('kasm: Looper status:', msg);
             }
         } catch (err) {
             console.warn('Error updating MIDI clip view:', err);
@@ -4317,7 +4632,7 @@ Velocity: C=down (-10), V=up (+10)
         
         // Check if this is a drum: or loop: selection
         if (emanatorText.startsWith('drum:') || emanatorText.startsWith('loop:')) {
-            console.log('Showing pattern preview for:', emanatorText);
+            console.log('kasm: Showing pattern preview for:', emanatorText);
             
             // Try to get pattern from kasm_pattern_get_notes
             if (typeof kasm_rust !== 'undefined' && typeof kasm_rust.kasm_pattern_get_notes === 'function') {
@@ -4332,10 +4647,10 @@ Velocity: C=down (-10), V=up (+10)
                         document.getElementById('outputJson').value = JSON.stringify(patternResult, null, 2);
                         drawMidiClip(patternResult);
                         
-                        console.log('Pattern preview updated for:', emanatorText);
+                        console.log('kasm: Pattern preview updated for:', emanatorText);
                     }
                 } catch (err) {
-                    console.error('Error getting pattern preview:', err);
+                    console.error('kasm: Error getting pattern preview:', err);
                 }
             }
         }
