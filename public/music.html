@@ -248,6 +248,32 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <option value="116">drum:Bangaz 27</option>
                     <option value="117">drum:Bangaz 28</option>
                     <option value="118">drum:Bangaz 29</option>
+                    <option value="119">drum:Bangaz 30</option>
+                    <option value="120">drum:Bangaz 31</option>
+                    <option value="121">drum:Bangaz 32</option>
+                    <option value="122">drum:Bangaz 33</option>
+                    <option value="123">drum:Bangaz 34</option>
+                    <option value="124">drum:Bangaz 35</option>
+                    <option value="125">drum:Bangaz 36</option>
+                    <option value="126">drum:Bangaz 37</option>
+                    <option value="127">drum:Bangaz 38</option>
+                    <option value="128">drum:Bangaz 39</option>
+                    <option value="129">drum:Bangaz 40</option>
+                    <option value="130">drum:Bangaz 41</option>
+                    <option value="131">drum:Bangaz 42</option>
+                    <option value="132">drum:Bangaz 43</option>
+                    <option value="133">drum:Bangaz 44</option>
+                    <option value="134">drum:Bangaz 45</option>
+                    <option value="135">drum:Bangaz 46</option>
+                    <option value="136">drum:Bangaz 47</option>
+                    <option value="137">drum:Bangaz 48</option>
+                    <option value="138">drum:Bangaz 49</option>
+                    <option value="139">drum:Bangaz 50</option>
+                    <option value="140">drum:Bangaz 51</option>
+                    <option value="141">drum:Bangaz 52</option>
+                    <option value="142">drum:Bangaz 53</option>
+                    <option value="143">drum:Bangaz 54</option>
+                    <option value="144">drum:Bangaz 55</option>
                 </select>
             </label>
         </div>
@@ -960,7 +986,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                 sendNoteOn(midikeys_note, midikeys_velocity, channel);
             }
 
-            //console.log(`Key ${key} pressed: MIDI note ${midikeys_note} (velocity ${midikeys_velocity})`);
+            //console.log(`kasm: Key ${key} pressed: MIDI note ${midikeys_note} (velocity ${midikeys_velocity})`);
             return;
         }
 
@@ -970,7 +996,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
             midikeys_semitone = Math.max(-120, midikeys_semitone - 12);
             document.getElementById('semitone').value = midikeys_semitone;
             updateDial('semitone', midikeys_semitone);
-            console.log(`Octave down: semitone offset = ${midikeys_semitone}`);
+            console.log(`kasm: Octave down: semitone offset = ${midikeys_semitone}`);
             return;
         }
 
@@ -979,7 +1005,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
             midikeys_semitone = Math.min(120, midikeys_semitone + 12);
             document.getElementById('semitone').value = midikeys_semitone;
             updateDial('semitone', midikeys_semitone);
-            console.log(`Octave up: semitone offset = ${midikeys_semitone}`);
+            console.log(`kasm: Octave up: semitone offset = ${midikeys_semitone}`);
             return;
         }
 
@@ -990,7 +1016,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
             currentVelocity = Math.max(1, currentVelocity - 10);
             document.getElementById('velocity').value = currentVelocity;
             updateDial('velocity', currentVelocity);
-            console.log(`Velocity down: ${currentVelocity}`);
+            console.log(`kasm: Velocity down: ${currentVelocity}`);
             return;
         }
 
@@ -1000,7 +1026,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
             currentVelocity = Math.min(127, currentVelocity + 10);
             document.getElementById('velocity').value = currentVelocity;
             updateDial('velocity', currentVelocity);
-            console.log(`Velocity up: ${currentVelocity}`);
+            console.log(`kasm: Velocity up: ${currentVelocity}`);
             return;
         }
     }
@@ -1027,7 +1053,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                 sendNoteOff(clampedNote, channel);
             }
 
-            //console.log(`Key ${key} released: MIDI note ${clampedNote} off`);
+            //console.log(`kasm: Key ${key} released: MIDI note ${clampedNote} off`);
         }
     }
 
