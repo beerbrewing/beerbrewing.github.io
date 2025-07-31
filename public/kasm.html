@@ -3394,6 +3394,11 @@ Velocity: C=down (-10), V=up (+10)
                 document.getElementById('outputJson').value = "Error: " + err.message;
                 clearMidiClip();
             }
+
+            clearTimeout(window.updateBangTimeout);
+            window.updateBangTimeout = setTimeout(() => {
+                updateBang();
+            }, 50);
         }, 5); // 5ms debounce delay
     }
 

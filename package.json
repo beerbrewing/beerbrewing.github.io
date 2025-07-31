@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build  && npx html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true -o build/kasm.html build/kasm.html && npx html-minifier-terser --collapse-whitespace --remove-comments --minify-css true --minify-js true -o build/music.html build/music.html",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
@@ -27,6 +27,7 @@
   ],
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "html-minifier-terser": "^7.2.0"
   }
 }
