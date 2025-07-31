@@ -86,7 +86,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                 </select>
             </label>
             <label style="margin-left: 20px;">Tempo (BPM):
-                <input type="number" id="tempo" value="120" min="60" max="200" style="width: 60px; margin-left: 10px;">
+                <input type="number" id="tempo" value="120" min="20" max="999" style="width: 60px; margin-left: 10px;">
             </label>
             <button id="playMidi"
                     style="padding: 5px 15px; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer;">
@@ -468,12 +468,12 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                             <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="rate-pointer"
                                   transform="rotate(0 30 30)"/>
                         </svg>
-                        <input type="range" id="rate-dial" min="50" max="10000" value="250"
+                        <input type="range" id="rate-dial" min="30" max="1500" value="250"
                                style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
                                onchange="updateDial('rate', this.value); autoTransform()"
                                oninput="updateDial('rate', this.value); autoTransform()">
                     </div>
-                    <input type="number" id="rateMs" value="250" min="50" max="10000"
+                    <input type="number" id="rateMs" value="250" min="30" max="1500"
                            style="width: 60px; text-align: center;"
                            onchange="updateDial('rate', this.value); autoTransform()"
                            oninput="updateDial('rate', this.value); autoTransform()">
@@ -3302,6 +3302,36 @@ Velocity: C=down (-10), V=up (+10)
         clearTimeout(autoTransformTimeout);
         clearTimeout(autoPlayTimeout);
 
+        const rateInput = document.getElementById('rateMs');
+        const tempoInput = document.getElementById('tempo');
+        if (rateInput && tempoInput) {
+            // Only set up listeners once
+            if (!rateInput._syncListener) {
+                rateInput.addEventListener('input', function () {
+                    const rate = parseInt(rateInput.value);
+                    if (!isNaN(rate) && rate > 0) {
+                        let bpm = Math.round(60000 / rate) / 2; // quarter notes 4 beats per bar
+                        if (bpm < 20) bpm = 20;
+                        if (bpm > 999) bpm = 999;
+                        if (parseInt(tempoInput.value) !== bpm) tempoInput.value = bpm;
+                    }
+                });
+                rateInput._syncListener = true;
+            }
+            if (!tempoInput._syncListener) {
+                tempoInput.addEventListener('input', function () {
+                    const bpm = parseInt(tempoInput.value);
+                    if (!isNaN(bpm) && bpm > 0) {
+                        let rate = Math.round(60000 / bpm) / 2;   // quarter notes 4 beats per bar
+                        if (rate < 30) rate = 30;
+                        if (rate > 1500) rate = 1500;
+                        if (parseInt(rateInput.value) !== rate) rateInput.value = rate;
+                    }
+                });
+                tempoInput._syncListener = true;
+            }
+        }
+
         // Set a small delay to avoid excessive processing during rapid input changes
         autoTransformTimeout = setTimeout(() => {
             const inputJson = document.getElementById('inputJson').value;
@@ -3427,8 +3457,8 @@ Velocity: C=down (-10), V=up (+10)
 
         if (encId === 'rate') {
             inputId = 'rateMs';
-            minValue = 50;
-            maxValue = 10000;
+            minValue = 30;
+            maxValue = 1500;
         } else if (encId === 'semitone') {
             minValue = -127;
             maxValue = 127;
@@ -4463,7 +4493,7 @@ Velocity: C=down (-10), V=up (+10)
     setInterval(function() {
         if (typeof msg_int === 'function') {
             inlet = 6;
-            msg_int();
+            msg_float(document.getElementById('tempo').value);
         }
     }, 10);
 
