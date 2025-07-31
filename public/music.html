@@ -109,105 +109,107 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <label><input type="radio" name="emanatorQuick" value="10"
                                   onclick="document.getElementById('inlet_5_emanator').value=0; document.getElementById('exampleSelect').value='Single Note'; loadDefaultExample(); autoTransform();">
                         Reset</label>
-
-                    <label><input type="radio" name="emanatorQuick" value="10"
-                                  onclick="document.getElementById('inlet_5_emanator').value=2; autoTransform();">
-                        Emanator</label>
                     <label><input type="radio" name="emanatorQuick" value="50"
                                   onclick="document.getElementById('inlet_5_emanator').value=95; autoTransform(); document.getElementById('inlet_5_emanator').value=104; autoTransform();">
                         Bangaz</label>
+                    <label><input type="radio" name="emanatorQuick" value="10"
+                                  onclick="document.getElementById('inlet_5_emanator').value=2; autoTransform();">
+                        Emanator</label>
                     <label><input type="radio" name="emanatorQuick" value="20"
                                   onclick="document.getElementById('inlet_5_emanator').value=63; autoTransform();">
                         Looper</label>
                     <label><input type="radio" name="emanatorQuick" value="30"
-                                  onclick="document.getElementById('inlet_5_emanator').value=11; autoTransform();"> Taps</label>
+                                  onclick="document.getElementById('inlet_5_emanator').value=12; autoTransform();"> Taps</label>
                     <label><input type="radio" name="emanatorQuick" value="40"
                                   onclick="document.getElementById('inlet_5_emanator').value=75; autoTransform();">
                         Counterpoint</label>
+                    <label><input type="radio" name="emanatorQuick" value="70"
+                                  onclick="document.getElementById('inlet_5_emanator').value=95; autoTransform(); document.getElementById('inlet_5_emanator').value=113; autoTransform();">
+                        Drum Racks</label>
                     <label><input type="radio" name="emanatorQuick" value="60"
                                   onclick="document.getElementById('inlet_5_emanator').value=46; autoTransform();">
                         Chaos!</label>
                 </div>
                 <select id="inlet_5_emanator" onchange="autoTransform()" style="padding: 3px;">
                     <option value="0">Random</option>
-                    <option value="1">mldy:Phone Ringtone</option>
-                    <option value="2">mldy:Strummed Cascade</option>
-                    <option value="3">mldy:Elaborate Panning</option>
-                    <option value="4">mldy:Advanced Rhythmic</option>
-                    <option value="5">hmny:Chord Progression</option>
-                    <option value="6">hmny:Simple Chord</option>
-                    <option value="7">hmny:Extended Inversions</option>
-                    <option value="8">hmny:Complex Extensions</option>
-                    <option value="9">rhym:Morse Code</option>
-                    <option value="10">rhym:Markov Chain</option>
-                    <option value="11">rhym:Wave Interference</option>
-                    <option value="12">rhym:Complex Reflection</option>
-                    <option value="13">rhym:Balkan 7/8</option>
-                    <option value="14">rhym:West African Bell</option>
-                    <option value="15">rhym:Indian Tintal</option>
-                    <option value="16">rhym:Latin son clave</option>
-                    <option value="17">rhym:Jazz Swing 8ths</option>
-                    <option value="18">rhym:Fibonacci rhythm</option>
-                    <option value="19">rhym:Golden ratio pulse</option>
-                    <option value="20">rhym:Prime number rhythm</option>
-                    <option value="21">rhym:Balkan 11/8 (3+2+3+3)</option>
-                    <option value="22">rhym:Contemporary tuplets (5:4)</option>
-                    <option value="23">rhym:Afro-Cuban 6/8 bell</option>
-                    <option value="24">prog:Circle of Fifths</option>
-                    <option value="25">prog:Stepwise Progression</option>
-                    <option value="26">prog:Plagal Cadence</option>
-                    <option value="27">prog:Deceptive Cadence</option>
-                    <option value="28">prog:Modal Mixture</option>
-                    <option value="29">prog:Descending Fifths</option>
-                    <option value="30">prog:Jazz Turnaround</option>
-                    <option value="31">prog:Chromatic Mediant</option>
-                    <option value="32">prog:Neapolitan Chord</option>
-                    <option value="33">prog:Augmented Sixth</option>
-                    <option value="34">chnt:Chant Dorian Call-Response</option>
-                    <option value="35">chnt:Chant Psalm Tone</option>
-                    <option value="36">chnt:Chant Ornamented Response</option>
-                    <option value="37">chnt:Chant with Drone</option>
-                    <option value="38">chnt:Chant Antiphonal</option>
-                    <option value="39">spat:Harmonic Resonance</option>
-                    <option value="40">spat:Swarm Movement</option>
-                    <option value="41">spat:Circular Panning</option>
-                    <option value="42">spat:3D Positioning</option>
-                    <option value="43">sums:Fibonacci Spiral</option>
-                    <option value="44">sums:Fractal Cascade</option>
-                    <option value="45">sums:Swarming Spirals</option>
-                    <option value="46">sums:Fractal Chaos</option>
-                    <option value="47">expr:Multidimensional Markov</option>
-                    <option value="48">expr:Second Order Markov</option>
-                    <option value="49">expr:Chaos Game Harmony</option>
-                    <option value="50">expr:Complex Drums</option>
-                    <option value="51">expr:Cellular Automaton</option>
-                    <option value="52">expr:Euclidean Rhythm</option>
-                    <option value="53">expr:L-System</option>
-                    <option value="54">expr:Microtonal 24-TET</option>
-                    <option value="55">expr:Brownian Walk</option>
-                    <option value="56">expr:Spectral Texture</option>
-                    <option value="57">expr:Recursive Pattern</option>
-                    <option value="58">expr:Parameter Morphing</option>
-                    <option value="59">expr:Polymetric (3:4)</option>
-                    <option value="60">expr:Polytempo Engine</option>
+                    <option value="1">mldy:Phone Ringtone Classic phone ringtone melody with </option>
+                    <option value="2">mldy:Strummed Cascade Cascading glissando with stereo spr</option>
+                    <option value="3">mldy:Elaborate Panning Melodic patterns with dynamic panni</option>
+                    <option value="4">mldy:Advanced Rhythmic Complex melodic patterns with rhyth</option>
+                    <option value="5">hmny:Chord Progression Classic chord progressions with wel</option>
+                    <option value="6">hmny:Simple Chord Basic major triad chord</option>
+                    <option value="7">hmny:Extended Inversions Extended chords with inversions</option>
+                    <option value="8">hmny:Complex Extensions Complex chord progressions with ext</option>
+                    <option value="9">rhym:Morse Code Morse code patterns with rhythmic t</option>
+                    <option value="10">rhym:Markov Chain Markov chain-based rhythmic pattern</option>
+                    <option value="11">rhym:Wave Interference Trigonometric wave interference pat</option>
+                    <option value="12">rhym:Complex Reflection Physics-based reflection algorithms</option>
+                    <option value="13">rhym:Balkan 7/8 Balkan 7/8 rhythm (aksak)</option>
+                    <option value="14">rhym:West African Bell West African bell pattern (12/8 cro</option>
+                    <option value="15">rhym:Indian Tintal Indian Tintal (16-beat cycle)</option>
+                    <option value="16">rhym:Latin son clave Latin son clave (3-2)</option>
+                    <option value="17">rhym:Jazz Swing 8ths Jazz swing eighths</option>
+                    <option value="18">rhym:Fibonacci rhythm Fibonacci rhythm (5, 8, 13, ...)</option>
+                    <option value="19">rhym:Golden ratio pulse Golden ratio pulse</option>
+                    <option value="20">rhym:Prime number rhythm Prime number rhythm</option>
+                    <option value="21">rhym:Balkan 11/8 (3+2+3+3) Balkan 11/8 (3+2+3+3)</option>
+                    <option value="22">rhym:Contemporary tuplets (5:4) Contemporary tuplets (5:4)</option>
+                    <option value="23">rhym:Afro-Cuban 6/8 bell Afro-Cuban 6/8 bell</option>
+                    <option value="24">prog:Circle of Fifths Circle of Fifths progression with m</option>
+                    <option value="25">prog:Stepwise Progression Diatonic stepwise progression</option>
+                    <option value="26">prog:Plagal Cadence IV-I plagal cadence</option>
+                    <option value="27">prog:Deceptive Cadence V-vi deceptive cadence</option>
+                    <option value="28">prog:Modal Mixture Modal mixture progression</option>
+                    <option value="29">prog:Descending Fifths Descending fifths progression</option>
+                    <option value="30">prog:Jazz Turnaround I-vi-ii-V jazz turnaround</option>
+                    <option value="31">prog:Chromatic Mediant Chromatic mediant progression</option>
+                    <option value="32">prog:Neapolitan Chord Neapolitan chord progression</option>
+                    <option value="33">prog:Augmented Sixth Augmented sixth progression</option>
+                    <option value="34">chnt:Chant Dorian Call-Response Call and response in Dorian mode (c</option>
+                    <option value="35">chnt:Chant Psalm Tone Gregorian psalm tone formula</option>
+                    <option value="36">chnt:Chant Ornamented Response Responsorial echo with ornamentatio</option>
+                    <option value="37">chnt:Chant with Drone Responsorial chant with ison (drone</option>
+                    <option value="38">chnt:Chant Antiphonal Antiphonal (alternating) chant</option>
+                    <option value="39">spat:Harmonic Resonance Harmonic series with spatial positi</option>
+                    <option value="40">spat:Swarm Movement Boids algorithm with spatial audio</option>
+                    <option value="41">spat:Circular Panning Dynamic circular panning effects</option>
+                    <option value="42">spat:3D Positioning Simulated 3D spatial positioning</option>
+                    <option value="43">sums:Fibonacci Spiral Fibonacci timing with golden ratio </option>
+                    <option value="44">sums:Fractal Cascade Fractal echo patterns at different </option>
+                    <option value="45">sums:Swarming Spirals Bumblebee flight patterns with Fibo</option>
+                    <option value="46">sums:Fractal Chaos L-systems, strange attractors, and </option>
+                    <option value="47">expr:Multidimensional Markov Multi-dimensional Markov chain with</option>
+                    <option value="48">expr:Second Order Markov Second-order Markov chain with rhyt</option>
+                    <option value="49">expr:Chaos Game Harmony Chaos game algorithm for counterpoi</option>
+                    <option value="50">expr:Complex Drums Complex drum patterns using golden </option>
+                    <option value="51">expr:Cellular Automaton Cellular automaton melody generator</option>
+                    <option value="52">expr:Euclidean Rhythm Euclidean rhythm pattern generator</option>
+                    <option value="53">expr:L-System L-system based melody generator</option>
+                    <option value="54">expr:Microtonal 24-TET Microtonal melody generator using 2</option>
+                    <option value="55">expr:Brownian Walk Stochastic Brownian walk melody gen</option>
+                    <option value="56">expr:Spectral Texture Spectral overtone texture generator</option>
+                    <option value="57">expr:Recursive Pattern Recursive self-similar pattern gene</option>
+                    <option value="58">expr:Parameter Morphing Dynamic parameter morphing melody g</option>
+                    <option value="59">expr:Polymetric (3:4) Polymetric engine generating 3:4 pa</option>
+                    <option value="60">expr:Polytempo Engine Polytempo engine for variable speed</option>
                     <option value="61">Krumhansl Arpeggiator</option>
                     <option value="62">Krumhansl Chords</option>
                     <option value="63">Tape Looping Example</option>
-                    <option value="64">loop:Chaos Game Harmony</option>
-                    <option value="65">loop:Modular Arithmetic Harmony</option>
-                    <option value="66">loop:Cellular Automata Harmony</option>
-                    <option value="67">loop:Spectral Harmony</option>
-                    <option value="68">loop:L-System Harmony</option>
-                    <option value="69">loop:Markov Matrix Harmony</option>
-                    <option value="70">loop:Quasi-Crystal Harmony</option>
-                    <option value="71">loop:Fractal Brownian Harmony</option>
-                    <option value="72">loop:Hyperbolic Geometry Harmony</option>
-                    <option value="73">loop:Prime Spiral Harmony</option>
-                    <option value="74">loop:Fibonacci Harmony</option>
-                    <option value="75">loop:Markov Harmony</option>
-                    <option value="76">loop:Fractal Harmony</option>
-                    <option value="77">loop:Prime Harmony</option>
-                    <option value="78">loop:Golden Ratio Harmony</option>
+                    <option value="64">loop:Chaos Game Harmony Generates random harmony using chao</option>
+                    <option value="65">loop:Modular Arithmetic Harmony Cyclical pitch patterns using modul</option>
+                    <option value="66">loop:Cellular Automata Harmony Binary sequence pitch offsets using</option>
+                    <option value="67">loop:Spectral Harmony Harmony based on overtone series.</option>
+                    <option value="68">loop:L-System Harmony Interval sequences generated by L-s</option>
+                    <option value="69">loop:Markov Matrix Harmony Probabilistic interval jumps using </option>
+                    <option value="70">loop:Quasi-Crystal Harmony Penrose tiling angles for interval </option>
+                    <option value="71">loop:Fractal Brownian Harmony Fractal Brownian motion for pitch c</option>
+                    <option value="72">loop:Hyperbolic Geometry Harmony Interval mapping using hyperbolic t</option>
+                    <option value="73">loop:Prime Spiral Harmony Pitch offsets using Ulam spiral of </option>
+                    <option value="74">loop:Fibonacci Harmony Counterpoint using Fibonacci interv</option>
+                    <option value="75">loop:Markov Harmony Probabilistic note selection based </option>
+                    <option value="76">loop:Fractal Harmony Self-similar patterns at different </option>
+                    <option value="77">loop:Prime Harmony Mathematically pure intervals using</option>
+                    <option value="78">loop:Golden Ratio Harmony Organic intervals using the golden </option>
                     <option value="79">Clear All Drum Assignments</option>
                     <option value="80">Reset Default Drum Assignments</option>
                     <option value="81">Reassign Kick (drum)</option>
@@ -219,61 +221,61 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <option value="87">Reassign HiTom (drum)</option>
                     <option value="88">Reassign Clap</option>
                     <option value="89">Reassign CowBell</option>
-                    <option value="90">drum:Bangaz 1</option>
-                    <option value="91">drum:Bangaz 2</option>
-                    <option value="92">drum:Bangaz 3</option>
-                    <option value="93">drum:Bangaz 4</option>
-                    <option value="94">drum:Bangaz 5</option>
-                    <option value="95">drum:Bangaz 6</option>
-                    <option value="96">drum:Bangaz 7</option>
-                    <option value="97">drum:Bangaz 8</option>
-                    <option value="98">drum:Bangaz 9</option>
-                    <option value="99">drum:Bangaz 10</option>
-                    <option value="100">drum:Bangaz 11</option>
-                    <option value="101">drum:Bangaz 12</option>
-                    <option value="102">drum:Bangaz 13</option>
-                    <option value="103">drum:Bangaz 14</option>
-                    <option value="104">drum:Bangaz 15</option>
-                    <option value="105">drum:Bangaz 16</option>
-                    <option value="106">drum:Bangaz 17</option>
-                    <option value="107">drum:Bangaz 18</option>
-                    <option value="108">drum:Bangaz 19</option>
-                    <option value="109">drum:Bangaz 20</option>
-                    <option value="110">drum:Bangaz 21</option>
-                    <option value="111">drum:Bangaz 22</option>
-                    <option value="112">drum:Bangaz 23</option>
-                    <option value="113">drum:Bangaz 24</option>
-                    <option value="114">drum:Bangaz 25</option>
-                    <option value="115">drum:Bangaz 26</option>
-                    <option value="116">drum:Bangaz 27</option>
-                    <option value="117">drum:Bangaz 28</option>
-                    <option value="118">drum:Bangaz 29</option>
-                    <option value="119">drum:Bangaz 30</option>
-                    <option value="120">drum:Bangaz 31</option>
-                    <option value="121">drum:Bangaz 32</option>
-                    <option value="122">drum:Bangaz 33</option>
-                    <option value="123">drum:Bangaz 34</option>
-                    <option value="124">drum:Bangaz 35</option>
-                    <option value="125">drum:Bangaz 36</option>
-                    <option value="126">drum:Bangaz 37</option>
-                    <option value="127">drum:Bangaz 38</option>
-                    <option value="128">drum:Bangaz 39</option>
-                    <option value="129">drum:Bangaz 40</option>
-                    <option value="130">drum:Bangaz 41</option>
-                    <option value="131">drum:Bangaz 42</option>
-                    <option value="132">drum:Bangaz 43</option>
-                    <option value="133">drum:Bangaz 44</option>
-                    <option value="134">drum:Bangaz 45</option>
-                    <option value="135">drum:Bangaz 46</option>
-                    <option value="136">drum:Bangaz 47</option>
-                    <option value="137">drum:Bangaz 48</option>
-                    <option value="138">drum:Bangaz 49</option>
-                    <option value="139">drum:Bangaz 50</option>
-                    <option value="140">drum:Bangaz 51</option>
-                    <option value="141">drum:Bangaz 52</option>
-                    <option value="142">drum:Bangaz 53</option>
-                    <option value="143">drum:Bangaz 54</option>
-                    <option value="144">drum:Bangaz 55</option>
+                    <option value="90">drum:Bangaz 1 Classic four-on-the-floor kick/snar</option>
+                    <option value="91">drum:Bangaz 2 Polyrhythmic pattern with triplet k</option>
+                    <option value="92">drum:Bangaz 3 Extravagant polyrhythms with displa</option>
+                    <option value="93">drum:Bangaz 4 Evolving groove that changes every </option>
+                    <option value="94">drum:Bangaz 5 Weirdly polyrhythmic pattern with q</option>
+                    <option value="95">drum:Bangaz 6 Evolving Euclidean rhythm generator</option>
+                    <option value="96">drum:Bangaz 7 Complex velocity and pan using sine</option>
+                    <option value="97">drum:Bangaz 8 Wildly complex beat placement using</option>
+                    <option value="98">drum:Bangaz 9 Bossa nova with dynamic pan, ghost </option>
+                    <option value="99">drum:Bangaz 10 Classic 808 with swing, intricate m</option>
+                    <option value="100">drum:Bangaz 11 909 shuffle with adjustable shuffle</option>
+                    <option value="101">drum:Bangaz 12 LinnDrum pop groove with HH accent </option>
+                    <option value="102">drum:Bangaz 13 Electro syncopation with pan and ve</option>
+                    <option value="103">drum:Bangaz 14 808 cowbell funk with pan and HH sw</option>
+                    <option value="104">drum:Bangaz 15 707 disco with snare and open HH ac</option>
+                    <option value="105">drum:Bangaz 16 606 breakbeat with tom and snare ac</option>
+                    <option value="106">drum:Bangaz 17 808 Miami bass with kick and clap a</option>
+                    <option value="107">drum:Bangaz 18 727 Latin groove with cowbell and t</option>
+                    <option value="108">drum:Bangaz 19 808 triplet funk with triplet swing</option>
+                    <option value="109">drum:Bangaz 20 909 techno ride with ride and snare</option>
+                    <option value="110">drum:Bangaz 21 808 boogie with tom accent and HH s</option>
+                    <option value="111">drum:Bangaz 22 707 house with clap and HH accent c</option>
+                    <option value="112">drum:Bangaz 23 808 clave pattern with offset and a</option>
+                    <option value="113">drum:Bangaz 24 909 broken beat with snare ghost an</option>
+                    <option value="114">drum:Bangaz 25 808 shuffle with swing and HH accen</option>
+                    <option value="115">drum:Bangaz 26 707 funk with snare and open HH acc</option>
+                    <option value="116">drum:Bangaz 27 808 triplet shuffle with triplet sw</option>
+                    <option value="117">drum:Bangaz 28 909 ride shuffle with ride accent a</option>
+                    <option value="118">drum:Bangaz 29 808 clave funk with clave offset an</option>
+                    <option value="119">drum:Bangaz 30 Classical Motown Swing - evolving, </option>
+                    <option value="120">drum:Bangaz 31 Classical Polyrhythmic Waltz with M</option>
+                    <option value="121">drum:Bangaz 32 R&B Shuffle with Complex Syncopatio</option>
+                    <option value="122">drum:Bangaz 33 Drum Rack</option>
+                    <option value="123">drum:Bangaz 34 Drum Rack</option>
+                    <option value="124">drum:Bangaz 35 Drum Rack</option>
+                    <option value="125">drum:Bangaz 36 Drum Rack</option>
+                    <option value="126">drum:Bangaz 37 Drum Rack</option>
+                    <option value="127">drum:Bangaz 38 Drum Rack</option>
+                    <option value="128">drum:Bangaz 39 Drum Rack</option>
+                    <option value="129">drum:Bangaz 40 Drum Rack</option>
+                    <option value="130">drum:Bangaz 41 Drum Rack</option>
+                    <option value="131">drum:Bangaz 42 Drum Rack</option>
+                    <option value="132">drum:Bangaz 43 Drum Rack</option>
+                    <option value="133">drum:Bangaz 44 Drum Rack</option>
+                    <option value="134">drum:Bangaz 45 Drum Rack</option>
+                    <option value="135">drum:Bangaz 46 Drum Rack</option>
+                    <option value="136">drum:Bangaz 47 Drum Rack</option>
+                    <option value="137">drum:Bangaz 48 Drum Rack</option>
+                    <option value="138">drum:Bangaz 49 Drum Rack</option>
+                    <option value="139">drum:Bangaz 50 Drum Rack</option>
+                    <option value="140">drum:Bangaz 51 Drum Rack</option>
+                    <option value="141">drum:Bangaz 52 Drum Rack</option>
+                    <option value="142">drum:Bangaz 53 Drum Rack</option>
+                    <option value="143">drum:Bangaz 54 Drum Rack</option>
+                    <option value="144">drum:Bangaz 55 Drum Rack</option>
                 </select>
             </label>
         </div>
