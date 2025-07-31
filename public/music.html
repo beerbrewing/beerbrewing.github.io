@@ -3372,6 +3372,11 @@ Velocity: C=down (-10), V=up (+10)
         if (rangeInput && rangeInput.value != numValue) {
             rangeInput.value = numValue;
         }
+
+        clearTimeout(window.updateBangTimeout);
+        window.updateBangTimeout = setTimeout(() => {
+            updateBang();
+        }, 50);
     }
 
     // Enhanced dial interaction handlers

@@ -3453,6 +3453,11 @@ Velocity: C=down (-10), V=up (+10)
         if (rangeInput && rangeInput.value != numValue) {
             rangeInput.value = numValue;
         }
+
+        clearTimeout(window.updateBangTimeout);
+        window.updateBangTimeout = setTimeout(() => {
+            updateBang();
+        }, 50);
     }
 
     // Enhanced dial interaction handlers
@@ -3720,7 +3725,7 @@ Velocity: C=down (-10), V=up (+10)
     // Initialize WebMIDI
     async function initializeMIDI() {
         console.log('kasm: Initializing WebMIDI support...');
-        
+
         if (!navigator.requestMIDIAccess) {
             console.warn('WebMIDI API not supported in this browser');
             document.getElementById('playbackStatus').textContent = 'WebMIDI not supported';
@@ -3731,21 +3736,21 @@ Velocity: C=down (-10), V=up (+10)
             console.log('kasm: Requesting MIDI access with sysex: false...');
             midiAccess = await navigator.requestMIDIAccess({ sysex: false });
             console.log('kasm: MIDI access granted successfully');
-            
+
             // Log available MIDI devices with detailed information
             logMIDIDevices(midiAccess);
-            
+
             // Update device list in UI
             updateMidiDeviceList();
 
             // Set up device state change monitoring with enhanced logging
             midiAccess.onstatechange = onMIDIStateChange;
-            
+
             console.log('kasm: MIDI system initialized successfully');
             document.getElementById('playbackStatus').textContent = 'MIDI ready';
         } catch (err) {
             console.error('kasm: Failed to initialize WebMIDI:', err);
-            
+
             let errorMessage = 'MIDI access failed';
             if (err.name === 'SecurityError') {
                 errorMessage = 'MIDI access blocked by security policy';
@@ -3760,7 +3765,7 @@ Velocity: C=down (-10), V=up (+10)
                 errorMessage = 'MIDI access request was aborted';
                 console.error('kasm: Abort Error: MIDI access request was aborted by user or system.');
             }
-            
+
             document.getElementById('playbackStatus').textContent = errorMessage;
         }
     }
@@ -3768,10 +3773,10 @@ Velocity: C=down (-10), V=up (+10)
     // Enhanced MIDI device logging with input/output indication
     function logMIDIDevices(midiAccess) {
         console.log('kasm: Scanning for MIDI devices...');
-        
+
         const inputs = Array.from(midiAccess.inputs.values());
         const outputs = Array.from(midiAccess.outputs.values());
-        
+
         console.log(`kasm: Found ${inputs.length} MIDI INPUT device(s):`);
         inputs.forEach((input, index) => {
             console.log(`kasm:   ${index + 1}. INPUT: "${input.name}" (${input.manufacturer || 'Unknown Manufacturer'})`);
@@ -3781,7 +3786,7 @@ Velocity: C=down (-10), V=up (+10)
             console.log(`kasm:      - Type: ${input.type}`);
             console.log(`kasm:      - Version: ${input.version || 'Unknown'}`);
         });
-        
+
         console.log(`kasm: Found ${outputs.length} MIDI OUTPUT device(s):`);
         outputs.forEach((output, index) => {
             console.log(`kasm:   ${index + 1}. OUTPUT: "${output.name}" (${output.manufacturer || 'Unknown Manufacturer'})`);
@@ -3791,7 +3796,7 @@ Velocity: C=down (-10), V=up (+10)
             console.log(`kasm:      - Type: ${output.type}`);
             console.log(`kasm:      - Version: ${output.version || 'Unknown'}`);
         });
-        
+
         if (inputs.length === 0 && outputs.length === 0) {
             console.warn('No MIDI devices found. Please connect a MIDI device and refresh the page.');
             console.log('kasm: Troubleshooting tips:');
@@ -3809,32 +3814,32 @@ Velocity: C=down (-10), V=up (+10)
         const port = event.port;
         const isInput = port.type === 'input';
         const deviceType = isInput ? 'INPUT' : 'OUTPUT';
-        
+
         console.log(`kasm: MIDI device state change detected:`);
         console.log(`kasm:    Device: ${deviceType} "${port.name}" (${port.manufacturer || 'Unknown'})`);
         console.log(`kasm:    State: ${port.state}`);
         console.log(`kasm:    Connection: ${port.connection}`);
         console.log(`kasm:    ID: ${port.id}`);
-        
+
         if (port.state === 'connected') {
             console.log(`kasm: MIDI ${deviceType} device connected: "${port.name}"`);
-            
+
             if (isInput) {
                 console.log(`kasm: Setting up message handler for input device: "${port.name}"`);
                 setupInputMessageHandler(port);
             } else {
                 console.log(`kasm: MIDI output device "${port.name}" is now available for playback`);
             }
-            
+
             // Update device list when new device connects
             updateMidiDeviceList();
-            
+
         } else if (port.state === 'disconnected') {
             console.log(`kasm: MIDI ${deviceType} device disconnected: "${port.name}"`);
-            
+
             // Update device list when device disconnects
             updateMidiDeviceList();
-            
+
             // If the disconnected device was our current output, clear it
             if (!isInput && currentMidiOutput && currentMidiOutput.id === port.id) {
                 console.log(`kasm: Current MIDI output device was disconnected, clearing selection`);
@@ -3842,7 +3847,7 @@ Velocity: C=down (-10), V=up (+10)
                 document.getElementById('playbackStatus').textContent = 'Output device disconnected';
             }
         }
-        
+
         // Re-log all devices after state change for current status
         if (midiAccess) {
             console.log('kasm: Current MIDI device status after state change:');
@@ -3855,7 +3860,7 @@ Velocity: C=down (-10), V=up (+10)
         inputPort.onmidimessage = function(message) {
             handleMIDIMessage(message, inputPort.name, inputPort.type);
         };
-        
+
         console.log(`kasm: Message handler connected to INPUT device: "${inputPort.name}"`);
     }
 
@@ -3864,40 +3869,40 @@ Velocity: C=down (-10), V=up (+10)
         const [status, data1, data2] = message.data;
         const channel = (status & 0x0F) + 1; // Extract MIDI channel (1-16)
         const messageType = status & 0xF0; // Extract message type
-        
+
         // Log detailed MIDI message info
         console.log(`kasm: MIDI message from ${deviceType.toUpperCase()} "${deviceName}":`);
         console.log(`kasm:    Raw data: [${status}, ${data1}, ${data2}] (0x${status.toString(16)}, 0x${data1.toString(16)}, 0x${data2.toString(16)})`);
         console.log(`kasm:    Channel: ${channel}`);
         console.log(`kasm:    Message type: 0x${messageType.toString(16)}`);
-        
+
         // Handle different message types with detailed logging
         if (messageType === 0x90 && data2 > 0) {
             // Note On
             const noteName = getNoteName(data1);
             console.log(`kasm: Note ON: ${noteName} (MIDI ${data1}) - Velocity: ${data2} - Channel: ${channel}`);
-            
+
             // Trigger WASM function and UI updates
             processNoteEvent(data1, data2);
-            
+
             // Send to current MIDI output if connected
             if (currentMidiOutput) {
                 console.log(`kasm: Forwarding note to output device: "${currentMidiOutput.name}"`);
             }
-            
+
         } else if (messageType === 0x80 || (messageType === 0x90 && data2 === 0)) {
             // Note Off
             const noteName = getNoteName(data1);
             console.log(`kasm: Note OFF: ${noteName} (MIDI ${data1}) - Channel: ${channel}`);
-            
+
             // Process note off event
             processNoteEvent(data1, 0);
-            
+
         } else if (messageType === 0xB0) {
             // Control Change
             console.log(`kasm: Control Change: CC${data1} = ${data2} - Channel: ${channel}`);
             console.log(`kasm:    CC Name: ${getCCName(data1)}`);
-            
+
             // Handle specific CC messages
             if (data1 === 1) {
                 console.log(`kasm: 🌊 Modwheel: ${data2}`);
@@ -3908,21 +3913,21 @@ Velocity: C=down (-10), V=up (+10)
             } else if (data1 === 64) {
                 console.log(`kasm: 🦶 Sustain Pedal: ${data2 >= 64 ? 'ON' : 'OFF'}`);
             }
-            
+
         } else if (messageType === 0xC0) {
             // Program Change
             console.log(`kasm: 🎼 Program Change: ${data1} - Channel: ${channel}`);
-            
+
         } else if (messageType === 0xE0) {
             // Pitch Bend
             const pitchBend = (data2 << 7) | data1;
             const pitchBendCentered = pitchBend - 8192; // Center around 0
             console.log(`kasm: Pitch Bend: ${pitchBend} (${pitchBendCentered > 0 ? '+' : ''}${pitchBendCentered}) - Channel: ${channel}`);
-            
+
         } else if (messageType === 0xF0) {
             // System messages
             console.log(`kasm: System message: 0x${status.toString(16)}`);
-            
+
         } else {
             // Other message types
             console.log(`kasm: Other MIDI message: Type=0x${messageType.toString(16)}, Data1=${data1}, Data2=${data2} - Channel: ${channel}`);
@@ -4043,7 +4048,7 @@ Velocity: C=down (-10), V=up (+10)
                 const statusIcon = output.state === 'connected' ? '🟢' : '🔴';
                 const connectionIcon = output.connection === 'open' ? '🔗' : '🔌';
                 option.textContent = `${statusIcon}${connectionIcon} OUTPUT: ${output.name} (${output.manufacturer || 'Unknown'}) - ${output.state}`;
-                
+
                 // Style based on device state
                 if (output.state === 'connected') {
                     option.style.color = '#2e7d32'; // Green for connected
@@ -4051,7 +4056,7 @@ Velocity: C=down (-10), V=up (+10)
                 } else {
                     option.style.color = '#d32f2f'; // Red for disconnected
                 }
-                
+
                 select.appendChild(option);
                 console.log(`kasm: Added OUTPUT device to list: "${output.name}" (index: ${index}, state: ${output.state})`);
             });
@@ -4569,33 +4574,33 @@ Velocity: C=down (-10), V=up (+10)
     // SVG Piano Keyboard Interaction
     function initializePianoKeyboard() {
         const pianoKeys = document.querySelectorAll('.piano-key');
-        
+
         pianoKeys.forEach(key => {
             const noteOffset = parseInt(key.getAttribute('data-note'));
             const keyChar = key.getAttribute('data-key');
-            
+
             // Mouse events
             key.addEventListener('mousedown', (e) => {
                 e.preventDefault();
                 playPianoKey(noteOffset, keyChar);
             });
-            
+
             key.addEventListener('mouseup', (e) => {
                 e.preventDefault();
                 stopPianoKey(noteOffset, keyChar);
             });
-            
+
             // Touch events for mobile
             key.addEventListener('touchstart', (e) => {
                 e.preventDefault();
                 playPianoKey(noteOffset, keyChar);
             });
-            
+
             key.addEventListener('touchend', (e) => {
                 e.preventDefault();
                 stopPianoKey(noteOffset, keyChar);
             });
-            
+
             // Visual feedback on hover
             key.addEventListener('mouseenter', () => {
                 if (key.classList.contains('white-key')) {
@@ -4604,7 +4609,7 @@ Velocity: C=down (-10), V=up (+10)
                     key.setAttribute('fill', '#555');
                 }
             });
-            
+
             key.addEventListener('mouseleave', () => {
                 if (key.classList.contains('white-key')) {
                     key.setAttribute('fill', 'white');
@@ -4614,13 +4619,13 @@ Velocity: C=down (-10), V=up (+10)
             });
         });
     }
-    
+
     function playPianoKey(noteOffset, keyChar) {
         const baseNote = 60; // Middle C
         const currentOctave = Math.floor(midikeys_semitone / 12);
         const finalNote = baseNote + noteOffset + midikeys_semitone;
         const clampedNote = Math.max(0, Math.min(127, finalNote));
-        
+
         // Visual feedback
         const key = document.querySelector(`[data-key="${keyChar}"]`);
         if (key) {
@@ -4630,24 +4635,24 @@ Velocity: C=down (-10), V=up (+10)
                 key.setAttribute('fill', '#666');
             }
         }
-        
+
         // Play the note
         midikeys_note = clampedNote;
         midikeys_velocity = parseInt(document.getElementById('velocity').value) || 100;
         processNoteEvent(midikeys_note, midikeys_velocity);
-        
+
         // Also send MIDI if device is connected
         if (currentMidiOutput) {
             const channel = parseInt(document.getElementById('midiChannel').value) || 0;
             sendNoteOn(midikeys_note, midikeys_velocity, channel);
         }
     }
-    
+
     function stopPianoKey(noteOffset, keyChar) {
         const baseNote = 60;
         const finalNote = baseNote + noteOffset + midikeys_semitone;
         const clampedNote = Math.max(0, Math.min(127, finalNote));
-        
+
         // Visual feedback
         const key = document.querySelector(`[data-key="${keyChar}"]`);
         if (key) {
@@ -4657,12 +4662,12 @@ Velocity: C=down (-10), V=up (+10)
                 key.setAttribute('fill', '#333');
             }
         }
-        
+
         // Stop the note
         midikeys_note = clampedNote;
         midikeys_velocity = 0;
         run_test_keyboard();
-        
+
         // Also send MIDI note off if device is connected
         if (currentMidiOutput) {
             const channel = parseInt(document.getElementById('midiChannel').value) || 0;
@@ -4673,7 +4678,7 @@ Velocity: C=down (-10), V=up (+10)
     // Enhanced keyboard event handlers to update display
     const originalHandleKeyDown = handleKeyDown;
     const originalHandleKeyUp = handleKeyUp;
-    
+
     handleKeyDown = function(event) {
         const key = event.key.toLowerCase();
         // Highlight corresponding piano key
@@ -4705,29 +4710,29 @@ Velocity: C=down (-10), V=up (+10)
         // Call original handler
         originalHandleKeyUp(event);
     };
-    
+
     // Show pattern preview for drum: and loop: selections
     function showPatternPreview() {
         const emanatorValue = parseInt(document.getElementById('inlet_5_emanator').value);
         const emanatorText = document.getElementById('inlet_5_emanator').options[document.getElementById('inlet_5_emanator').selectedIndex].text;
-        
+
         // Check if this is a drum: or loop: selection
         if (emanatorText.startsWith('drum:') || emanatorText.startsWith('loop:')) {
             console.log('kasm: Showing pattern preview for:', emanatorText);
-            
+
             // Try to get pattern from kasm_pattern_get_notes
             if (typeof kasm_rust !== 'undefined' && typeof kasm_rust.kasm_pattern_get_notes === 'function') {
                 try {
                     const steps = 16; // Default 16 steps
                     const velocity = parseInt(document.getElementById('velocity').value) || 100;
-                    
+
                     const patternResult = kasm_rust.kasm_pattern_get_notes(emanatorValue, steps, velocity);
-                    
+
                     if (patternResult) {
                         // Update the output JSON and visualization
                         document.getElementById('outputJson').value = JSON.stringify(patternResult, null, 2);
                         drawMidiClip(patternResult);
-                        
+
                         console.log('kasm: Pattern preview updated for:', emanatorText);
                     }
                 } catch (err) {
@@ -4736,12 +4741,12 @@ Velocity: C=down (-10), V=up (+10)
             }
         }
     }
-    
+
     // Initialize piano keyboard when page loads
     document.addEventListener('DOMContentLoaded', function() {
         initializePianoKeyboard();
     });
-    
+
     // Also initialize if DOM is already loaded
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initializePianoKeyboard);
