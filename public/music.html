@@ -107,7 +107,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
             <label>Choose an Emanator algorithm (inlet_5):<br/>
                 <div style="margin-bottom: 10px;">
                     <label><input type="radio" name="emanatorQuick" value="10"
-                                  onclick="document.getElementById('inlet_5_emanator').value=0; document.getElementById('exampleSelect').value='singleNote'; loadDefaultExample(); autoTransform();">
+                                  onclick="document.getElementById('inlet_5_emanator').value=0; loadDefaultExample(); autoTransform();">
                         Reset</label>
                     <label><input type="radio" name="emanatorQuick" value="50"
                                   onclick="document.getElementById('inlet_5_emanator').value=107; autoTransform();">
@@ -595,10 +595,10 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <text x="60" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">C#</text>
                     <text x="60" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">w</text>
 
-                    <!-- Db -->
+                    <!-- Eb -->
                     <rect x="100" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="3" data-key="e" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="120" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">Db</text>
+                    <text x="120" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">Eb</text>
                     <text x="120" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">e</text>
 
                     <!-- F# -->
@@ -625,10 +625,10 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <text x="480" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">C#</text>
                     <text x="480" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">o</text>
 
-                    <!-- Db (next octave) -->
+                    <!-- Eb (next octave) -->
                     <rect x="520" y="0" width="40" height="80" fill="#333" stroke="#000" stroke-width="1"
                           data-note="15" data-key="p" class="piano-key black-key" rx="0" ry="0"/>
-                    <text x="540" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">Db</text>
+                    <text x="540" y="70" text-anchor="middle" font-size="10" fill="white" pointer-events="none">Eb</text>
                     <text x="540" y="60" text-anchor="middle" font-size="10" fill="#ccc" pointer-events="none">p</text>
 
                     <!-- F# (next octave) -->
@@ -815,21 +815,39 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         // Send note to WebMIDI
         if (index === 0) {
             // Expect msg to be an object: {pitch, velocity, channel, type}
+            const pitch = msg;
+            const velocity = data;
+            const channel = parseInt(document.getElementById('midiChannel').value) || 0;
+
             if (currentMidiOutput) {
-                const pitch = msg;
-                const velocity = data;
-                const channel = parseInt(document.getElementById('midiChannel').value) || 0;
                 if (data && velocity > 0) {
+                    // Note On - highlight the key on SVG keyboard
+                    highlightMidiNoteOnKeyboard(pitch, true);
+
                     const noteOnMsg = [0x90 + channel, pitch, velocity];
                     currentMidiOutput.send(noteOnMsg);
                     setTimeout(() => {
-                        // Automatically send a note off after 500ms
+                        // Automatically send a note off after 500ms and unhighlight
                         const noteOffMsg = [0x80 + channel, pitch, 0];
                         currentMidiOutput.send(noteOffMsg);
+                        highlightMidiNoteOnKeyboard(pitch, false);
                     }, 500);
                 } else {
+                    // Note Off - unhighlight the key
+                    highlightMidiNoteOnKeyboard(pitch, false);
+
                     const noteOffMsg = [0x80 + channel, pitch, 0];
                     currentMidiOutput.send(noteOffMsg);
+                }
+            } else {
+                // Even if no MIDI output, still show on keyboard
+                if (data && velocity > 0) {
+                    highlightMidiNoteOnKeyboard(pitch, true);
+                    setTimeout(() => {
+                        highlightMidiNoteOnKeyboard(pitch, false);
+                    }, 500);
+                } else {
+                    highlightMidiNoteOnKeyboard(pitch, false);
                 }
             }
         }
@@ -926,7 +944,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         'a': 0,   // C
         'w': 1,   // C#
         's': 2,   // D
-        'e': 3,   // Db
+        'e': 3,   // Eb
         'd': 4,   // E
         'f': 5,   // F
         't': 6,   // F#
@@ -938,7 +956,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         'k': 12,  // C + 12
         'o': 13,  // C# + 12
         'l': 14,  // D + 12
-        'p': 15,  // Db + 12
+        'p': 15,  // Eb + 12
         ';': 16,  // E + 12
         "'": 17, // F + 12
         ']': 18,  // F# + 12
@@ -1097,7 +1115,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
     function displayKeyboardHelp() {
         const helpText = `
 Keyboard Controls:
-Notes: A=C, W=C#, S=D, E=Db, D=E, F=F, T=F#, G=G, Y=G#, H=A, U=Bb, J=B
+Notes: A=C, W=C#, S=D, E=Eb, D=E, F=F, T=F#, G=G, Y=G#, H=A, U=Bb, J=B
 Octave: Z=down (-12), X=up (+12)
 Velocity: C=down (-10), V=up (+10)
         `;
@@ -3066,8 +3084,9 @@ Velocity: C=down (-10), V=up (+10)
 
         document.getElementById('tempo').value = 120;
 
+        document.getElementById('exampleSelect').value='singleNote';
 
-
+        saveSettings();
         autoTransform();
 
     }
@@ -3204,7 +3223,7 @@ Velocity: C=down (-10), V=up (+10)
         if (noteWidth > 2) {
             // Helper function to convert MIDI number to note name
             const getMidiNoteName = (midiNumber) => {
-                const noteNames = ['C', 'C#', 'D', 'Db', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
+                const noteNames = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
                 const octave = Math.floor(midiNumber / 12) - 1;
                 const noteIndex = midiNumber % 12;
                 return noteNames[noteIndex] + octave;
@@ -3232,7 +3251,7 @@ Velocity: C=down (-10), V=up (+10)
         }
 
         // Enhanced note labels on left - show every octave (C notes) with note name and MIDI number
-        const noteNames = ['C', 'C#', 'D', 'Db', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
+        const noteNames = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
 
         // Draw octave markers (every 12 notes starting from C)
         for (let note = 0; note <= maxNote; note += 12) {
@@ -3262,7 +3281,7 @@ Velocity: C=down (-10), V=up (+10)
 
                     // Only show labels for white keys and some important black keys to avoid clutter
                     const whiteKeys = [0, 2, 4, 5, 7, 9, 11]; // C, D, E, F, G, A, B
-                    const importantBlackKeys = [1, 3, 6, 8, 10]; // C#, Db, F#, G#, Bb
+                    const importantBlackKeys = [1, 3, 6, 8, 10]; // C#, Eb, F#, G#, Bb
 
                     if (whiteKeys.includes(note % 12)) {
                         ctx.fillText(`${noteName}${octave} (${note})`, 65, y + 3);
@@ -3310,7 +3329,7 @@ Velocity: C=down (-10), V=up (+10)
         ctx.font = '11px Arial';
         ctx.textAlign = 'right';
 
-        const noteNames = ['C', 'C#', 'D', 'Db', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
+        const noteNames = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
 
         function getMidiNoteName(midiNumber) {
             const octave = Math.floor(midiNumber / 12) - 1;
@@ -3646,7 +3665,7 @@ Velocity: C=down (-10), V=up (+10)
 
     // MIDI Note Name Functions
     function midiToNoteName(midiNumber) {
-        const noteNames = ['C', 'C#', 'D', 'Db', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
+        const noteNames = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'G#', 'A', 'Bb', 'B'];
         const octave = Math.floor(midiNumber / 12) - 1;
         const noteIndex = midiNumber % 12;
         return noteNames[noteIndex] + octave;
@@ -3655,14 +3674,12 @@ Velocity: C=down (-10), V=up (+10)
     function noteNameToMidi(noteName) {
         // Parse note name like "C4", "F#3", "Bb5", etc.
         const noteMap = {
-            'C': 0, 'C#': 1, 'Db': 1,
-            'D': 2, 'Db': 3, 'Eb': 3,
-            'E': 4,
-            'F': 5, 'F#': 6, 'Gb': 6,
-            'G': 7, 'G#': 8, 'Ab': 8,
-            'A': 9, 'Bb': 10, 'Bb': 10,
-            'B': 11
-        };
+            'C': 0, 'C#': 1, 'D': 1,
+            'Eb': 2, 'E': 3,
+            'F': 4, 'F#': 5, 'G': 7,
+            'G#': 8,
+            'A': 9, 'Bb': 10, 'B': 11,
+			};
 
         // Clean input and make uppercase
         const cleaned = noteName.trim().toUpperCase();
@@ -4167,8 +4184,12 @@ Velocity: C=down (-10), V=up (+10)
             if (pianoKey) {
                 if (pianoKey.classList.contains('white-key')) {
                     pianoKey.setAttribute('fill', 'white');
+                    pianoKey.setAttribute('stroke', '#333');
+                    pianoKey.setAttribute('stroke-width', '1');
                 } else {
                     pianoKey.setAttribute('fill', '#333');
+                    pianoKey.setAttribute('stroke', '#000');
+                    pianoKey.setAttribute('stroke-width', '1');
                 }
             }
         }
@@ -4735,6 +4756,86 @@ Velocity: C=down (-10), V=up (+10)
         // Call original handler
         originalHandleKeyUp(event);
     };
+
+    // Helper function to highlight MIDI notes on the SVG keyboard
+    function highlightMidiNoteOnKeyboard(midiNote, isNoteOn) {
+        // Convert MIDI note to note within octave (0-11)
+        const noteInOctave = midiNote % 12;
+
+        // Map note within octave to keyboard keys
+        const noteToKeyMapping = {
+            0: 'a',   // C
+            1: 'w',   // C#
+            2: 's',   // D
+            3: 'e',   // Eb
+            4: 'd',   // E
+            5: 'f',   // F
+            6: 't',   // F#
+            7: 'g',   // G
+            8: 'y',   // G#
+            9: 'h',   // A
+            10: 'u',  // Bb
+            11: 'j'   // B
+        };
+
+        // Extended mapping for second octave
+        const secondOctaveMapping = {
+            0: 'k',   // C
+            1: 'o',   // C#
+            2: 'l',   // D
+            3: 'p',   // Eb
+            4: ';',   // E
+            5: "'",   // F
+            6: ']',   // F#
+        };
+
+        // Find the corresponding key character
+        let keyChar = null;
+
+        // Try to map based on the current semitone offset and visible keyboard range
+        const currentSemitone = parseInt(document.getElementById('semitone').value) || 0;
+        const baseNote = 60 + currentSemitone; // Current base note (usually C4 + offset)
+
+        // Check if this MIDI note corresponds to our visible keyboard
+        const relativeNote = midiNote - baseNote;
+
+        if (relativeNote >= 0 && relativeNote <= 11) {
+            // First octave (a-j keys)
+            keyChar = noteToKeyMapping[relativeNote];
+        } else if (relativeNote >= 12 && relativeNote <= 18) {
+            // Second octave (k-] keys)
+            keyChar = secondOctaveMapping[relativeNote - 12];
+        } else {
+            // Try direct mapping based on note type (fallback)
+            keyChar = noteToKeyMapping[noteInOctave];
+        }
+
+        // Find and highlight the corresponding SVG piano key
+        if (keyChar) {
+            const pianoKey = document.querySelector(`[data-key="${keyChar}"]`);
+            if (pianoKey) {
+                if (isNoteOn) {
+                    // Note On - highlight in yellow
+                    pianoKey.setAttribute('fill', '#ffeb3b');
+                    pianoKey.setAttribute('stroke', '#fbc02d');
+                    pianoKey.setAttribute('stroke-width', '2');
+                } else {
+                    // Note Off - restore original color
+                    if (pianoKey.classList.contains('white-key')) {
+                        pianoKey.setAttribute('fill', 'white');
+                        pianoKey.setAttribute('stroke', '#333');
+                        pianoKey.setAttribute('stroke-width', '1');
+                    } else {
+                        pianoKey.setAttribute('fill', '#333');
+                        pianoKey.setAttribute('stroke', '#000');
+                        pianoKey.setAttribute('stroke-width', '1');
+                    }
+                }
+            }
+        }
+
+        console.log(`kasm: MIDI note ${midiNote} (${isNoteOn ? 'ON' : 'OFF'}) - base: ${baseNote}, relative: ${relativeNote}, mapped to key: ${keyChar || 'not visible'}`);
+    }
 
     // Show pattern preview for drum: and loop: selections
     function showPatternPreview() {
