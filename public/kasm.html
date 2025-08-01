@@ -117,11 +117,20 @@
             <label>Choose an Emanator algorithm (inlet_5):<br/>
                 <div style="margin-bottom: 10px;">
                     <label><input type="radio" name="emanatorQuick" value="10"
-                                  onclick="document.getElementById('inlet_5_emanator').value=0; document.getElementById('exampleSelect').value='Single Note'; loadDefaultExample(); autoTransform();">
+                                  onclick="document.getElementById('inlet_5_emanator').value=0; document.getElementById('exampleSelect').value='singleNote'; loadDefaultExample(); autoTransform();">
                         Reset</label>
                     <label><input type="radio" name="emanatorQuick" value="50"
-                                  onclick="document.getElementById('inlet_5_emanator').value=95; autoTransform(); document.getElementById('inlet_5_emanator').value=104; autoTransform();">
+                                  onclick="document.getElementById('inlet_5_emanator').value=107; autoTransform();">
                         Bangaz</label>
+                    <label><input type="radio" name="emanatorQuick" value="53"
+                                  onclick="document.getElementById('inlet_5_emanator').value=80; autoTransform();">
+                        Drum Rack</label>
+                    <label><input type="radio" name="emanatorQuick" value="55"
+                                  onclick="document.getElementById('inlet_5_emanator').value=82; autoTransform();">
+                        Arpeggiator</label>
+                    <label><input type="radio" name="emanatorQuick" value="56"
+                                  onclick="document.getElementById('inlet_5_emanator').value=83; autoTransform();">
+                        Shuffle</label>
                     <label><input type="radio" name="emanatorQuick" value="10"
                                   onclick="document.getElementById('inlet_5_emanator').value=2; autoTransform();">
                         Emanator</label>
@@ -221,71 +230,74 @@
                     <option value="77">loop:Prime Harmony Mathematically pure intervals using</option>
                     <option value="78">loop:Golden Ratio Harmony Organic intervals using the golden </option>
                     <option value="79">Clear All Drum Assignments</option>
-                    <option value="80">Reset Default Drum Assignments</option>
-                    <option value="81">Reassign Kick (drum)</option>
-                    <option value="82">Reassign Snare (drum)</option>
-                    <option value="83">Reassign HHClose</option>
-                    <option value="84">Reassign HHOpen</option>
-                    <option value="85">Reassign LowTom (drum)</option>
-                    <option value="86">Reassign MidTom (drum)</option>
-                    <option value="87">Reassign HiTom (drum)</option>
-                    <option value="88">Reassign Clap</option>
-                    <option value="89">Reassign CowBell</option>
-                    <option value="90">drum:Bangaz 1 Classic four-on-the-floor kick/snar</option>
-                    <option value="91">drum:Bangaz 2 Polyrhythmic pattern with triplet k</option>
-                    <option value="92">drum:Bangaz 3 Extravagant polyrhythms with displa</option>
-                    <option value="93">drum:Bangaz 4 Evolving groove that changes every </option>
-                    <option value="94">drum:Bangaz 5 Weirdly polyrhythmic pattern with q</option>
-                    <option value="95">drum:Bangaz 6 Evolving Euclidean rhythm generator</option>
-                    <option value="96">drum:Bangaz 7 Complex velocity and pan using sine</option>
-                    <option value="97">drum:Bangaz 8 Wildly complex beat placement using</option>
-                    <option value="98">drum:Bangaz 9 Bossa nova with dynamic pan, ghost </option>
-                    <option value="99">drum:Bangaz 10 Classic 808 with swing, intricate m</option>
-                    <option value="100">drum:Bangaz 11 909 shuffle with adjustable shuffle</option>
-                    <option value="101">drum:Bangaz 12 LinnDrum pop groove with HH accent </option>
-                    <option value="102">drum:Bangaz 13 Electro syncopation with pan and ve</option>
-                    <option value="103">drum:Bangaz 14 808 cowbell funk with pan and HH sw</option>
-                    <option value="104">drum:Bangaz 15 707 disco with snare and open HH ac</option>
-                    <option value="105">drum:Bangaz 16 606 breakbeat with tom and snare ac</option>
-                    <option value="106">drum:Bangaz 17 808 Miami bass with kick and clap a</option>
-                    <option value="107">drum:Bangaz 18 727 Latin groove with cowbell and t</option>
-                    <option value="108">drum:Bangaz 19 808 triplet funk with triplet swing</option>
-                    <option value="109">drum:Bangaz 20 909 techno ride with ride and snare</option>
-                    <option value="110">drum:Bangaz 21 808 boogie with tom accent and HH s</option>
-                    <option value="111">drum:Bangaz 22 707 house with clap and HH accent c</option>
-                    <option value="112">drum:Bangaz 23 808 clave pattern with offset and a</option>
-                    <option value="113">drum:Bangaz 24 909 broken beat with snare ghost an</option>
-                    <option value="114">drum:Bangaz 25 808 shuffle with swing and HH accen</option>
-                    <option value="115">drum:Bangaz 26 707 funk with snare and open HH acc</option>
-                    <option value="116">drum:Bangaz 27 808 triplet shuffle with triplet sw</option>
-                    <option value="117">drum:Bangaz 28 909 ride shuffle with ride accent a</option>
-                    <option value="118">drum:Bangaz 29 808 clave funk with clave offset an</option>
-                    <option value="119">drum:Bangaz 30 Classical Motown Swing - evolving, </option>
-                    <option value="120">drum:Bangaz 31 Classical Polyrhythmic Waltz with M</option>
-                    <option value="121">drum:Bangaz 32 R&B Shuffle with Complex Syncopatio</option>
-                    <option value="122">drum:Bangaz 33 Drum Rack</option>
-                    <option value="123">drum:Bangaz 34 Drum Rack</option>
-                    <option value="124">drum:Bangaz 35 Drum Rack</option>
-                    <option value="125">drum:Bangaz 36 Drum Rack</option>
-                    <option value="126">drum:Bangaz 37 Drum Rack</option>
-                    <option value="127">drum:Bangaz 38 Drum Rack</option>
-                    <option value="128">drum:Bangaz 39 Drum Rack</option>
-                    <option value="129">drum:Bangaz 40 Drum Rack</option>
-                    <option value="130">drum:Bangaz 41 Drum Rack</option>
-                    <option value="131">drum:Bangaz 42 Drum Rack</option>
-                    <option value="132">drum:Bangaz 43 Drum Rack</option>
-                    <option value="133">drum:Bangaz 44 Drum Rack</option>
-                    <option value="134">drum:Bangaz 45 Drum Rack</option>
-                    <option value="135">drum:Bangaz 46 Drum Rack</option>
-                    <option value="136">drum:Bangaz 47 Drum Rack</option>
-                    <option value="137">drum:Bangaz 48 Drum Rack</option>
-                    <option value="138">drum:Bangaz 49 Drum Rack</option>
-                    <option value="139">drum:Bangaz 50 Drum Rack</option>
-                    <option value="140">drum:Bangaz 51 Drum Rack</option>
-                    <option value="141">drum:Bangaz 52 Drum Rack</option>
-                    <option value="142">drum:Bangaz 53 Drum Rack</option>
-                    <option value="143">drum:Bangaz 54 Drum Rack</option>
-                    <option value="144">drum:Bangaz 55 Drum Rack</option>
+                    <option value="80">Reset Ableton Drum Rack Assignments</option>
+                    <option value="81">Reset General MIDI Drums</option>
+                    <option value="82">Reset Drums as Notes</option>
+                    <option value="83">Shuffle Drum Assignments Around</option>
+                    <option value="84">Reassign Kick (drum)</option>
+                    <option value="85">Reassign Snare (drum)</option>
+                    <option value="86">Reassign HHClose</option>
+                    <option value="87">Reassign HHOpen</option>
+                    <option value="88">Reassign LowTom (drum)</option>
+                    <option value="89">Reassign MidTom (drum)</option>
+                    <option value="90">Reassign HiTom (drum)</option>
+                    <option value="91">Reassign Clap</option>
+                    <option value="92">Reassign CowBell</option>
+                    <option value="93">drum:Bangaz 1 Classic four-on-the-floor kick/snar</option>
+                    <option value="94">drum:Bangaz 2 Polyrhythmic pattern with triplet k</option>
+                    <option value="95">drum:Bangaz 3 Extravagant polyrhythms with displa</option>
+                    <option value="96">drum:Bangaz 4 Evolving groove that changes every </option>
+                    <option value="97">drum:Bangaz 5 Weirdly polyrhythmic pattern with q</option>
+                    <option value="98">drum:Bangaz 6 Evolving Euclidean rhythm generator</option>
+                    <option value="99">drum:Bangaz 7 Complex velocity and pan using sine</option>
+                    <option value="100">drum:Bangaz 8 Wildly complex beat placement using</option>
+                    <option value="101">drum:Bangaz 9 Bossa nova with dynamic pan, ghost </option>
+                    <option value="102">drum:Bangaz 10 Classic 808 with swing, intricate m</option>
+                    <option value="103">drum:Bangaz 11 909 shuffle with adjustable shuffle</option>
+                    <option value="104">drum:Bangaz 12 LinnDrum pop groove with HH accent </option>
+                    <option value="105">drum:Bangaz 13 Electro syncopation with pan and ve</option>
+                    <option value="106">drum:Bangaz 14 808 cowbell funk with pan and HH sw</option>
+                    <option value="107">drum:Bangaz 15 707 disco with snare and open HH ac</option>
+                    <option value="108">drum:Bangaz 16 606 breakbeat with tom and snare ac</option>
+                    <option value="109">drum:Bangaz 17 808 Miami bass with kick and clap a</option>
+                    <option value="110">drum:Bangaz 18 727 Latin groove with cowbell and t</option>
+                    <option value="111">drum:Bangaz 19 808 triplet funk with triplet swing</option>
+                    <option value="112">drum:Bangaz 20 909 techno ride with ride and snare</option>
+                    <option value="113">drum:Bangaz 21 808 boogie with tom accent and HH s</option>
+                    <option value="114">drum:Bangaz 22 707 house with clap and HH accent c</option>
+                    <option value="115">drum:Bangaz 23 808 clave pattern with offset and a</option>
+                    <option value="116">drum:Bangaz 24 909 broken beat with snare ghost an</option>
+                    <option value="117">drum:Bangaz 25 808 shuffle with swing and HH accen</option>
+                    <option value="118">drum:Bangaz 26 707 funk with snare and open HH acc</option>
+                    <option value="119">drum:Bangaz 27 808 triplet shuffle with triplet sw</option>
+                    <option value="120">drum:Bangaz 28 909 ride shuffle with ride accent a</option>
+                    <option value="121">drum:Bangaz 29 808 clave funk with clave offset an</option>
+                    <option value="122">drum:Bangaz 30 Classical Motown Swing - evolving, </option>
+                    <option value="123">drum:Bangaz 31 Classical Polyrhythmic Waltz with M</option>
+                    <option value="124">drum:Bangaz 32 R&B Shuffle with Complex Syncopatio</option>
+                    <option value="125">drum:Bangaz 33 Drum Rack</option>
+                    <option value="126">drum:Bangaz 34 Drum Rack</option>
+                    <option value="127">drum:Bangaz 35 Drum Rack</option>
+                    <option value="128">drum:Bangaz 36 Drum Rack</option>
+                    <option value="129">drum:Bangaz 37 Drum Rack</option>
+                    <option value="130">drum:Bangaz 38 Drum Rack</option>
+                    <option value="131">drum:Bangaz 39 Drum Rack</option>
+                    <option value="132">drum:Bangaz 40 Drum Rack</option>
+                    <option value="133">drum:Bangaz 41 Drum Rack</option>
+                    <option value="134">drum:Bangaz 42 Drum Rack</option>
+                    <option value="135">drum:Bangaz 43 Drum Rack</option>
+                    <option value="136">drum:Bangaz 44 Drum Rack</option>
+                    <option value="137">drum:Bangaz 45 Drum Rack</option>
+                    <option value="138">drum:Bangaz 46 Drum Rack</option>
+                    <option value="139">drum:Bangaz 47 Drum Rack</option>
+                    <option value="140">drum:Bangaz 48 Drum Rack</option>
+                    <option value="141">drum:Bangaz 49 Drum Rack</option>
+                    <option value="142">drum:Bangaz 50 Drum Rack</option>
+                    <option value="143">drum:Bangaz 51 Drum Rack</option>
+                    <option value="144">drum:Bangaz 52 Drum Rack</option>
+                    <option value="145">drum:Bangaz 53 Drum Rack</option>
+                    <option value="146">drum:Bangaz 54 Drum Rack</option>
+                    <option value="147">drum:Bangaz 55 Drum Rack</option>
                 </select>
             </label>
         </div>
@@ -344,7 +356,7 @@
                             <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
                                     stroke-dasharray="157" stroke-dashoffset="157" id="note-progress"
                                     transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="note-pointer"
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#0af" stroke-width="2" id="note-pointer"
                                   transform="rotate(0 30 30)"/>
                         </svg>
                         <input type="range" id="note-dial" min="0" max="127" value="60"
@@ -375,7 +387,7 @@
                             <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
                                     stroke-dasharray="157" stroke-dashoffset="157" id="semitone-progress"
                                     transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2"
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#0af" stroke-width="2"
                                   id="semitone-pointer"
                                   transform="rotate(0 30 30)"/>
                         </svg>
@@ -400,7 +412,7 @@
                             <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
                                     stroke-dasharray="157" stroke-dashoffset="157" id="velocity-progress"
                                     transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2"
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#0af" stroke-width="2"
                                   id="velocity-pointer"
                                   transform="rotate(0 30 30)"/>
                         </svg>
@@ -425,7 +437,7 @@
                             <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
                                     stroke-dasharray="157" stroke-dashoffset="157" id="enc1-progress"
                                     transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="enc1-pointer"
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#0af" stroke-width="2" id="enc1-pointer"
                                   transform="rotate(0 30 30)"/>
                         </svg>
                         <input type="range" id="enc1-dial" min="0" max="127" value="100"
@@ -449,7 +461,7 @@
                             <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
                                     stroke-dasharray="157" stroke-dashoffset="157" id="enc2-progress"
                                     transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="enc2-pointer"
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#0af" stroke-width="2" id="enc2-pointer"
                                   transform="rotate(0 30 30)"/>
                         </svg>
                         <input type="range" id="enc2-dial" min="0" max="127" value="50"
@@ -475,7 +487,7 @@
                             <circle cx="30" cy="30" r="25" fill="none" stroke="#0af" stroke-width="3"
                                     stroke-dasharray="157" stroke-dashoffset="157" id="rate-progress"
                                     transform="rotate(-90 30 30)" stroke-linecap="round"/>
-                            <line x1="30" y1="10" x2="30" y2="18" stroke="#fff" stroke-width="2" id="rate-pointer"
+                            <line x1="30" y1="10" x2="30" y2="18" stroke="#0af" stroke-width="2" id="rate-pointer"
                                   transform="rotate(0 30 30)"/>
                         </svg>
                         <input type="range" id="rate-dial" min="30" max="1500" value="250"
@@ -865,7 +877,6 @@
 <br/>
 
 </body>
-
 
 <script>
     let inlet = 0;
@@ -3121,6 +3132,25 @@ Velocity: C=down (-10), V=up (+10)
             ]
         }, null, 2);
         document.getElementById('inputJson').value = defaultJson;
+        document.getElementById('rateMs').value = 250;
+        document.getElementById('note').value = 60;
+        updateDial('note', document.getElementById('note').value);
+        document.getElementById('semitone').value = 0;
+        updateDial('semitone', document.getElementById('semitone').value);
+        document.getElementById('velocity').value = 100;
+        updateDial('velocity', document.getElementById('velocity').value);
+        document.getElementById('enc1').value = 100;
+        updateDial('enc1', document.getElementById('enc1').value);
+        document.getElementById('enc2').value = 80;
+        updateDial('enc2', document.getElementById('enc2').value);
+        document.getElementById('inlet_5_emanator').value = 0;
+
+        document.getElementById('tempo').value = 120;
+
+
+
+        autoTransform();
+
     }
 
     // Initialize application with saved settings or defaults
@@ -3452,12 +3482,12 @@ Velocity: C=down (-10), V=up (+10)
                 document.getElementById('outputJson').value = "Error: " + err.message;
                 clearMidiClip();
             }
-
-            clearTimeout(window.updateBangTimeout);
-            window.updateBangTimeout = setTimeout(() => {
-                updateBang();
-            }, 50);
         }, 5); // 5ms debounce delay
+
+        clearTimeout(window.updateBangTimeout);
+        window.updateBangTimeout = setTimeout(() => {
+            updateBang();
+        }, 50);
     }
 
     // Update dial visual appearance
@@ -3472,8 +3502,8 @@ Velocity: C=down (-10), V=up (+10)
 
         // Handle different ranges for different controls
         if (encId === 'rate') {
-            minValue = 50;
-            maxValue = 10000;
+            minValue = 30;
+            maxValue = 1500;
             percentage = (numValue - minValue) / (maxValue - minValue);
         } else if (encId === 'semitone') {
             minValue = -127;
@@ -3561,7 +3591,7 @@ Velocity: C=down (-10), V=up (+10)
             // Different sensitivities for different controls
             let sensitivity = e.shiftKey ? 0.1 : 1;
             if (encId === 'rate') {
-                sensitivity = e.shiftKey ? 5 : 25; // Larger steps for rate
+                sensitivity = e.shiftKey ?  5 : 20; // Larger steps for rate
             }
 
             const newValue = Math.max(minValue, Math.min(maxValue, currentValue + (delta * sensitivity)));
@@ -3581,6 +3611,8 @@ Velocity: C=down (-10), V=up (+10)
             else if (encId === 'enc2') resetValue = 80;
             updateDial(encId, resetValue);
             autoTransform();
+
+            document.getElementById('rateMs').dispatchEvent(new Event("input"));
         });
 
         // Prevent context menu on right click
@@ -3592,7 +3624,11 @@ Velocity: C=down (-10), V=up (+10)
         isDragging = true;
         currentDragDial = encId;
         dragStartY = e.clientY;
-        dragStartValue = parseInt(document.getElementById(encId).value);
+        if (encId === 'rate') {
+            dragStartValue = parseInt(document.getElementById("rateMs").value);
+        } else {
+            dragStartValue = parseInt(document.getElementById(encId).value);
+        }
 
         // Add global event listeners for drag and release
         document.addEventListener('mousemove', handleDrag);
@@ -3611,8 +3647,8 @@ Velocity: C=down (-10), V=up (+10)
         // Get the correct min/max values for the current dial
         let minValue = 0, maxValue = 127;
         if (currentDragDial === 'rate') {
-            minValue = 50;
-            maxValue = 10000;
+            minValue = 20;
+            maxValue = 1500;
         } else if (currentDragDial === 'semitone') {
             minValue = -127;
             maxValue = 127;
@@ -3651,6 +3687,11 @@ Velocity: C=down (-10), V=up (+10)
 
     function endDrag() {
         if (!isDragging) return;
+
+        if (currentDragDial === 'rate') {
+            // Trigger input event to sync rate with tempo
+            document.getElementById('rateMs').dispatchEvent(new Event("input"));
+        }
 
         isDragging = false;
         currentDragDial = null;
@@ -4458,17 +4499,19 @@ Velocity: C=down (-10), V=up (+10)
     }
 
     function updateBang() {
-        console.log('kasm: updateBang');
-        midikeys_note = 60;
-        midikeys_velocity = 100;
-        encodersChanged = true;
-        run_test_keyboard();
+        setTimeout(() => {
+            console.log('kasm: updateBang');
+            midikeys_note = 60;
+            midikeys_velocity = 100;
+            encodersChanged = true;
+            run_test_keyboard();
 
-        // Simulate pressing and releasing the 'a' key
-        const bangDown = new KeyboardEvent('keydown', {key: 'a', code: 'KeyA', keyCode: 65, bubbles: true});
-        const bangUp = new KeyboardEvent('keyup', {key: 'a', code: 'KeyA', keyCode: 65, bubbles: true});
-        document.dispatchEvent(bangDown);
-        document.dispatchEvent(bangUp);
+            // Simulate pressing and releasing the 'a' key
+            const bangDown = new KeyboardEvent('keydown', {key: 'a', code: 'KeyA', keyCode: 65, bubbles: true});
+            const bangUp = new KeyboardEvent('keyup', {key: 'a', code: 'KeyA', keyCode: 65, bubbles: true});
+            document.dispatchEvent(bangDown);
+            document.dispatchEvent(bangUp);
+        }, 400);
     }
 
     // Auto-save settings whenever any input changes
