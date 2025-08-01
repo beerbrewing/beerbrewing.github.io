@@ -4161,7 +4161,7 @@ Velocity: C=down (-10), V=up (+10)
         }
 
         try {
-            const result = kasm_rust.bang(inlet_0, inlet_1, inlet_2, inlet_3, inlet_4, inlet_5);
+            const result = bang(inlet_0, inlet_1, inlet_2, inlet_3, inlet_4, inlet_5);
             document.getElementById('result').textContent = "Keyboard test result: " + result;
         } catch (err) {
             console.error('kasm: Error in run_test_keyboard:', err);
@@ -4195,7 +4195,7 @@ Velocity: C=down (-10), V=up (+10)
         }
 
         try {
-            const result = kasm_rust.bang(inlet_0, inlet_1, 0, inlet_3, inlet_4, inlet_5);
+            const result = bang(inlet_0, inlet_1, 0, inlet_3, inlet_4, inlet_5);
             document.getElementById('result').textContent = "Keyboard test result: " + result;
         } catch (err) {
             console.error('kasm: Error in run_test_keyboard:', err);
