@@ -106,38 +106,35 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
             <label>Choose an Emanator algorithm (inlet_5):<br/>
                 <div style="margin-bottom: 10px;">
-                    <label><input type="radio" name="emanatorQuick" value="10"
-                                  onclick="document.getElementById('inlet_5_emanator').value=0; loadDefaultExample(); autoTransform();">
-                        Reset</label>
                     <label><input type="radio" name="emanatorQuick" value="50"
-                                  onclick="document.getElementById('inlet_5_emanator').value=107; autoTransform();">
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=107; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Bangaz</label>
-                    <label><input type="radio" name="emanatorQuick" value="53"
-                                  onclick="document.getElementById('inlet_5_emanator').value=80; autoTransform();">
-                        Drum Rack</label>
+                    <label><input type="radio" name="emanatorQuick" value="20"
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=63; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
+                        Looper</label>
                     <label><input type="radio" name="emanatorQuick" value="55"
-                                  onclick="document.getElementById('inlet_5_emanator').value=82; autoTransform();">
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=82; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Arpeggiator</label>
                     <label><input type="radio" name="emanatorQuick" value="56"
-                                  onclick="document.getElementById('inlet_5_emanator').value=83; autoTransform();">
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=83; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Shuffle</label>
                     <label><input type="radio" name="emanatorQuick" value="10"
-                                  onclick="document.getElementById('inlet_5_emanator').value=2; autoTransform();">
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=2; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Emanator</label>
-                    <label><input type="radio" name="emanatorQuick" value="20"
-                                  onclick="document.getElementById('inlet_5_emanator').value=63; autoTransform();">
-                        Looper</label>
                     <label><input type="radio" name="emanatorQuick" value="30"
-                                  onclick="document.getElementById('inlet_5_emanator').value=12; autoTransform();"> Taps</label>
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=12; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);"> Taps</label>
                     <label><input type="radio" name="emanatorQuick" value="40"
-                                  onclick="document.getElementById('inlet_5_emanator').value=75; autoTransform();">
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=75; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Counterpoint</label>
-                    <label><input type="radio" name="emanatorQuick" value="70"
-                                  onclick="document.getElementById('inlet_5_emanator').value=95; autoTransform(); document.getElementById('inlet_5_emanator').value=113; autoTransform();">
-                        Drum Racks</label>
+                    <label><input type="radio" name="emanatorQuick" value="53"
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=80; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
+                        Drum Rack</label>
                     <label><input type="radio" name="emanatorQuick" value="60"
-                                  onclick="document.getElementById('inlet_5_emanator').value=46; autoTransform();">
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=46; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Chaos!</label>
+                    <label><input type="radio" name="emanatorQuick" value="10"
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=0; loadDefaultExample(); autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
+                        Reset</label>
                 </div>
                 <select id="inlet_5_emanator" onchange="autoTransform()" style="padding: 3px;">
                     <option value="0">Random</option>
@@ -3428,6 +3425,23 @@ Velocity: C=down (-10), V=up (+10)
         }, 50);
     }
 
+    // Set a small delay to avoid excessive processing during rapid input changes
+    function updateBang() {
+        setTimeout(() => {
+            console.log('kasm: updateBang');
+            midikeys_note = 60;
+            midikeys_velocity = 100;
+            encodersChanged = true;
+            run_test_keyboard();
+
+            // Simulate pressing and releasing the 'a' key
+            const bangDown = new KeyboardEvent('keydown', {key: 'a', code: 'KeyA', keyCode: 65, bubbles: true});
+            const bangUp = new KeyboardEvent('keyup', {key: 'a', code: 'KeyA', keyCode: 65, bubbles: true});
+            document.dispatchEvent(bangDown);
+            document.dispatchEvent(bangUp);
+        }, 400);
+    }
+
     // Update dial visual appearance
     function updateDial(encId, value) {
         const numValue = parseInt(value);
@@ -4451,6 +4465,17 @@ Velocity: C=down (-10), V=up (+10)
             const bangUp = new KeyboardEvent('keyup', {key: 'a', code: 'KeyA', keyCode: 65, bubbles: true});
             document.dispatchEvent(bangDown);
             document.dispatchEvent(bangUp);
+
+            // Change drum assignmnet set Emanator/Shuffle/Drum Rack -> Bangaz 13
+            setTimeout(() => {
+                const emanator = parseInt(document.getElementById('inlet_5_emanator').value);
+                if (emanator >= 81 && emanator <= 83) {
+                    document.getElementById('inlet_5_emanator').value = '105';
+                    document.getElementById('inlet_5_emanator').dispatchEvent(new Event('change'));
+                    updateBang();
+                }
+            }, 100);
+
         }, 400);
     }
 
@@ -4565,7 +4590,12 @@ Velocity: C=down (-10), V=up (+10)
         // Deselect all radio buttons for emanatorQuick
         const radios = document.getElementsByName('emanatorQuick');
         radios.forEach(radio => radio.checked = false);
-        updateBang();
+
+        // Only call updateBang if this is not a radio button selection
+        if (!isRadioButtonSelection) {
+            updateBang();
+            isRadioButtonSelection = false;
+        }
 
         // Show drum/loop pattern when drum: or loop: is selected
         showPatternPreview();
