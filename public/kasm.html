@@ -51,9 +51,8 @@
 
 <!-- <img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" /> -->
 
-<p><strong>Kasm</strong> is a modern SDK and source code tutorial for creating high-performance MIDI processing plugins
-    for Ableton Live using Rust and WebAssembly. Build Max4Live devices with advanced MIDI and audio manipulation,
-    leveraging Rust’s speed and safety, and deploy them in Ableton Live 12.2+ with the new V8 JavaScript engine.
+<p><strong>Kasm</strong> bridges Ableton Live and Web tech using Rust and WebAssembly. Build Max4Live devices with advanced MIDI and audio manipulation,
+    leveraging Rust’s speed and safety, and deploy them in Ableton Live 12.2+ which include the new V8 JavaScript engine.
 <p><a href="https://maxforlive.com/library/index.php?by=any&q=Kasm" style="color:#61dafb;">Try the free Ableton Live
     12.2 Max4Live device plugins</a></p>
 <p>Download <a href="kasm/Kasm DEMO.amxd" download>Kasm DEMO.amxd</a>which is running identical Rust code as this web
@@ -730,7 +729,7 @@
 <div id="result"></div>
 
 
-<h2>What You’re Getting</h2>
+<h2>MOre about Kasm...</h2>
 <ul>
     <li>Rust-to-WASM compilation pipeline: Write high-performance MIDI algorithms in Rust, deploy as Max4Live devices
     </li>
@@ -882,8 +881,6 @@
     // Global timeout variables for debouncing
     let autoTransformTimeout;
     let autoPlayTimeout;
-
-    let isRadioButtonSelection;
 
     function post(msg) {
         console.log(`kasm: post: ${msg}`);
