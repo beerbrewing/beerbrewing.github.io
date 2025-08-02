@@ -411,24 +411,25 @@
         }
 
         render() {
-            this.time += 0.016;
-
-            // Ensure canvas has valid dimensions
+            // Ensure canvas has valid dimensions before rendering
             if (this.canvas.width === 0 || this.canvas.height === 0) {
                 this.resizeCanvas();
+                // Wait for the next frame to allow canvas to resize
+                requestAnimationFrame(() => this.render());
                 return;
             }
 
-            // Fix uniform buffer data - ensure proper alignment
+            this.time += 0.016;
+
+            // Correctly aligned uniform buffer data for WGSL std140 layout
             const uniformData = new Float32Array(8); // 32 bytes total
-            uniformData[0] = this.time;                    // time: f32
-            uniformData[1] = this.canvas.width;           // canvas_size.x: f32
-            uniformData[2] = this.canvas.height;          // canvas_size.y: f32
-            uniformData[3] = this.mousePos.x;             // mouse_pos.x: f32
-            uniformData[4] = this.mousePos.y;             // mouse_pos.y: f32
-            uniformData[5] = 0.0;                         // padding
-            uniformData[6] = 0.0;                         // padding
-            uniformData[7] = 0.0;                         // padding
+            uniformData[0] = this.time;           // time: f32 (offset 0)
+            // uniformData[1] is padding (offset 4)
+            uniformData[2] = this.canvas.width;   // canvas_size.x: f32 (offset 8)
+            uniformData[3] = this.canvas.height;  // canvas_size.y: f32 (offset 12)
+            uniformData[4] = this.mousePos.x;     // mouse_pos.x: f32 (offset 16)
+            uniformData[5] = this.mousePos.y;     // mouse_pos.y: f32 (offset 20)
+            // uniformData[6, 7] are padding
 
             this.device.queue.writeBuffer(this.uniformBuffer, 0, uniformData);
 
