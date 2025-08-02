@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taproom - Virtual Beer Experience</title>
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2C1810 0%, #8B4513 50%, #D2691E 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .logo {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .description {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .coming-soon {
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 4rem; }
+            h1 { font-size: 2rem; }
+            .description { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">🍻</div>
+    <h1>Taproom</h1>
+    <p class="description">
+        Virtual taproom experience with AR beer visualization, interactive tasting notes, 
+        and seamless integration with our online store for craft beer enthusiasts.
+    </p>
+    
+    <div class="coming-soon">🚧 Coming Soon</div>
+    
+    <div class="features">
+        <div class="feature">
+            <span class="feature-icon">🥽</span>
+            <h3>AR Beer Visualization</h3>
+            <p>See beers in 3D with color, clarity, and foam analysis</p>
+        </div>
+        
+        <div class="feature">
+            <span class="feature-icon">🛒</span>
+            <h3>Online Store</h3>
+            <p>Purchase craft beers directly from local breweries</p>
+        </div>
+        
+        <div class="feature">
+            <span class="feature-icon">📝</span>
+            <h3>Tasting Notes</h3>
+            <p>Interactive flavor profiles and brewing details</p>
+        </div>
+        
+        <div class="feature">
+            <span class="feature-icon">🌐</span>
+            <h3>Virtual Tours</h3>
+            <p>Explore breweries from anywhere in the world</p>
+        </div>
+    </div>
+    
+    <nav class="nav-links">
+        <a href="landing.html" class="nav-link">🏠 Home</a>
+        <a href="brewalytics.html" class="nav-link">🍺 Brewalytics</a>
+        <a href="kasm.html" class="nav-link">🎵 KASM</a>
+        <a href="index.html" class="nav-link">🥽 AR Experience</a>
+    </nav>
+</body>
+</html>

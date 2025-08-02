@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewery Web - AR Experience Platform</title>
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .platform-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .platform-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .platform-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .platform-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .platform-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .additional-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .section-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .coming-soon {
+            opacity: 0.7;
+            position: relative;
+        }
+
+        .coming-soon::after {
+            content: "Coming Soon";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 193, 7, 0.9);
+            color: #000;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🍺 Brewery Web Experience</h1>
+        <p>Advanced AR/WebXR platform powered by Rust WebAssembly for brewing analytics and audio synthesis</p>
+    </header>
+
+    <main class="main-content">
+        <div class="platform-grid">
+            <a href="brewalytics.html" class="platform-card">
+                <span class="platform-icon">🍺</span>
+                <h2 class="platform-title">Brewalytics</h2>
+                <p class="platform-description">
+                    Professional brewing calculations and analytics platform. Calculate SRM color, IBU, gravity, attenuation, and water chemistry with precision using high-performance Rust algorithms.
+                </p>
+                <div class="platform-tech">
+                    <span class="tech-badge">🦀 Rust WASM</span>
+                    <span class="tech-badge">📊 Analytics</span>
+                    <span class="tech-badge">🧪 Chemistry</span>
+                    <span class="tech-badge">📱 Mobile Ready</span>
+                </div>
+            </a>
+
+            <a href="kasm.html" class="platform-card">
+                <span class="platform-icon">🎵</span>
+                <h2 class="platform-title">KASM</h2>
+                <p class="platform-description">
+                    Advanced WebMIDI synthesizer and audio processing platform. Real-time audio synthesis, spatial audio, and MIDI control with WebAssembly performance optimization.
+                </p>
+                <div class="platform-tech">
+                    <span class="tech-badge">🦀 Rust WASM</span>
+                    <span class="tech-badge">🎹 WebMIDI</span>
+                    <span class="tech-badge">🔊 Spatial Audio</span>
+                    <span class="tech-badge">🎛️ Real-time</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="additional-sections">
+            <a href="time.html" class="section-card">
+                <span class="section-icon">⏰</span>
+                <h3 class="section-title">Time</h3>
+                <p class="section-description">
+                    Frame-accurate wall clock for low-latency video timing with microsecond precision
+                </p>
+            </a>
+
+            <a href="webcodecs.html" class="section-card">
+                <span class="section-icon">🎥</span>
+                <h3 class="section-title">WebCodecs</h3>
+                <p class="section-description">
+                    Hardware-accelerated video encoding and decoding with Rust optimization
+                </p>
+            </a>
+
+            <a href="webplayer.html" class="section-card">
+                <span class="section-icon">📺</span>
+                <h3 class="section-title">WebPlayer</h3>
+                <p class="section-description">
+                    WebXR media player with HLS.js and DASH.js adaptive streaming support
+                </p>
+            </a>
+
+            <a href="moq.html" class="section-card">
+                <span class="section-icon">📡</span>
+                <h3 class="section-title">MoQ</h3>
+                <p class="section-description">
+                    Media over QUIC ultra-low latency streaming with object-based delivery
+                </p>
+            </a>
+
+            <a href="webtransport.html" class="section-card">
+                <span class="section-icon">🌐</span>
+                <h3 class="section-title">WebTransport</h3>
+                <p class="section-description">
+                    Bidirectional communication over QUIC with streams and datagrams
+                </p>
+            </a>
+
+            <a href="about.html" class="section-card">
+                <span class="section-icon">ℹ️</span>
+                <h3 class="section-title">About</h3>
+                <p class="section-description">
+                    Learn about the platform's advanced WebXR technology and Rust foundation
+                </p>
+            </a>
+
+            <a href="taproom.html" class="section-card coming-soon">
+                <span class="section-icon">🍻</span>
+                <h3 class="section-title">Taproom</h3>
+                <p class="section-description">
+                    Virtual taproom experience with AR beer visualization and online store integration
+                </p>
+            </a>
+
+            <a href="brewers-reference.html" class="section-card coming-soon">
+                <span class="section-icon">📚</span>
+                <h3 class="section-title">Brewers Reference</h3>
+                <p class="section-description">
+                    Comprehensive brewing reference guide with interactive calculators and recipes
+                </p>
+            </a>
+
+            <a href="index.html" class="section-card">
+                <span class="section-icon">🥽</span>
+                <h3 class="section-title">AR Experience</h3>
+                <p class="section-description">
+                    Full AR/WebXR experience combining all platforms with 3D visualization
+                </p>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Built with cutting-edge web technologies and Rust WebAssembly</p>
+        <div class="tech-stack">
+            <span class="tech-badge">WebXR</span>
+            <span class="tech-badge">WebGPU</span>
+            <span class="tech-badge">Rust WASM</span>
+            <span class="tech-badge">WebMIDI</span>
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">TypeScript</span>
+        </div>
+    </footer>
+</body>
+</html>
