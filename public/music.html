@@ -724,7 +724,8 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 <ul>
     <li><a href="kasm/Kasm DEMO.amxd" download>Kasm DEMO.amxd - Max4Live example running identical Rust code as this web
         page</a></li>
-    <li><a href="kasm/Kasm Bangaz.amxd" download>Kasm Bangaz.amxd - drum sequencer/arpeggiator</a></li>
+    <li><a href="kasm/Kasm Bangaz.amxd" download>Kasm Bangaz.amxd - Ableton Drum Rack drum sequencer/arpeggiator</a></li>
+    <li><a href="kasm/Kasm Bangaz General MIDI.amxd" download>Kasm Bangaz General MIDI.amxd - General MIDI drum sequencer/arpeggiator</a></li>
     <li><a href="kasm/Kasm Counterpoint.amxd" download>Kasm Counterpoint.amxd - looper/harmoniser</a></li>
     <li><a href="kasm/Kasm Emanator Generator.amxd" download>Kasm Emanator Generator.amxd - Ableton Clip Generator</a>
     </li>
@@ -4170,7 +4171,7 @@ Velocity: C=down (-10), V=up (+10)
         if (keyChar) {
             const pianoKey = document.querySelector(`[data-key="${keyChar}"]`);
             if (pianoKey) {
-                pianoKey.setAttribute('fill', '#0f0');
+                pianoKey.setAttribute('fill', 'lime');
             }
         }
 
@@ -4844,21 +4845,23 @@ Velocity: C=down (-10), V=up (+10)
         if (keyChar) {
             const pianoKey = document.querySelector(`[data-key="${keyChar}"]`);
             if (pianoKey) {
-                if (isNoteOn) {
-                    // Note On - highlight in yellow
-                    pianoKey.setAttribute('fill', '#ffeb3b');
-                    pianoKey.setAttribute('stroke', '#fbc02d');
-                    pianoKey.setAttribute('stroke-width', '2');
-                } else {
-                    // Note Off - restore original color
-                    if (pianoKey.classList.contains('white-key')) {
-                        pianoKey.setAttribute('fill', 'white');
-                        pianoKey.setAttribute('stroke', '#333');
-                        pianoKey.setAttribute('stroke-width', '1');
+                if (pianoKey.getAttribute('fill') !== 'lime') {
+                    if (isNoteOn) {
+                        // Note On - highlight in yellow
+                        pianoKey.setAttribute('fill', '#ffeb3b');
+                        pianoKey.setAttribute('stroke', '#fbc02d');
+                        pianoKey.setAttribute('stroke-width', '2');
                     } else {
-                        pianoKey.setAttribute('fill', '#333');
-                        pianoKey.setAttribute('stroke', '#000');
-                        pianoKey.setAttribute('stroke-width', '1');
+                        // Note Off - restore original color
+                        if (pianoKey.classList.contains('white-key')) {
+                            pianoKey.setAttribute('fill', 'white');
+                            pianoKey.setAttribute('stroke', '#333');
+                            pianoKey.setAttribute('stroke-width', '1');
+                        } else {
+                            pianoKey.setAttribute('fill', '#333');
+                            pianoKey.setAttribute('stroke', '#000');
+                            pianoKey.setAttribute('stroke-width', '1');
+                        }
                     }
                 }
             }
