@@ -1,0 +1,442 @@
+<!--
+ * Copyright (c) Pyrmont Brewery 2025
+ * Author: Kevin Staunton-Lambert
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="/build/favicon.ico"/>
+    <title>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</title>
+    <link rel="stylesheet" href="pyrmontbrewery.css"/>
+    <script src="kasm/kasm_WASM_rust_obs.js"></script>
+    <meta name="description"
+          content="Pyrmont Brewery Kasm is an SDK for Ableton Live, enabling developers to create Max4Live devices in Rust for advanced live MIDI manipulation. Build innovative music tools with modern programming."/>
+    <meta name="keywords"
+          content="Kasm, Ableton Live, Max4Live, Rust, MIDI, SDK, music production, live coding, audio plugin, music technology, device development"/>
+    <meta name="robots" content="index, follow"/>
+    <meta property="og:title" content="Kasm: Rust SDK for Ableton Live Max4Live MIDI Manipulation"/>
+    <meta property="og:description"
+          content="Create Max4Live devices in Rust for real-time MIDI manipulation in Ableton Live. Modern SDK for music technologists and developers."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://pyrmontbrewery.com/build/kasm.html"/>
+    <meta property="og:image" content="https://pyrmontbrewery.com/build/pyrmontbrewery_logo_1024x1024.png"/>
+</head>
+<body>
+
+<div class="canvas-container">
+    <canvas id="kasmCanvas"></canvas>
+    <div class="info-overlay">
+        <strong>KASM WebGPU</strong><br>
+    </div>
+</div>
+
+<script>
+    // Complete WebGPU KASM Interface Implementation
+    async function initWebGPU(canvas) {
+        if (!navigator.gpu) {
+            throw new Error("WebGPU not supported on this browser.");
+        }
+
+        const adapter = await navigator.gpu.requestAdapter();
+        if (!adapter) {
+            throw new Error("No appropriate GPUAdapter found.");
+        }
+
+        const device = await adapter.requestDevice();
+        const context = canvas.getContext("webgpu");
+        const canvasFormat = navigator.gpu.getPreferredCanvasFormat();
+        context.configure({
+            device: device,
+            format: canvasFormat,
+        });
+
+        return { device, context, canvasFormat };
+    }
+
+    class KasmUI {
+        constructor(device, context, canvasFormat, canvas) {
+            this.device = device;
+            this.context = context;
+            this.canvasFormat = canvasFormat;
+            this.canvas = canvas;
+            this.uniformBuffer = null;
+            this.bindGroup = null;
+            this.pipeline = null;
+            this.time = 0;
+            this.mousePos = { x: 0, y: 0 };
+
+            // MIDI control state
+            this.stepSequencer = {
+                steps: 16,
+                currentStep: 0,
+                pattern: new Array(16).fill(false).map((_, i) => i % 4 === 0),
+                isPlaying: true
+            };
+
+            this.init();
+            this.setupEventListeners();
+        }
+
+        async init() {
+            // Create uniform buffer for shader data
+            this.uniformBuffer = this.device.createBuffer({
+                size: 256,
+                usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
+            });
+
+            // Complete shader implementation
+            const shaderModule = this.device.createShaderModule({
+                code: `
+                    struct Uniforms {
+                        time: f32,
+                        canvas_size: vec2<f32>,
+                        mouse_pos: vec2<f32>,
+                        padding: f32,
+                    }
+
+                    @group(0) @binding(0) var<uniform> uniforms: Uniforms;
+
+                    struct VertexOutput {
+                        @builtin(position) position: vec4<f32>,
+                        @location(0) uv: vec2<f32>,
+                    }
+
+                    @vertex
+                    fn vs_main(@builtin(vertex_index) vertexIndex: u32) -> VertexOutput {
+                        var pos = array<vec2<f32>, 6>(
+                            vec2<f32>(-1.0, -1.0), vec2<f32>(1.0, -1.0), vec2<f32>(1.0, 1.0),
+                            vec2<f32>(-1.0, -1.0), vec2<f32>(1.0, 1.0), vec2<f32>(-1.0, 1.0)
+                        );
+
+                        var uv = array<vec2<f32>, 6>(
+                            vec2<f32>(0.0, 1.0), vec2<f32>(1.0, 1.0), vec2<f32>(1.0, 0.0),
+                            vec2<f32>(0.0, 1.0), vec2<f32>(1.0, 0.0), vec2<f32>(0.0, 0.0)
+                        );
+
+                        var output: VertexOutput;
+                        output.position = vec4<f32>(pos[vertexIndex], 0.0, 1.0);
+                        output.uv = uv[vertexIndex];
+                        return output;
+                    }
+
+                    fn sdf_circle(p: vec2<f32>, r: f32) -> f32 {
+                        return length(p) - r;
+                    }
+
+                    fn sdf_rounded_box(p: vec2<f32>, b: vec2<f32>, r: f32) -> f32 {
+                        let d = abs(p) - b + vec2<f32>(r);
+                        return length(max(d, vec2<f32>(0.0))) - r;
+                    }
+
+                    fn draw_knob(uv: vec2<f32>, center: vec2<f32>, radius: f32, value: f32, hover: bool) -> vec3<f32> {
+                        let p = uv - center;
+                        let knob_dist = sdf_circle(p, radius);
+
+                        var color = vec3<f32>(0.15, 0.15, 0.2);
+
+                        if (knob_dist < 0.0) {
+                            if (hover) {
+                                color = vec3<f32>(0.25, 0.25, 0.3);
+                            } else {
+                                color = vec3<f32>(0.2, 0.2, 0.25);
+                            }
+
+                            // Metallic rim
+                            let rim = smoothstep(-0.003, 0.0, knob_dist);
+                            color = mix(color, vec3<f32>(0.5, 0.5, 0.6), rim * 0.4);
+
+                            // Value indicator
+                            let angle = value * 3.14159 * 1.4 - 3.14159 * 0.7;
+                            let indicator_pos = vec2<f32>(cos(angle), sin(angle)) * radius * 0.75;
+                            let indicator_dist = length(p - indicator_pos);
+
+                            if (indicator_dist < 0.006) {
+                                color = vec3<f32>(1.0, 0.6, 0.1);
+                            }
+                        }
+
+                        return color;
+                    }
+
+                    fn draw_step_pad(uv: vec2<f32>, center: vec2<f32>, size: f32, is_active: bool, current: bool, hover: bool) -> vec3<f32> {
+                        let p = uv - center;
+                        let pad_dist = sdf_rounded_box(p, vec2<f32>(size), size * 0.2);
+
+                        var color = vec3<f32>(0.08, 0.08, 0.1);
+
+                        if (pad_dist < 0.0) {
+                            if (current) {
+                                color = vec3<f32>(1.0, 1.0, 0.2);
+                            } else if (is_active) {
+                                color = vec3<f32>(1.0, 0.4, 0.05);
+                            } else if (hover) {
+                                color = vec3<f32>(0.2, 0.2, 0.25);
+                            } else {
+                                color = vec3<f32>(0.12, 0.12, 0.15);
+                            }
+
+                            let edge = smoothstep(-0.002, 0.0, pad_dist);
+                            color = mix(color, color * 1.2, edge * 0.3);
+                        }
+
+                        return color;
+                    }
+
+                    fn draw_display(uv: vec2<f32>, center: vec2<f32>, size: vec2<f32>) -> vec3<f32> {
+                        let p = uv - center;
+                        let display_dist = sdf_rounded_box(p, size, 0.015);
+
+                        var color = vec3<f32>(0.0, 0.0, 0.0);
+
+                        if (display_dist < 0.0) {
+                            color = vec3<f32>(0.0, 0.08, 0.0);
+
+                            let scanline = sin(p.y * 200.0) * 0.5 + 0.5;
+                            color = mix(color, vec3<f32>(0.0, 0.15, 0.0), scanline * 0.3);
+
+                            if (abs(p.x) < size.x * 0.85 && abs(p.y) < size.y * 0.7) {
+                                let text_glow = smoothstep(0.02, 0.0, abs(p.y));
+                                color = mix(color, vec3<f32>(0.2, 1.0, 0.3), text_glow * 0.9);
+                            }
+                        }
+
+                        return color;
+                    }
+
+                    @fragment
+                    fn fs_main(input: VertexOutput) -> @location(0) vec4<f32> {
+                        let uv = input.uv;
+                        let aspect = uniforms.canvas_size.x / uniforms.canvas_size.y;
+                        let coord = vec2<f32>((uv.x - 0.5) * aspect, uv.y - 0.5);
+                        let mouse_coord = vec2<f32>((uniforms.mouse_pos.x - 0.5) * aspect, uniforms.mouse_pos.y - 0.5);
+
+                        // Background gradient
+                        var color = vec3<f32>(0.05, 0.05, 0.08);
+                        let bg_gradient = smoothstep(-0.5, 0.5, coord.y);
+                        color = mix(color, vec3<f32>(0.08, 0.08, 0.12), bg_gradient * 0.3);
+
+                        // Grid texture
+                        let grid = sin(coord.x * 40.0) * sin(coord.y * 40.0);
+                        color = mix(color, vec3<f32>(0.1, 0.1, 0.14), grid * 0.02);
+
+                        // LCD display
+                        let display_color = draw_display(coord, vec2<f32>(0.0, 0.32), vec2<f32>(0.3, 0.08));
+                        color = mix(color, display_color, step(0.0, -sdf_rounded_box(coord - vec2<f32>(0.0, 0.32), vec2<f32>(0.3, 0.08), 0.015)));
+
+                        // Knobs
+                        for (var i: i32 = 0; i < 6; i++) {
+                            let knob_x = -0.65 + f32(i) * 0.26;
+                            let knob_center = vec2<f32>(knob_x, 0.15);
+                            let knob_value = 0.3 + sin(uniforms.time * 0.5 + f32(i) * 0.7) * 0.2 + 0.5;
+                            let hover = length(mouse_coord - knob_center) < 0.05;
+                            let knob_color = draw_knob(coord, knob_center, 0.035, knob_value, hover);
+                            color = mix(color, knob_color, step(0.0, -sdf_circle(coord - knob_center, 0.035)));
+                        }
+
+                        // Step sequencer
+                        for (var i: i32 = 0; i < 16; i++) {
+                            let step_x = -0.78 + f32(i) * 0.098;
+                            let step_center = vec2<f32>(step_x, -0.42);
+                            let current_step = i32(uniforms.time * 2.0) % 16;
+                            let is_active = (i % 4 == 0 || i == 2 || i == 6 || i == 10 || i == 14);
+                            let current = (i == current_step);
+                            let hover = length(mouse_coord - step_center) < 0.04;
+                            let step_color = draw_step_pad(coord, step_center, 0.025, is_active, current, hover);
+                            color = mix(color, step_color, step(0.0, -sdf_rounded_box(coord - step_center, vec2<f32>(0.025), 0.005)));
+                        }
+
+                        return vec4<f32>(color, 1.0);
+                    }
+                `
+            });
+
+            // Create pipeline
+            const bindGroupLayout = this.device.createBindGroupLayout({
+                entries: [{
+                    binding: 0,
+                    visibility: GPUShaderStage.FRAGMENT,
+                    buffer: { type: "uniform" }
+                }]
+            });
+
+            this.pipeline = this.device.createRenderPipeline({
+                layout: this.device.createPipelineLayout({
+                    bindGroupLayouts: [bindGroupLayout]
+                }),
+                vertex: {
+                    module: shaderModule,
+                    entryPoint: "vs_main",
+                },
+                fragment: {
+                    module: shaderModule,
+                    entryPoint: "fs_main",
+                    targets: [{
+                        format: this.canvasFormat,
+                    }]
+                },
+            });
+
+            this.bindGroup = this.device.createBindGroup({
+                layout: bindGroupLayout,
+                entries: [{
+                    binding: 0,
+                    resource: { buffer: this.uniformBuffer }
+                }]
+            });
+
+            console.log('WebGPU KASM interface initialized successfully');
+            this.render();
+        }
+
+        setupEventListeners() {
+            this.canvas.addEventListener('mousemove', (e) => {
+                const rect = this.canvas.getBoundingClientRect();
+                this.mousePos.x = (e.clientX - rect.left) / rect.width;
+                this.mousePos.y = 1.0 - (e.clientY - rect.top) / rect.height;
+            });
+
+            this.canvas.addEventListener('click', (e) => {
+                const rect = this.canvas.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = 1.0 - (e.clientY - rect.top) / rect.height;
+
+                console.log('Canvas clicked at:', x, y);
+
+                // Step sequencer interaction
+                for (let i = 0; i < 16; i++) {
+                    const stepX = 0.22 + i * 0.098;
+                    const stepY = 0.08;
+                    const dist = Math.sqrt((x - stepX) ** 2 + (y - stepY) ** 2);
+
+                    if (dist < 0.04) {
+                        this.stepSequencer.pattern[i] = !this.stepSequencer.pattern[i];
+                        console.log(`Step ${i + 1}: ${this.stepSequencer.pattern[i] ? 'ON' : 'OFF'}`);
+                        break;
+                    }
+                }
+            });
+
+            window.addEventListener('resize', () => this.resizeCanvas());
+            this.resizeCanvas();
+        }
+
+        resizeCanvas() {
+            const dpr = window.devicePixelRatio || 1;
+            const rect = this.canvas.getBoundingClientRect();
+
+            this.canvas.width = rect.width * dpr;
+            this.canvas.height = rect.height * dpr;
+
+            if (this.context) {
+                this.context.configure({
+                    device: this.device,
+                    format: this.canvasFormat,
+                    size: { width: this.canvas.width, height: this.canvas.height }
+                });
+            }
+        }
+
+        render() {
+            this.time += 0.016;
+
+            const uniformData = new Float32Array([
+                this.time,
+                this.canvas.width,
+                this.canvas.height,
+                this.mousePos.x,
+                this.mousePos.y,
+                0, 0, 0 // padding
+            ]);
+
+            this.device.queue.writeBuffer(this.uniformBuffer, 0, uniformData);
+
+            const commandEncoder = this.device.createCommandEncoder();
+            const renderPass = commandEncoder.beginRenderPass({
+                colorAttachments: [{
+                    view: this.context.getCurrentTexture().createView(),
+                    loadOp: "clear",
+                    clearValue: { r: 0.05, g: 0.05, b: 0.08, a: 1.0 },
+                    storeOp: "store",
+                }],
+            });
+
+            renderPass.setPipeline(this.pipeline);
+            renderPass.setBindGroup(0, this.bindGroup);
+            renderPass.draw(6);
+            renderPass.end();
+
+            this.device.queue.submit([commandEncoder.finish()]);
+            requestAnimationFrame(() => this.render());
+        }
+    }
+
+    // Initialize when page loads
+    async function initKasmInterface() {
+        const canvas = document.getElementById('kasmCanvas');
+
+        try {
+            const { device, context, canvasFormat } = await initWebGPU(canvas);
+            const kasmUI = new KasmUI(device, context, canvasFormat, canvas);
+            console.log('KASM interface started successfully');
+        } catch (error) {
+            console.error('WebGPU initialization failed:', error);
+
+            // Fallback for unsupported browsers
+            const ctx = canvas.getContext('2d');
+            if (ctx) {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+
+                ctx.fillStyle = '#1a1a1a';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = '#ff6b35';
+                ctx.font = 'bold 24px monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText('KASM Interface', canvas.width / 2, canvas.height / 2 - 30);
+
+                ctx.fillStyle = '#61dafb';
+                ctx.font = '16px monospace';
+                ctx.fillText('WebGPU not supported - Use Chrome/Edge/Firefox', canvas.width / 2, canvas.height / 2);
+                ctx.fillText('with WebGPU enabled for full experience', canvas.width / 2, canvas.height / 2 + 20);
+
+                // Update overlay
+                const overlay = document.querySelector('.info-overlay');
+                if (overlay) {
+                    overlay.innerHTML = `
+                        <strong>KASM SDK</strong><br>
+                        WebGPU not available<br>
+                        Use modern browser for full interface<br>
+                        <span style="color: #ff6b35;">Check browser compatibility</span>
+                    `;
+                }
+            }
+        }
+    }
+
+    // Start when page loads
+    window.addEventListener('load', initKasmInterface);
+</script>
+
+</body>
+</html>

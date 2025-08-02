@@ -47,11 +47,10 @@
 
 <br/>
 <br/>
-<h1>Pyrmont Brewery Music Room! Kasm</h1>
+<h1>Pyrmont Brewery Music Room!</h1>
 
 <!-- <img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" /> -->
 
-<h1>Kasm: Build Powerful MIDI Plugins for Ableton Live with Rust & WebAssembly</h1>
 <p><strong>Kasm</strong> is a modern SDK and source code tutorial for creating high-performance MIDI processing plugins
     for Ableton Live using Rust and WebAssembly. Build Max4Live devices with advanced MIDI and audio manipulation,
     leveraging Rust’s speed and safety, and deploy them in Ableton Live 12.2+ with the new V8 JavaScript engine.
@@ -883,6 +882,8 @@
     // Global timeout variables for debouncing
     let autoTransformTimeout;
     let autoPlayTimeout;
+
+    let isRadioButtonSelection;
 
     function post(msg) {
         console.log(`kasm: post: ${msg}`);
