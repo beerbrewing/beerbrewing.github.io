@@ -40,6 +40,54 @@
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://pyrmontbrewery.com/build/kasm.html"/>
     <meta property="og:image" content="https://pyrmontbrewery.com/build/pyrmontbrewery_logo_1024x1024.png"/>
+
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .canvas-container {
+            position: relative;
+            width: 100vw;
+            height: 60vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            border-bottom: 2px solid #333;
+        }
+
+        #kasmCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: pointer;
+        }
+
+        .info-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            max-width: 300px;
+            z-index: 10;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        @media (max-width: 768px) {
+            .canvas-container {
+                height: 50vh;
+                min-height: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -344,14 +392,20 @@
             const dpr = window.devicePixelRatio || 1;
             const rect = this.canvas.getBoundingClientRect();
 
-            this.canvas.width = rect.width * dpr;
-            this.canvas.height = rect.height * dpr;
+            // Ensure we have valid dimensions
+            const width = Math.max(1, Math.floor(rect.width * dpr));
+            const height = Math.max(1, Math.floor(rect.height * dpr));
+
+            this.canvas.width = width;
+            this.canvas.height = height;
+
+            console.log(`Canvas resized to: ${width}x${height} (${rect.width}x${rect.height} CSS)`);
 
             if (this.context) {
                 this.context.configure({
                     device: this.device,
                     format: this.canvasFormat,
-                    size: { width: this.canvas.width, height: this.canvas.height }
+                    size: { width: width, height: height }
                 });
             }
         }
@@ -359,14 +413,22 @@
         render() {
             this.time += 0.016;
 
-            const uniformData = new Float32Array([
-                this.time,
-                this.canvas.width,
-                this.canvas.height,
-                this.mousePos.x,
-                this.mousePos.y,
-                0, 0, 0 // padding
-            ]);
+            // Ensure canvas has valid dimensions
+            if (this.canvas.width === 0 || this.canvas.height === 0) {
+                this.resizeCanvas();
+                return;
+            }
+
+            // Fix uniform buffer data - ensure proper alignment
+            const uniformData = new Float32Array(8); // 32 bytes total
+            uniformData[0] = this.time;                    // time: f32
+            uniformData[1] = this.canvas.width;           // canvas_size.x: f32
+            uniformData[2] = this.canvas.height;          // canvas_size.y: f32
+            uniformData[3] = this.mousePos.x;             // mouse_pos.x: f32
+            uniformData[4] = this.mousePos.y;             // mouse_pos.y: f32
+            uniformData[5] = 0.0;                         // padding
+            uniformData[6] = 0.0;                         // padding
+            uniformData[7] = 0.0;                         // padding
 
             this.device.queue.writeBuffer(this.uniformBuffer, 0, uniformData);
 

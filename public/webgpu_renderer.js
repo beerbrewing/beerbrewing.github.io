@@ -455,145 +455,137 @@ class SequencerUI {
     }
 
     handleInteraction(x, y, isDown) {
+        // Convert screen coordinates to shader coordinates
         const aspect = this.canvas.width / this.canvas.height;
-        const coord = [(x - 0.5) * aspect, y - 0.5];
+        const coord = [(x - 0.5) * aspect, 0.5 - y];
 
-        // Check knobs (top row)
+        // Check for knob interactions
         for (let i = 0; i < 6; i++) {
             const knobX = -0.6 + i * 0.24;
             const knobY = 0.1;
             const dist = Math.sqrt((coord[0] - knobX) ** 2 + (coord[1] - knobY) ** 2);
 
-            if (dist < 0.04 && isDown) {
-                this.isDragging = true;
-                this.dragTarget = { type: 'knob', index: i, startY: y };
+            if (dist < 0.04) {
+                if (isDown) {
+                    this.isDragging = true;
+                    this.dragTarget = { type: 'knob', index: i };
+                }
                 return;
             }
         }
 
-        // Check step sequencer
+        // Check for step sequencer interactions
         for (let i = 0; i < 16; i++) {
             const stepX = -0.75 + i * 0.1;
             const stepY = -0.6;
             const dist = Math.sqrt((coord[0] - stepX) ** 2 + (coord[1] - stepY) ** 2);
 
-            if (dist < 0.03 && isDown) {
-                this.stepSequencer.pattern[i] = !this.stepSequencer.pattern[i];
+            if (dist < 0.03) {
+                if (isDown) {
+                    this.stepSequencer.pattern[i] = !this.stepSequencer.pattern[i];
+                    console.log(`Step ${i + 1}: ${this.stepSequencer.pattern[i] ? 'ON' : 'OFF'}`);
+                }
                 return;
             }
-        }
-
-        // Check transport buttons
-        const playDist = Math.sqrt((coord[0] - 0.6) ** 2 + (coord[1] + 0.6) ** 2);
-        const stopDist = Math.sqrt((coord[0] - 0.75) ** 2 + (coord[1] + 0.6) ** 2);
-
-        if (playDist < 0.03 && isDown) {
-            this.togglePlayback();
-        } else if (stopDist < 0.03 && isDown) {
-            this.stopPlayback();
         }
     }
 
     handleDrag(x, y) {
-        if (!this.dragTarget || this.dragTarget.type !== 'knob') return;
+        if (!this.dragTarget) return;
 
-        const knob = this.knobs.get(this.dragTarget.index);
-        if (!knob) return;
+        if (this.dragTarget.type === 'knob') {
+            // Convert mouse movement to knob value
+            const deltaY = this.lastMouseY - y;
+            const knob = this.knobs.get(this.dragTarget.index);
 
-        // Vertical drag to change knob value
-        const deltaY = this.dragTarget.startY - y;
-        const sensitivity = 2.0;
-        const newValue = Math.max(0, Math.min(1, knob.value + deltaY * sensitivity));
+            if (knob) {
+                knob.value = Math.max(0, Math.min(1, knob.value + deltaY * 2));
+                this.knobs.set(this.dragTarget.index, knob);
 
-        knob.value = newValue;
-        this.knobs.set(this.dragTarget.index, knob);
-
-        // Update corresponding HTML control
-        const actualValue = knob.min + newValue * (knob.max - knob.min);
-        const element = document.getElementById(knob.htmlId);
-        if (element) {
-            element.value = actualValue;
-            element.dispatchEvent(new Event('input'));
+                // Update corresponding HTML element
+                const element = document.getElementById(knob.htmlId);
+                if (element) {
+                    const realValue = knob.min + knob.value * (knob.max - knob.min);
+                    element.value = realValue;
+                    element.dispatchEvent(new Event('input'));
+                }
+            }
         }
 
-        this.dragTarget.startY = y; // Update for continuous dragging
+        this.lastMouseY = y;
     }
 
-    togglePlayback() {
-        this.isPlaying = !this.isPlaying;
-        const playButton = document.getElementById('playMidi');
-        if (playButton) {
-            playButton.click();
-        }
-    }
+    resizeCanvas() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = this.canvas.getBoundingClientRect();
 
-    stopPlayback() {
-        this.isPlaying = false;
-        const stopButton = document.getElementById('stopMidi');
-        if (stopButton) {
-            stopButton.click();
-        }
-    }
+        this.canvas.width = rect.width * dpr;
+        this.canvas.height = rect.height * dpr;
 
-    updateUniforms() {
-        const uniformData = new Float32Array([
-            this.time,
-            this.canvas.width,
-            this.canvas.height,
-            0.0, // padding
-        ]);
-
-        this.device.queue.writeBuffer(this.uniformBuffer, 0, uniformData);
+        // Reconfigure WebGPU context with new size
+        this.context.configure({
+            device: this.device,
+            format: this.canvasFormat,
+            size: { width: this.canvas.width, height: this.canvas.height }
+        });
     }
 
     render() {
         this.time += 0.016; // ~60fps
-        this.updateUniforms();
 
-        // Update current step for step sequencer animation
-        if this.isPlaying) {
-            this.stepSequencer.currentStep = Math.floor(this.time * 2) % 16;
-        }
+        // Update uniforms with current time and canvas size
+        const uniformData = new Float32Array([
+            this.time,                    // time
+            this.canvas.width,           // canvas_size.x
+            this.canvas.height,          // canvas_size.y
+            0.0                          // padding
+        ]);
 
+        this.device.queue.writeBuffer(this.uniformBuffer, 0, uniformData);
+
+        // Create command encoder
         const commandEncoder = this.device.createCommandEncoder();
-        const textureView = this.context.getCurrentTexture().createView();
 
-        const renderPassDescriptor = {
+        // Begin render pass
+        const renderPass = commandEncoder.beginRenderPass({
             colorAttachments: [{
-                view: textureView,
-                clearValue: { r: 0.08, g: 0.08, b: 0.1, a: 1.0 },
+                view: this.context.getCurrentTexture().createView(),
                 loadOp: "clear",
+                clearValue: { r: 0.08, g: 0.08, b: 0.1, a: 1.0 },
                 storeOp: "store",
             }],
-        };
+        });
 
-        const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor);
-        passEncoder.setPipeline(this.pipeline);
-        passEncoder.setBindGroup(0, this.bindGroup);
-        passEncoder.draw(6, 1, 0, 0);
-        passEncoder.end();
+        // Set pipeline and draw
+        renderPass.setPipeline(this.pipeline);
+        renderPass.setBindGroup(0, this.bindGroup);
+        renderPass.draw(6); // Draw 2 triangles (6 vertices)
+        renderPass.end();
 
+        // Submit commands
         this.device.queue.submit([commandEncoder.finish()]);
 
-        // Continue animation loop
+        // Continue render loop
         requestAnimationFrame(() => this.render());
     }
 
-    // Public methods to update from external controls
-    updateMidiClip(notesData) {
-        this.midiClip = notesData;
-        // Could extend to visualize notes in the display area
-    }
+    start() {
+        // Ensure canvas is properly sized
+        this.resizeCanvas();
 
-    updateDisplay(text, mode = "main") {
-        this.display.text = text;
-        this.display.mode = mode;
-    }
+        // Start render loop
+        this.render();
 
-    setPlaybackState(playing) {
-        this.isPlaying = playing;
+        // Setup resize handler
+        window.addEventListener('resize', () => this.resizeCanvas());
+
+        console.log('KASM WebGPU Sequencer UI started');
     }
 }
+
+// Export for use in other files
+window.SequencerUI = SequencerUI;
+window.initWebGPU = initWebGPU;
 
 // Initialize WebGPU UI
 async function initSequencerUI() {
