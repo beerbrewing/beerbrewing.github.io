@@ -106,12 +106,12 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
             <label>Choose an Emanator algorithm (inlet_5):<br/>
                 <div style="margin-bottom: 10px;">
-                    <label><input type="radio" name="emanatorQuick" value="50"
-                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=107; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
-                        Bangaz</label>
                     <label><input type="radio" name="emanatorQuick" value="20"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=63; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Looper</label>
+                    <label><input type="radio" name="emanatorQuick" value="50"
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=93; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
+                        Bangaz</label>
                     <label><input type="radio" name="emanatorQuick" value="55"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=82; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Arpeggiator</label>
@@ -121,6 +121,9 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <label><input type="radio" name="emanatorQuick" value="10"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=2; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Emanator</label>
+                    <label><input type="radio" name="emanatorQuick" value="10"
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=148; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
+                        LFO</label>
                     <label><input type="radio" name="emanatorQuick" value="30"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=12; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);"> Taps</label>
                     <label><input type="radio" name="emanatorQuick" value="40"
@@ -138,20 +141,20 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                 </div>
                 <select id="inlet_5_emanator" onchange="autoTransform()" style="padding: 3px;">
                     <option value="0">Random</option>
-                    <option value="1">mldy:Phone Ringtone Classic phone ringtone melody with </option>
-                    <option value="2">mldy:Strummed Cascade Cascading glissando with stereo spr</option>
-                    <option value="3">mldy:Elaborate Panning Melodic patterns with dynamic panni</option>
-                    <option value="4">mldy:Advanced Rhythmic Complex melodic patterns with rhyth</option>
-                    <option value="5">hmny:Chord Progression Classic chord progressions with wel</option>
+                    <option value="1">mldy:Phone Ringtone Classic phone ringtone melody with humanizati</option>
+                    <option value="2">mldy:Strummed Cascade Cascading glissando with stereo spread</option>
+                    <option value="3">mldy:Elaborate Panning Melodic patterns with dynamic panning</option>
+                    <option value="4">mldy:Advanced Rhythmic Complex melodic patterns with rhythmic variat</option>
+                    <option value="5">hmny:Chord Progression Classic chord progressions with well-known pa</option>
                     <option value="6">hmny:Simple Chord Basic major triad chord</option>
                     <option value="7">hmny:Extended Inversions Extended chords with inversions</option>
-                    <option value="8">hmny:Complex Extensions Complex chord progressions with ext</option>
-                    <option value="9">rhym:Morse Code Morse code patterns with rhythmic t</option>
-                    <option value="10">rhym:Markov Chain Markov chain-based rhythmic pattern</option>
-                    <option value="11">rhym:Wave Interference Trigonometric wave interference pat</option>
+                    <option value="8">hmny:Complex Extensions Complex chord progressions with extensions an</option>
+                    <option value="9">rhym:Morse Code Morse code patterns with rhythmic timing</option>
+                    <option value="10">rhym:Markov Chain Markov chain-based rhythmic patterns</option>
+                    <option value="11">rhym:Wave Interference Trigonometric wave interference patterns</option>
                     <option value="12">rhym:Complex Reflection Physics-based reflection algorithms</option>
                     <option value="13">rhym:Balkan 7/8 Balkan 7/8 rhythm (aksak)</option>
-                    <option value="14">rhym:West African Bell West African bell pattern (12/8 cro</option>
+                    <option value="14">rhym:West African Bell West African bell pattern (12/8 cross-rhythm)</option>
                     <option value="15">rhym:Indian Tintal Indian Tintal (16-beat cycle)</option>
                     <option value="16">rhym:Latin son clave Latin son clave (3-2)</option>
                     <option value="17">rhym:Jazz Swing 8ths Jazz swing eighths</option>
@@ -161,7 +164,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <option value="21">rhym:Balkan 11/8 (3+2+3+3) Balkan 11/8 (3+2+3+3)</option>
                     <option value="22">rhym:Contemporary tuplets (5:4) Contemporary tuplets (5:4)</option>
                     <option value="23">rhym:Afro-Cuban 6/8 bell Afro-Cuban 6/8 bell</option>
-                    <option value="24">prog:Circle of Fifths Circle of Fifths progression with m</option>
+                    <option value="24">prog:Circle of Fifths Circle of Fifths progression with modulation </option>
                     <option value="25">prog:Stepwise Progression Diatonic stepwise progression</option>
                     <option value="26">prog:Plagal Cadence IV-I plagal cadence</option>
                     <option value="27">prog:Deceptive Cadence V-vi deceptive cadence</option>
@@ -171,51 +174,51 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <option value="31">prog:Chromatic Mediant Chromatic mediant progression</option>
                     <option value="32">prog:Neapolitan Chord Neapolitan chord progression</option>
                     <option value="33">prog:Augmented Sixth Augmented sixth progression</option>
-                    <option value="34">chnt:Chant Dorian Call-Response Call and response in Dorian mode (c</option>
+                    <option value="34">chnt:Chant Dorian Call-Response Call and response in Dorian mode (chant style</option>
                     <option value="35">chnt:Chant Psalm Tone Gregorian psalm tone formula</option>
-                    <option value="36">chnt:Chant Ornamented Response Responsorial echo with ornamentatio</option>
-                    <option value="37">chnt:Chant with Drone Responsorial chant with ison (drone</option>
+                    <option value="36">chnt:Chant Ornamented Response Responsorial echo with ornamentation</option>
+                    <option value="37">chnt:Chant with Drone Responsorial chant with ison (drone)</option>
                     <option value="38">chnt:Chant Antiphonal Antiphonal (alternating) chant</option>
-                    <option value="39">spat:Harmonic Resonance Harmonic series with spatial positi</option>
+                    <option value="39">spat:Harmonic Resonance Harmonic series with spatial positioning</option>
                     <option value="40">spat:Swarm Movement Boids algorithm with spatial audio</option>
                     <option value="41">spat:Circular Panning Dynamic circular panning effects</option>
                     <option value="42">spat:3D Positioning Simulated 3D spatial positioning</option>
-                    <option value="43">sums:Fibonacci Spiral Fibonacci timing with golden ratio </option>
-                    <option value="44">sums:Fractal Cascade Fractal echo patterns at different </option>
-                    <option value="45">sums:Swarming Spirals Bumblebee flight patterns with Fibo</option>
-                    <option value="46">sums:Fractal Chaos L-systems, strange attractors, and </option>
-                    <option value="47">expr:Multidimensional Markov Multi-dimensional Markov chain with</option>
-                    <option value="48">expr:Second Order Markov Second-order Markov chain with rhyt</option>
-                    <option value="49">expr:Chaos Game Harmony Chaos game algorithm for counterpoi</option>
-                    <option value="50">expr:Complex Drums Complex drum patterns using golden </option>
-                    <option value="51">expr:Cellular Automaton Cellular automaton melody generator</option>
+                    <option value="43">sums:Fibonacci Spiral Fibonacci timing with golden ratio velocity d</option>
+                    <option value="44">sums:Fractal Cascade Fractal echo patterns at different time scale</option>
+                    <option value="45">sums:Swarming Spirals Bumblebee flight patterns with Fibonacci timi</option>
+                    <option value="46">sums:Fractal Chaos L-systems, strange attractors, and chaos theo</option>
+                    <option value="47">expr:Multidimensional Markov Multi-dimensional Markov chain with harmonic </option>
+                    <option value="48">expr:Second Order Markov Second-order Markov chain with rhythm pattern</option>
+                    <option value="49">expr:Chaos Game Harmony Chaos game algorithm for counterpoint harmony</option>
+                    <option value="50">expr:Complex Drums Complex drum patterns using golden ratio math</option>
+                    <option value="51">expr:Cellular Automaton Cellular automaton melody generator (Rule 30)</option>
                     <option value="52">expr:Euclidean Rhythm Euclidean rhythm pattern generator</option>
                     <option value="53">expr:L-System L-system based melody generator</option>
-                    <option value="54">expr:Microtonal 24-TET Microtonal melody generator using 2</option>
-                    <option value="55">expr:Brownian Walk Stochastic Brownian walk melody gen</option>
+                    <option value="54">expr:Microtonal 24-TET Microtonal melody generator using 24-TET</option>
+                    <option value="55">expr:Brownian Walk Stochastic Brownian walk melody generator</option>
                     <option value="56">expr:Spectral Texture Spectral overtone texture generator</option>
-                    <option value="57">expr:Recursive Pattern Recursive self-similar pattern gene</option>
-                    <option value="58">expr:Parameter Morphing Dynamic parameter morphing melody g</option>
-                    <option value="59">expr:Polymetric (3:4) Polymetric engine generating 3:4 pa</option>
-                    <option value="60">expr:Polytempo Engine Polytempo engine for variable speed</option>
+                    <option value="57">expr:Recursive Pattern Recursive self-similar pattern generator</option>
+                    <option value="58">expr:Parameter Morphing Dynamic parameter morphing melody generator</option>
+                    <option value="59">expr:Polymetric (3:4) Polymetric engine generating 3:4 patterns</option>
+                    <option value="60">expr:Polytempo Engine Polytempo engine for variable speed patterns</option>
                     <option value="61">Krumhansl Arpeggiator</option>
                     <option value="62">Krumhansl Chords</option>
                     <option value="63">Tape Looping Example</option>
-                    <option value="64">loop:Chaos Game Harmony Generates random harmony using chao</option>
-                    <option value="65">loop:Modular Arithmetic Harmony Cyclical pitch patterns using modul</option>
-                    <option value="66">loop:Cellular Automata Harmony Binary sequence pitch offsets using</option>
+                    <option value="64">loop:Chaos Game Harmony Generates random harmony using chaos game log</option>
+                    <option value="65">loop:Modular Arithmetic Harmony Cyclical pitch patterns using modular arithme</option>
+                    <option value="66">loop:Cellular Automata Harmony Binary sequence pitch offsets using Rule 30.</option>
                     <option value="67">loop:Spectral Harmony Harmony based on overtone series.</option>
-                    <option value="68">loop:L-System Harmony Interval sequences generated by L-s</option>
-                    <option value="69">loop:Markov Matrix Harmony Probabilistic interval jumps using </option>
-                    <option value="70">loop:Quasi-Crystal Harmony Penrose tiling angles for interval </option>
-                    <option value="71">loop:Fractal Brownian Harmony Fractal Brownian motion for pitch c</option>
-                    <option value="72">loop:Hyperbolic Geometry Harmony Interval mapping using hyperbolic t</option>
-                    <option value="73">loop:Prime Spiral Harmony Pitch offsets using Ulam spiral of </option>
-                    <option value="74">loop:Fibonacci Harmony Counterpoint using Fibonacci interv</option>
-                    <option value="75">loop:Markov Harmony Probabilistic note selection based </option>
-                    <option value="76">loop:Fractal Harmony Self-similar patterns at different </option>
-                    <option value="77">loop:Prime Harmony Mathematically pure intervals using</option>
-                    <option value="78">loop:Golden Ratio Harmony Organic intervals using the golden </option>
+                    <option value="68">loop:L-System Harmony Interval sequences generated by L-systems.</option>
+                    <option value="69">loop:Markov Matrix Harmony Probabilistic interval jumps using Markov mat</option>
+                    <option value="70">loop:Quasi-Crystal Harmony Penrose tiling angles for interval structure.</option>
+                    <option value="71">loop:Fractal Brownian Harmony Fractal Brownian motion for pitch contour.</option>
+                    <option value="72">loop:Hyperbolic Geometry Harmony Interval mapping using hyperbolic tangent.</option>
+                    <option value="73">loop:Prime Spiral Harmony Pitch offsets using Ulam spiral of primes.</option>
+                    <option value="74">loop:Fibonacci Harmony Counterpoint using Fibonacci intervals.</option>
+                    <option value="75">loop:Markov Harmony Probabilistic note selection based on history</option>
+                    <option value="76">loop:Fractal Harmony Self-similar patterns at different octaves.</option>
+                    <option value="77">loop:Prime Harmony Mathematically pure intervals using primes.</option>
+                    <option value="78">loop:Golden Ratio Harmony Organic intervals using the golden ratio.</option>
                     <option value="79">Clear All Drum Assignments</option>
                     <option value="80">Reset Ableton Drum Rack Assignments</option>
                     <option value="81">Reset General MIDI Drums</option>
@@ -230,38 +233,38 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <option value="90">Reassign HiTom (drum)</option>
                     <option value="91">Reassign Clap</option>
                     <option value="92">Reassign CowBell</option>
-                    <option value="93">drum:Bangaz 1 Classic four-on-the-floor kick/snar</option>
-                    <option value="94">drum:Bangaz 2 Polyrhythmic pattern with triplet k</option>
-                    <option value="95">drum:Bangaz 3 Extravagant polyrhythms with displa</option>
-                    <option value="96">drum:Bangaz 4 Evolving groove that changes every </option>
-                    <option value="97">drum:Bangaz 5 Weirdly polyrhythmic pattern with q</option>
-                    <option value="98">drum:Bangaz 6 Evolving Euclidean rhythm generator</option>
-                    <option value="99">drum:Bangaz 7 Complex velocity and pan using sine</option>
-                    <option value="100">drum:Bangaz 8 Wildly complex beat placement using</option>
-                    <option value="101">drum:Bangaz 9 Bossa nova with dynamic pan, ghost </option>
-                    <option value="102">drum:Bangaz 10 Classic 808 with swing, intricate m</option>
-                    <option value="103">drum:Bangaz 11 909 shuffle with adjustable shuffle</option>
-                    <option value="104">drum:Bangaz 12 LinnDrum pop groove with HH accent </option>
-                    <option value="105">drum:Bangaz 13 Electro syncopation with pan and ve</option>
-                    <option value="106">drum:Bangaz 14 808 cowbell funk with pan and HH sw</option>
-                    <option value="107">drum:Bangaz 15 707 disco with snare and open HH ac</option>
-                    <option value="108">drum:Bangaz 16 606 breakbeat with tom and snare ac</option>
-                    <option value="109">drum:Bangaz 17 808 Miami bass with kick and clap a</option>
-                    <option value="110">drum:Bangaz 18 727 Latin groove with cowbell and t</option>
-                    <option value="111">drum:Bangaz 19 808 triplet funk with triplet swing</option>
-                    <option value="112">drum:Bangaz 20 909 techno ride with ride and snare</option>
-                    <option value="113">drum:Bangaz 21 808 boogie with tom accent and HH s</option>
-                    <option value="114">drum:Bangaz 22 707 house with clap and HH accent c</option>
-                    <option value="115">drum:Bangaz 23 808 clave pattern with offset and a</option>
-                    <option value="116">drum:Bangaz 24 909 broken beat with snare ghost an</option>
-                    <option value="117">drum:Bangaz 25 808 shuffle with swing and HH accen</option>
-                    <option value="118">drum:Bangaz 26 707 funk with snare and open HH acc</option>
-                    <option value="119">drum:Bangaz 27 808 triplet shuffle with triplet sw</option>
-                    <option value="120">drum:Bangaz 28 909 ride shuffle with ride accent a</option>
-                    <option value="121">drum:Bangaz 29 808 clave funk with clave offset an</option>
-                    <option value="122">drum:Bangaz 30 Classical Motown Swing - evolving, </option>
-                    <option value="123">drum:Bangaz 31 Classical Polyrhythmic Waltz with M</option>
-                    <option value="124">drum:Bangaz 32 R&B Shuffle with Complex Syncopatio</option>
+                    <option value="93">drum:Bangaz 1 Classic four-on-the-floor kick/snare with tom</option>
+                    <option value="94">drum:Bangaz 2 Polyrhythmic pattern with triplet kicks, cros</option>
+                    <option value="95">drum:Bangaz 3 Extravagant polyrhythms with displaced snares</option>
+                    <option value="96">drum:Bangaz 4 Evolving groove that changes every 4 bars, ad</option>
+                    <option value="97">drum:Bangaz 5 Weirdly polyrhythmic pattern with quintuplet </option>
+                    <option value="98">drum:Bangaz 6 Evolving Euclidean rhythm generator with incr</option>
+                    <option value="99">drum:Bangaz 7 Complex velocity and pan using sine/cosine, w</option>
+                    <option value="100">drum:Bangaz 8 Wildly complex beat placement using golden ra</option>
+                    <option value="101">drum:Bangaz 9 Bossa nova with dynamic pan, ghost notes, and</option>
+                    <option value="102">drum:Bangaz 10 Classic 808 with swing, intricate math for al</option>
+                    <option value="103">drum:Bangaz 11 909 shuffle with adjustable shuffle depth, al</option>
+                    <option value="104">drum:Bangaz 12 LinnDrum pop groove with HH accent and snare </option>
+                    <option value="105">drum:Bangaz 13 Electro syncopation with pan and velocity mod</option>
+                    <option value="106">drum:Bangaz 14 808 cowbell funk with pan and HH swing, all d</option>
+                    <option value="107">drum:Bangaz 15 707 disco with snare and open HH accents, all</option>
+                    <option value="108">drum:Bangaz 16 606 breakbeat with tom and snare accent contr</option>
+                    <option value="109">drum:Bangaz 17 808 Miami bass with kick and clap accent cont</option>
+                    <option value="110">drum:Bangaz 18 727 Latin groove with cowbell and tom accent </option>
+                    <option value="111">drum:Bangaz 19 808 triplet funk with triplet swing and snare</option>
+                    <option value="112">drum:Bangaz 20 909 techno ride with ride and snare accent co</option>
+                    <option value="113">drum:Bangaz 21 808 boogie with tom accent and HH swing, plus</option>
+                    <option value="114">drum:Bangaz 22 707 house with clap and HH accent controls, p</option>
+                    <option value="115">drum:Bangaz 23 808 clave pattern with offset and accent cont</option>
+                    <option value="116">drum:Bangaz 24 909 broken beat with snare ghost and tom acce</option>
+                    <option value="117">drum:Bangaz 25 808 shuffle with swing and HH accent controls</option>
+                    <option value="118">drum:Bangaz 26 707 funk with snare and open HH accent contro</option>
+                    <option value="119">drum:Bangaz 27 808 triplet shuffle with triplet swing and sn</option>
+                    <option value="120">drum:Bangaz 28 909 ride shuffle with ride accent and HH swin</option>
+                    <option value="121">drum:Bangaz 29 808 clave funk with clave offset and accent, </option>
+                    <option value="122">drum:Bangaz 30 Classical Motown Swing - evolving, panned, mo</option>
+                    <option value="123">drum:Bangaz 31 Classical Polyrhythmic Waltz with Mathematica</option>
+                    <option value="124">drum:Bangaz 32 R&B Shuffle with Complex Syncopation and CC1 </option>
                     <option value="125">drum:Bangaz 33 Drum Rack</option>
                     <option value="126">drum:Bangaz 34 Drum Rack</option>
                     <option value="127">drum:Bangaz 35 Drum Rack</option>
@@ -285,53 +288,29 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <option value="145">drum:Bangaz 53 Drum Rack</option>
                     <option value="146">drum:Bangaz 54 Drum Rack</option>
                     <option value="147">drum:Bangaz 55 Drum Rack</option>
+                    <option value="148">lfo:LFO Sine Classic sine wave LFO with speed and phase co</option>
+                    <option value="149">lfo:LFO Sawtooth Sawtooth wave LFO with speed and direction co</option>
+                    <option value="150">lfo:LFO Square Square wave LFO with speed and pulse width co</option>
+                    <option value="151">lfo:LFO Triangle Triangle wave LFO with speed and symmetry con</option>
+                    <option value="152">lfo:LFO Motown Fadeout Gradually decreasing until it disappears rath</option>
+                    <option value="153">lfo:LFO Cubic Cubic function (y=x³) LFO with intensity cont</option>
+                    <option value="154">lfo:LFO Exponential Exponential function LFO with base controls</option>
+                    <option value="155">lfo:LFO Logarithmic Logarithmic function LFO with scaling control</option>
+                    <option value="156">lfo:LFO Fibonacci Fibonacci sequence-based LFO with sequence le</option>
+                    <option value="157">lfo:LFO Golden Ratio Golden ratio spiral LFO with spiral tightness</option>
+                    <option value="158">lfo:LFO Chaos Logistic Chaotic logistic map LFO with chaos parameter</option>
+                    <option value="159">lfo:LFO Prime Sequence Prime number sequence LFO with sequence lengt</option>
+                    <option value="160">lfo:LFO Mandelbrot Mandelbrot set escape time LFO with zoom cont</option>
+                    <option value="161">lfo:LFO Harmonic Series Harmonic series LFO with number of harmonics </option>
+                    <option value="162">lfo:LFO Lissajous Lissajous curve LFO with frequency ratio cont</option>
+                    <option value="163">lfo:LFO Collatz Collatz conjecture LFO with starting number r</option>
                 </select>
             </label>
         </div>
     </div>
-    <div style="margin: 20px 0;">
-        <!-- WebMIDI Controls -->
-        <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
-            <label>Play some notes 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
-                or choose a sequence Ableton Notes dictionary (JSON)
-                <div style="margin-bottom: 10px;">
-                    <select id="exampleSelect" style="padding: 5px; margin-right: 10px;"
-                            onchange="loadSelectedExample()">
-                        <option value="singleNote">Single Note</option>
-                        <option value="send2notes">Two Notes</option>
-                        <option value="send3notes">Three Notes</option>
-                        <option value="twinkle_twinkle">Twinkle Twinkle</option>
-                        <option value="three_blind_mice">Three Blind Mice</option>
-                        <option value="ferer_jaques">Frère Jacques</option>
-                        <option value="mary_little_lamb">Mary Had A Little Lamb</option>
-                        <option value="happy_birthday">Happy Birthday</option>
-                        <option value="happy_birthday_legatto">Happy Birthday (legatto)</option>
-                        <option value="baa_baa">Baa Baa Sheep</option>
-                        <option value="chord">Major Chord</option>
-                        <option value="arpeggio">Arpeggio Sequence</option>
-                        <option value="rhythmPattern">Rhythm Pattern</option>
-                        <option value="pentatonicScale">Pentatonic Scale (5 notes)</option>
-                        <option value="complexChord">Complex Chord (7 notes)</option>
-                        <option value="bassline">Bassline Pattern (8 notes)</option>
-                        <option value="melodicSequence">Melodic Sequence (10 notes)</option>
-                        <option value="polyrhythm">Polyrhythm Pattern (12 notes)</option>
-                        <option value="chromatic">Chromatic Run (12 notes)</option>
-                        <option value="jazzChordProgression">Jazz Chord Progression (16 notes)</option>
-                        <option value="complexArpeggio">Complex Arpeggio (20 notes)</option>
-                        <option value="minimalistPattern">Minimalist Pattern (24 notes)</option>
-                        <option value="orchestralStab">Orchestral Stab (32 notes)</option>
-                    </select>
-                    <br/>
-                    <textarea id="inputJson" rows="4" cols="80" style="font-family: monospace; font-size: 12px;"
-                              oninput="loadSelectedExample(); autoTransform()"></textarea>
-                </div>
-        </div>
-    </div>
 
     <div style="margin: 20px 0;">
         <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
-            Twiddle some encoders
-
             <div style="margin: 10px 0;">
                 <!-- Root Note input with MIDI name and dial -->
                 <div style="display: inline-block; margin: 10px; text-align: center;">
@@ -366,7 +345,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
                 <!-- Semitone with dial and number input -->
                 <div style="display: inline-block; margin: 10px; text-align: center;">
-                    <label>Semitone offset<br/>(inlet_1)</label><br>
+                    <label id="inlet_1_label">Semitone offset<br/>(inlet_1)</label><br>
                     <div class="dial-container"
                          style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
                         <svg width="60" height="60" class="dial-svg">
@@ -380,7 +359,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                         </svg>
                         <input type="range" id="semitone-dial" min="-127" max="127" value="0"
                                style="position: absolute; top: 0; left: 0; width: 60px; height: 60px; opacity: 0; cursor: pointer;"
-                               onchange="updateDial('semitone', this.value); autoTransform()"
+                               onchange="updateDial('semitone', this.value); autoTransform();"
                                oninput="updateDial('semitone', this.value); autoTransform()">
                     </div>
                     <input type="number" id="semitone" value="0" min="-127" max="127"
@@ -666,7 +645,46 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
     More things to play with...
     <br/>Banagaz: use the drop down and select to reassign some drums to MIDI notes instead of drums!
     <br/>Triggaz: will also detect twinkle twinkle little star and three blind mice
+    <br/>LFO: select an LFO pattern then set a MIDI CC using the semitone dial
 
+    <div style="margin: 20px 0;">
+        <!-- WebMIDI Controls -->
+        <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
+            <label>Play some notes 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
+                or choose a sequence Ableton Notes dictionary (JSON)
+                <div style="margin-bottom: 10px;">
+                    <select id="exampleSelect" style="padding: 5px; margin-right: 10px;"
+                            onchange="loadSelectedExample()">
+                        <option value="singleNote">Single Note</option>
+                        <option value="send2notes">Two Notes</option>
+                        <option value="send3notes">Three Notes</option>
+                        <option value="twinkle_twinkle">Twinkle Twinkle</option>
+                        <option value="three_blind_mice">Three Blind Mice</option>
+                        <option value="ferer_jaques">Frère Jacques</option>
+                        <option value="mary_little_lamb">Mary Had A Little Lamb</option>
+                        <option value="happy_birthday">Happy Birthday</option>
+                        <option value="happy_birthday_legatto">Happy Birthday (legatto)</option>
+                        <option value="baa_baa">Baa Baa Sheep</option>
+                        <option value="chord">Major Chord</option>
+                        <option value="arpeggio">Arpeggio Sequence</option>
+                        <option value="rhythmPattern">Rhythm Pattern</option>
+                        <option value="pentatonicScale">Pentatonic Scale (5 notes)</option>
+                        <option value="complexChord">Complex Chord (7 notes)</option>
+                        <option value="bassline">Bassline Pattern (8 notes)</option>
+                        <option value="melodicSequence">Melodic Sequence (10 notes)</option>
+                        <option value="polyrhythm">Polyrhythm Pattern (12 notes)</option>
+                        <option value="chromatic">Chromatic Run (12 notes)</option>
+                        <option value="jazzChordProgression">Jazz Chord Progression (16 notes)</option>
+                        <option value="complexArpeggio">Complex Arpeggio (20 notes)</option>
+                        <option value="minimalistPattern">Minimalist Pattern (24 notes)</option>
+                        <option value="orchestralStab">Orchestral Stab (32 notes)</option>
+                    </select>
+                    <br/>
+                    <textarea id="inputJson" rows="8" cols="80" style="font-family: monospace; font-size: 12px;"
+                              oninput="loadSelectedExample(); autoTransform()"></textarea>
+                </div>
+        </div>
+    </div>
     <textarea id="outputJson" rows="40" cols="80" style="font-family: monospace; font-size: 12px;" readonly></textarea>
 
     <table style="border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 12px;">
@@ -722,6 +740,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
 <h2>Download Max4Live Device Plugins</h2>
 <ul>
+    <li><a href="/emanator.html" download>Download this WebMIDI demo as easy to distribute single html page</a></li>
     <li><a href="kasm/Kasm DEMO.amxd" download>Kasm DEMO.amxd - Max4Live example running identical Rust code as this web
         page</a></li>
     <li><a href="kasm/Kasm Bangaz.amxd" download>Kasm Bangaz.amxd - Ableton Drum Rack drum sequencer/arpeggiator</a></li>
@@ -803,8 +822,15 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
     let autoTransformTimeout;
     let autoPlayTimeout;
 
+    // Global flag to prevent updateBang interference during radio button selections
+    let isRadioButtonSelection = false;
+
     function post(msg) {
         console.log(`kasm: post: ${msg}`);
+    }
+
+    function outlet_message(index, msg) {
+        outlet(index, msg, null);
     }
 
     function outlet(index, msg, data) {
@@ -932,7 +958,8 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
     }
 
     let midikeys_note = 60; // Default to C4 range 0-127
-    let midikeys_semitone = 0; // Default to middle octave -120 to +120
+    let midikeys_semitone_or_cc = 0; // Default to middle octave -120 to +120 or MIDI CC# 0
+    let midikeys_semitone_or_cc_offset = 0; // Default to middle octave -120 to +120 or MIDI CC# 0
     let midikeys_velocity = 100; // Default velocity range 0-127
     let activeKeys = new Set(); // Track currently pressed keys to avoid repeat
     let encodersChanged = true;
@@ -969,7 +996,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         if (encodersChanged) {
             encodersChanged = false;
             inlet = 1;
-            msg_int(midikeys_semitone);
+            msg_int(midikeys_semitone_or_cc + midikeys_semitone_or_cc_offset);
             inlet = 3;
             msg_int(document.getElementById('enc1').value);
             inlet = 4;
@@ -1002,7 +1029,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
         // Handle note keys (a-j with some letters for chromatic scale)
         if (keyboardMapping.hasOwnProperty(key)) {
-            midikeys_note = 60 + keyboardMapping[key] + midikeys_semitone;
+            midikeys_note = 60 + keyboardMapping[key] + midikeys_semitone_or_cc;
             midikeys_note = Math.max(0, Math.min(127, midikeys_note)); // Clamp to MIDI range
 
             // Send note with current velocity
@@ -1022,19 +1049,19 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         // Handle octave changes (z = down, x = up)
         if (key === 'z') {
             encodersChanged = true;
-            midikeys_semitone = Math.max(-120, midikeys_semitone - 12);
-            document.getElementById('semitone').value = midikeys_semitone;
-            updateDial('semitone', midikeys_semitone);
-            console.log(`kasm: Octave down: semitone offset = ${midikeys_semitone}`);
+            midikeys_semitone_or_cc = Math.max(-120, midikeys_semitone_or_cc - 12);
+            document.getElementById('semitone').value = midikeys_semitone_or_cc;
+            updateDial('semitone', midikeys_semitone_or_cc);
+            console.log(`kasm: Octave down: semitone offset = ${midikeys_semitone_or_cc}`);
             return;
         }
 
         if (key === 'x') {
             encodersChanged = true;
-            midikeys_semitone = Math.min(120, midikeys_semitone + 12);
-            document.getElementById('semitone').value = midikeys_semitone;
-            updateDial('semitone', midikeys_semitone);
-            console.log(`kasm: Octave up: semitone offset = ${midikeys_semitone}`);
+            midikeys_semitone_or_cc = Math.min(120, midikeys_semitone_or_cc + 12);
+            document.getElementById('semitone').value = midikeys_semitone_or_cc;
+            updateDial('semitone', midikeys_semitone_or_cc);
+            console.log(`kasm: Octave up: semitone offset = ${midikeys_semitone_or_cc}`);
             return;
         }
 
@@ -1068,7 +1095,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
         // Handle note keys - send note off
         if (keyboardMapping.hasOwnProperty(key)) {
-            const noteToStop = 60 + keyboardMapping[key] + midikeys_semitone;
+            const noteToStop = 60 + keyboardMapping[key] + midikeys_semitone_or_cc;
             const clampedNote = Math.max(0, Math.min(127, noteToStop));
 
             // Send note off with velocity 0
@@ -3101,9 +3128,9 @@ Velocity: C=down (-10), V=up (+10)
 
         // Initialize other components
         loadbang();
-        autoTransform();
         initializeDials();
         initializeNoteDisplay();
+        setTimeout(autoTransform, 200);
     }
 
     // Initialize application when page loads
@@ -3307,18 +3334,6 @@ Velocity: C=down (-10), V=up (+10)
         const stepHeight = 40;
         ctx.fillStyle = '#222';
         ctx.fillRect(0, baseY - stepHeight / 2, width, stepHeight);
-        for (let i = 0; i < steps; i++) {
-            ctx.fillStyle = i % 4 === 0 ? '#4CAF50' : '#888'; // Accent every 4th step
-            ctx.fillRect(i * stepWidth + 2, baseY - stepHeight / 2 + 2, stepWidth - 4, stepHeight - 4);
-            ctx.fillStyle = '#fff';
-            ctx.font = '14px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText(`${i + 1}`, i * stepWidth + stepWidth / 2, baseY + 5);
-        }
-        ctx.textAlign = 'center';
-        ctx.fillStyle = '#fff';
-        ctx.font = '16px Arial';
-        ctx.fillText('Step Sequence Pattern', width / 2, baseY - stepHeight);
     }
 
     function drawZoomInfo(ctx, width, height, minNote, maxNote, minNoteInData, maxNoteInData) {
@@ -3348,6 +3363,21 @@ Velocity: C=down (-10), V=up (+10)
         // Clear any existing timeout to debounce rapid changes
         clearTimeout(autoTransformTimeout);
         clearTimeout(autoPlayTimeout);
+
+        if (document.getElementById('inlet_5_emanator').value >= 148) {
+            document.getElementById('inlet_1_label').innerText = 'LFO CC#';
+            if (document.getElementById('semitone').value <= 0) {
+                // LFO modify modwheel by defulat if not set
+                document.getElementById('semitone').value = 1;
+                midikeys_semitone_or_cc_offset = 1;
+            }
+        } else {
+            document.getElementById('inlet_1_label').innerText = 'Semitone offset';
+            if (document.getElementById('semitone').value == 1) {
+                document.getElementById('semitone').value = 0;
+                midikeys_semitone_or_cc_offset = 0;
+            }
+        }
 
         const rateInput = document.getElementById('rateMs');
         const tempoInput = document.getElementById('tempo');
@@ -3453,6 +3483,10 @@ Velocity: C=down (-10), V=up (+10)
             updateNoteDisplay();
         }
 
+        if (encId === 'semitone') {
+            midikeys_semitone_or_cc_offset = value;
+        }
+
         // Handle different ranges for different controls
         if (encId === 'rate') {
             minValue = 30;
@@ -3481,7 +3515,7 @@ Velocity: C=down (-10), V=up (+10)
 
         // Update pointer rotation
         const pointer = document.getElementById(encId + '-pointer');
-        if (pointer) {
+        if (pointer && !isNaN(angle)) {
             pointer.setAttribute('transform', `rotate(${angle} 30 30)`);
         }
 
@@ -3925,6 +3959,10 @@ Velocity: C=down (-10), V=up (+10)
         const channel = (status & 0x0F) + 1; // Extract MIDI channel (1-16)
         const messageType = status & 0xF0; // Extract message type
 
+        if (!status || !data1 || !data2 || !messageType) {
+            return;
+        }
+
         // Log detailed MIDI message info
         console.log(`kasm: MIDI message from ${deviceType.toUpperCase()} "${deviceName}":`);
         console.log(`kasm:    Raw data: [${status}, ${data1}, ${data2}] (0x${status.toString(16)}, 0x${data1.toString(16)}, 0x${data2.toString(16)})`);
@@ -4167,7 +4205,7 @@ Velocity: C=down (-10), V=up (+10)
         const noteOnMsg = [0x90 + channel, pitch, velocity];
         currentMidiOutput.send(noteOnMsg);
 
-        const keyChar = Object.keys(keyboardMapping).find(k => 60 + keyboardMapping[k] + midikeys_semitone === pitch);
+        const keyChar = Object.keys(keyboardMapping).find(k => 60 + keyboardMapping[k] + midikeys_semitone_or_cc === pitch);
         if (keyChar) {
             const pianoKey = document.querySelector(`[data-key="${keyChar}"]`);
             if (pianoKey) {
@@ -4193,7 +4231,7 @@ Velocity: C=down (-10), V=up (+10)
         currentMidiOutput.send(noteOffMsg);
 
         // Restore SVG piano key color
-        const keyChar = Object.keys(keyboardMapping).find(k => 60 + keyboardMapping[k] + midikeys_semitone === pitch);
+        const keyChar = Object.keys(keyboardMapping).find(k => 60 + keyboardMapping[k] + midikeys_semitone_or_cc === pitch);
         if (keyChar) {
             const pianoKey = document.querySelector(`[data-key="${keyChar}"]`);
             if (pianoKey) {
@@ -4471,7 +4509,7 @@ Velocity: C=down (-10), V=up (+10)
             setTimeout(() => {
                 const emanator = parseInt(document.getElementById('inlet_5_emanator').value);
                 if (emanator >= 81 && emanator <= 83) {
-                    document.getElementById('inlet_5_emanator').value = '105';
+                    document.getElementById('inlet_5_emanator').value = '93';
                     document.getElementById('inlet_5_emanator').dispatchEvent(new Event('change'));
                     updateBang();
                 }
@@ -4699,8 +4737,8 @@ Velocity: C=down (-10), V=up (+10)
 
     function playPianoKey(noteOffset, keyChar) {
         const baseNote = 60; // Middle C
-        const currentOctave = Math.floor(midikeys_semitone / 12);
-        const finalNote = baseNote + noteOffset + midikeys_semitone;
+        const currentOctave = Math.floor(midikeys_semitone_or_cc / 12);
+        const finalNote = baseNote + noteOffset + midikeys_semitone_or_cc;
         const clampedNote = Math.max(0, Math.min(127, finalNote));
 
         // Visual feedback
@@ -4727,7 +4765,7 @@ Velocity: C=down (-10), V=up (+10)
 
     function stopPianoKey(noteOffset, keyChar) {
         const baseNote = 60;
-        const finalNote = baseNote + noteOffset + midikeys_semitone;
+        const finalNote = baseNote + noteOffset + midikeys_semitone_or_cc;
         const clampedNote = Math.max(0, Math.min(127, finalNote));
 
         // Visual feedback
@@ -4866,8 +4904,6 @@ Velocity: C=down (-10), V=up (+10)
                 }
             }
         }
-
-        console.log(`kasm: MIDI note ${midiNote} (${isNoteOn ? 'ON' : 'OFF'}) - base: ${baseNote}, relative: ${relativeNote}, mapped to key: ${keyChar || 'not visible'}`);
     }
 
     // Show pattern preview for drum: and loop: selections
