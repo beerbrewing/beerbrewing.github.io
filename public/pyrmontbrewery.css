@@ -72,7 +72,8 @@ p {
     background: #222;
     color: #fff;
     border: none; /* Remove border for ZX Spectrum authenticity */
-    padding: 8px;
+    padding: 20px;
+    padding-left: 24px;
     opacity: 1;
     border-radius: 0;
 }
@@ -158,6 +159,15 @@ button, input, select, textarea {
     margin: 4px 0;
 }
 
+select {
+    width: 100%;
+    min-width: 120px;
+    max-width: 400px;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    margin: 4px 0;
+}
+
 /* Make number input spinbox arrows visible with ZX Spectrum styling */
 input[type="number"] {
     padding-right: 20px; /* Make room for spinners */
@@ -226,7 +236,6 @@ h2 {
     font-size: var(--zx-16x16-character-size); /* Changed from 1.8em to exactly double */
     margin-top: 40px;
     margin-bottom: 20px;
-    border-bottom: 1px solid #333;
     padding-bottom: 10px;
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
 }
@@ -384,8 +393,6 @@ a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, 
 table {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
     font-size: var(--zx-8x8-character-size);
-    color: #fff;
-    background: #222;
     border-collapse: collapse;
     width: 90%;
     margin: 0 auto 8px auto;
@@ -406,19 +413,11 @@ tbody {
 th, td {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
     font-size: var(--zx-8x8-character-size);
-    color: #fff;
-    background: #222;
     padding: 8px;
     text-align: left;
     border: none;
     border-radius: 0;
     line-height: 1.5;
-}
-
-th {
-    color: #00ff00; /* Green headers like h1 */
-    font-weight: bold;
-    border-bottom: 2px solid #00f; /* Blue border like headings */
 }
 
 caption {
@@ -428,6 +427,13 @@ caption {
     background: #222;
     padding: 8px;
     border-radius: 0;
+}
+
+.webmidi-controls {
+    margin: 20px 0;
+    padding: 200px;
+    background: #f9f9f9;
+    border-radius: 4px;
 }
 
 @media (max-width: 768px) {
