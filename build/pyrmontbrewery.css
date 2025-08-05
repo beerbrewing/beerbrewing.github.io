@@ -33,7 +33,7 @@
 /* ABSOLUTE ZX SPECTRUM FONT SIZE ENFORCEMENT - No exceptions allowed */
 * {
     font-size: calc(var(--spectrum-unit) * 2) !important;
-    font-family: 'Courier New', monospace !important;
+    font-family: 'pyrmont_brewery', monospace !important;
     line-height: 1.2 !important;
 }
 
@@ -43,10 +43,6 @@ svg text {
     font-family: 'Courier New', monospace !important;
 }
 
-/* Force override any inline font-size styles */
-[style*="font-size"] {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-}
 
 /* Specific overrides for different content types */
 body {
@@ -174,7 +170,7 @@ body {
     margin-left: 9.7vw;
     margin-top: 0;
     padding: 0;
-    font-family: 'Courier New', monospace;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
     box-sizing: border-box;
     width: calc(79.6vw);
 }
