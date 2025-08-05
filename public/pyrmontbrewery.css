@@ -5,9 +5,14 @@
     font-display: swap;
 }
 
+:root {
+    --zx-base-font-size: 18px;
+    --zx-double-font-size: 36px;
+}
+
 html {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
-    font-size: 18px;
+    font-size: var(--zx-base-font-size);
     line-height: 1.5;
     overflow-x: hidden;
     scroll-behavior: auto;
@@ -19,11 +24,11 @@ html {
 body {
     background-color: #1a1a1a;
     color: #fff;
-
     margin-left: 9.7vw;
     margin-top: 0;
     padding: 0;
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
     box-sizing: border-box;
     width: calc(79.6vw);
 }
@@ -81,7 +86,7 @@ ul, ol {
     padding: 18px 24px; /* Reduce horizontal padding for tighter look */
     border-radius: 0;
     list-style-position: inside;
-    font-size: 1em; /* Match regular text size for ZX Spectrum style */
+    font-size: var(--zx-base-font-size);
 }
 ul {
     list-style-type: square;
@@ -94,10 +99,10 @@ li {
     padding: 2px 0;
     border-bottom: none; /* Remove grid line for ZX Spectrum authenticity */
     border-radius: 0;
-    font-size: 1em; /* Match regular text size for ZX Spectrum style */
+    font-size: var(--zx-base-font-size);
 }
 ul li::marker {
-    font-size: 2em; /* Large marker for ZX Spectrum style */
+    font-size: var(--zx-double-font-size); /* Exactly double for ZX Spectrum style */
     color: #00ffff;
     font-weight: bold;
     content: "■ ";
@@ -142,7 +147,7 @@ img {
 
 button, input, select, textarea {
     font-family: 'DejaVu Sans Mono', monospace;
-    font-size: 18px;
+    font-size: var(--zx-base-font-size);
     background: #222;
     color: #fff;
     border: 2px solid #fff;
@@ -188,6 +193,22 @@ h1, h2, h3 {
     border-bottom: 14px solid #00f;
     padding: 8px;
     border-radius: 0;
+}
+
+h1 {
+    color: #00ff00;
+    font-size: var(--zx-double-font-size); /* Changed from 2.5em to exactly double */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #ff00ff;
+    font-size: var(--zx-double-font-size); /* Changed from 1.8em to exactly double */
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
 }
 
 /* Keyboard navigation help */
@@ -301,7 +322,7 @@ a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, 
     background: rgba(0, 0, 0, 0.8);
     padding: 15px;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: var(--zx-base-font-size); /* Changed from 14px to consistent base size */
     max-width: 300px;
     z-index: 10;
     color: white;
@@ -323,35 +344,6 @@ a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, 
     box-shadow: 0 2px 16px rgba(0,0,0,0.2);
 }
 
-h1 {
-    color: #00ff00;
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-h2 {
-    color: #ff00ff;
-    font-size: 1.8em;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background: rgba(0, 0, 0, 0.3);
-    margin: 8px 0;
-    padding: 12px 16px;
-    border-left: 3px solid #00ffff;
-    border-radius: 4px;
-}
-
 @media (max-width: 768px) {
     .canvas-container {
         height: 50vh;
@@ -359,7 +351,7 @@ li {
     }
 
     h1 {
-        font-size: 2em;
+        font-size: var(--zx-double-font-size); /* Changed from 2em to consistent double */
     }
 
     .info-overlay {
