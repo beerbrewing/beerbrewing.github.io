@@ -5,157 +5,15 @@
     font-display: swap;
 }
 
-/* ZX Spectrum 8-bit Font System and Color Palette */
 :root {
-    --spectrum-unit: 8px;
-
-    /* ZX Spectrum Authentic Color Palette */
-    --zx-black: #000000;
-    --zx-blue: #0000cd;
-    --zx-red: #cd0000;
-    --zx-magenta: #cd00cd;
-    --zx-green: #00cd00;
-    --zx-cyan: #00cdcd;
-    --zx-yellow: #cdcd00;
-    --zx-white: #cdcdcd;
-
-    /* Bright variants */
-    --zx-bright-black: #000000;
-    --zx-bright-blue: #0000ff;
-    --zx-bright-red: #ff0000;
-    --zx-bright-magenta: #ff00ff;
-    --zx-bright-green: #00ff00;
-    --zx-bright-cyan: #00ffff;
-    --zx-bright-yellow: #ffff00;
-    --zx-bright-white: #ffffff;
+    --zx-base-font-size: 18px;
+    --zx-double-font-size: 36px;
 }
-
-/* ABSOLUTE ZX SPECTRUM FONT SIZE ENFORCEMENT - No exceptions allowed */
-* {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-    font-family: 'pyrmont_brewery', monospace !important;
-    line-height: 1.2 !important;
-}
-
-/* SVG text elements must conform to ZX Spectrum sizing */
-svg text {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-    font-family: 'Courier New', monospace !important;
-}
-
-
-/* Specific overrides for different content types */
-body {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-    background: #000;
-    color: #fff;
-}
-
-/* Tables maintain consistency */
-table, td, th {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-    border-spacing: 0;
-}
-
-/* Links and interactive elements */
-a {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-    color: #ffff00; /* ZX Spectrum yellow */
-}
-
-/* No text smaller than base unit - EVER */
-small, .small {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-}
-
-/* Form elements */
-input, button, select, textarea, option {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-    font-family: 'Courier New', monospace !important;
-}
-
-/* All headings use spectrum units */
-h1, h2, h3, h4, h5, h6 {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-    font-family: 'Courier New', monospace !important;
-}
-
-/* Lists and markers */
-ul, ol, li {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-}
-
-ul li::marker, ol li::marker {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-}
-
-/* Divs and spans must conform */
-div, span, p {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-}
-
-/* Label elements */
-label {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-}
-
-/* Media queries override prevention */
-@media (max-width: 768px) {
-    * {
-        font-size: calc(var(--spectrum-unit) * 2) !important;
-    }
-
-    svg text {
-        font-size: calc(var(--spectrum-unit) * 2) !important;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        font-size: calc(var(--spectrum-unit) * 2) !important;
-    }
-}
-
-/* ZX Spectrum Color Enforcement */
-.zx-spectrum {
-    --paper: var(--zx-black);
-    --ink: var(--zx-white);
-    --bright: 0;
-    --flash: 0;
-}
-
-/* Standard color classes */
-.zx-color-0 { color: var(--zx-black); }
-.zx-color-1 { color: var(--zx-blue); }
-.zx-color-2 { color: var(--zx-red); }
-.zx-color-3 { color: var(--zx-magenta); }
-.zx-color-4 { color: var(--zx-green); }
-.zx-color-5 { color: var(--zx-cyan); }
-.zx-color-6 { color: var(--zx-yellow); }
-.zx-color-7 { color: var(--zx-white); }
-
-/* Bright variants */
-.zx-bright-0 { color: var(--zx-bright-black); }
-.zx-bright-1 { color: var(--zx-bright-blue); }
-.zx-bright-2 { color: var(--zx-bright-red); }
-.zx-bright-3 { color: var(--zx-bright-magenta); }
-.zx-bright-4 { color: var(--zx-bright-green); }
-.zx-bright-5 { color: var(--zx-bright-cyan); }
-.zx-bright-6 { color: var(--zx-bright-yellow); }
-.zx-bright-7 { color: var(--zx-bright-white); }
-
-/* Background colors (PAPER) */
-.zx-paper-0 { background-color: var(--zx-black); }
-.zx-paper-1 { background-color: var(--zx-blue); }
-.zx-paper-2 { background-color: var(--zx-red); }
-.zx-paper-3 { background-color: var(--zx-magenta); }
-.zx-paper-4 { background-color: var(--zx-green); }
-.zx-paper-5 { background-color: var(--zx-cyan); }
-.zx-paper-6 { background-color: var(--zx-yellow); }
-.zx-paper-7 { background-color: var(--zx-white); }
 
 html {
-    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace !important;
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-    line-height: 1.2;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
+    line-height: 1.5;
     overflow-x: hidden;
     scroll-behavior: auto;
     background-size: cover;
@@ -164,13 +22,13 @@ html {
 }
 
 body {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-    background: var(--zx-black);
-    color: var(--zx-bright-white);
+    background-color: #1a1a1a;
+    color: #fff;
     margin-left: 9.7vw;
     margin-top: 0;
     padding: 0;
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
     box-sizing: border-box;
     width: calc(79.6vw);
 }
@@ -228,7 +86,7 @@ ul, ol {
     padding: 18px 24px; /* Reduce horizontal padding for tighter look */
     border-radius: 0;
     list-style-position: inside;
-    font-size: calc(var(--spectrum-unit) * 2) !important; /* ZX Spectrum compliant */
+    font-size: var(--zx-base-font-size);
 }
 ul {
     list-style-type: square;
@@ -241,10 +99,10 @@ li {
     padding: 2px 0;
     border-bottom: none; /* Remove grid line for ZX Spectrum authenticity */
     border-radius: 0;
-    font-size: calc(var(--spectrum-unit) * 2) !important; /* ZX Spectrum compliant */
+    font-size: var(--zx-base-font-size);
 }
 ul li::marker {
-    font-size: calc(var(--spectrum-unit) * 2) !important; /* ZX Spectrum compliant */
+    font-size: var(--zx-double-font-size); /* Exactly double for ZX Spectrum style */
     color: #00ffff;
     font-weight: bold;
     content: "■ ";
@@ -260,8 +118,7 @@ ul li, ol li {
 
 /* Accessibility: high contrast focus, readable links, alt text for images */
 a {
-    font-size: calc(var(--spectrum-unit) * 2) !important;
-    color: var(--zx-bright-yellow);
+    color: #ff0;
     background: #222;
     border-width: 0 !important;
     border-style: none !important;
@@ -269,15 +126,17 @@ a {
     border-radius: 0;
     font-weight: bold;
     text-decoration: none !important;
-    height: calc(1em + 3px); /* Make non-flashing links taller by 3px */
     display: inline-block;
+    vertical-align: baseline;
+    line-height: 1.5;
 }
 a:focus, a:hover {
     animation: zx-flash 1s steps(1, end) infinite;
-    outline: 3px solid var(--zx-bright-green);
-    color: var(--zx-bright-cyan);
-    height: calc(1em + 3px); /* Make flashing links taller by 3px */
+    outline: 3px solid #0f0;
+    color: #fff;
     display: inline-block;
+    vertical-align: baseline;
+    line-height: 1.5;
 }
 
 img {
@@ -289,8 +148,8 @@ img {
 }
 
 button, input, select, textarea {
-    font-family: 'DejaVu Sans Mono', monospace;
-    font-size: calc(var(--spectrum-unit) * 2) !important; /* ZX Spectrum compliant */
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Changed from 'DejaVu Sans Mono' only */
+    font-size: var(--zx-base-font-size);
     background: #222;
     color: #fff;
     border: 2px solid #fff;
@@ -298,10 +157,37 @@ button, input, select, textarea {
     padding: 6px 12px;
     margin: 4px 0;
 }
-button:focus, input:focus, select:focus, textarea:focus {
-    outline: 3px solid #ff0;
-    background: #000;
-    color: #fff;
+
+/* Make number input spinbox arrows visible with ZX Spectrum styling */
+input[type="number"] {
+    padding-right: 20px; /* Make room for spinners */
+    text-align: right;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    opacity: 1;
+    height: 20px;
+    width: 16px;
+    background: #00ff00;
+    cursor: pointer;
+    border-radius: 0;
+    margin: 0;
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Firefox spinner support */
+input[type="number"] {
+    -moz-appearance: textfield;
+    position: relative;
+}
+
+input[type="number"]::-moz-number-spinner {
+    opacity: 1;
+    background: #00ff00;
 }
 
 ::-webkit-scrollbar {
@@ -336,6 +222,41 @@ h1, h2, h3 {
     border-bottom: 14px solid #00f;
     padding: 8px;
     border-radius: 0;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
+}
+
+h1 {
+    color: #00ff00;
+    font-size: var(--zx-double-font-size); /* Changed from 2.5em to exactly double */
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
+}
+
+h2 {
+    color: #ff00ff;
+    font-size: var(--zx-double-font-size); /* Changed from 1.8em to exactly double */
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
+}
+
+h3 {
+    color: #00ffff;
+    font-size: var(--zx-base-font-size); /* Consistent base size */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
+}
+
+h4, h5, h6 {
+    color: #ffff00;
+    font-size: var(--zx-base-font-size); /* Consistent base size */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
 }
 
 /* Keyboard navigation help */
@@ -376,8 +297,9 @@ a:hover, a:focus {
     animation: zx-flash 1s steps(1, end) infinite;
     outline: 3px solid #0f0;
     color: #fff;
-    height: calc(1em + 3px); /* Make flashing links taller by 3px */
     display: inline-block;
+    vertical-align: baseline;
+    line-height: 1.5;
 }
 
 /* ZX Spectrum video background */
@@ -413,17 +335,16 @@ a:hover, a:focus {
 
 a, .App-link, .App-link2, .App-link3, .Beer-link, .YourBeer-link {
     display: inline-block;
-    min-height: 1em;
-    line-height: calc(1em + 2px);
-    vertical-align: middle;
-    height: calc(1em + 2px);
+    vertical-align: baseline;
+    line-height: 1.5;
 }
 
 a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, .YourBeer-link:hover {
-    height: calc(1em + 2px);
     outline: none;
     box-shadow: none;
     border: none;
+    vertical-align: baseline;
+    line-height: 1.5;
 }
 
 .canvas-container {
@@ -449,11 +370,12 @@ a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, 
     background: rgba(0, 0, 0, 0.8);
     padding: 15px;
     border-radius: 8px;
-    font-size: calc(var(--spectrum-unit) * 2) !important; /* ZX Spectrum compliant */
+    font-size: var(--zx-base-font-size); /* Changed from 14px to consistent base size */
     max-width: 300px;
     z-index: 10;
     color: white;
     border: 1px solid #333;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
 }
 
 .content-wrapper {
@@ -471,39 +393,56 @@ a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, 
     box-shadow: 0 2px 16px rgba(0,0,0,0.2);
 }
 
-/* Override problematic heading font sizes */
-h1 {
-    color: #00ff00;
-    font-size: calc(var(--spectrum-unit) * 2) !important; /* ZX Spectrum compliant */
-    margin-bottom: 20px;
-    text-align: center;
+/* Table styling for consistent font sizing */
+table {
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
+    color: #fff;
+    background: #222;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto 8px auto;
+    border: none;
+    border-radius: 0;
 }
 
-h2 {
-    color: #ff00ff;
-    font-size: calc(var(--spectrum-unit) * 2) !important; /* ZX Spectrum compliant */
-    margin-top: 40px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
+thead {
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
 }
 
-/* Override list styles to be ZX Spectrum compliant */
-ul {
-    list-style-type: none;
-    padding: 0;
+tbody {
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
 }
 
-li {
-    background: rgba(0, 0, 0, 0.3);
-    margin: 8px 0;
-    padding: 12px 16px;
-    border-left: 3px solid #00ffff;
-    border-radius: 4px;
-    font-size: calc(var(--spectrum-unit) * 2) !important; /* ZX Spectrum compliant */
+th, td {
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
+    color: #fff;
+    background: #222;
+    padding: 8px;
+    text-align: left;
+    border: none;
+    border-radius: 0;
+    line-height: 1.5;
 }
 
-/* Media query overrides to maintain ZX Spectrum font sizing */
+th {
+    color: #00ff00; /* Green headers like h1 */
+    font-weight: bold;
+    border-bottom: 2px solid #00f; /* Blue border like headings */
+}
+
+caption {
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
+    color: #fff;
+    background: #222;
+    padding: 8px;
+    border-radius: 0;
+}
+
 @media (max-width: 768px) {
     .canvas-container {
         height: 50vh;
@@ -511,17 +450,12 @@ li {
     }
 
     h1 {
-        font-size: calc(var(--spectrum-unit) * 2) !important; /* ZX Spectrum compliant */
-    }
-
-    h2 {
-        font-size: calc(var(--spectrum-unit) * 2) !important; /* ZX Spectrum compliant */
+        font-size: var(--zx-double-font-size); /* Changed from 2em to consistent double */
     }
 
     .info-overlay {
         position: relative;
         margin: 20px;
         max-width: none;
-        font-size: calc(var(--spectrum-unit) * 2) !important; /* ZX Spectrum compliant */
     }
 }

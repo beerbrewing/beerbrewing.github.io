@@ -4247,8 +4247,8 @@ Velocity: C=down (-10), V=up (+10)
             midiOutputs.forEach((output, index) => {
                 const option = document.createElement('option');
                 option.value = index;
-                const statusIcon = output.state === 'connected' ? '🟢' : '🔴';
-                const connectionIcon = output.connection === 'open' ? '🔗' : '🔌';
+                const statusIcon = output.state === 'connected' ? '🟩' : '🟥';
+                const connectionIcon = output.connection === 'open' ? '🟩' : '🟪';
                 option.textContent = `${statusIcon}${connectionIcon} OUTPUT: ${output.name} (${output.manufacturer || 'Unknown'}) - ${output.state}`;
 
                 // Style based on device state

@@ -126,15 +126,17 @@ a {
     border-radius: 0;
     font-weight: bold;
     text-decoration: none !important;
-    height: calc(1em + 3px); /* Make non-flashing links taller by 3px */
     display: inline-block;
+    vertical-align: baseline;
+    line-height: 1.5;
 }
 a:focus, a:hover {
     animation: zx-flash 1s steps(1, end) infinite;
     outline: 3px solid #0f0;
     color: #fff;
-    height: calc(1em + 3px); /* Make flashing links taller by 3px */
     display: inline-block;
+    vertical-align: baseline;
+    line-height: 1.5;
 }
 
 img {
@@ -146,7 +148,7 @@ img {
 }
 
 button, input, select, textarea {
-    font-family: 'DejaVu Sans Mono', monospace;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Changed from 'DejaVu Sans Mono' only */
     font-size: var(--zx-base-font-size);
     background: #222;
     color: #fff;
@@ -155,10 +157,37 @@ button, input, select, textarea {
     padding: 6px 12px;
     margin: 4px 0;
 }
-button:focus, input:focus, select:focus, textarea:focus {
-    outline: 3px solid #ff0;
-    background: #000;
-    color: #fff;
+
+/* Make number input spinbox arrows visible with ZX Spectrum styling */
+input[type="number"] {
+    padding-right: 20px; /* Make room for spinners */
+    text-align: right;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    opacity: 1;
+    height: 20px;
+    width: 16px;
+    background: #00ff00;
+    cursor: pointer;
+    border-radius: 0;
+    margin: 0;
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Firefox spinner support */
+input[type="number"] {
+    -moz-appearance: textfield;
+    position: relative;
+}
+
+input[type="number"]::-moz-number-spinner {
+    opacity: 1;
+    background: #00ff00;
 }
 
 ::-webkit-scrollbar {
@@ -193,6 +222,7 @@ h1, h2, h3 {
     border-bottom: 14px solid #00f;
     padding: 8px;
     border-radius: 0;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
 }
 
 h1 {
@@ -200,6 +230,7 @@ h1 {
     font-size: var(--zx-double-font-size); /* Changed from 2.5em to exactly double */
     margin-bottom: 20px;
     text-align: center;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
 }
 
 h2 {
@@ -209,6 +240,23 @@ h2 {
     margin-bottom: 20px;
     border-bottom: 1px solid #333;
     padding-bottom: 10px;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
+}
+
+h3 {
+    color: #00ffff;
+    font-size: var(--zx-base-font-size); /* Consistent base size */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
+}
+
+h4, h5, h6 {
+    color: #ffff00;
+    font-size: var(--zx-base-font-size); /* Consistent base size */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
 }
 
 /* Keyboard navigation help */
@@ -249,8 +297,9 @@ a:hover, a:focus {
     animation: zx-flash 1s steps(1, end) infinite;
     outline: 3px solid #0f0;
     color: #fff;
-    height: calc(1em + 3px); /* Make flashing links taller by 3px */
     display: inline-block;
+    vertical-align: baseline;
+    line-height: 1.5;
 }
 
 /* ZX Spectrum video background */
@@ -286,17 +335,16 @@ a:hover, a:focus {
 
 a, .App-link, .App-link2, .App-link3, .Beer-link, .YourBeer-link {
     display: inline-block;
-    min-height: 1em;
-    line-height: calc(1em + 2px);
-    vertical-align: middle;
-    height: calc(1em + 2px);
+    vertical-align: baseline;
+    line-height: 1.5;
 }
 
 a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, .YourBeer-link:hover {
-    height: calc(1em + 2px);
     outline: none;
     box-shadow: none;
     border: none;
+    vertical-align: baseline;
+    line-height: 1.5;
 }
 
 .canvas-container {
@@ -327,6 +375,7 @@ a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, 
     z-index: 10;
     color: white;
     border: 1px solid #333;
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
 }
 
 .content-wrapper {
@@ -342,6 +391,56 @@ a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, 
     background: rgba(40,44,52,0.95);
     border-radius: 12px;
     box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+}
+
+/* Table styling for consistent font sizing */
+table {
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
+    color: #fff;
+    background: #222;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto 8px auto;
+    border: none;
+    border-radius: 0;
+}
+
+thead {
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
+}
+
+tbody {
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
+}
+
+th, td {
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
+    color: #fff;
+    background: #222;
+    padding: 8px;
+    text-align: left;
+    border: none;
+    border-radius: 0;
+    line-height: 1.5;
+}
+
+th {
+    color: #00ff00; /* Green headers like h1 */
+    font-weight: bold;
+    border-bottom: 2px solid #00f; /* Blue border like headings */
+}
+
+caption {
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
+    font-size: var(--zx-base-font-size);
+    color: #fff;
+    background: #222;
+    padding: 8px;
+    border-radius: 0;
 }
 
 @media (max-width: 768px) {
