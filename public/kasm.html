@@ -95,7 +95,7 @@
     <!-- WebMIDI Controls -->
     <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
         Connect to your MIDI device... (you might need a <a href="https://help.ableton.com/hc/en-us/articles/209774225-Setting-up-a-virtual-MIDI-bus
-" target="_blank">network loop</a>)
+" target="_blank">virtual MIDI bus</a>)
         <div style="margin-bottom: 10px;">
             <label>
                 <select id="midiOutputSelect" style="padding: 3px; margin-left: 10px;">
@@ -127,12 +127,10 @@
                 <input type="number" id="tempo" value="120" min="20" max="999" style="width: 60px; margin-left: 10px;">
             </label>
             <button id="playMidi"
-                    style="padding: 5px 15px; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                ▶
+                    style="padding: 5px 15px; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer;">&gt;
             </button>
             <button id="stopMidi"
-                    style="padding: 5px 15px; background: #f44336; color: white; border: none; cursor: pointer; margin-left: 10px;">
-                ⏹
+                    style="padding: 5px 15px; background: #f44336; color: white; border: none; cursor: pointer; margin-left: 10px;">!
             </button>
             <span id="playbackStatus" style="margin-left: 15px; font-weight: bold;"></span>
         </div>
@@ -653,8 +651,8 @@
                 </g>
             </svg>
         </div>
-        <div style="margin-top: 10px; font-size: 12px; color: #666;">
-            Notes: a-' keys |
+        <div>
+            KEYS: Play notes: a-' |
             Octave: z=down, x=up |
             Velocity: c=down, v=up
         </div>
@@ -915,6 +913,7 @@
 </table>
 
 <br/><br/>
+<a href="https://en.wikipedia.org/wiki/ZX_Spectrum" target="_blank>"><h1>&nbsp;START THE TAPE&nbsp;</h1></a>
 <br/><br/>
 &copy; 2007 Pyrmont Brewery
 <br/><br/>

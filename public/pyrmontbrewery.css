@@ -6,13 +6,13 @@
 }
 
 :root {
-    --zx-base-font-size: 18px;
-    --zx-double-font-size: 36px;
+    --zx-8x8-character-size: 18px;
+    --zx-16x16-character-size: 36px;
 }
 
 html {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
-    font-size: var(--zx-base-font-size);
+    font-size: var(--zx-8x8-character-size);
     line-height: 1.5;
     overflow-x: hidden;
     scroll-behavior: auto;
@@ -28,7 +28,7 @@ body {
     margin-top: 0;
     padding: 0;
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
-    font-size: var(--zx-base-font-size);
+    font-size: var(--zx-8x8-character-size);
     box-sizing: border-box;
     width: calc(79.6vw);
 }
@@ -86,7 +86,7 @@ ul, ol {
     padding: 18px 24px; /* Reduce horizontal padding for tighter look */
     border-radius: 0;
     list-style-position: inside;
-    font-size: var(--zx-base-font-size);
+    font-size: var(--zx-8x8-character-size);
 }
 ul {
     list-style-type: square;
@@ -99,10 +99,10 @@ li {
     padding: 2px 0;
     border-bottom: none; /* Remove grid line for ZX Spectrum authenticity */
     border-radius: 0;
-    font-size: var(--zx-base-font-size);
+    font-size: var(--zx-8x8-character-size);
 }
 ul li::marker {
-    font-size: var(--zx-double-font-size); /* Exactly double for ZX Spectrum style */
+    font-size: var(--zx-16x16-character-size); /* Exactly double for ZX Spectrum style */
     color: #00ffff;
     font-weight: bold;
     content: "■ ";
@@ -149,7 +149,7 @@ img {
 
 button, input, select, textarea {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Changed from 'DejaVu Sans Mono' only */
-    font-size: var(--zx-base-font-size);
+    font-size: var(--zx-8x8-character-size);
     background: #222;
     color: #fff;
     border: 2px solid #fff;
@@ -215,27 +215,15 @@ input[type="number"]::-moz-number-spinner {
     box-shadow: 0 0 0 8px #00ff00, 0 0 0 16px #0000ff;
 }
 
-/* Headings with ZX Spectrum colors */
-h1, h2, h3 {
-    color: #0f0;
-    background: #222;
-    border-bottom: 14px solid #00f;
-    padding: 8px;
-    border-radius: 0;
-    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
-}
-
 h1 {
-    color: #00ff00;
-    font-size: var(--zx-double-font-size); /* Changed from 2.5em to exactly double */
+    font-size: var(--zx-16x16-character-size); /* Changed from 2.5em to exactly double */
     margin-bottom: 20px;
     text-align: center;
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
 }
 
 h2 {
-    color: #ff00ff;
-    font-size: var(--zx-double-font-size); /* Changed from 1.8em to exactly double */
+    font-size: var(--zx-16x16-character-size); /* Changed from 1.8em to exactly double */
     margin-top: 40px;
     margin-bottom: 20px;
     border-bottom: 1px solid #333;
@@ -245,15 +233,14 @@ h2 {
 
 h3 {
     color: #00ffff;
-    font-size: var(--zx-base-font-size); /* Consistent base size */
+    font-size: var(--zx-8x8-character-size); /* Consistent base size */
     margin-top: 30px;
     margin-bottom: 15px;
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
 }
 
 h4, h5, h6 {
-    color: #ffff00;
-    font-size: var(--zx-base-font-size); /* Consistent base size */
+    font-size: var(--zx-8x8-character-size); /* Consistent base size */
     margin-top: 20px;
     margin-bottom: 10px;
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace; /* Ensure consistent font */
@@ -370,7 +357,7 @@ a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, 
     background: rgba(0, 0, 0, 0.8);
     padding: 15px;
     border-radius: 8px;
-    font-size: var(--zx-base-font-size); /* Changed from 14px to consistent base size */
+    font-size: var(--zx-8x8-character-size); /* Changed from 14px to consistent base size */
     max-width: 300px;
     z-index: 10;
     color: white;
@@ -396,7 +383,7 @@ a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, 
 /* Table styling for consistent font sizing */
 table {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
-    font-size: var(--zx-base-font-size);
+    font-size: var(--zx-8x8-character-size);
     color: #fff;
     background: #222;
     border-collapse: collapse;
@@ -408,17 +395,17 @@ table {
 
 thead {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
-    font-size: var(--zx-base-font-size);
+    font-size: var(--zx-8x8-character-size);
 }
 
 tbody {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
-    font-size: var(--zx-base-font-size);
+    font-size: var(--zx-8x8-character-size);
 }
 
 th, td {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
-    font-size: var(--zx-base-font-size);
+    font-size: var(--zx-8x8-character-size);
     color: #fff;
     background: #222;
     padding: 8px;
@@ -436,7 +423,7 @@ th {
 
 caption {
     font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
-    font-size: var(--zx-base-font-size);
+    font-size: var(--zx-8x8-character-size);
     color: #fff;
     background: #222;
     padding: 8px;
@@ -450,7 +437,7 @@ caption {
     }
 
     h1 {
-        font-size: var(--zx-double-font-size); /* Changed from 2em to consistent double */
+        font-size: var(--zx-16x16-character-size); /* Changed from 2em to consistent double */
     }
 
     .info-overlay {
