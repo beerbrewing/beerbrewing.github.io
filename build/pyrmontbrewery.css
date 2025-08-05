@@ -30,16 +30,27 @@
     --zx-bright-white: #ffffff;
 }
 
-/* Reset all text to spectrum-compliant sizes */
+/* ABSOLUTE ZX SPECTRUM FONT SIZE ENFORCEMENT - No exceptions allowed */
 * {
     font-size: calc(var(--spectrum-unit) * 2) !important;
     font-family: 'Courier New', monospace !important;
     line-height: 1.2 !important;
 }
 
+/* SVG text elements must conform to ZX Spectrum sizing */
+svg text {
+    font-size: calc(var(--spectrum-unit) * 2) !important;
+    font-family: 'Courier New', monospace !important;
+}
+
+/* Force override any inline font-size styles */
+[style*="font-size"] {
+    font-size: calc(var(--spectrum-unit) * 2) !important;
+}
+
 /* Specific overrides for different content types */
 body {
-    font-size: calc(var(--spectrum-unit) * 2);
+    font-size: calc(var(--spectrum-unit) * 2) !important;
     background: #000;
     color: #fff;
 }
@@ -56,7 +67,7 @@ a {
     color: #ffff00; /* ZX Spectrum yellow */
 }
 
-/* No text smaller than base unit */
+/* No text smaller than base unit - EVER */
 small, .small {
     font-size: calc(var(--spectrum-unit) * 2) !important;
 }
@@ -78,13 +89,27 @@ ul, ol, li {
     font-size: calc(var(--spectrum-unit) * 2) !important;
 }
 
-ul li::marker {
+ul li::marker, ol li::marker {
+    font-size: calc(var(--spectrum-unit) * 2) !important;
+}
+
+/* Divs and spans must conform */
+div, span, p {
+    font-size: calc(var(--spectrum-unit) * 2) !important;
+}
+
+/* Label elements */
+label {
     font-size: calc(var(--spectrum-unit) * 2) !important;
 }
 
 /* Media queries override prevention */
 @media (max-width: 768px) {
     * {
+        font-size: calc(var(--spectrum-unit) * 2) !important;
+    }
+
+    svg text {
         font-size: calc(var(--spectrum-unit) * 2) !important;
     }
 
@@ -132,8 +157,8 @@ ul li::marker {
 .zx-paper-7 { background-color: var(--zx-white); }
 
 html {
-    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace;
-    font-size: calc(var(--spectrum-unit) * 2);
+    font-family: 'pyrmont_brewery', 'DejaVu Sans Mono', monospace !important;
+    font-size: calc(var(--spectrum-unit) * 2) !important;
     line-height: 1.2;
     overflow-x: hidden;
     scroll-behavior: auto;
@@ -143,7 +168,7 @@ html {
 }
 
 body {
-    font-size: calc(var(--spectrum-unit) * 2);
+    font-size: calc(var(--spectrum-unit) * 2) !important;
     background: var(--zx-black);
     color: var(--zx-bright-white);
     margin-left: 9.7vw;
