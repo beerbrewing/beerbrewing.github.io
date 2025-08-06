@@ -335,15 +335,8 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         </div>
     </div>
 
-    <canvas id="kasmWebGPU" width="800" height="150" style="
-        width: 800px;
-        height: 150px;
-        border: 2px solid #333;
-        background: #000;
-        display: block;
-        margin: 10px 0;
-    "></canvas>
-    
+    <canvas id="kasmWebGPU"></canvas>
+
     <div style="margin: 20px 0;">
         <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
             <div style="margin: 10px 0;">
@@ -3123,7 +3116,8 @@ Velocity: C=down (-10), V=up (+10)
                 const canvas = document.getElementById('kasmWebGPU');
                 if (canvas) {
                     if (typeof kasm_rust.init_kasm_webgpu === 'function') {
-                        kasm_rust.init_kasm_webgpu(canvas.width, canvas.height);
+                        const rect = canvas.getBoundingClientRect();
+                        kasm_rust.init_kasm_webgpu(rect.width, rect.height);
                         console.log('kasm: WebGPU canvas initialized successfully width=' + canvas.width + ' height=' + canvas.height);
                     } else {
                         console.warn('kasm: init_kasm_webgpu function not available');
