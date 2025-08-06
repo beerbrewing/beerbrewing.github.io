@@ -1,0 +1,165 @@
+<!--
+ * Copyright (c) Pyrmont Brewery 2025
+ * Author: Kevin Staunton-Lambert
+ * Minimalist embedded version - Canvas only
+-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="kasm/kasm_WASM_rust_obs.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="kasmWebGPU" width="150" height="150" style="
+        width: 150px;
+        height: 150px;
+        border: 2px solid #333;
+        background: #000;
+        display: block;
+        margin: 10px 0;
+    "></canvas>
+
+    <script>
+        function post(msg) {
+            console.log(`kasm: post: ${msg}`);
+        }
+
+        function outlet_message(index, msg) {
+            outlet(index, msg, null);
+        }
+
+        function outlet(index, msg, data) {
+            // Minimal outlet handling - just log for embedded version
+            console.log(`kasm: outlet: ${index} ${msg}`, data);
+
+            // Update WebGPU visualization if available
+            if (index === 0 && kasm_rust && kasm_rust.update_webgpu_data) {
+                const pitch = msg;
+                const velocity = data || 0;
+                kasm_rust.update_webgpu_data(pitch, velocity);
+            }
+        }
+
+        function msg_int(value) {
+            switch(inlet) {
+                case 0: inlet_0 = value; break;
+                case 1: inlet_1 = value; break;
+                case 2: inlet_2 = value; break;
+                case 3: inlet_3 = value; break;
+                case 4: inlet_4 = value; break;
+                case 5: inlet_5 = value; break;
+            }
+        }
+
+        function msg_float(value) {
+            msg_int(Math.round(value));
+        }
+
+        function bang(note, semitone, velocity, enc1, enc2, emanator) {
+            if (kasm_rust && kasm_rust.kasm_emanator_bang) {
+                return kasm_rust.kasm_emanator_bang(note, semitone, velocity, enc1, enc2, emanator);
+            }
+            return "kasm_rust not loaded";
+        }
+
+
+        function initializeWebGPU() {
+            if (kasm_rust && kasm_rust.init_kasm_webgpu) {
+                try {
+                    if (typeof kasm_rust.init_kasm_webgpu === 'function') {
+                        const canvas = document.getElementById('kasmWebGPU');
+                        if (canvas) {
+                            kasm_rust.init_kasm_webgpu(150, 150);
+                        }
+                    } else {
+                        console.warn('kasm: init_kasm_webgpu function not available');
+                    }
+                } catch (err) {
+                    console.error('kasm: Failed to initialize WebGPU canvas:', err);
+                }
+            } else {
+                console.warn('kasm: WebGPU feature missing');
+            }
+        }
+
+        function initializeApplication() {
+            console.log('kasm: Initializing embedded Emanator...');
+            setTimeout(initializeWebGPU, 1000);
+
+            // Set default values
+            inlet_0 = 60;  // C4
+            inlet_1 = 0;   // No semitone offset
+            inlet_2 = 100; // Default velocity
+            inlet_3 = 100; // Default enc1
+            inlet_4 = 80;  // Default enc2
+            inlet_5 = 2;   // Default emanator (Strummed Cascade)
+
+            console.log('kasm: Embedded Emanator initialized');
+        }
+
+        // Public API for external control
+        window.kasmEmanator = {
+            setNote: function(note) {
+                inlet = 0;
+                msg_int(note);
+            },
+            setSemitone: function(semitone) {
+                inlet = 1;
+                msg_int(semitone);
+            },
+            setVelocity: function(velocity) {
+                inlet = 2;
+                msg_int(velocity);
+            },
+            setEnc1: function(enc1) {
+                inlet = 3;
+                msg_int(enc1);
+            },
+            setEnc2: function(enc2) {
+                inlet = 4;
+                msg_int(enc2);
+            },
+            setEmanator: function(emanator) {
+                inlet = 5;
+                msg_int(emanator);
+            },
+            trigger: function() {
+                return bang(inlet_0, inlet_1, inlet_2, inlet_3, inlet_4, inlet_5);
+            },
+            getCurrentValues: function() {
+                return {
+                    note: inlet_0,
+                    semitone: inlet_1,
+                    velocity: inlet_2,
+                    enc1: inlet_3,
+                    enc2: inlet_4,
+                    emanator: inlet_5
+                };
+            }
+        };
+
+        // Initialize on load
+        loadbang(initializeApplication);
+
+        // // Auto-trigger with defaults for visualization
+        // setInterval(function() {
+        //     if (kasm_rust && kasm_rust.update_webgpu_data) {
+        //         // Gentle automated visualization updates
+        //         const time = Date.now() / 1000;
+        //         const pitch = 60 + Math.sin(time * 0.5) * 12;
+        //         const velocity = 50 + Math.sin(time * 0.3) * 30;
+        //         kasm_rust.update_webgpu_data(Math.round(pitch), Math.round(velocity));
+        //     }
+        // }, 5000);
+
+    </script>
+</body>
+</html>

@@ -92,7 +92,6 @@
 </p>
 <br/>
 <div style="margin: 20px 0;">
-    <!-- WebMIDI Controls -->
     <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
         Connect to your MIDI device... (you might need a <a href="https://help.ableton.com/hc/en-us/articles/209774225-Setting-up-a-virtual-MIDI-bus
 " target="_blank">virtual MIDI bus</a>)
@@ -137,7 +136,6 @@
     </div>
 
     <div style="margin: 20px 0;">
-        <!-- WebMIDI Controls -->
         <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
 
             <label>Choose an Emanator algorithm (inlet_5):<br/>
@@ -345,6 +343,15 @@
         </div>
     </div>
 
+    <canvas id="kasmWebGPU" width="800" height="150" style="
+        width: 800px;
+        height: 150px;
+        border: 2px solid #333;
+        background: #000;
+        display: block;
+        margin: 10px 0;
+    "></canvas>
+
     <div style="margin: 20px 0;">
         <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
             <div style="margin: 10px 0;">
@@ -520,7 +527,6 @@
     <div id="loopDetection" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
     <button id="transformTest"></button>
 
-    <!-- SVG MIDI Keyboard -->
     <div style="margin-bottom: 20px;">
         <div id="midiKeyboard" style="
                 border: 2px solid #333;
@@ -899,6 +905,15 @@
         outlet(index, msg, null);
     }
 
+    function sendMidiData(midiData, pitch, velocity, isCC = false) {
+        if (currentMidiOutput) {
+            currentMidiOutput.send(midiData);
+        }
+        if (kasm_rust && kasm_rust.update_webgpu_data) {
+            kasm_rust.update_webgpu_data(pitch, velocity, isCC);
+        }
+    }
+
     function outlet(index, msg, data) {
         //console.log(`kasm: outlet: ${index} ` + msg);
 
@@ -915,11 +930,11 @@
                     highlightMidiNoteOnKeyboard(pitch, true);
 
                     const noteOnMsg = [0x90 + channel, pitch, velocity];
-                    currentMidiOutput.send(noteOnMsg);
+                    sendMidiData(noteOnMsg, pitch, velocity);
                     setTimeout(() => {
                         // Automatically send a note off after 500ms and unhighlight
                         const noteOffMsg = [0x80 + channel, pitch, 0];
-                        currentMidiOutput.send(noteOffMsg);
+                        sendMidiData(noteOffMsg, pitch, 0);
                         highlightMidiNoteOnKeyboard(pitch, false);
                     }, 500);
                 } else {
@@ -927,7 +942,7 @@
                     highlightMidiNoteOnKeyboard(pitch, false);
 
                     const noteOffMsg = [0x80 + channel, pitch, 0];
-                    currentMidiOutput.send(noteOffMsg);
+                    sendMidiData(noteOffMsg, pitch, 0);
                 }
             } else {
                 // Even if no MIDI output, still show on keyboard
@@ -951,7 +966,7 @@
                 const channel = parseInt(document.getElementById('midiChannel').value) || 0;
                 if (typeof ccNumber === 'number' && typeof ccValue === 'number') {
                     const ccMsg = [0xB0 + channel, ccNumber, ccValue];
-                    currentMidiOutput.send(ccMsg);
+                    sendMidiData(ccMsg, ccNumber, ccValue, true);
                     // Update panSlider if CC == 10
                     if (ccNumber === 10) {
                         const panSlider = document.getElementById('pan');
@@ -3182,6 +3197,26 @@ Velocity: C=down (-10), V=up (+10)
 
     }
 
+    function initializeWebGPU() {
+        if (kasm_rust && kasm_rust.init_kasm_webgpu) {
+            try {
+                const canvas = document.getElementById('kasmWebGPU');
+                if (canvas) {
+                    if (typeof kasm_rust.init_kasm_webgpu === 'function') {
+                        kasm_rust.init_kasm_webgpu(canvas.width, canvas.height);
+                        console.log('kasm: WebGPU canvas initialized successfully width=' + canvas.width + ' height=' + canvas.height);
+                    } else {
+                        console.warn('kasm: init_kasm_webgpu function not available');
+                    }
+                }
+            } catch (err) {
+                console.error('kasm: Failed to initialize WebGPU canvas:', err);
+            }
+        } else {
+            console.warn('kasm: WebGPU feature missing');
+        }
+    }
+
     // Initialize application with saved settings or defaults
     function initializeApplication() {
         // Try to load saved settings first
@@ -3193,14 +3228,13 @@ Velocity: C=down (-10), V=up (+10)
         }
 
         // Initialize other components
-        loadbang();
         initializeDials();
         initializeNoteDisplay();
+        setTimeout(initializeWebGPU, 100);
         setTimeout(autoTransform, 200);
     }
 
-    // Initialize application when page loads
-    initializeApplication();
+    loadbang(initializeApplication);
 
     // MIDI Clip Visualization Functions
     function drawMidiClip(notesData) {
