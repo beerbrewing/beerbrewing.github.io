@@ -343,7 +343,7 @@
         </div>
     </div>
 
-    <canvas id="kasmWebGPU"></canvas>
+    <canvas id="kasmHTMLCanvas"></canvas>
 
     <div style="margin: 20px 0;">
         <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
@@ -815,7 +815,7 @@
     <li>Ableton Live Clip Transformation<br/><a href="kasm/Kasm Emanator Transformation.amxd" download>Kasm Emanator Transformation.amxd</a></li>
     <li>Max4Live example running identical Rust code as this web page<br/><a href="kasm/Kasm DEMO.amxd" download>Kasm DEMO.amxd</a></li>
     <li>Max4Live example running identical Rust code as this web page<br/><a href="kasm/Kasm DEMO.amxd" download>Kasm DEMO.amxd</a></li>
-    <li>Canvas UI rendering<br/><a href="kasm/Kasm WebGPU.amxd" download>Kasm WebGPU.amxd</a></li>
+    <li>Canvas UI rendering<br/><a href="kasm/Kasm Canvas.amxd" download>Kasm Canvas.amxd</a></li>
     <li>General MIDI drum sequencer/arpeggiator<br/><a href="kasm/Kasm Bangaz General MIDI.amxd" download>Kasm Bangaz General MIDI.amxd</a></li>
     <li>Tape looper/counterpoint harmoniser<br/><a href="kasm/Kasm Counterpoint.amxd" download>Kasm Counterpoint.amxd</a></li>
     <li>Algorithmic MIDI generator<br/><a href="kasm/Kasm Emanator.amxd" download>Kasm Emanator.amxd</a></li>
@@ -904,8 +904,8 @@
         if (currentMidiOutput) {
             currentMidiOutput.send(midiData);
         }
-        if (kasm_rust && kasm_rust.update_webgpu_data) {
-            kasm_rust.update_webgpu_data(pitch, velocity, isCC);
+        if (kasm_rust && kasm_rust.update_canvas_data) {
+            kasm_rust.update_canvas_data(pitch, velocity, isCC);
         }
     }
 
@@ -3192,24 +3192,24 @@ Velocity: C=down (-10), V=up (+10)
 
     }
 
-    function initializeWebGPU() {
-        if (kasm_rust && kasm_rust.init_kasm_webgpu) {
+    function initializeKasmCanvas() {
+        if (kasm_rust && kasm_rust.init_kasm_canvas) {
             try {
-                const canvas = document.getElementById('kasmWebGPU');
+                const canvas = document.getElementById('kasmHTMLCanvas');
                 if (canvas) {
-                    if (typeof kasm_rust.init_kasm_webgpu === 'function') {
+                    if (typeof kasm_rust.init_kasm_canvas === 'function') {
                         const rect = canvas.getBoundingClientRect();
-                        kasm_rust.init_kasm_webgpu(rect.width, rect.height);
-                        console.log('kasm: WebGPU canvas initialized successfully width=' + canvas.width + ' height=' + canvas.height);
+                        kasm_rust.init_kasm_canvas(rect.width, rect.height);
+                        console.log('kasm: HTML5 canvas initialized successfully width=' + rect.width + ' height=' + rect.height);
                     } else {
-                        console.warn('kasm: init_kasm_webgpu function not available');
+                        console.warn('kasm: init_kasm_canvas function not available');
                     }
                 }
             } catch (err) {
-                console.error('kasm: Failed to initialize WebGPU canvas:', err);
+                console.error('kasm: Failed to initialize HTML5 canvas:', err);
             }
         } else {
-            console.warn('kasm: WebGPU feature missing');
+            console.warn('kasm: HTML5 feature missing');
         }
     }
 
@@ -3226,7 +3226,7 @@ Velocity: C=down (-10), V=up (+10)
         // Initialize other components
         initializeDials();
         initializeNoteDisplay();
-        setTimeout(initializeWebGPU, 100);
+        setTimeout(initializeKasmCanvas, 100);
         setTimeout(autoTransform, 200);
     }
 
@@ -4715,7 +4715,7 @@ Velocity: C=down (-10), V=up (+10)
 
     // "metro 10" Periodically call msg_int every 10ms
     setInterval(function() {
-        if (typeof msg_int === 'function') {
+        if (typeof msg_float === 'function') {
             inlet = 6;
             msg_float(document.getElementById('tempo').value);
         }

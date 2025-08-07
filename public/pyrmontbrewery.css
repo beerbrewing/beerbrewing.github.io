@@ -353,7 +353,7 @@ a:hover, .App-link:hover, .App-link2:hover, .App-link3:hover, .Beer-link:hover, 
 }
 
 
-#kasmWebGPU {
+#kasmHTMLCanvas {
     width: calc(79vw);
     max-width: 2000px;
     height: 150px;
