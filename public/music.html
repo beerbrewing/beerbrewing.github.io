@@ -131,36 +131,40 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
             <label>Choose an Emanator algorithm (inlet_5):<br/>
                 <div style="margin-bottom: 10px;">
-                    <label><input type="radio" name="emanatorQuick" value="20"
+                    <label><input type="radio" name="emanatorQuick"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=63; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Looper</label>
-                    <label><input type="radio" name="emanatorQuick" value="50"
+                    <label><input type="radio" name="emanatorQuick"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=93; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Bangaz</label>
-                    <label><input type="radio" name="emanatorQuick" value="55"
-                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=82; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
+                    <label><input type="radio" name="emanatorQuick"
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=169; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Arpeggiator</label>
-                    <label><input type="radio" name="emanatorQuick" value="56"
+                    <label><input type="radio" name="emanatorQuick"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=83; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Shuffle</label>
-                    <label><input type="radio" name="emanatorQuick" value="10"
+                    <label><input type="radio" name="emanatorQuick"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=2; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Emanator</label>
-                    <label><input type="radio" name="emanatorQuick" value="10"
+                    <label><input type="radio" name="emanatorQuick"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=148; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         LFO</label>
-                    <label><input type="radio" name="emanatorQuick" value="30"
-                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=12; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);"> Taps</label>
-                    <label><input type="radio" name="emanatorQuick" value="40"
+                    <label><input type="radio" name="emanatorQuick"
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=6; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
+                        Chords</label>
+                    <label><input type="radio" name="emanatorQuick"
+                                  onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=82; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
+                        Patterns</label>
+                    <label><input type="radio" name="emanatorQuick"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=75; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Counterpoint</label>
-                    <label><input type="radio" name="emanatorQuick" value="53"
+                    <label><input type="radio" name="emanatorQuick"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=80; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Drum Rack</label>
-                    <label><input type="radio" name="emanatorQuick" value="60"
+                    <label><input type="radio" name="emanatorQuick"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=46; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Chaos!</label>
-                    <label><input type="radio" name="emanatorQuick" value="10"
+                    <label><input type="radio" name="emanatorQuick"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=0; loadDefaultExample(); autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Reset</label>
                 </div>
@@ -208,10 +212,10 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <option value="40">spat:Swarm Movement Boids algorithm with spatial audio</option>
                     <option value="41">spat:Circular Panning Dynamic circular panning effects</option>
                     <option value="42">spat:3D Positioning Simulated 3D spatial positioning</option>
-                    <option value="43">sums:Fibonacci Spiral Fibonacci timing with golden ratio velocity d</option>
-                    <option value="44">sums:Fractal Cascade Fractal echo patterns at different time scale</option>
-                    <option value="45">sums:Swarming Spirals Bumblebee flight patterns with Fibonacci timi</option>
-                    <option value="46">sums:Fractal Chaos L-systems, strange attractors, and chaos theo</option>
+                    <option value="43">math:Fibonacci Spiral Fibonacci timing with golden ratio velocity d</option>
+                    <option value="44">math:Fractal Cascade Fractal echo patterns at different time scale</option>
+                    <option value="45">math:Swarming Spirals Bumblebee flight patterns with Fibonacci timi</option>
+                    <option value="46">math:Fractal Chaos L-systems, strange attractors, and chaos theo</option>
                     <option value="47">expr:Multidimensional Markov Multi-dimensional Markov chain with harmonic </option>
                     <option value="48">expr:Second Order Markov Second-order Markov chain with rhythm pattern</option>
                     <option value="49">expr:Chaos Game Harmony Chaos game algorithm for counterpoint harmony</option>
@@ -329,6 +333,22 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <option value="161">lfo:LFO Harmonic Series Harmonic series LFO with number of harmonics </option>
                     <option value="162">lfo:LFO Lissajous Lissajous curve LFO with frequency ratio cont</option>
                     <option value="163">lfo:LFO Collatz Collatz conjecture LFO with starting number r</option>
+                    <option value="164">arp:Arpeggio Up Classic ascending arpeggiator - plays held no</option>
+                    <option value="165">arp:Arpeggio Down Classic descending arpeggiator - plays held n</option>
+                    <option value="166">arp:Arpeggio Up/Down Pendulum arpeggiator - ascends then descends </option>
+                    <option value="167">arp:Arpeggio Down/Up Reverse pendulum arpeggiator - descends then </option>
+                    <option value="168">arp:Arpeggio Random Random arpeggiator - plays held notes in rand</option>
+                    <option value="169">arp:Arpeggio Flow Flow arpeggiator - plays notes in the exact o</option>
+                    <option value="170">arp:Arpeggio Up In Converging inward - alternates outer notes mo</option>
+                    <option value="171">arp:Arpeggio Down In Converging inward from high - starts high and</option>
+                    <option value="172">arp:Expanding Up Expanding outward from center with upward pre</option>
+                    <option value="173">arp:Expanding Down Expanding outward from center with downward p</option>
+                    <option value="174">arp:Low and Up Alternates lowest note with ascending sequenc</option>
+                    <option value="175">arp:Low and Down Alternates lowest note with descending sequen</option>
+                    <option value="176">arp:Hi and Up Alternates highest note with ascending sequen</option>
+                    <option value="177">arp:Hi and Down Alternates highest note with descending seque</option>
+                    <option value="178">arp:Chord Strum Plays all held notes simultaneously as a chor</option>
+                    <option value="179">arp:Octave Spread Octave spreading - plays root note across mul</option>
                 </select>
             </label>
         </div>
@@ -391,7 +411,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     </div>
                     <input type="number" id="semitone" value="0" min="-127" max="127"
                            style="width: 60px; text-align: center;"
-                           onchange="updateDial('semitone', this.value); autoTransform()"
+                           onchange="updateDial('Looper  Bangaz  Arpeggiator  Shuffle  Emanator  LFO  Taps  Counterpoint  Drum Rack  Chaos!  Resetsemitone', this.value); autoTransform()"
                            oninput="updateDial('semitone', this.value); autoTransform()">
                 </div>
 
@@ -3379,7 +3399,8 @@ Velocity: C=down (-10), V=up (+10)
         clearTimeout(autoTransformTimeout);
         clearTimeout(autoPlayTimeout);
 
-        if (document.getElementById('inlet_5_emanator').value >= 148) {
+        const emanator = document.getElementById('inlet_5_emanator').value;
+        if (emanator >= 148 && emanator < 164) {
             document.getElementById('inlet_1_label').innerText = 'LFO CC#';
             if (document.getElementById('semitone').value <= 0) {
                 // LFO modify modwheel by defulat if not set
