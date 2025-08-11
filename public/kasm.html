@@ -3578,6 +3578,17 @@ Velocity: C=down (-10), V=up (+10)
             const bangUp = new KeyboardEvent('keyup', {key: 'a', code: 'KeyA', keyCode: 65, bubbles: true});
             document.dispatchEvent(bangDown);
             document.dispatchEvent(bangUp);
+
+            // Change drum assignmnet set Emanator/Shuffle/Drum Rack -> Bangaz 13
+            setTimeout(() => {
+                const emanator = parseInt(document.getElementById('inlet_5_emanator').value);
+                if (emanator >= 81 && emanator <= 83) {
+                    document.getElementById('inlet_5_emanator').value = '93';
+                    document.getElementById('inlet_5_emanator').dispatchEvent(new Event('change'));
+                    updateBang();
+                }
+            }, 100);
+
         }, 400);
     }
 
@@ -3914,10 +3925,14 @@ Velocity: C=down (-10), V=up (+10)
     }
 
     // WebMIDI Support
+    // WebMIDI Support with MPE/Omni Input
     let midiAccess = null;
     let midiOutputs = [];
+    let midiInputs = []; // Track input devices for MPE support
     let playbackTimeouts = [];
     let isPlaying = false;
+    let mpeEnabled = true; // Enable MPE/omni input by default
+    let mpeChannels = new Map(); // Track active MPE channels and their state
 
     // Initialize WebMIDI
     async function initializeMIDI() {
@@ -4067,63 +4082,181 @@ Velocity: C=down (-10), V=up (+10)
         const channel = (status & 0x0F) + 1; // Extract MIDI channel (1-16)
         const messageType = status & 0xF0; // Extract message type
 
-        if (!status || !data1 || !data2 || !messageType) {
+        if (!status || !messageType) {
             return;
         }
 
+        // Ensure data1 and data2 are defined (they can be 0, which is valid)
+        const validData1 = data1 !== undefined ? data1 : 0;
+        const validData2 = data2 !== undefined ? data2 : 0;
+
+        // Initialize MPE channel state if not exists - Support for all 16 MIDI channels
+        if (!mpeChannels.has(channel)) {
+            mpeChannels.set(channel, {
+                activeNotes: new Set(),
+                pitchBend: 0,
+                channelPressure: 0,
+                timbre: 64, // CC74
+                pressure: 0  // CC11 or aftertouch
+            });
+        }
+
+        const channelState = mpeChannels.get(channel);
+
         // Log detailed MIDI message info
         console.log(`kasm: MIDI message from ${deviceType.toUpperCase()} "${deviceName}":`);
-        console.log(`kasm:    Raw data: [${status}, ${data1}, ${data2}] (0x${status.toString(16)}, 0x${data1.toString(16)}, 0x${data2.toString(16)})`);
-        console.log(`kasm:    Channel: ${channel}`);
+        console.log(`kasm:    Raw data: [${status}, ${validData1}, ${validData2}] (0x${status.toString(16)}, 0x${validData1.toString(16)}, 0x${validData2.toString(16)})`);
+        console.log(`kasm:    Channel: ${channel} ${mpeEnabled ? '(MPE enabled)' : ''}`);
         console.log(`kasm:    Message type: 0x${messageType.toString(16)}`);
 
-        // Handle different message types with detailed logging
-        if (messageType === 0x90 && data2 > 0) {
-            // Note On
-            const noteName = getNoteName(data1);
-            console.log(`kasm: Note ON: ${noteName} (MIDI ${data1}) - Velocity: ${data2} - Channel: ${channel}`);
+        // Handle different message types with detailed logging and MPE support
+        if (messageType === 0x90 && validData2 > 0) {
+            // Note On - Accept from ANY channel for MPE support
+            const noteName = getNoteName(validData1);
+            console.log(`kasm: Note ON: ${noteName} (MIDI ${validData1}) - Velocity: ${validData2} - Channel: ${channel}`);
+
+            // Track active note in MPE channel state
+            channelState.activeNotes.add(validData1);
 
             // Trigger WASM function and UI updates
-            processNoteEvent(data1, data2);
+            processNoteEvent(validData1, validData2);
+
+            // Call sendNoteOn to match keyboard behavior
+            const outputChannel = parseInt(document.getElementById('midiChannel').value) || 0;
+            sendNoteOn(validData1, validData2, outputChannel);
+
+            // Add visual piano key feedback
+            highlightMidiNoteOnKeyboard(validData1, true);
 
             // Send to current MIDI output if connected
             if (currentMidiOutput) {
                 console.log(`kasm: Forwarding note to output device: "${currentMidiOutput.name}"`);
+                const noteOnMsg = [0x90 + (parseInt(document.getElementById('midiChannel').value) || 0), validData1, validData2];
+                sendMidiData(noteOnMsg, validData1, validData2);
             }
 
-        } else if (messageType === 0x80 || (messageType === 0x90 && data2 === 0)) {
+        } else if (messageType === 0x80 || (messageType === 0x90 && validData2 === 0)) {
             // Note Off
-            const noteName = getNoteName(data1);
-            console.log(`kasm: Note OFF: ${noteName} (MIDI ${data1}) - Channel: ${channel}`);
+            const noteName = getNoteName(validData1);
+            console.log(`kasm: Note OFF: ${noteName} (MIDI ${validData1}) - Channel: ${channel}`);
 
             // Process note off event
-            processNoteEvent(data1, 0);
+            processNoteEvent(validData1, 0);
+
+            // Remove visual piano key feedback
+            highlightMidiNoteOnKeyboard(validData1, false);
+
+            // Remove from active notes in MPE channel state
+            channelState.activeNotes.delete(validData1);
+
+            // Send MIDI note off if connected
+            if (currentMidiOutput) {
+                const noteOffMsg = [0x80 + (parseInt(document.getElementById('midiChannel').value) || 0), validData1, 64];
+                sendMidiData(noteOffMsg, validData1, 0);
+            }
 
         } else if (messageType === 0xB0) {
-            // Control Change
-            console.log(`kasm: Control Change: CC${data1} = ${data2} - Channel: ${channel}`);
-            console.log(`kasm:    CC Name: ${getCCName(data1)}`);
+            // Control Change - Enhanced MPE support
+            console.log(`kasm: Control Change: CC${validData1} = ${validData2} - Channel: ${channel}`);
+            console.log(`kasm:    CC Name: ${getCCName(validData1)}`);
 
-            // Handle specific CC messages
-            if (data1 === 1) {
-                console.log(`kasm: 🌊 Modwheel: ${data2}`);
-                updateModwheelUI(data2);
-            } else if (data1 === 10) {
-                console.log(`kasm: Pan: ${data2}`);
-                updatePanUI(data2);
-            } else if (data1 === 64) {
-                console.log(`kasm: 🦶 Sustain Pedal: ${data2 >= 64 ? 'ON' : 'OFF'}`);
+            // Handle MPE-specific CCs
+            if (validData1 === 74) {
+                // MPE Timbre (CC74)
+                channelState.timbre = validData2;
+                console.log(`kasm: 🎨 MPE Timbre (Ch ${channel}): ${validData2}`);
+            } else if (validData1 === 11) {
+                // MPE Pressure/Expression (CC11)
+                channelState.pressure = validData2;
+                console.log(`kasm: 💪 MPE Pressure (Ch ${channel}): ${validData2}`);
+            }
+
+            // Handle specific CC messages - respect MPE channel routing
+            if (validData1 === 1) {
+                console.log(`kasm: 🌊 Modwheel (Ch ${channel}): ${validData2}`);
+                // In MPE mode, only update global UI from channel 1 (master channel)
+                // In non-MPE mode, accept from any channel
+                if (channel === 1 || !mpeEnabled) {
+                    updateModwheelUI(validData2);
+                }
+            } else if (validData1 === 10) {
+                console.log(`kasm: 🔄 Pan (Ch ${channel}): ${validData2}`);
+                // In MPE mode, only update global UI from channel 1 (master channel)
+                // In non-MPE mode, accept from any channel
+                if (channel === 1 || !mpeEnabled) {
+                    updatePanUI(validData2);
+                }
+            } else if (validData1 === 64) {
+                console.log(`kasm: 🦶 Sustain Pedal (Ch ${channel}): ${validData2 >= 64 ? 'ON' : 'OFF'}`);
             }
 
         } else if (messageType === 0xC0) {
             // Program Change
-            console.log(`kasm: 🎼 Program Change: ${data1} - Channel: ${channel}`);
+            console.log(`kasm: 🎼 Program Change: ${validData1} - Channel: ${channel}`);
 
         } else if (messageType === 0xE0) {
             // Pitch Bend
-            const pitchBend = (data2 << 7) | data1;
+            const pitchBend = (validData2 << 7) | validData1;
             const pitchBendCentered = pitchBend - 8192; // Center around 0
             console.log(`kasm: Pitch Bend: ${pitchBend} (${pitchBendCentered > 0 ? '+' : ''}${pitchBendCentered}) - Channel: ${channel}`);
+
+        } else if (messageType === 0xD0) {
+            // Polyphonic Key Pressure (Aftertouch) - Handle as note events for MPE keyboards
+            const noteNumber = validData1;
+            const pressure = validData2;
+            const noteName = getNoteName(noteNumber);
+
+            console.log(`kasm: Polyphonic Aftertouch: ${noteName} (MIDI ${noteNumber}) - Pressure: ${pressure} - Channel: ${channel}`);
+
+            // Store pressure in channel state for MPE
+            channelState.channelPressure = pressure;
+
+            // If pressure > 0, treat as Note On; if pressure = 0, treat as Note Off
+            if (pressure > 0) {
+                console.log(`kasm: �� Interpreting aftertouch as Note ON: ${noteName} (MIDI ${noteNumber}) - Pressure: ${pressure} - Channel: ${channel}`);
+
+                // Track active note in MPE channel state
+                channelState.activeNotes.add(noteNumber);
+
+                // Use a reasonable velocity instead of low pressure values
+                // If pressure is very low, use the velocity from the UI or a default
+                let effectiveVelocity = pressure;
+                if (pressure < 30) {
+                    // Use the current velocity setting from the UI for low pressure values
+                    effectiveVelocity = parseInt(document.getElementById('velocity').value) || 100;
+                    console.log(`kasm: ⚡ Low pressure (${pressure}), using UI velocity: ${effectiveVelocity}`);
+                }
+
+                // Trigger WASM function with effective velocity
+                processNoteEvent(noteNumber, effectiveVelocity);
+
+                // Add visual piano key feedback
+                highlightMidiNoteOnKeyboard(noteNumber, true);
+
+                // Send to current MIDI output if connected
+                if (currentMidiOutput) {
+                    console.log(`kasm: Forwarding aftertouch-based note to output device: "${currentMidiOutput.name}"`);
+                    const noteOnMsg = [0x90 + (parseInt(document.getElementById('midiChannel').value) || 0), noteNumber, effectiveVelocity];
+                    sendMidiData(noteOnMsg, noteNumber, effectiveVelocity);
+                }
+            } else {
+                console.log(`kasm: 🎹 Interpreting aftertouch as Note OFF: ${noteName} (MIDI ${noteNumber}) - Channel: ${channel}`);
+
+                // Process note off event
+                processNoteEvent(noteNumber, 0);
+
+                // Remove visual piano key feedback
+                highlightMidiNoteOnKeyboard(noteNumber, false);
+
+                // Remove from active notes in MPE channel state
+                channelState.activeNotes.delete(noteNumber);
+
+                // Send MIDI note off if connected
+                if (currentMidiOutput) {
+                    const noteOffMsg = [0x80 + (parseInt(document.getElementById('midiChannel').value) || 0), noteNumber, 64];
+                    sendMidiData(noteOffMsg, noteNumber, 0);
+                }
+            }
 
         } else if (messageType === 0xF0) {
             // System messages
@@ -4131,7 +4264,7 @@ Velocity: C=down (-10), V=up (+10)
 
         } else {
             // Other message types
-            console.log(`kasm: Other MIDI message: Type=0x${messageType.toString(16)}, Data1=${data1}, Data2=${data2} - Channel: ${channel}`);
+            console.log(`kasm: Other MIDI message: Type=0x${messageType.toString(16)}, Data1=${validData1}, Data2=${validData2} - Channel: ${channel}`);
         }
     }
 
