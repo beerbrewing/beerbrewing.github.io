@@ -83,18 +83,18 @@
 Connect Kasm to your MIDI device...
 Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 <div style="margin: 20px 0;">
-    <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
+    <div style="margin: 10px 0; padding: 20px; background: #f9f9f9;">
         Connect to your MIDI device... (you might need a <a href="https://help.ableton.com/hc/en-us/articles/209774225-Setting-up-a-virtual-MIDI-bus
 " target="_blank">virtual MIDI bus</a>)
         <div style="margin-bottom: 10px;">
             <label>
-                <select id="midiOutputSelect" style="padding: 3px; margin-left: 10px;">
+                <select id="midiOutputSelect" style="padding: 3px; margin-left: 20px;">
                     <option value="">Select MIDI Device...</option>
                 </select>
             </label>
-            <button id="refreshMidiDevices" style="margin-left: 10px; padding: 3px 8px;">&lt;</button>
+            <button id="refreshMidiDevices" style="margin-left: 20px; padding: 3px 8px;">&lt;</button>
             <label>MIDI Channel:
-                <select id="midiChannel" style="padding: 3px; margin-left: 10px;">
+                <select id="midiChannel" width="3" style="padding: 3px; width: 20px; margin-left: 20px;">
                     <option value="0">1</option>
                     <option value="1">2</option>
                     <option value="2">3</option>
@@ -113,23 +113,19 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <option value="15">16</option>
                 </select>
             </label>
-            <label style="margin-left: 20px;">Tempo (BPM):
-                <input type="number" id="tempo" value="120" min="20" max="999" style="width: 60px; margin-left: 10px;">
-            </label>
             <button id="playMidi"
                     style="padding: 5px 15px; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer;">&gt;
             </button>
             <button id="stopMidi"
-                    style="padding: 5px 15px; background: #f44336; color: white; border: none; cursor: pointer; margin-left: 10px;">!
+                    style="padding: 5px 15px; background: #f44336; color: white; border: none; cursor: pointer; margin-left: 20px;">!
             </button>
             <span id="playbackStatus" style="margin-left: 15px; font-weight: bold;"></span>
         </div>
     </div>
 
     <div style="margin: 20px 0;">
-        <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
-
-            <label>Choose an Emanator algorithm (inlet_5):<br/>
+        <div style="margin: 10px 0; padding: 20px; background: #f9f9f9;">
+            <label>Choose an Emanator algorithm:<br/>
                 <div style="margin-bottom: 10px;">
                     <label><input type="radio" name="emanatorQuick"
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=63; autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
@@ -168,7 +164,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                                   onclick="isRadioButtonSelection = true; document.getElementById('inlet_5_emanator').value=0; loadDefaultExample(); autoTransform(); setTimeout(() => isRadioButtonSelection = false, 100);">
                         Reset</label>
                 </div>
-                <select id="inlet_5_emanator" onchange="autoTransform()" style="padding: 3px;">
+                <select id="inlet_5_emanator" onchange="autoTransform()" style="padding: 3px; min-width: 78vw">
                     <option value="0">Random</option>
                     <option value="1">mldy:Phone Ringtone Classic phone ringtone melody with humanization</option>
                     <option value="2">mldy:Strummed Cascade Cascading glissando with stereo spread</option>
@@ -351,17 +347,21 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                     <option value="179">arp:Octave Spread Octave spreading - plays root note across multiple</option>
                 </select>
             </label>
+            <br/>
+            <label>Tempo (BPM):
+                <input type="number" id="tempo" value="120" min="20" max="999" style="width: 100px;">
+            </label>
         </div>
     </div>
 
     <canvas id="kasmHTMLCanvas"></canvas>
 
     <div style="margin: 20px 0;">
-        <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
+        <div style="margin: 10px 0; padding: 20px; background: #f9f9f9;">
             <div style="margin: 10px 0;">
                 <!-- Root Note input with MIDI name and dial -->
                 <div style="display: inline-block; margin: 10px; text-align: center;">
-                    <label>Root Note<br/>(inlet_0):</label><br>
+                    <label>Root Note</label><br>
                     <div class="dial-container"
                          style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
                         <svg width="60" height="60" class="dial-svg">
@@ -392,7 +392,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
                 <!-- Semitone with dial and number input -->
                 <div style="display: inline-block; margin: 10px; text-align: center;">
-                    <label id="inlet_1_label">Semitone offset<br/>(inlet_1)</label><br>
+                    <label id="inlet_1_label">Semitone offset</label><br>
                     <div class="dial-container"
                          style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
                         <svg width="60" height="60" class="dial-svg">
@@ -417,7 +417,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
                 <!-- Velocity with dial and number input -->
                 <div style="display: inline-block; margin: 10px; text-align: center;">
-                    <label>Velocity<br/>(inlet_2)</label><br>
+                    <label>Velocity</label><br>
                     <div class="dial-container"
                          style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
                         <svg width="60" height="60" class="dial-svg">
@@ -442,7 +442,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
                 <!-- Enc1 with dial and number input -->
                 <div style="display: inline-block; margin: 10px; text-align: center;">
-                    <label>Enc1<br/>(inlet_3)</label><br>
+                    <label>Enc1</label><br>
                     <div class="dial-container"
                          style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
                         <svg width="60" height="60" class="dial-svg">
@@ -466,7 +466,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
                 <!-- Enc2 with dial and number input -->
                 <div style="display: inline-block; margin: 10px; text-align: center;">
-                    <label>Enc2<br/>(inlet_4)</label><br>
+                    <label>Enc2</label><br>
                     <div class="dial-container"
                          style="position: relative; width: 60px; height: 60px; margin: 5px auto;">
                         <svg width="60" height="60" class="dial-svg">
@@ -528,7 +528,6 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
 
     <div id="chordKeyDetection" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
     <div id="patternDetection" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
-    <div id="loopDetection" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
     <button id="transformTest"></button>
 
     <div style="margin-bottom: 20px;">
@@ -694,8 +693,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
     <br/>LFO: select an LFO pattern then set a MIDI CC using the semitone dial
 
     <div style="margin: 20px 0;">
-        <!-- WebMIDI Controls -->
-        <div style="margin: 10px 0; padding: 10px; background: #f9f9f9;">
+        <div style="margin: 10px 0; padding: 20px; background: #f9f9f9;">
             <label>Play some notes 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
                 or choose a sequence Ableton Notes dictionary (JSON)
                 <div style="margin-bottom: 10px;">
@@ -732,6 +730,7 @@ Keys 'a-l=MIDI keys' z/x=octave c/v=velocity<br/>
         </div>
     </div>
     <textarea id="outputJson" rows="40" cols="80" style="font-family: monospace; font-size: 12px;" readonly></textarea>
+    <div id="loopDetection" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"></div>
 
     <table style="border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 12px;">
         <tbody>
@@ -4332,7 +4331,7 @@ Velocity: C=down (-10), V=up (+10)
             const notes = notesData.notes || [];
 
             if (notes.length === 0) {
-                document.getElementById('playbackStatus').textContent = 'No notes to play';
+                document.getElementById('playbackStatus').textContent = 'connected';
                 return;
             }
 
