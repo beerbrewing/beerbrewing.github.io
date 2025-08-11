@@ -81,8 +81,7 @@
 <!-- <img src="pyrmontbwy.gif" alt="ZX Spectrum running video" class="video-bg" /> -->
 
 <p>Kasm bridges Ableton Live and Web tech using Rust and WebAssembly.<br/>
-You can buy Kasm Rust SDK on <a href="https://kevleyski.gumroad.com/l/kasm_ableton_wasm_rust" style="color:#61dafb;">Gumroad</a>
-    or at <a href="https://buymeacoffee.com/kasm/e/426168" style="color:#61dafb;">BuyMeACoffee</a>
+You can buy this <a href="https://pyrmontbrewery.com/get_kasm" style="color:#61dafb;">Kasm Rust SDK here</a>
 </p>
 <br/>
 <div style="margin: 20px 0;">
@@ -956,7 +955,7 @@ If you have Ableton Live 12.2 you should be able to download then double click o
                     sendMidiData(noteOffMsg, pitch, 0);
                 }
             } else {
-			
+
 	            if (kasmWebMIDI && velocity > 0) {
 	                // Note On - highlight the key on SVG keyboard
 	                highlightMidiNoteOnKeyboard(pitch, true);
@@ -985,13 +984,13 @@ If you have Ableton Live 12.2 you should be able to download then double click o
 	                    }, 500);
 	                } else {
 	                    highlightMidiNoteOnKeyboard(pitch, false);
-					
+
 	                    const noteOffMsg = [0x80 + channel, pitch, 0];
 	                    sendMidiData(noteOffMsg, pitch, 0);
 
 	                }
 	            }
-				
+
 		        // Send CC change to WebMIDI
 		        if (index === 1) {
 		            const ccNumber = msg;
@@ -1054,7 +1053,7 @@ If you have Ableton Live 12.2 you should be able to download then double click o
 		                }
 		            }
 		        }
-				
+
                 // Even if no MIDI output, still show on keyboard
                 if (data && velocity > 0) {
                     highlightMidiNoteOnKeyboard(pitch, true);

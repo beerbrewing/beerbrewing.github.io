@@ -18,8 +18,7 @@
 
 // The complete source code and build/test tools for this Rust/WebAssembly Ableton device project can be downloaded from:
 
-// https://kevleyski.gumroad.com/l/kasm_ableton_wasm_rust
-// https://buymeacoffee.com/kasm/e/426168
+// https://pyrmontbrewery.com/get_kasm
 
 // Gist of what you'll find in the Rust code that is compiled as part of this JavaScript file
 
