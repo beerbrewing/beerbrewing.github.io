@@ -793,12 +793,12 @@ If you have Ableton Live 12.2 you should be able to download then double click o
     <li>Ableton Live Clip MIDI Transformation<br/><a href="kasm/Kasm Emanator Transformation.amxd" download>Kasm Emanator Transformation.amxd</a></li>
     <li>Canvas UI rendering<br/><a href="kasm/Kasm Canvas.amxd" download>Kasm Canvas.amxd</a></li>
     <li>Bangaz - General MIDI drum sequencer/arpeggiator<br/><a href="kasm/Kasm Bangaz General MIDI.amxd" download>Kasm Bangaz General MIDI.amxd</a></li>
+    <li>Download Bangaz WebMIDI demo <br/><a href="/bangaz.html" download>bangaz.html</a></li>
     <li>MIDI Tape looper/counterpoint harmoniser<br/><a href="kasm/Kasm MIDI Tape Loop.amxd" download>Kasm MIDI Tape Loop.amxd</a></li>
     <li>Algorithmic MIDI generator<br/><a href="kasm/Kasm Emanator.amxd" download>Kasm Emanator.amxd</a></li>
+    <li>Download Emanator WebMIDI demo <br/><a href="/emanator.html" download>emanator.html</a></li>
     <li>Algorithmic LFO generator<br/><a href="kasm/Kasm Algorithmic LFO.amxd" download>Kasm Kasm Algorithmic LFO.amxd</a></li>
     <li>Triggaz - Automated scene change on detecting played note patterns<br/><a href="kasm/Kasm Triggaz.amxd" download>Kasm Triggaz.amxd</a></li>
-</ul>
-    <li>Trigger scene change on detecting played note patterns<br/><a href="kasm/Kasm Triggaz.amxd" download>Kasm Triggaz.amxd</a></li>
 </ul>
 
 <h2>Hear Kasm in Action</h2>
@@ -884,7 +884,7 @@ If you have Ableton Live 12.2 you should be able to download then double click o
                     sendMidiData(noteOffMsg, pitch, 0);
                 }
             } else {
-			
+
 	            if (kasmWebMIDI && velocity > 0) {
 	                // Note On - highlight the key on SVG keyboard
 	                highlightMidiNoteOnKeyboard(pitch, true);
@@ -913,13 +913,13 @@ If you have Ableton Live 12.2 you should be able to download then double click o
 	                    }, 500);
 	                } else {
 	                    highlightMidiNoteOnKeyboard(pitch, false);
-					
+
 	                    const noteOffMsg = [0x80 + channel, pitch, 0];
 	                    sendMidiData(noteOffMsg, pitch, 0);
 
 	                }
 	            }
-				
+
 		        // Send CC change to WebMIDI
 		        if (index === 1) {
 		            const ccNumber = msg;
@@ -982,7 +982,7 @@ If you have Ableton Live 12.2 you should be able to download then double click o
 		                }
 		            }
 		        }
-				
+
                 // Even if no MIDI output, still show on keyboard
                 if (data && velocity > 0) {
                     highlightMidiNoteOnKeyboard(pitch, true);
@@ -5501,7 +5501,7 @@ Velocity: C=down (-10), V=up (+10)
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initializePianoKeyboard);
     } else {
-        initializeKasmWebMIDI();
+        //initializeKasmWebMIDI();
         initializePianoKeyboard();
     }
 </script>
