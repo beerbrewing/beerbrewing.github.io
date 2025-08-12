@@ -4,7 +4,7 @@
 // Go build similar instruments like this using Kasm Rust WASM SDK here:
 //     https://pyrmontbrewery.com/get_kasm
 
-// Version: banagaz_1.0
+// Version: bangaz_1.0
 
 // Gist of what you'll find in the Rust code that is compiled as part of this JavaScript file
 
