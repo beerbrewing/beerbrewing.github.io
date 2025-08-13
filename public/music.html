@@ -4251,6 +4251,30 @@ Velocity: C=down (-10), V=up (+10)
     // Initialize WebMIDI
     async function initializeMIDI() {
         console.log('kasm: Initializing WebMIDI support...');
+        try {
+            // Request MIDI access
+            midiAccess = await navigator.requestMIDIAccess({ sysex: false });
+
+            // Set up event listeners for state changes
+            midiAccess.onstatechange = onMIDIStateChange;
+
+            // Log available devices
+            logMIDIDevices(midiAccess);
+
+            // Auto-connect all input devices - add this section
+            console.log('kasm: Auto-connecting all available MIDI inputs...');
+            midiInputs = Array.from(midiAccess.inputs.values());
+            midiInputs.forEach(input => {
+                setupInputMessageHandler(input);
+                console.log(`kasm: Auto-connected input: "${input.name}"`);
+            });
+
+            console.log('kasm: MIDI system initialized with all inputs auto-connected');
+            document.getElementById('playbackStatus').textContent = 'MIDI ready (all inputs connected)';
+        } catch (error) {
+            console.error("kasm: Failed to access MIDI devices:", error);
+        }
+
 
         if (!navigator.requestMIDIAccess) {
             console.warn('WebMIDI API not supported in this browser');
@@ -4396,6 +4420,11 @@ Velocity: C=down (-10), V=up (+10)
         const channel = (status & 0x0F) + 1; // Extract MIDI channel (1-16)
         const messageType = status & 0xF0; // Extract message type
 
+        if (currentMidiOutput && currentMidiOutput.name === deviceName) {
+            console.log(`kasm: Preventing feedback loop - skipping forward to same device: "${deviceName}"`);
+            return;
+        }
+
         if (!status || !messageType) {
             return;
         }
@@ -4456,6 +4485,11 @@ Velocity: C=down (-10), V=up (+10)
 
             // Process note off event
             processNoteEvent(validData1, 0);
+
+            // Forward to output device if needed
+            if (currentMidiOutput) {
+                currentMidiOutput.send([status, validData1, validData2]);
+            }
 
             // Remove visual piano key feedback
             highlightMidiNoteOnKeyboard(validData1, false);
@@ -5504,5 +5538,46 @@ Velocity: C=down (-10), V=up (+10)
         //initializeKasmWebMIDI();
         initializePianoKeyboard();
     }
+
+    let midiChannelGlobal = 0;
+
+    function handleDeviceStateChange(e) {
+        if (e.type === 'deviceListChanged') {
+            const savedId = localStorage.getItem('selectedMidiOutput');
+            updateMidiDeviceDropdown(e.outputs, savedId);
+        } else if (e.type === 'autoReconnect' && e.output) {
+            updateMidiDeviceDropdown(kasmWebMIDI.getOutputDevices(), e.output.id);
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        kasmWebMIDI = new KasmWebMIDI();
+        kasmWebMIDI.setCallback('onDeviceStateChange', handleDeviceStateChange);
+        kasmWebMIDI.setCallback('onMIDIReady', () => {
+            // Initial device list update
+            updateMidiDeviceDropdown(kasmWebMIDI.getOutputDevices(), localStorage.getItem('selectedMidiOutput'));
+        });
+
+        // Device selection handler
+        document.getElementById('midiOutputSelect').addEventListener('change', (e) => {
+            const selectedId = e.target.value;
+            const outputs = kasmWebMIDI.getOutputDevices();
+            const found = outputs.find(o => o.id === selectedId);
+            if (found) {
+                kasmWebMIDI.currentMidiOutput = found;
+                localStorage.setItem('selectedMidiOutput', found.id);
+            }
+        });
+
+        // MIDI channel selection
+        document.getElementById('midiChannel').addEventListener('change', (e) => {
+            midiChannelGlobal = parseInt(e.target.value) || 0;
+        });
+
+        // Refresh button
+        document.getElementById('refreshMidiDevices').addEventListener('click', () => {
+            updateMidiDeviceDropdown(kasmWebMIDI.getOutputDevices(), localStorage.getItem('selectedMidiOutput'));
+        });
+    });
 </script>
 </html>
