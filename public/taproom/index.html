@@ -56,7 +56,7 @@
     </script>
     <noscript><img height="1" width="1" style="display:none"
                    src="https://www.facebook.com/tr?id=701956460214044&ev=PageView&noscript=1"
-    /></noscript>
+                   alt="Facebook Pixel"/></noscript>
     <!-- End Facebook Pixel Code -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -68,6 +68,64 @@
 
         gtag('config', 'UA-155182441-1');
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Extract coupon code from URL query string
+            function getCouponCodeFromQuery() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get('code') || '';
+            }
+
+            const couponDiv = document.getElementById("coupon");
+            const couponCode = getCouponCodeFromQuery();
+            if (couponCode) {
+                couponDiv.innerHTML = "You have a coupon! " + couponCode;
+            }
+        });
+    </script>
+
+    <script type="module">
+      import init, { process_url } from "./pkg/coupons_wasm.js";
+      document.addEventListener("DOMContentLoaded", async function() {
+        await init();
+        const couponDiv = document.getElementById("coupon");
+        function getCouponCodeFromQuery() {
+          const params = new URLSearchParams(window.location.search);
+          return params.get('code') || '';
+        }
+        const couponCode = getCouponCodeFromQuery();
+        let decoded = null;
+        if (couponCode) {
+          try {
+            decoded = process_url(window.location.href);
+            console.log('decoded', couponCode, decoded);
+          } catch (e) {
+            console.warn('decode_error', couponCode, e);
+          }
+        }
+        function deriveProduct(decoded, code) {
+          if (!decoded || typeof decoded !== 'object') {
+            return code && code.startsWith('BR') ? 'Brewlytics' : 'Kasm';
+          }
+          const brand = decoded.brand === 'Brewlytics' ? 'Brewlytics' : 'Kasm';
+          if (brand === 'Brewlytics') return 'Brewlytics';
+          const idx = (decoded.index ?? 0) >>> 0;
+          if (idx >= 6 && idx <= 12) return 'Bangaz';
+          if (idx >= 14 && idx <= 15) return 'Emanator';
+          if (idx >= 16 && idx <= 20) return 'Kasm Arpeggiator';
+          if (idx >= 21 && idx <= 26) return 'Kasm Rust SDK';
+          if (idx >= 0 && idx <= 3) return 'Kasm LFO';
+          return 'Kasm';
+        }
+        let derived = deriveProduct(decoded, couponCode);
+        let result = '';
+        if (couponCode) {
+          result += `<p>You have a Coupon! <strong>${couponCode}</strong> - This coupon is a discount for <strong>${derived}</strong> copy and paste ${couponCode} at the checkout!</p>`;
+          couponDiv.innerHTML = result;
+        }
+      });
+    </script>
 </head>
 <body>
 <div class="tvsimulator" aria-hidden="true"></div>
@@ -77,8 +135,9 @@
 <br/>
 <h1>Pyrmont Brewery Taproom Store</h1>
 
-<a href="get_kasm.html">Purchase Kasm - Ableton Live Rust SDK<br/><img src="kasm.png"/></a>
+<div id="coupon"></div>
+<br/>
+<a href="get_kasm.html">Purchase Kasm - Ableton Live Rust SDK<br/><img src="kasm.png" alt="Kasm Ableton Live Rust SDK"/></a>
 
 </body>
-</script>
 </html>
