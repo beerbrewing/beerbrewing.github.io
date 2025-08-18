@@ -669,6 +669,22 @@ You can buy this <a href="https://pyrmontbrewery.com/get_kasm" style="color:#61d
         </div>
     </div>
 
+    Jog demo... (adds video to the Rust canvas)
+    <div>
+        <button id="chooseMp4FileBtn" style="background: #FF9800; color: white; border: none; border-radius: 3px; cursor: pointer; ">📤</button>
+        <input type="file" id="mp4FileInput" style="display: none;">
+        <button id="recklessVideoBtn" style="background: #2196F3; color: white; border: none; border-radius: 3px; cursor: pointer;">🎥</button>
+        <button id="bbbVideoBtn" style="background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer;">🏖️</button>
+    </div>
+    <div style="margin: 20px 0;">
+        <canvas id="kasmHTMLCanvasJog" width="150" height="150" style="border:1px solid #333; margin-top:20px; width: 150px; height: 150px"></canvas>
+        <video id="kasm_jog_video" width="150" height="150" style="visibility:hidden; width: 150px; height: 150px" autoplay muted loop>
+            <source src="https://pyrmontbrewery.com/streams/ferries_150x150.webm" type="video/webm">
+        </video>
+    </div>
+
+
+    Ableton Live MIDI Generation Clip view...
     <!-- MIDI Clip Visualization -->
     <div style="margin-bottom: 20px;">
         <div id="midiClipView" style="
@@ -1402,6 +1418,32 @@ If you have Ableton Live 12.2 you should be able to download then double click o
             document.getElementById('playbackStatus').textContent = 'Stopped';
         }
     }
+
+    // Set MP4 video source and play, and update WASM metadata
+    async function setMp4Video() {
+        const url = document.getElementById('mp4UrlInput').value;
+        const video = document.getElementById('kasm_jog_video');
+        if (url) {
+            video.src = url;
+            video.load();
+            video.play();
+        }
+    }
+
+    // Choose local video file and play
+    document.getElementById('chooseMp4FileBtn').addEventListener('click', function() {
+        document.getElementById('mp4FileInput').click();
+    });
+    document.getElementById('mp4FileInput').addEventListener('change', async function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const video = document.getElementById('kasm_jog_video');
+            const objectUrl = URL.createObjectURL(file);
+            video.src = objectUrl;
+            video.load();
+            video.play();
+        }
+    });
 
     // Send MIDI note on
     function sendNoteOn(pitch, velocity, channel = 0) {
@@ -5301,6 +5343,8 @@ Velocity: C=down (-10), V=up (+10)
 
         // Show drum/loop pattern when drum: or loop: is selected
         showPatternPreview();
+
+        saveSettings();
     });
 
     // Modwheel slider event listeners and MIDI CC sending
@@ -5609,7 +5653,7 @@ Velocity: C=down (-10), V=up (+10)
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initializePianoKeyboard);
     } else {
-        initializeKasmWebMIDI();
+        setTimeout(initializeKasmWebMIDI, 100);
         initializePianoKeyboard();
     }
 
@@ -5652,6 +5696,77 @@ Velocity: C=down (-10), V=up (+10)
         document.getElementById('refreshMidiDevices').addEventListener('click', () => {
             updateMidiDeviceDropdown(kasmWebMIDI.getOutputDevices(), localStorage.getItem('selectedMidiOutput'));
         });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    // Wait for WASM JS to load
+    function initWasmCanvas() {
+        if (kasm_rust && typeof kasm_rust.init_kasm_canvas === 'function') {
+            kasm_rust.init_kasm_canvas(150, 150);
+        } else {
+            setTimeout(initWasmCanvas, 100);
+        }
+    }
+    // Wait for video to be ready
+    var video = document.getElementById('kasm_jog_video');
+    var canvas = document.getElementById('kasmHTMLCanvasJog');
+    var ctx = canvas.getContext('2d');
+
+    function renderVideoFrame() {
+        if (!video.paused && !video.ended && video.videoWidth && video.videoHeight) {
+        // Log the video natural size for debugging
+        console.log('Video natural size:', video.videoWidth, video.videoHeight);
+        // Letterbox logic to preserve aspect ratio in square canvas
+        const aspect = video.videoWidth / video.videoHeight;
+        let drawWidth, drawHeight, offsetX, offsetY;
+        if (aspect > 1) {
+        // Video is wider than tall
+        drawWidth = canvas.width;
+        drawHeight = canvas.width / aspect;
+        offsetX = 0;
+        offsetY = (canvas.height - drawHeight) / 2;
+    } else {
+        // Video is taller than wide or square
+        drawHeight = canvas.height;
+        drawWidth = canvas.height * aspect;
+        offsetX = (canvas.width - drawWidth) / 2;
+        offsetY = 0;
+    }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(video, offsetX, offsetY, drawWidth, drawHeight);
+    }
+        requestAnimationFrame(renderVideoFrame);
+    }
+        video.addEventListener('play', function() {
+        renderVideoFrame();
+    });
+        // If video is already ready
+        if (video.readyState >= 2) {
+        video.play();
+        initWasmCanvas();
+    }
+    });
+
+        document.getElementById('recklessVideoBtn').addEventListener('click', function() {
+        const video = document.getElementById('kasm_jog_video');
+        const url = 'https://pyrmontbrewery.com/streams/reckless_in_pyrmont_150x150.webm';
+        video.src = url;
+        video.load();
+        video.play();
+        if (kasm_rust && typeof kasm_rust.kasm_jog_play_video === 'function') {
+        kasm_rust.kasm_jog_play_video(url);
+    }
+    });
+
+        document.getElementById('bbbVideoBtn').addEventListener('click', function() {
+        const video = document.getElementById('kasm_jog_video');
+        const url = 'https://pyrmontbrewery.com/streams/bbb_150x150.webm';
+        video.src = url;
+        video.load();
+        video.play();
+        if (kasm_rust && typeof kasm_rust.kasm_jog_play_video === 'function') {
+        kasm_rust.kasm_jog_play_video(url);
+    }
     });
 </script>
 </html>
