@@ -74,6 +74,16 @@
 <div class="tvsimulator" aria-hidden="true"></div>
 <a href="/" class="back">&lt;-</a>
 
+<script>
+    // Detect if query string is ?kasm=foobar and redirect
+    (function() {
+        var params = new URLSearchParams(window.location.search);
+        var kasmValue = params.get('kasm');
+        if (kasmValue) {
+            window.location.replace('https://kasmsdk.github.io?app=' + encodeURIComponent(kasmValue));
+        }
+    })();
+</script>
 <br/>
 <br/>
 <h1>Kasm Rust WASM WebMIDI Demo</h1>
@@ -3033,7 +3043,7 @@ Velocity: C=down (-10), V=up (+10)
                             start_time: 2.0,
                             duration: 0.33,
                             velocity: 100,
-                            mute: 0,
+                            mute:  0,
                             probability: 1,
                             velocity_deviation: 0,
                             release_velocity: 64
