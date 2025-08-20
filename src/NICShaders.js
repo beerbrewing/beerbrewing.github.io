@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 const NICShaders = () => (
-  <div className="App" style={{background: 'rgba(160,160,160,1.0)', margin: '90px', fontSize: 'medium'}}>
+  <div className="App" style={{background: 'rgba(160,160,160,1.0)', margin: '10px', fontSize: 'medium'}}>
     <h1>NICShaders: GPU Compute Shaders for HTTP Traffic at Scale</h1>
     <p>CDN providers need compute at scale to do micro tasks, for example manipulating video media PTS/DTS, C2PA authentication/watermarking, making decisions based on network headers, e.g. modify HTTP output.</p>
     <p>The Linux Kernel networking stack has various optimisations such as BBR vs cubic, increased MTU and buffers etc - but ultimately this hits the CPU and the kernel generally which itself is a major bottleneck.</p>
