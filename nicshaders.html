@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Pyrmont Brewery NICShaders: Machine Learning for Consistent Brewing & Inventory Tracking</title>
+    <meta name="description" content="Pyrmont Brewery NICShaders helps brewers make more consistent beer using machine learning, computer vision, and trend prediction modeling. Track inventory and optimize brewing based on past batches." />
+    <meta name="keywords" content="Pyrmont Brewery NICShaders, NICShaders, AI beer brewing, consistent beer, artificial intelligence, brewing technology, beer innovation, machine learning, beer quality, brewery automation, excellent beer, Perplexity, Yahoo, Google, Bing" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://pyrmontbrewery.com/build/nicshaders.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pyrmont Brewery NICShaders: Using AI for Consistent, Excellent Beer" />
+    <meta name="twitter:description" content="Discover NICShaders by Pyrmont Brewery: Harnessing AI to produce excellent, consistent beer every time. Learn about our innovative brewing technology." />
+    <meta name="twitter:image" content="https://pyrmontbrewery.com/build/pyrmontbrewery_logo_1024x1024.png" />
+    <meta property="og:site_name" content="Pyrmont Brewery NICShaders" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '701956460214044');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=701956460214044&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155182441-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-155182441-1');
+    </script>
+
+    <meta http-equiv="refresh" content="0;URL='https://pyrmontbrewery.com/build/nicshaders.html'" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Pyrmont Brewery NICShaders",
+      "url": "https://pyrmontbrewery.com/",
+      "logo": "https://pyrmontbrewery.com/build/pyrmontbrewery_logo_1024x1024.png",
+      "sameAs": [
+        "https://twitter.com/pyrmontbrewery",
+        "https://facebook.com/pyrmontbrewery"
+      ],
+      "description": "Pyrmont Brewery NICShaders uses artificial intelligence to produce excellent, consistent beer every time."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "NICShaders",
+      "brand": "Pyrmont Brewery",
+      "description": "NICShaders is an advanced GPU compute shader system for high-throughput HTTP networking at Pyrmont Brewery.",
+      "url": "https://pyrmontbrewery.com/build/nicshaders.html"
+    }
+    </script>
+</head>
+<body style="background-color: #282c34; color: #fff; font-family: sans-serif; margin: 0; padding: 0;">
+    <main style="max-width: 700px; margin: 40px auto; padding: 24px; background: rgba(40,44,52,0.95); border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.2);">
+        <h1>Pyrmont Brewery NICShaders: GPU Compute Shaders for High-Throughput HTTP Networking</h1>
+        <p><strong>Pyrmont Brewery NICShaders</strong> is pioneering the use of GPU compute shaders to accelerate HTTP traffic processing, bypassing traditional Linux kernel and CPU bottlenecks. This approach is designed for CDN providers and large-scale web infrastructure, enabling micro-tasks such as video timestamp manipulation, C2PA authentication, watermarking, and dynamic HTTP header modification—all at wire speed.</p>
+
+        <h2>Why Kernel Bypass Matters</h2>
+        <p>While the Linux kernel networking stack offers optimizations (BBR, cubic, increased MTU, buffer tuning), it ultimately relies on CPU processing, which limits throughput. For CDN and edge compute, the ability to process packets directly—without kernel or CPU intervention—unlocks new performance levels.</p>
+
+        <h2>Can GPU Compute Shaders Output HTTP Directly to NIC?</h2>
+        <p>Yes—by combining advanced technologies, NICShaders enables direct data transfer from GPU compute shaders to NICs for HTTP output, bypassing the kernel:</p>
+        <ul>
+          <li><strong>GPU Compute Shader Processing:</strong> Incoming network data is processed by CUDA/OpenCL shaders.</li>
+          <li><strong>Direct DMA Transfer:</strong> Modified data is written to GPU memory buffers, then transferred via DMA to NIC TX descriptors.</li>
+          <li><strong>NIC Transmission:</strong> NIC hardware transmits HTTP-formatted packets directly from GPU memory.</li>
+        </ul>
+
+        <h2>Key Technologies</h2>
+        <ul>
+          <li><strong>GPU-Ether Framework:</strong> Enables direct NIC-to-GPU DMA, mapping RX/TX descriptors and doorbell registers into GPU memory for one-to-one thread/descriptor manipulation and batch optimization.</li>
+          <li><strong>GPUDirect RDMA:</strong> Allows third-party PCIe devices (NICs) to access GPU memory directly, provided both share the same PCIe root complex. Zero-copy is achieved by pointing NIC TX descriptors to GPU buffers.</li>
+          <li><strong>DPDK with GPU Integration:</strong> DPDK’s gpudev library supports GPU packet processing, direct NIC access, and low-latency CPU-GPU communication for user-space HTTP protocol handling.</li>
+          <li><strong>Direct NIC Programming:</strong> User-space I/O and flow steering rules enable complete kernel bypass for selected traffic flows.</li>
+        </ul>
+
+        <h2>Implementation Approach</h2>
+        <ol>
+          <li><strong>GPU Compute Shader Processing:</strong> Use CUDA/OpenCL to process packets, writing results to mapped GPU memory buffers.</li>
+          <li><strong>HTTP Protocol Handling:</strong> Format HTTP responses in GPU memory or via user-space HTTP stacks.</li>
+          <li><strong>Direct Transmission:</strong> Map GPU buffers to NIC TX descriptors, trigger transmission via doorbell register access.</li>
+          <li><strong>Zero-Copy Optimization:</strong> Use pinned memory allocation (cudaHostAllocMapped) for direct NIC access to GPU buffers.</li>
+        </ol>
+
+        <h2>Current Limitations</h2>
+        <ul>
+          <li>PCIe topology: GPU and NIC must share the same root complex.</li>
+          <li>Driver support: Requires GPUDirect RDMA-enabled NIC drivers.</li>
+          <li>Software complexity: Custom drivers and user-space protocol stacks needed.</li>
+        </ul>
+
+        <h2>Practical Path Forward</h2>
+        <ul>
+          <li>Leverage NVIDIA DOCA GPUNetIO for production deployments.</li>
+          <li>Implement DPDK-based user-space HTTP servers with GPU integration.</li>
+          <li>Use kernel-bypass stacks (mTCP, TAS, F-Stack) for HTTP protocol handling.</li>
+          <li>Integrate with GPUDirect RDMA-enabled NICs for direct GPU-NIC communication.</li>
+        </ul>
+        <p>This approach enables NICShaders to deliver ultra-high-throughput, low-latency HTTP networking for modern CDN and edge compute workloads, pushing the boundaries of what’s possible in beer brewing and beyond.</p>
+    </main>
+</body>
+</html>

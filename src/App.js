@@ -13,6 +13,7 @@ import Beer from "./Beer";
 import BeerMats from "./BeerMats";
 import Library from './Library';
 import LibrarySearch from './LibrarySearch';
+import NICShaders from './NICShaders';
 
 // Initialize Google Analytics 4
 ReactGA4.initialize('G-0BEBKXKRP3'); // You'll need to replace this with your actual GA4 measurement ID
@@ -83,6 +84,7 @@ const App = () => {
         <Route path="/streams" element={() => { window.location.href = "streams.html"; return null; }} />
         <Route path="/build" element={<Navigate to="/" />} />
         <Route path="/build/index.html" element={<Navigate to="/build" />} />
+        <Route path="/nicshaders" element={<NICShaders />} />
         <Route path="/" element={
           <div className="App" style={{
             backgroundPosition: 'center',
@@ -237,6 +239,14 @@ const App = () => {
                         Trying to find <div className="speccy_flash_magenta">Kasm</div> Ableton Live Max4Live with WebMIDI? Click here
                         <br/>
                       </a>
+                    </div>
+                    <br/>
+
+                    <div>
+                      <br />
+                      <Link to="/nicshaders" className={classLink2}>
+                        Learn about <div className="speccy_flash_magenta">NICShaders</div> GPU Compute Shaders for HTTP Traffic at Scale
+                      </Link>
                     </div>
                     <br/>
 

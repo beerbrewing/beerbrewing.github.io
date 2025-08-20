@@ -18,6 +18,12 @@ html {
     scroll-behavior: auto;
 }
 
+pre {
+    font-family: 'pyrmont_brewery';
+    overflow-x: hidden;
+
+}
+
 .tvsimulator {
     position: absolute;
     z-index: 1;
