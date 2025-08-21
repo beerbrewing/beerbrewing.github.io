@@ -1,5 +1,6 @@
 import App from "./App";
 import Kasm from './ai_beermats/pyrmontbrewery_kasm.jpg';
+import NicShaders from './ai_beermats/pyrmontbrewery_nicshaders.jpg';
 import BeerAI from './ai_beermats/pyrmontbrewery_beerai.jpg';
 import BeerMat1 from './ai_beermats/pyrmontbrewery_beermat_dalle_kangaroos_drinking_beer.png';
 import BeerMat2 from './ai_beermats/pyrmontbrewery_beermat_dalle_koalas_having_a_frothy_opera_house.png';
@@ -59,9 +60,15 @@ class BeerMats extends Component {
                 </a>
                 <br/>
                 <br/>
-                LOAD "KASM SDK"
+                LOAD "KASM"
                 <a href="/build/kasm.html">
                     <img className={BeerMatsLink} src={Kasm}/>
+                </a>
+                <br/>
+                <br/>
+                LOAD "NICSHADERS"
+                <a href="/build/index.html?app=nicshaders">
+                    <img className={BeerMatsLink} src={NicShaders}/>
                 </a>
                 <br/>
                 <br/>

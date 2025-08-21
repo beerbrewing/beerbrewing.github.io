@@ -38,6 +38,10 @@ import LabelHellHoleHelles from './label_hell_hole_helles.png';
 import LabelGoldsbroughNEPIA from './label_goldsbrough_neipa.png';
 import LabelGeneric from './label_generic.png';
 
+function getQueryParams() {
+  return new URLSearchParams(window.location.search);
+}
+
 const App = () => {
   const [isOldEnough, setIsOldEnough] = useState(false);
   const [confirmedAge, setConfirmedAge] = useState(false);
@@ -75,6 +79,30 @@ const App = () => {
   const mightBeUnder18 = !isOldEnough;
   const confirmedAgeState = confirmedAge;
   const afterKevState = afterKev;
+
+  const query = getQueryParams();
+  const appParam = query.get('app');
+
+  if (appParam) {
+    let src;
+    switch (appParam) {
+      case 'nicshaders':
+        src = window.location.origin + '/nicshaders.html';
+        break;
+      // Add more cases here for other apps
+      default:
+        src = window.location.origin + '/build/index.html';
+    }
+    return (
+      <div style={{width: '100vw', height: '100vh'}}>
+        <iframe
+          src={src}
+          title={appParam}
+          style={{width: '100%', height: '100%', border: 'none'}}
+        />
+      </div>
+    );
+  }
 
   return (
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
