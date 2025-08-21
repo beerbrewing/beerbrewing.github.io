@@ -1,4 +1,5 @@
 import App from "./App";
+import Kasm from './ai_beermats/pyrmontbrewery_kasm.jpg';
 import BeerAI from './ai_beermats/pyrmontbrewery_beerai.jpg';
 import BeerMat1 from './ai_beermats/pyrmontbrewery_beermat_dalle_kangaroos_drinking_beer.png';
 import BeerMat2 from './ai_beermats/pyrmontbrewery_beermat_dalle_koalas_having_a_frothy_opera_house.png';
@@ -53,8 +54,15 @@ class BeerMats extends Component {
         return <div className="BeerMats">
             <header className="App-header">
                 LOAD "CIBD2025"
+                <a href="/build/ai.html">
                 <img className={BeerMatsLink} src={BeerAI}/>
-
+                </a>
+                <br/>
+                <br/>
+                LOAD "KASM SDK"
+                <a href="/build/kasm.html">
+                    <img className={BeerMatsLink} src={Kasm}/>
+                </a>
                 <br/>
                 <br/>
                 LOAD "BEERMATS"

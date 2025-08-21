@@ -129,6 +129,20 @@ const App = () => {
                     target={"_blank"}>https://www.linkedin.com/in/kevleyski</a>
                   <br />
                   <br />
+                  <br />
+                  Other side gig's that are helping fund the Pyrmont Brewery:
+                  <br />
+                  <br />
+                  <a href="/kasm">Kasm SDK</a> - Is a method of bridging Ableton Live and WebMIDI instruments usng Rust/WebAssembly, it utlises the newly added V8 engine in Ableton Live/Max9
+                  <br />
+                  <br />
+                  <a href="/nicshaders">NIC Shaders</a> - Is low latency/zero copy HTTP to GPU Compute Shader and back out again, for CDNs, trading etc
+                  <br />
+                  <br />
+                  <a href="/ai">BrewLytics</a> - Brewery automation and brewers compantion phone/tablet app to assist with good manufacturing process GMP, tracability and general brewing consistency
+                  <br />
+                  <br />
+
                   Some of Kev's slide decks, feel free to borrow (give a quick nod to the brewery please):
                   <br />
                   <br />
@@ -236,19 +250,12 @@ const App = () => {
                     <div>
                       <br />
                       <a href={"build/kasm.html"} target={"_blank"} className={classLink2}>
-                        Trying to find <div className="speccy_flash_magenta">Kasm</div> Ableton Live Max4Live with WebMIDI? Click here
+                        Looking for <div className="speccy_flash_magenta">Kasm SDK</div>? (Ableton Live/WebMIDI) Click here
                         <br/>
                       </a>
                     </div>
                     <br/>
 
-                    <div>
-                      <br />
-                      <Link to="/nicshaders" className={classLink2}>
-                        Learn about <div className="speccy_flash_magenta">NICShaders</div> GPU Compute Shaders for HTTP Traffic at Scale
-                      </Link>
-                    </div>
-                    <br/>
 
                     {/*<br/>*/}
                     {/*<div className="ButtonKev" id="afterKev" onClick={handleAfterKev}>*/}

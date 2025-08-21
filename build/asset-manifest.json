@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/build/static/css/main.069f5250.css",
-    "main.js": "/build/static/js/main.ed80417b.js",
+    "main.js": "/build/static/js/main.ab6db04c.js",
     "static/media/pyrmontbwy.gif": "/build/static/media/pyrmontbwy.0835e1cad621844cf7ed.gif",
     "static/media/slides_cover.png": "/build/static/media/slides_cover.8177aad41f2dfc147db1.png",
     "static/media/pyrmont_sandstone_buildings.jpeg": "/build/static/media/pyrmont_sandstone_buildings.c942ae40cb456e7cd739.jpeg",
@@ -17,6 +17,7 @@
     "static/media/pyrmontbrewery_beermat_dalle_kangaroos_drinking_beer.png": "/build/static/media/pyrmontbrewery_beermat_dalle_kangaroos_drinking_beer.c88d24f1e7941f367efd.png",
     "static/media/pyrmontbrewery_beermat_dalle_kangas_night_beer.png": "/build/static/media/pyrmontbrewery_beermat_dalle_kangas_night_beer.9de14c19d8ba44873673.png",
     "static/media/PyrmontBrewery_Kegerator.png": "/build/static/media/PyrmontBrewery_Kegerator.a986208a7cf81fada1a6.png",
+    "static/media/pyrmontbrewery_kasm.jpg": "/build/static/media/pyrmontbrewery_kasm.85d1ebd3c870093a5c95.jpg",
     "static/media/cheers.png": "/build/static/media/cheers.caf7435d9ff43c62db54.png",
     "static/media/label_caneite_imperial.png": "/build/static/media/label_caneite_imperial.539360132c49f3d22bd7.png",
     "static/media/label_purgatory_pale_ale.png": "/build/static/media/label_purgatory_pale_ale.bad2846b5c7721214c92.png",
@@ -39,10 +40,10 @@
     "static/media/pyrmont_brewery.woff2": "/build/static/media/pyrmont_brewery.9d46e53b531a8376d70e.woff2",
     "index.html": "/build/index.html",
     "main.069f5250.css.map": "/build/static/css/main.069f5250.css.map",
-    "main.ed80417b.js.map": "/build/static/js/main.ed80417b.js.map"
+    "main.ab6db04c.js.map": "/build/static/js/main.ab6db04c.js.map"
   },
   "entrypoints": [
     "static/css/main.069f5250.css",
-    "static/js/main.ed80417b.js"
+    "static/js/main.ab6db04c.js"
   ]
 }
