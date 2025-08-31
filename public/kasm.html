@@ -941,6 +941,8 @@ If you have Ableton Live 12.2 you should be able to download then double click o
     <li>Triggaz - Automated scene change on detecting played note patterns<br/><a href="kasm/Kasm Triggaz.amxd" download>Kasm Triggaz.amxd</a></li>
     <li>Arpy - Arpeggiator with visualizer<br/><a href="kasm/Kasm Arpy.amxd" download>Kasm Arpy.amxd</a></li>
     <li>Download Arpy WebMIDI demo <br/><a href="/kasm/arpy_v1.0/arpy.html" download>arpy.html</a></li>
+    <li>Rulez - Apply real worl instrument rules to virtual instruments<br/><a href="kasm/Kasm Rulez.amxd" download>Kasm Rulez.amxd</a></li>
+    <li>Download Rulez WebMIDI demo <br/><a href="/kasm/v1.15/rulez.html" download>rulez.html</a></li>
 </ul>
 
 <h2>More about Kasm...</h2>
@@ -1099,7 +1101,7 @@ If you have Ableton Live 12.2 you should be able to download then double click o
                     sendMidiData(noteOffMsg, pitch, 0);
                 }
             } else {
-			
+
 	            if (kasmWebMIDI && velocity > 0) {
 	                // Note On - highlight the key on SVG keyboard
 	                highlightMidiNoteOnKeyboard(pitch, true);
@@ -1128,13 +1130,13 @@ If you have Ableton Live 12.2 you should be able to download then double click o
 	                    }, 500);
 	                } else {
 	                    highlightMidiNoteOnKeyboard(pitch, false);
-					
+
 	                    const noteOffMsg = [0x80 + channel, pitch, 0];
 	                    sendMidiData(noteOffMsg, pitch, 0);
 
 	                }
 	            }
-				
+
 		        // Send CC change to WebMIDI
 		        if (index === 1) {
 		            const ccNumber = msg;
@@ -1197,7 +1199,7 @@ If you have Ableton Live 12.2 you should be able to download then double click o
 		                }
 		            }
 		        }
-				
+
                 // Even if no MIDI output, still show on keyboard
                 if (data && velocity > 0) {
                     highlightMidiNoteOnKeyboard(pitch, true);
@@ -5648,7 +5650,7 @@ Velocity: C=down (-10), V=up (+10)
         console.log('updateKasmConfig: Updating kasm config:', jsonString);
         kasm_rust.kasm_config(jsonString);
     };
-	
+
 	    document.addEventListener('DOMContentLoaded', function() {
     // Wait for WASM JS to load
     function initWasmCanvas() {
