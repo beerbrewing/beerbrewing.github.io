@@ -447,21 +447,34 @@ const App = () => {
                     &gt; Open Source Beer!<br /><br />
                     Being a massive fan of open source and creative commons, our head brewer
                     is sharing a small selection of pilot batch recipes for you to have a go at home:<br />
-                    <a href={"Beer Arrogant Bastard.xml"} target={"_blank"} className={classLink}>Arrogant Bastard.xml</a> -
-                    American Strong Ale<br />
-                    <a href={"Beer Brexit.bsmx"} target={"_blank"} className={classLink}>Brexit.bsmx</a> - British Bitter<br />
-                    <a href={"Beer Demo Gremlins.bsmx"} target={"_blank"} className={classLink}>Demo Gremlins.bsmx</a> -
-                    Australian Pale Ale<br />
-                    <a href={"Beer Kaibrau Kolsch.bsmx"} target={"_blank"} className={classLink}>Kaibrau Kolsch.bsmx</a> -
-                    German Kolsch<br />
-                    <a href={"Beer Oompa Loomper.bsmx"} target={"_blank"} className={classLink}>Oompa Loomper.bsmx</a> -
-                    Chocolate Porter<br />
-                    <a href={"Beer Rudolf Red.bsmx"} target={"_blank"} className={classLink}>Rudolf Red.bsmx</a> - Red
-                    Ale<br />
-                    <a href={"Beer Seong Cerveza.bsmx"} target={"_blank"} className={classLink}>Seong Cerveza.bsmx</a> -
-                    Cerveza<br />
-                    <a href={"Beer Suz Saison.bsmx"} target={"_blank"} className={classLink}>Suz Saison.bsmx</a> - French
-                    Saison
+                    {/* Use a mapped list so links resolve correctly when deployed to GitHub Pages. */}
+                    {(() => {
+                      const recipes = [
+                        { file: 'Beer Arrogant Bastard.xml', label: 'Arrogant Bastard.xml', desc: 'American Strong Ale' },
+                        { file: 'Beer Brexit.bsmx', label: 'Brexit.bsmx', desc: 'British Bitter' },
+                        { file: 'Beer Demo Gremlins.bsmx', label: 'Demo Gremlins.bsmx', desc: 'Australian Pale Ale' },
+                        { file: 'Beer Kaibrau Kolsch.bsmx', label: 'Kaibrau Kolsch.bsmx', desc: 'German Kolsch' },
+                        { file: 'Beer Oompa Loomper.bsmx', label: 'Oompa Loomper.bsmx', desc: 'Chocolate Porter' },
+                        { file: 'Beer Rudolf Red.bsmx', label: 'Rudolf Red.bsmx', desc: 'Red Ale' },
+                        { file: 'Beer Seong Cerveza.bsmx', label: 'Seong Cerveza.bsmx', desc: 'Cerveza' },
+                        { file: 'Beer Suz Saison.bsmx', label: 'Suz Saison.bsmx', desc: 'French Saison' },
+                      ];
+
+                      return recipes.map(r => (
+                        <span key={r.file}>
+                          <a
+                            href={`${process.env.PUBLIC_URL}/${encodeURIComponent(r.file)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={classLink}
+                          >
+                            {r.label}
+                          </a>
+                          {' '} - {r.desc}
+                          <br />
+                        </span>
+                      ));
+                    })()}
                   </div>
                   <br />
                   <br />
