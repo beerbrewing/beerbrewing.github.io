@@ -6,7 +6,7 @@
 //     https://pyrmontbrewery.com/get_kasm
 //     
 
-// Version: 1.18.1
+// Version: 1.18.2
 
 /*
  * Copyright (c) Pyrmont Brewery 2025
